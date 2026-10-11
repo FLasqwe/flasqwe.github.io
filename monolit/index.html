@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MONOLIT — Construction & Design-Build</title>
+  <meta name="description" content="MONOLIT builds private houses, commercial buildings and turnkey interiors. Fixed-price contracts, live cameras on site, 5-year warranty.">
+  <meta name="theme-color" content="#141516">
+  <meta property="og:title" content="MONOLIT — We build what lasts">
+  <meta property="og:description" content="Houses, commercial buildings and turnkey interiors. Fixed price, fixed deadline.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1678889284769-b7dcbec1f082?auto=format&fit=crop&w=1200&q=80">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f5c400'/%3E%3Cpath d='M14 48V16h8l10 16 10-16h8v32h-8V30l-10 15-10-15v18z' fill='%23141516'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="MONOLIT">
+      <span class="logo__mark" aria-hidden="true">M</span><span class="logo__word">MONOLIT</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#estimate" data-i18n="nav.estimate">Estimate</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone" href="tel:+79000000002">+7 900 000-00-02</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <a class="btn btn--sm" href="#estimate" data-i18n="nav.cta">Get an estimate</a>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="sheet" aria-hidden="true">
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#process" data-i18n="nav.process">Process</a>
+    <a href="#estimate" data-i18n="nav.estimate">Estimate</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+    <a class="sheet__phone" href="tel:+79000000002">+7 900 000-00-02</a>
+  </div>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="hero" id="top">
+      <img class="hero__img" src="https://images.unsplash.com/photo-1678889284769-b7dcbec1f082?auto=format&fit=crop&w=2400&q=80" alt="Modern house with a pool, lit up at night" fetchpriority="high">
+      <div class="hero__shade"></div>
+      <!-- «Чертёжные» линии поверх фото: сетка, размерные линии, отметки -->
+      <svg class="hero__blueprint" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="bp-grid">
+          <path d="M0 180H1440M0 360H1440M0 540H1440M0 720H1440M240 0V900M480 0V900M720 0V900M960 0V900M1200 0V900"/>
+        </g>
+        <g class="bp-lines">
+          <path d="M860 250H1340"/><path d="M860 238v24M1340 238v24"/>
+          <path d="M1380 300V700"/><path d="M1368 300h24M1368 700h24"/>
+          <circle cx="1100" cy="500" r="140"/><path d="M1100 340v320M940 500h320"/>
+        </g>
+        <g class="bp-text">
+          <text x="1080" y="236">24 000</text>
+          <text x="1396" y="505" transform="rotate(90 1396 505)">12 400</text>
+          <text x="1112" y="352">⌀ 2 800</text>
+        </g>
+      </svg>
+      <div class="hero__content">
+        <p class="tag up" data-i18n="hero.tag">Design · Build · Turnkey since 2007</p>
+        <h1 class="hero__title">
+          <span class="row"><span data-i18n="hero.t1">We build</span></span>
+          <span class="row"><span class="yellow" data-i18n="hero.t2">what lasts</span></span>
+        </h1>
+        <p class="hero__lead up" data-i18n="hero.lead">Private houses, commercial buildings and turnkey interiors — with a fixed price in the contract, live cameras on site and a 5-year warranty on everything we build.</p>
+        <div class="hero__cta up">
+          <a class="btn" href="#estimate" data-i18n="hero.cta1">Calculate your project</a>
+          <a class="btn btn--line" href="#projects" data-i18n="hero.cta2">See our projects</a>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div><b><span class="count" data-to="18">0</span></b><span data-i18n="hero.s1">years on the market</span></div>
+        <div><b><span class="count" data-to="240">0</span>+</b><span data-i18n="hero.s2">objects delivered</span></div>
+        <div><b><span class="count" data-to="96">0</span>%</b><span data-i18n="hero.s3">handed over on schedule</span></div>
+        <div class="hero__live"><i></i><span data-i18n="hero.live">12 sites under construction now</span></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker__track" data-i18n="ticker">Residential ■ Commercial ■ Turnkey interiors ■ Renovation ■ Design & build ■ Engineering ■ Residential ■ Commercial ■ Turnkey interiors ■ Renovation ■ Design & build ■ Engineering ■</div></div>
+
+    <!-- ── О компании ── -->
+    <section class="intro section">
+      <p class="intro__statement reveal" data-i18n-html="intro.text">We don't sell square metres. We take responsibility for <mark>the whole result</mark> — from soil survey to the key in your hand — and put <mark>the price and deadline in the contract</mark>.</p>
+      <div class="intro__grid">
+        <figure class="intro__img reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=1400&q=80" alt="Builders working on a concrete frame"></figure>
+        <ul class="intro__facts">
+          <li class="reveal"><b>01</b><div><h3 data-i18n="intro.f1">Own team, no subcontractor chains</h3><p data-i18n="intro.f1d">180 specialists on staff: engineers, foremen, finishers. One contract, one responsible party.</p></div></li>
+          <li class="reveal"><b>02</b><div><h3 data-i18n="intro.f2">Fixed price, fixed deadline</h3><p data-i18n="intro.f2d">The estimate is locked in the contract. Every day of delay is compensated — it's written in clause 7.3.</p></div></li>
+          <li class="reveal"><b>03</b><div><h3 data-i18n="intro.f3">You see the site 24/7</h3><p data-i18n="intro.f3d">Online cameras, a weekly photo report and a personal dashboard with every payment and document.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Услуги ── -->
+    <section class="services section section--dark" id="services">
+      <div class="head">
+        <p class="tag" data-i18n="svc.tag">What we do</p>
+        <h2 class="h2 reveal" data-i18n="svc.title">Services</h2>
+      </div>
+      <ul class="svc-list" data-render="services"></ul>
+      <figure class="svc-float" aria-hidden="true"><img alt=""></figure>
+    </section>
+
+    <!-- ── Проекты ── -->
+    <section class="projects section" id="projects">
+      <div class="head head--row">
+        <div>
+          <p class="tag" data-i18n="proj.tag">Portfolio</p>
+          <h2 class="h2 reveal" data-i18n="proj.title">Selected projects</h2>
+        </div>
+        <div class="filters" role="tablist" data-render="filters"></div>
+      </div>
+      <div class="proj-grid" data-render="projects"></div>
+    </section>
+
+    <!-- ── Этапы ── -->
+    <section class="process section section--dark" id="process">
+      <div class="head">
+        <p class="tag" data-i18n="proc.tag">How it works</p>
+        <h2 class="h2 reveal" data-i18n="proc.title">From idea to keys in 5 steps</h2>
+      </div>
+      <div class="process__track">
+        <div class="process__line"><i></i></div>
+        <ol class="process__steps" data-render="steps"></ol>
+      </div>
+    </section>
+
+    <!-- ── Калькулятор ── -->
+    <section class="estimate section" id="estimate">
+      <div class="head">
+        <p class="tag" data-i18n="est.tag">Estimate</p>
+        <h2 class="h2 reveal" data-i18n="est.title">Cost & timeline in one minute</h2>
+        <p class="head__lead reveal" data-i18n="est.lead">A realistic range based on our last 40 projects. An engineer will refine it for free after a site visit.</p>
+      </div>
+      <div class="est reveal">
+        <div class="est__form">
+          <div class="field">
+            <span class="field__label" data-i18n="est.type">Object type</span>
+            <div class="seg" role="radiogroup" data-render="types"></div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="area"><span data-i18n="est.area">Area</span><output class="field__value" id="areaOut">180 m²</output></label>
+            <input type="range" id="area" min="50" max="1500" step="10" value="180">
+            <div class="field__scale"><span>50</span><span>1 500 m²</span></div>
+          </div>
+          <div class="field field--row">
+            <div>
+              <span class="field__label" data-i18n="est.floors">Floors</span>
+              <div class="stepper"><button type="button" data-floors="-1" aria-label="−">−</button><output id="floors">2</output><button type="button" data-floors="1" aria-label="+">+</button></div>
+            </div>
+            <div class="grow">
+              <span class="field__label" data-i18n="est.level">Finish level</span>
+              <div class="seg seg--small" role="radiogroup" data-render="levels"></div>
+            </div>
+          </div>
+        </div>
+        <div class="est__out">
+          <div class="est__price">
+            <small data-i18n="est.total">Estimated cost</small>
+            <b id="estTotal">—</b>
+            <span id="estPerM">—</span>
+          </div>
+          <div class="est__time">
+            <small data-i18n="est.time">Timeline</small>
+            <b id="estTime">—</b>
+          </div>
+          <div class="est__bars" data-render="bars"></div>
+          <a class="btn btn--full" href="#contact" data-i18n="est.cta">Get a detailed estimate</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Гарантии ── -->
+    <section class="why section section--dark">
+      <div class="why__big reveal">
+        <span class="why__num">5</span>
+        <p data-i18n-html="why.big">years<br>warranty</p>
+      </div>
+      <div class="why__grid" data-render="why"></div>
+    </section>
+
+    <!-- ── Отзыв ── -->
+    <section class="quote section">
+      <figure class="reveal">
+        <blockquote data-i18n="quote.text">“We moved in exactly on the date written in the contract. During the whole year I opened the camera app more often than Instagram — and never once had to call to find out what was going on.”</blockquote>
+        <figcaption><img loading="lazy" src="https://images.unsplash.com/photo-1667133295308-9ef24f71952e?auto=format&fit=crop&w=120&h=120&q=70" alt=""><div><b data-i18n="quote.name">Andrey Morozov</b><span data-i18n="quote.role">House in Pine Hills, 320 m²</span></div></figcaption>
+      </figure>
+    </section>
+
+    <!-- ── Контакты ── -->
+    <section class="contact section section--dark" id="contact">
+      <div class="contact__bg"><img loading="lazy" src="https://images.unsplash.com/photo-1575230167650-dce335edc7f4?auto=format&fit=crop&w=2000&q=70" alt=""></div>
+      <div class="contact__info">
+        <p class="tag" data-i18n="ct.tag">Contact</p>
+        <h2 class="h2" data-i18n-html="ct.title">Let's discuss<br><span class="yellow">your project</span></h2>
+        <p data-i18n="ct.lead">Send drawings or just describe the idea. An engineer will call you back within 2 working hours.</p>
+        <dl class="contact__list">
+          <div><dt data-i18n="ct.phone">Phone</dt><dd><a href="tel:+79000000002">+7 900 000-00-02</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:build@monolit.example">build@monolit.example</a></dd></div>
+          <div><dt data-i18n="ct.office">Office</dt><dd data-i18n="ct.addr">Moscow, 5 Stroiteley Ave., Business Centre “Kvadrat”</dd></div>
+          <div><dt data-i18n="ct.hoursT">Hours</dt><dd data-i18n="ct.hours">Mon–Fri 9:00–19:00</dd></div>
+        </dl>
+      </div>
+      <div class="contact__card">
+        <form class="form" novalidate>
+          <div class="form__row">
+            <label><span data-i18n="ct.name">Name</span><input name="name" autocomplete="name" required minlength="2"></label>
+            <label><span data-i18n="ct.contact">Phone or email</span><input name="contact" autocomplete="tel" required></label>
+          </div>
+          <label><span data-i18n="ct.type">Project type</span><select name="type" data-render="typeOptions"></select></label>
+          <div>
+            <span class="form__label" data-i18n="ct.budget">Budget</span>
+            <div class="chips" role="radiogroup" data-render="budgets"></div>
+          </div>
+          <label><span data-i18n="ct.msg">Tell us about the project (optional)</span><textarea name="msg" rows="3"></textarea></label>
+          <label class="file">
+            <input type="file" name="files" multiple accept=".pdf,.dwg,.jpg,.jpeg,.png,.zip">
+            <span class="file__icon" aria-hidden="true">+</span>
+            <span class="file__text" data-i18n="ct.file">Attach drawings or photos (PDF, DWG, JPG)</span>
+          </label>
+          <label class="check"><input type="checkbox" name="consent" required><span data-i18n="ct.consent">I agree to the processing of personal data</span></label>
+          <button class="btn btn--full" type="submit" data-i18n="ct.submit">Send request</button>
+          <p class="form__error" role="alert"></p>
+        </form>
+        <div class="form__ok" hidden>
+          <span class="ok__mark" aria-hidden="true"></span>
+          <h3 data-i18n="ct.okTitle">Request received</h3>
+          <p class="ok__text"></p>
+          <button class="btn btn--line" type="button" data-again data-i18n="ct.again">Send another request</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__word" aria-hidden="true">MONOLIT</div>
+    <div class="footer__row">
+      <span data-i18n="foot.copy">© MONOLIT. Construction & design-build.</span>
+      <span data-i18n="foot.sro">SRO membership № 0000-00 (demo)</span>
+      <span data-i18n="foot.concept">Concept website · portfolio project</span>
+    </div>
+  </footer>
+
+  <!-- Модальное окно проекта -->
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" type="button" data-close aria-label="Close">×</button>
+      <figure class="modal__img"><img alt=""></figure>
+      <div class="modal__body">
+        <span class="modal__cat"></span>
+        <h3 id="mTitle"></h3>
+        <p class="modal__desc"></p>
+        <dl class="modal__specs"></dl>
+        <div class="modal__nav">
+          <button type="button" class="btn btn--line btn--sm" data-step="-1" data-i18n="modal.prev">← Previous</button>
+          <button type="button" class="btn btn--sm" data-step="1" data-i18n="modal.next">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

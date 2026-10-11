@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ekimov Gregory — Web design & development</title>
+  <meta name="description" content="I design and build fast, bilingual websites for restaurants, clinics, construction companies and local businesses — with booking, calculators and lead forms.">
+  <meta name="theme-color" content="#0d0d0f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ekimov Gregory — Web design & development">
+  <meta property="og:description" content="Websites that bring clients. See live demos: a restaurant, a dental clinic and a construction company.">
+  <meta property="og:url" content="https://flasqwe.github.io/">
+  <meta property="og:image" content="https://flasqwe.github.io/assets/shots/ognivo-desktop-en.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d4ff3a'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%230d0d0f'%3EEG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/portfolio.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Ekimov Gregory">
+      <span class="brand__mark" aria-hidden="true">EG</span>
+      <span class="brand__name">Ekimov Gregory</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <a class="btn btn--sm" href="#contact" data-i18n="nav.cta">Start a project</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="hero" id="top">
+      <div class="hero__text">
+        <p class="status"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></p>
+        <h1 class="hero__title" data-i18n-html="hero.title">Websites that <span class="accent">bring clients</span>, not just look nice.</h1>
+        <p class="hero__lead" data-i18n="hero.lead">I'm Gregory — I design and build fast, bilingual websites for restaurants, clinics, construction companies and local businesses. Booking, calculators and lead forms included.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#work" data-i18n="hero.cta1">See live demos</a>
+          <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Discuss your project</a>
+        </div>
+      </div>
+      <div class="hero__stack" aria-hidden="true">
+        <img class="card card--1" data-shot="ognivo-desktop" alt="">
+        <img class="card card--2" data-shot="luma-desktop" alt="">
+        <img class="card card--3" data-shot="monolit-desktop" alt="">
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" data-i18n="marquee">Restaurants ✦ Dental clinics ✦ Construction ✦ Beauty salons ✦ Real estate ✦ Fitness ✦ Restaurants ✦ Dental clinics ✦ Construction ✦ Beauty salons ✦ Real estate ✦ Fitness ✦</div></div>
+
+    <!-- ── Работы ── -->
+    <section class="work section" id="work">
+      <div class="head">
+        <p class="kicker" data-i18n="work.kicker">Selected work</p>
+        <h2 class="h2" data-i18n-html="work.title">Three niches. <span class="accent">Three different worlds.</span></h2>
+        <p class="head__lead" data-i18n="work.lead">Concept projects built to show what your business can get: each one is fully interactive — open the live demo and click through it.</p>
+      </div>
+      <div class="cases" data-render="cases"></div>
+    </section>
+
+    <!-- ── Услуги ── -->
+    <section class="services section" id="services">
+      <div class="head">
+        <p class="kicker" data-i18n="svc.kicker">Services</p>
+        <h2 class="h2" data-i18n-html="svc.title">What I can <span class="accent">build for you</span></h2>
+      </div>
+      <div class="svc-grid" data-render="services"></div>
+    </section>
+
+    <!-- ── Процесс ── -->
+    <section class="process section" id="process">
+      <div class="head">
+        <p class="kicker" data-i18n="proc.kicker">Process</p>
+        <h2 class="h2" data-i18n-html="proc.title">Clear steps, <span class="accent">no surprises</span></h2>
+      </div>
+      <ol class="steps" data-render="steps"></ol>
+      <ul class="principles" data-render="principles"></ul>
+    </section>
+
+    <!-- ── Контакт ── -->
+    <section class="contact section" id="contact">
+      <p class="kicker" data-i18n="ct.kicker">Contact</p>
+      <h2 class="contact__title" data-i18n-html="ct.title">Let's make your<br><span class="accent">next website</span></h2>
+      <p class="contact__lead" data-i18n="ct.lead">Tell me about your business and what the site should do. I'll reply with ideas, a plan and a price.</p>
+      <div class="mail">
+        <a class="mail__link" data-mail href="#contact">ekimovgregory9<span>@</span>gmail.com</a>
+        <button class="mail__copy" type="button" data-copy><span data-i18n="ct.copy">Copy</span></button>
+      </div>
+      <a class="btn btn--big" data-mail-btn href="#contact" data-i18n="ct.write">Write an email</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span data-year>2026</span> Ekimov Gregory</span>
+    <span data-i18n="foot.note">Hand-built, hosted on GitHub Pages. Demo projects are concepts — names, people and data are fictional.</span>
+    <a href="#top" data-i18n="foot.top">Back to top ↑</a>
+  </footer>
+
+  <script src="assets/portfolio.js"></script>
+</body>
+</html>

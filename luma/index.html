@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LUMA Dental Studio — calm, painless dentistry</title>
+  <meta name="description" content="LUMA Dental Studio — painless treatment, implants, aligners and whitening. Transparent prices, 0% installments, online booking.">
+  <meta name="theme-color" content="#f7f5f1">
+  <meta property="og:title" content="LUMA Dental Studio">
+  <meta property="og:description" content="Calm dentistry. Confident smiles. Online booking in 30 seconds.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1594745561149-2211ca8c5d98?auto=format&fit=crop&w=1200&q=80">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230f3d3e'/%3E%3Cpath d='M20 18c5-3 9 1 12 1s7-4 12-1c5 3 4 12 2 18-2 7-3 12-6 12-4 0-3-9-8-9s-4 9-8 9c-3 0-4-5-6-12-2-6-3-15 2-18z' fill='%2397e3c8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="LUMA Dental Studio">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18"/><path d="M20 18c5-3 9 1 12 1s7-4 12-1c5 3 4 12 2 18-2 7-3 12-6 12-4 0-3-9-8-9s-4 9-8 9c-3 0-4-5-6-12-2-6-3-15 2-18z"/></svg>
+      <span><b>LUMA</b> <small>Dental Studio</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#calculator" data-i18n="nav.prices">Prices</a>
+      <a href="#results" data-i18n="nav.results">Results</a>
+      <a href="#doctors" data-i18n="nav.doctors">Doctors</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__phone" href="tel:+79000000001">+7 900 000-00-01</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <a class="btn btn--sm" href="#book" data-i18n="nav.book">Book a visit</a>
+      <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="drawer" aria-hidden="true">
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#calculator" data-i18n="nav.prices">Prices</a>
+    <a href="#results" data-i18n="nav.results">Results</a>
+    <a href="#doctors" data-i18n="nav.doctors">Doctors</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a class="btn" href="#book" data-i18n="nav.book">Book a visit</a>
+    <a class="drawer__phone" href="tel:+79000000001">+7 900 000-00-01</a>
+  </div>
+
+  <main id="main">
+    <!-- ── Hero ── -->
+    <section class="hero" id="top">
+      <div class="hero__text">
+        <p class="pill rise"><span class="dot"></span><span data-i18n="hero.pill">Open today until 21:00</span></p>
+        <h1 class="hero__title rise" data-i18n-html="hero.title">Calm dentistry.<br><span class="hl">Confident</span> smiles.</h1>
+        <p class="hero__lead rise" data-i18n="hero.lead">Painless treatment with computer-controlled anaesthesia, a fixed price agreed before we start, and doctors who explain every step. No pressure, no surprises.</p>
+        <div class="hero__cta rise">
+          <a class="btn" href="#book" data-i18n="hero.cta1">Book a free consultation</a>
+          <a class="btn btn--ghost" href="#calculator" data-i18n="hero.cta2">Estimate the cost</a>
+        </div>
+        <ul class="hero__trust rise">
+          <li><strong>4.9</strong><span data-i18n="hero.t1">rating, 1,200+ reviews</span></li>
+          <li><strong>15</strong><span data-i18n="hero.t2">years of practice</span></li>
+          <li><strong>0%</strong><span data-i18n="hero.t3">installments up to 12 months</span></li>
+        </ul>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__blob" aria-hidden="true"></div>
+        <figure class="hero__photo">
+          <img src="https://images.unsplash.com/photo-1594745561149-2211ca8c5d98?auto=format&fit=crop&w=1200&h=1400&q=80" alt="Smiling woman with healthy white teeth" fetchpriority="high">
+        </figure>
+        <div class="float float--slot" aria-live="polite">
+          <span class="float__icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+          <div><small data-i18n="hero.slot">Next free slot</small><b class="slot-time" data-i18n="hero.slotTime">Today, 16:30</b></div>
+        </div>
+        <div class="float float--pain">
+          <span class="float__icon float__icon--mint"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
+          <div><b data-i18n="hero.pain">Painless</b><small data-i18n="hero.painSub">computer anaesthesia</small></div>
+        </div>
+        <div class="float float--rating">
+          <div class="avatars" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1562337404-3044c84ac061?auto=format&fit=crop&w=80&h=80&q=60" alt="">
+            <img src="https://images.unsplash.com/photo-1617812191081-2a24e3f30e45?auto=format&fit=crop&w=80&h=80&q=60" alt="">
+            <img src="https://images.unsplash.com/photo-1667133295308-9ef24f71952e?auto=format&fit=crop&w=80&h=80&q=60" alt="">
+          </div>
+          <div><b>★★★★★</b><small data-i18n="hero.rating">Loved by 38,000 patients</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Полоса доверия ── -->
+    <section class="trustbar" aria-label="Facts">
+      <div><b class="count" data-to="15">0</b><span data-i18n="bar.1">years caring for smiles</span></div>
+      <div><b class="count" data-to="12">0</b><span data-i18n="bar.2">doctors, 4 specialities</span></div>
+      <div><b><span class="count" data-to="38">0</span>k</b><span data-i18n="bar.3">happy patients</span></div>
+      <div><b><span class="count" data-to="10">0</span><small data-i18n="bar.yrs">yrs</small></b><span data-i18n="bar.4">warranty on implants</span></div>
+    </section>
+
+    <!-- ── Услуги ── -->
+    <section class="section" id="services">
+      <div class="head">
+        <p class="kicker reveal" data-i18n="svc.kicker">Services</p>
+        <h2 class="h2 reveal" data-i18n-html="svc.title">Everything your smile needs, <span class="hl">under one roof</span></h2>
+      </div>
+      <div class="services" data-render="services"></div>
+    </section>
+
+    <!-- ── Без боли ── -->
+    <section class="section care">
+      <figure class="care__photo reveal">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1663755489920-5e09f66d011a?auto=format&fit=crop&w=1200&q=80" alt="Dentist gently examining a relaxed, smiling patient">
+        <figcaption class="care__badge"><b data-i18n="care.badgeT">97%</b><span data-i18n="care.badge">of patients felt no pain during treatment</span></figcaption>
+      </figure>
+      <div class="care__text">
+        <p class="kicker reveal" data-i18n="care.kicker">How we work</p>
+        <h2 class="h2 reveal" data-i18n-html="care.title">Afraid of the dentist? <span class="hl">We built this clinic for you.</span></h2>
+        <ol class="steps">
+          <li class="reveal"><span>01</span><div><h3 data-i18n="care.s1">Free first consultation</h3><p data-i18n="care.s1d">3D scan, photos and an honest talk. You leave with a written plan — and no obligation.</p></div></li>
+          <li class="reveal"><span>02</span><div><h3 data-i18n="care.s2">Fixed price before we start</h3><p data-i18n="care.s2d">The number in your plan is the number you pay. If we change anything, you decide first.</p></div></li>
+          <li class="reveal"><span>03</span><div><h3 data-i18n="care.s3">Treatment without pain</h3><p data-i18n="care.s3d">Computer-controlled anaesthesia, noise-cancelling headphones, a blanket and breaks whenever you want.</p></div></li>
+          <li class="reveal"><span>04</span><div><h3 data-i18n="care.s4">Care after the visit</h3><p data-i18n="care.s4d">Your doctor checks in the next day and you get a personal reminder for hygiene every 6 months.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── Калькулятор ── -->
+    <section class="section calc" id="calculator">
+      <div class="head">
+        <p class="kicker reveal" data-i18n="calc.kicker">Price estimate</p>
+        <h2 class="h2 reveal" data-i18n-html="calc.title">Know the price <span class="hl">before you come</span></h2>
+        <p class="head__lead reveal" data-i18n="calc.lead">Pick a treatment and see a realistic range in seconds. The final price is fixed after a free consultation.</p>
+      </div>
+      <div class="calc__box reveal">
+        <div class="calc__controls">
+          <div class="calc__group">
+            <span class="calc__label" data-i18n="calc.what">Treatment</span>
+            <div class="chips" data-render="calcChips" role="radiogroup"></div>
+          </div>
+          <div class="calc__group">
+            <label class="calc__label" for="qty"><span data-render="qtyLabel"></span> <output id="qtyOut">1</output></label>
+            <input type="range" id="qty" min="1" max="8" value="1">
+          </div>
+          <div class="calc__group calc__toggles">
+            <label class="toggle"><input type="checkbox" id="optCt" checked><span></span><b data-i18n="calc.ct">3D CT scan included</b></label>
+            <label class="toggle"><input type="checkbox" id="optSedation"><span></span><b data-i18n="calc.sed">Sleep sedation</b></label>
+          </div>
+        </div>
+        <div class="calc__result">
+          <small data-i18n="calc.range">Estimated range</small>
+          <div class="calc__price" aria-live="polite"><span id="priceFrom">—</span> <i>—</i> <span id="priceTo">—</span></div>
+          <div class="calc__monthly"><span data-i18n="calc.or">or from</span> <b id="monthly">—</b> <span data-i18n="calc.per">/ month, 0% for 12 months</span></div>
+          <ul class="calc__incl" data-render="calcIncl"></ul>
+          <a class="btn btn--light btn--full" href="#book" data-i18n="calc.cta">Lock this price — book a consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── До / после ── -->
+    <section class="section results" id="results">
+      <div class="results__text">
+        <p class="kicker reveal" data-i18n="res.kicker">Results</p>
+        <h2 class="h2 reveal" data-i18n-html="res.title">Up to 8 shades whiter <span class="hl">in one visit</span></h2>
+        <p class="reveal" data-i18n="res.lead">Professional whitening with a cold LED lamp — no sensitivity, 60 minutes, results that last up to two years with proper care.</p>
+        <ul class="ticks reveal">
+          <li data-i18n="res.l1">Enamel stays protected — gel with fluoride and potassium nitrate</li>
+          <li data-i18n="res.l2">Shade measured before and after with a digital spectrometer</li>
+          <li data-i18n="res.l3">Home care kit included</li>
+        </ul>
+        <p class="results__note reveal" data-i18n="res.note">Drag the slider. Visual simulation for illustration.</p>
+      </div>
+      <div class="ba reveal" style="--pos: 50%">
+        <img class="ba__img ba__after" loading="lazy" src="https://images.unsplash.com/photo-1663182234283-28941e7612da?auto=format&fit=crop&w=1200&q=80" alt="Smile after whitening">
+        <img class="ba__img ba__before" loading="lazy" src="https://images.unsplash.com/photo-1663182234283-28941e7612da?auto=format&fit=crop&w=1200&q=80" alt="Smile before whitening">
+        <span class="ba__tag ba__tag--l" data-i18n="res.before">Before</span>
+        <span class="ba__tag ba__tag--r" data-i18n="res.after">After</span>
+        <div class="ba__handle" aria-hidden="true"><span></span></div>
+        <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Before / after">
+      </div>
+    </section>
+
+    <!-- ── Технологии ── -->
+    <section class="section tech">
+      <div class="head head--light">
+        <p class="kicker reveal" data-i18n="tech.kicker">Technology</p>
+        <h2 class="h2 reveal" data-i18n-html="tech.title">Precision you can <span class="hl">see on screen</span></h2>
+      </div>
+      <div class="tech__grid">
+        <figure class="tech__img reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?auto=format&fit=crop&w=1200&q=80" alt="Doctor reviewing a 3D dental scan on a tablet"></figure>
+        <div class="tech__list" data-render="tech"></div>
+        <figure class="tech__img tech__img--sm reveal"><img loading="lazy" src="https://images.unsplash.com/photo-1755526739866-c73f65b82f8e?auto=format&fit=crop&w=900&q=80" alt="Dental X-ray on a monitor"></figure>
+      </div>
+    </section>
+
+    <!-- ── Врачи ── -->
+    <section class="section" id="doctors">
+      <div class="head head--row">
+        <div>
+          <p class="kicker reveal" data-i18n="doc.kicker">Doctors</p>
+          <h2 class="h2 reveal" data-i18n-html="doc.title">People you'll <span class="hl">trust with your smile</span></h2>
+        </div>
+        <p class="head__lead reveal" data-i18n="doc.lead">Every doctor has at least 8 years of practice and trains abroad every year.</p>
+      </div>
+      <div class="doctors" data-render="doctors"></div>
+    </section>
+
+    <!-- ── Отзывы ── -->
+    <section class="section reviews">
+      <div class="head">
+        <p class="kicker reveal" data-i18n="rev.kicker">Reviews</p>
+        <h2 class="h2 reveal" data-i18n-html="rev.title">What patients <span class="hl">say after</span></h2>
+      </div>
+      <div class="reviews__row" data-render="reviews"></div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section faq" id="faq">
+      <div class="head">
+        <p class="kicker reveal" data-i18n="faq.kicker">FAQ</p>
+        <h2 class="h2 reveal" data-i18n-html="faq.title">Questions we hear <span class="hl">every day</span></h2>
+      </div>
+      <div class="faq__list" data-render="faq"></div>
+    </section>
+
+    <!-- ── Запись ── -->
+    <section class="section book" id="book">
+      <div class="book__info">
+        <p class="kicker" data-i18n="book.kicker">Online booking</p>
+        <h2 class="h2" data-i18n-html="book.title">Book in <span class="hl">30 seconds</span></h2>
+        <p data-i18n="book.lead">Choose a time that suits you — the administrator will call within 15 minutes to confirm.</p>
+        <ul class="book__contacts">
+          <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n="book.addr">12 Svetlaya St., Moscow · 3 min from the metro</span></li>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="book.hours">Mon–Sat 9:00–21:00 · Sun 10:00–18:00</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a href="tel:+79000000001">+7 900 000-00-01</a></li>
+        </ul>
+      </div>
+      <div class="book__card">
+        <form class="form" novalidate>
+          <div class="form__grid">
+            <label><span data-i18n="book.service">Service</span><select name="service" data-render="serviceOptions"></select></label>
+            <label><span data-i18n="book.doctor">Doctor</span><select name="doctor" data-render="doctorOptions"></select></label>
+          </div>
+          <div class="form__block">
+            <span class="form__label" data-i18n="book.day">Day</span>
+            <div class="days" role="radiogroup"></div>
+          </div>
+          <div class="form__block">
+            <span class="form__label" data-i18n="book.time">Time</span>
+            <div class="slots" role="radiogroup"></div>
+          </div>
+          <div class="form__grid">
+            <label><span data-i18n="book.name">Your name</span><input name="name" autocomplete="name" required minlength="2"></label>
+            <label><span data-i18n="book.phone">Phone</span><input name="phone" type="tel" autocomplete="tel" required></label>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" required><span data-i18n="book.consent">I agree to the processing of my personal data</span></label>
+          <button class="btn btn--full" type="submit" data-i18n="book.submit">Book a visit</button>
+          <p class="form__error" role="alert"></p>
+        </form>
+        <div class="form__done" hidden>
+          <div class="done__icon"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+          <h3 data-i18n="book.okTitle">You're booked in</h3>
+          <p class="done__text"></p>
+          <button class="btn btn--ghost" type="button" data-again data-i18n="book.again">Book another visit</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <a class="logo logo--light" href="#top" aria-label="LUMA Dental Studio">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="18"/><path d="M20 18c5-3 9 1 12 1s7-4 12-1c5 3 4 12 2 18-2 7-3 12-6 12-4 0-3-9-8-9s-4 9-8 9c-3 0-4-5-6-12-2-6-3-15 2-18z"/></svg>
+        <span><b>LUMA</b> <small>Dental Studio</small></span>
+      </a>
+      <p data-i18n="foot.tag">Calm dentistry. Confident smiles.</p>
+    </div>
+    <div class="footer__bottom">
+      <span data-i18n="foot.license">Medical licence № 00-00-000000 (demo)</span>
+      <span data-i18n="foot.concept">Concept website · portfolio project</span>
+      <span data-i18n="foot.warn">There are contraindications — a specialist consultation is required.</span>
+    </div>
+  </footer>
+
+  <a class="fab" href="#book" aria-label="Book a visit"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></a>
+
+  <script src="script.js"></script>
+</body>
+</html>
