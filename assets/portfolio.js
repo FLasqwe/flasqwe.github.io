@@ -12,12 +12,16 @@
 
   const T = {
     en: {
-      'nav.work': 'Work', 'nav.services': 'Services', 'nav.process': 'Process', 'nav.contact': 'Contact', 'nav.cta': 'Start a project',
+      'nav.work': 'Work', 'nav.apps': 'Bots & apps', 'nav.services': 'Services', 'nav.process': 'Process', 'nav.contact': 'Contact', 'nav.cta': 'Start a project',
       'hero.status': 'Available for new projects',
-      'hero.title': 'Websites that <span class="accent">bring clients</span>, not just look nice.',
-      'hero.lead': "I'm Gregory — I design and build fast, bilingual websites for restaurants, clinics, construction companies and local businesses. Booking, calculators and lead forms included.",
+      'hero.title': 'Websites, bots &amp; apps that <span class="accent">bring clients</span>.',
+      'hero.lead': "I'm Gregory — I build websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection.",
       'hero.cta1': 'See live demos', 'hero.cta2': 'Discuss your project',
-      marquee: 'Restaurants ✦ Dental clinics ✦ Construction ✦ Beauty salons ✦ Real estate ✦ Fitness ✦ Restaurants ✦ Dental clinics ✦ Construction ✦ Beauty salons ✦ Real estate ✦ Fitness ✦',
+      marquee: 'Websites ✦ Telegram bots ✦ Web apps ✦ Parsers ✦ Automation ✦ CRM ✦ Websites ✦ Telegram bots ✦ Web apps ✦ Parsers ✦ Automation ✦ CRM ✦',
+      'apps.kicker': 'Beyond websites', 'apps.title': 'Bots, apps &amp; parsers that <span class="accent">do the work for you</span>',
+      'apps.lead': 'A website brings people in. Automation keeps them: bots that book and remind, apps that run the business, parsers that find new clients.',
+      'tg.status': 'bot', 'apps.tgTitle': 'Telegram bots', 'apps.tgText': 'Bookings, orders, payments and reminders right in the chat your clients already use — no app to install.',
+      'apps.parseTitle': 'Parsers &amp; data collection', 'apps.parseText': 'Collect companies, contacts, prices and listings from open sources and official APIs — cleaned, de-duplicated and ready for your CRM.',
       'work.kicker': 'Selected work', 'work.title': 'Three niches. <span class="accent">Three different worlds.</span>',
       'work.lead': 'Concept projects built to show what your business can get: each one is fully interactive — open the live demo and click through it.',
       'case.demo': 'Open live demo ↗', 'case.concept': 'Concept project',
@@ -29,12 +33,16 @@
       'foot.note': 'Hand-built, hosted on GitHub Pages. Demo projects are concepts — names, people and data are fictional.', 'foot.top': 'Back to top ↑',
     },
     ru: {
-      'nav.work': 'Работы', 'nav.services': 'Услуги', 'nav.process': 'Процесс', 'nav.contact': 'Контакты', 'nav.cta': 'Обсудить проект',
+      'nav.work': 'Работы', 'nav.apps': 'Боты и приложения', 'nav.services': 'Услуги', 'nav.process': 'Процесс', 'nav.contact': 'Контакты', 'nav.cta': 'Обсудить проект',
       'hero.status': 'Беру новые проекты',
-      'hero.title': 'Сайты, которые <span class="accent">приводят клиентов</span>, а не просто красивые.',
-      'hero.lead': 'Я Григорий — проектирую и делаю быстрые двуязычные сайты для ресторанов, клиник, строительных компаний и локального бизнеса. С онлайн-записью, калькуляторами и формами заявок.',
+      'hero.title': 'Сайты, боты и приложения, которые <span class="accent">приводят клиентов</span>.',
+      'hero.lead': 'Я Григорий — делаю сайты, Telegram-ботов, веб-приложения и парсеры для бизнеса: онлайн-запись, калькуляторы, заявки, автоматизация и сбор данных.',
       'hero.cta1': 'Смотреть демо', 'hero.cta2': 'Обсудить проект',
-      marquee: 'Рестораны ✦ Стоматологии ✦ Строительство ✦ Салоны красоты ✦ Недвижимость ✦ Фитнес ✦ Рестораны ✦ Стоматологии ✦ Строительство ✦ Салоны красоты ✦ Недвижимость ✦ Фитнес ✦',
+      marquee: 'Сайты ✦ Telegram-боты ✦ Веб-приложения ✦ Парсеры ✦ Автоматизация ✦ CRM ✦ Сайты ✦ Telegram-боты ✦ Веб-приложения ✦ Парсеры ✦ Автоматизация ✦ CRM ✦',
+      'apps.kicker': 'Не только сайты', 'apps.title': 'Боты, приложения и парсеры, которые <span class="accent">работают за вас</span>',
+      'apps.lead': 'Сайт приводит людей. Автоматизация их удерживает: боты записывают и напоминают, приложения ведут бизнес, парсеры находят новых клиентов.',
+      'tg.status': 'бот', 'apps.tgTitle': 'Telegram-боты', 'apps.tgText': 'Запись, заказы, оплата и напоминания прямо в чате, которым клиенты уже пользуются, — ничего не нужно устанавливать.',
+      'apps.parseTitle': 'Парсеры и сбор данных', 'apps.parseText': 'Собираю компании, контакты, цены и объявления из открытых источников и официальных API — очищенные, без дублей и готовые для вашей CRM.',
       'work.kicker': 'Избранные работы', 'work.title': 'Три ниши. <span class="accent">Три разных мира.</span>',
       'work.lead': 'Концепт-проекты, которые показывают, что может получить ваш бизнес: каждый полностью интерактивный — откройте демо и покликайте.',
       'case.demo': 'Открыть живое демо ↗', 'case.concept': 'Концепт-проект',
@@ -103,6 +111,153 @@
     ru: [['Сначала мобильная', 'большинство заходит с телефона'], ['Быстро', 'без тяжёлых конструкторов'], ['Два языка', 'EN / RU или любая пара'], ['Готов к SEO', 'мета-теги, скорость, чистая вёрстка'], ['Ваше', 'файлы и домен остаются у вас']],
   };
 
+  // ── Не только сайты: списки, чат, терминал ────────────
+  const APPS = {
+    en: {
+      tgList: ['Booking with free slots and reminders', 'Orders and payments in the chat', 'Notifications for staff and an admin panel', 'Telegram Mini Apps'],
+      parseList: ['Companies and contacts from maps and registries', 'Price and listing monitoring on a schedule', 'Export to CSV, Google Sheets or your CRM', 'Only open data, respecting site rules'],
+      caps: [
+        ['Web apps & PWA', 'Personal accounts, dashboards and tools that install on a phone like a real app.', ['JavaScript', 'Node.js', 'PostgreSQL', 'PWA']],
+        ['CRM & admin panels', 'Leads, pipelines, roles and analytics — built around how your team actually works.', ['Node.js', 'PostgreSQL', 'Charts', 'Roles']],
+        ['Integrations & AI', 'Payments, Google Sheets, email and SMS, amoCRM / Bitrix24, AI assistants on ChatGPT or Claude.', ['APIs', 'Webhooks', 'AI', 'Email']],
+      ],
+      chat: [
+        ['me', '/start'],
+        ['bot', "Hi! I'm the LUMA booking bot. What would you like to do?"],
+        ['kb', ['Book a visit', 'Prices', 'Address'], 0],
+        ['me', 'Book a visit'],
+        ['bot', 'Free slots tomorrow:'],
+        ['kb', ['9:00', '11:30', '15:00'], 1],
+        ['me', '11:30'],
+        ['bot', 'Done ✅ Tomorrow at 11:30 with Dr. Lebedeva. I’ll remind you 2 hours before.'],
+      ],
+      term: [
+        ['cmd', 'parser run --niche "dentist" --city "Denver, CO"'],
+        ['out', '<span class="dim">→</span> OpenStreetMap + Overture … <span class="hl">267</span> companies found'],
+        ['out', '<span class="dim">→</span> Visiting company websites (robots.txt respected) …'],
+        ['out', '<span class="ok">✓</span> emails <span class="hl">143</span> · phones <span class="hl">231</span> · socials <span class="hl">188</span>'],
+        ['out', '<span class="ok">✓</span> decision makers <span class="hl">41</span> (registries + websites)'],
+        ['out', '<span class="ok">✓</span> duplicates removed: <span class="hl">26</span>'],
+        ['out', '<span class="dim">→</span> lead score: A <span class="hl">9</span> · B <span class="hl">38</span> · C <span class="hl">112</span> · D <span class="hl">82</span>'],
+        ['cmd', 'parser export --format csv --min-grade B'],
+        ['out', '<span class="ok">✓</span> leads.csv · <span class="hl">47</span> rows · ready for CRM'],
+      ],
+    },
+    ru: {
+      tgList: ['Запись со свободными окнами и напоминаниями', 'Заказы и оплата прямо в чате', 'Уведомления сотрудникам и админ-панель', 'Telegram Mini Apps'],
+      parseList: ['Компании и контакты из карт и реестров', 'Мониторинг цен и объявлений по расписанию', 'Выгрузка в CSV, Google Таблицы или вашу CRM', 'Только открытые данные, с соблюдением правил сайтов'],
+      caps: [
+        ['Веб-приложения и PWA', 'Личные кабинеты, дашборды и инструменты, которые ставятся на телефон как настоящее приложение.', ['JavaScript', 'Node.js', 'PostgreSQL', 'PWA']],
+        ['CRM и админ-панели', 'Заявки, воронки, роли и аналитика — под то, как реально работает ваша команда.', ['Node.js', 'PostgreSQL', 'Графики', 'Роли']],
+        ['Интеграции и AI', 'Оплата, Google Таблицы, email и SMS, amoCRM / Битрикс24, AI-ассистенты на ChatGPT или Claude.', ['API', 'Вебхуки', 'AI', 'Email']],
+      ],
+      chat: [
+        ['me', '/start'],
+        ['bot', 'Здравствуйте! Я бот записи LUMA. Что хотите сделать?'],
+        ['kb', ['Записаться', 'Цены', 'Адрес'], 0],
+        ['me', 'Записаться'],
+        ['bot', 'Свободные окна на завтра:'],
+        ['kb', ['9:00', '11:30', '15:00'], 1],
+        ['me', '11:30'],
+        ['bot', 'Готово ✅ Завтра в 11:30, врач Мария Лебедева. Напомню за 2 часа.'],
+      ],
+      term: [
+        ['cmd', 'parser run --niche "стоматология" --city "Казань"'],
+        ['out', '<span class="dim">→</span> OpenStreetMap + Overture … найдено <span class="hl">312</span> компаний'],
+        ['out', '<span class="dim">→</span> Обходим сайты компаний (с учётом robots.txt) …'],
+        ['out', '<span class="ok">✓</span> email <span class="hl">158</span> · телефоны <span class="hl">279</span> · соцсети <span class="hl">201</span>'],
+        ['out', '<span class="ok">✓</span> ЛПР <span class="hl">117</span> (ЕГРЮЛ + сайты)'],
+        ['out', '<span class="ok">✓</span> удалено дублей: <span class="hl">31</span>'],
+        ['out', '<span class="dim">→</span> скоринг: A <span class="hl">14</span> · B <span class="hl">52</span> · C <span class="hl">130</span> · D <span class="hl">85</span>'],
+        ['cmd', 'parser export --format csv --min-grade B'],
+        ['out', '<span class="ok">✓</span> leads.csv · <span class="hl">66</span> строк · готово для CRM'],
+      ],
+    },
+  };
+  const CAP_ICONS = [
+    '<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4"/>',
+    '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    '<path d="M8 12h8M12 8v8"/><circle cx="12" cy="12" r="9"/>',
+  ];
+
+  // Сценарии крутятся по кругу, пока блок на экране; при смене языка — заново
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  let animRun = 0;
+  const visible = { chat: false, term: false };
+  async function playChat(run) {
+    const body = $('[data-render="chat"]');
+    while (run === animRun) {
+      body.innerHTML = '';
+      for (const [kind, a, pick] of APPS[lang].chat) {
+        if (run !== animRun) return;
+        while (!visible.chat && run === animRun) await sleep(300);
+        if (kind === 'bot') {
+          const typing = document.createElement('div');
+          typing.className = 'typing'; typing.innerHTML = '<i></i><i></i><i></i>';
+          body.appendChild(typing);
+          await sleep(900);
+          typing.remove();
+        }
+        if (run !== animRun) return;
+        const el = document.createElement('div');
+        const time = '<small>12:0' + body.children.length % 10 + '</small>';
+        if (kind === 'kb') {
+          el.className = 'msg__kb';
+          el.innerHTML = a.map((x) => `<span>${esc(x)}</span>`).join('');
+          body.appendChild(el);
+          await sleep(900);
+          el.children[pick].classList.add('is-picked');
+          await sleep(500);
+          continue;
+        }
+        el.className = 'msg msg--' + kind;
+        el.innerHTML = esc(a) + time;
+        body.appendChild(el);
+        await sleep(kind === 'me' ? 700 : 1100);
+      }
+      await sleep(4500);
+    }
+  }
+  async function playTerm(run) {
+    const body = $('[data-render="term"]');
+    while (run === animRun) {
+      body.innerHTML = '<span class="cursor"></span>';
+      for (const [kind, text] of APPS[lang].term) {
+        while (!visible.term && run === animRun) await sleep(300);
+        if (run !== animRun) return;
+        const cursor = $('.cursor', body);
+        const line = document.createElement('span');
+        body.insertBefore(line, cursor);
+        if (kind === 'cmd') {
+          line.innerHTML = '<span class="p">$</span> ';
+          for (const ch of text) { if (run !== animRun) return; line.append(ch); await sleep(28); }
+          await sleep(350);
+        } else {
+          line.innerHTML = text;
+          await sleep(520);
+        }
+        body.insertBefore(document.createTextNode('\n'), cursor);
+      }
+      await sleep(5000);
+    }
+  }
+  function startAnimations() {
+    const run = ++animRun;
+    if (reduceMotion) {
+      // Без анимации — показываем итоговое состояние сразу
+      $('[data-render="chat"]').innerHTML = APPS[lang].chat.map(([k, a, p]) => k === 'kb'
+        ? `<div class="msg__kb">${a.map((x, i) => `<span class="${i === p ? 'is-picked' : ''}">${esc(x)}</span>`).join('')}</div>`
+        : `<div class="msg msg--${k}">${esc(a)}</div>`).join('');
+      $('[data-render="term"]').innerHTML = APPS[lang].term.map(([k, t]) => k === 'cmd' ? `<span class="p">$</span> ${esc(t)}` : t).join('\n');
+      return;
+    }
+    playChat(run);
+    playTerm(run);
+  }
+  const visIo = new IntersectionObserver((entries) => {
+    for (const e of entries) visible[e.target.classList.contains('tg') ? 'chat' : 'term'] = e.isIntersecting;
+  }, { threshold: 0.35 });
+
   // ── Язык ───────────────────────────────────────────────
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -145,6 +300,12 @@
           <div class="case__actions"><a class="btn" href="${c.url}" target="_blank" rel="noopener">${esc(t('case.demo'))}</a><span class="case__concept">${esc(t('case.concept'))}</span></div>
         </div></article>`;
     }).join('');
+
+    const A = APPS[lang];
+    $('[data-render="tgList"]').innerHTML = A.tgList.map((x) => `<li>${esc(x)}</li>`).join('');
+    $('[data-render="parseList"]').innerHTML = A.parseList.map((x) => `<li>${esc(x)}</li>`).join('');
+    $('[data-render="caps"]').innerHTML = A.caps.map(([h, p, chips], i) => `<div class="cap reveal"><span class="showcase__icon"><svg viewBox="0 0 24 24" aria-hidden="true">${CAP_ICONS[i]}</svg></span><h3>${esc(h)}</h3><p>${esc(p)}</p><div class="cap__chips">${chips.map((x) => `<span>${esc(x)}</span>`).join('')}</div></div>`).join('');
+    startAnimations();
 
     $('[data-render="services"]').innerHTML = SERVICES[lang].map(([h, p, list], i) => `<div class="svc reveal"><span class="svc__icon"><svg viewBox="0 0 24 24" aria-hidden="true">${SVC_ICONS[i]}</svg></span><h3>${esc(h)}</h3><p>${esc(p)}</p><ul>${list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
     $('[data-render="steps"]').innerHTML = STEPS[lang].map(([h, p]) => `<li class="reveal"><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('');
@@ -201,6 +362,7 @@
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
+  $$('.tg, .term').forEach((el) => visIo.observe(el));
   $('[data-year]').textContent = new Date().getFullYear();
   $$('.lang button').forEach((b) => b.addEventListener('click', () => applyLang(b.dataset.lang)));
   applyLang(lang);

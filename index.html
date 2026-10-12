@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ekimov Gregory — Web design & development</title>
-  <meta name="description" content="I design and build fast, bilingual websites for restaurants, clinics, construction companies and local businesses — with booking, calculators and lead forms.">
+  <meta name="description" content="Websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection. Live demos inside.">
   <meta name="theme-color" content="#0d0d0f">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ekimov Gregory — Web design & development">
-  <meta property="og:description" content="Websites that bring clients. See live demos: a restaurant, a dental clinic and a construction company.">
+  <meta property="og:description" content="Websites, Telegram bots, web apps and parsers that bring clients. See live demos.">
   <meta property="og:url" content="https://flasqwe.github.io/">
   <meta property="og:image" content="https://flasqwe.github.io/assets/shots/ognivo-desktop-en.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -26,6 +26,7 @@
     </a>
     <nav class="nav__links" aria-label="Main">
       <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#apps" data-i18n="nav.apps">Bots & apps</a>
       <a href="#services" data-i18n="nav.services">Services</a>
       <a href="#process" data-i18n="nav.process">Process</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -44,8 +45,8 @@
     <section class="hero" id="top">
       <div class="hero__text">
         <p class="status"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></p>
-        <h1 class="hero__title" data-i18n-html="hero.title">Websites that <span class="accent">bring clients</span>, not just look nice.</h1>
-        <p class="hero__lead" data-i18n="hero.lead">I'm Gregory — I design and build fast, bilingual websites for restaurants, clinics, construction companies and local businesses. Booking, calculators and lead forms included.</p>
+        <h1 class="hero__title" data-i18n-html="hero.title">Websites, bots &amp; apps that <span class="accent">bring clients</span>.</h1>
+        <p class="hero__lead" data-i18n="hero.lead">I'm Gregory — I build websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection.</p>
         <div class="hero__cta">
           <a class="btn" href="#work" data-i18n="hero.cta1">See live demos</a>
           <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Discuss your project</a>
@@ -68,6 +69,46 @@
         <p class="head__lead" data-i18n="work.lead">Concept projects built to show what your business can get: each one is fully interactive — open the live demo and click through it.</p>
       </div>
       <div class="cases" data-render="cases"></div>
+    </section>
+
+    <!-- ── Не только сайты ── -->
+    <section class="beyond section" id="apps">
+      <div class="head">
+        <p class="kicker" data-i18n="apps.kicker">Beyond websites</p>
+        <h2 class="h2" data-i18n-html="apps.title">Bots, apps &amp; parsers that <span class="accent">do the work for you</span></h2>
+        <p class="head__lead" data-i18n="apps.lead">A website brings people in. Automation keeps them: bots that book and remind, apps that run the business, parsers that find new clients.</p>
+      </div>
+
+      <div class="showcase">
+        <div class="showcase__mock tg reveal" aria-hidden="true">
+          <div class="tg__head">
+            <span class="tg__ava">L</span>
+            <div><b>LUMA Booking Bot</b><small class="tg__status" data-i18n="tg.status">bot</small></div>
+          </div>
+          <div class="tg__body" data-render="chat"></div>
+        </div>
+        <div class="showcase__text reveal">
+          <span class="showcase__icon"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 12-9"/></svg></span>
+          <h3 data-i18n="apps.tgTitle">Telegram bots</h3>
+          <p data-i18n="apps.tgText">Bookings, orders, payments and reminders right in the chat your clients already use — no app to install.</p>
+          <ul class="ticks" data-render="tgList"></ul>
+        </div>
+      </div>
+
+      <div class="showcase showcase--rev">
+        <div class="showcase__mock term reveal" aria-hidden="true">
+          <div class="term__bar"><i></i><i></i><i></i><span>leads — parser</span></div>
+          <pre class="term__body" data-render="term"></pre>
+        </div>
+        <div class="showcase__text reveal">
+          <span class="showcase__icon"><svg viewBox="0 0 24 24"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></span>
+          <h3 data-i18n="apps.parseTitle">Parsers &amp; data collection</h3>
+          <p data-i18n="apps.parseText">Collect companies, contacts, prices and listings from open sources and official APIs — cleaned, de-duplicated and ready for your CRM.</p>
+          <ul class="ticks" data-render="parseList"></ul>
+        </div>
+      </div>
+
+      <div class="caps" data-render="caps"></div>
     </section>
 
     <!-- ── Услуги ── -->
