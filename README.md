@@ -4,7 +4,7 @@ Live: **https://flasqwe.github.io**
 
 Real products:
 
-- **FinFlow** — personal capital app (PWA): net worth across accounts, crypto wallets and assets, goals, reports, trading simulator. Node.js + PostgreSQL.
+- **FinFlow** — personal capital app (PWA): net worth across accounts and assets, goals, budgets, reports. Node.js + PostgreSQL. Demo on request.
 - **Lead-gen CRM & parser** — internal B2B tool: company search, contacts and decision makers, lead scoring, email campaigns. Demo on request.
 
 Screenshots of real products use fictional demo data only.

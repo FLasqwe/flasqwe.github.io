@@ -27,7 +27,7 @@
       'case.demo': 'Open live demo ↗', 'case.concept': 'Concept project',
       'prod.kicker': 'Real products', 'prod.title': 'Built, launched <span class="accent">and running</span>',
       'prod.lead': 'Products I designed and built end to end — backend, frontend, database and deployment. Screenshots use demo data only.',
-      'case.real': 'Real product · in production', 'case.open': 'Open the app ↗', 'case.private': 'Private tool — demo on request', 'case.ask': 'Request a demo',
+      'case.real': 'Real product · in production', 'case.open': 'Open the app ↗', 'case.private': 'Private tool — demo on request', 'case.privateApp': 'Real product — demo on request', 'case.ask': 'Request a demo',
       'svc.kicker': 'Services', 'svc.title': 'What I can <span class="accent">build for you</span>',
       'proc.kicker': 'Process', 'proc.title': 'Clear steps, <span class="accent">no surprises</span>',
       'ct.kicker': 'Contact', 'ct.title': "Let's make your<br><span class=\"accent\">next website</span>",
@@ -51,7 +51,7 @@
       'case.demo': 'Открыть живое демо ↗', 'case.concept': 'Концепт-проект',
       'prod.kicker': 'Реальные продукты', 'prod.title': 'Сделаны, запущены <span class="accent">и работают</span>',
       'prod.lead': 'Продукты, которые я спроектировал и сделал целиком — бэкенд, фронтенд, база данных и деплой. На скриншотах только демо-данные.',
-      'case.real': 'Реальный продукт · работает в проде', 'case.open': 'Открыть приложение ↗', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.ask': 'Запросить демо',
+      'case.real': 'Реальный продукт · работает в проде', 'case.open': 'Открыть приложение ↗', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.privateApp': 'Реальный продукт — демо по запросу', 'case.ask': 'Запросить демо',
       'svc.kicker': 'Услуги', 'svc.title': 'Что я могу <span class="accent">сделать для вас</span>',
       'proc.kicker': 'Процесс', 'proc.title': 'Понятные шаги, <span class="accent">без сюрпризов</span>',
       'ct.kicker': 'Контакты', 'ct.title': 'Сделаем ваш<br><span class="accent">новый сайт</span>',
@@ -91,15 +91,15 @@
   // Реальные продукты: скриншоты сняты на локальных копиях с вымышленными демо-данными
   const PRODUCTS = [
     {
-      id: 'finflow', glow: '#8b5cf6', url: 'https://finflow-production-d31d.up.railway.app/', host: 'finflow · web app', shots: 'finflow',
-      en: { name: 'FinFlow', tag: 'Fintech · web app (PWA)', desc: 'My own product: one screen with your whole net worth — cards, accounts, crypto wallets, stocks, metals and property — with history, goals and alerts. Installs on a phone like a native app.',
-        feats: ['Net-worth dashboard across 7 asset classes with a history chart', 'Crypto wallets by address (BTC, ETH, TON) and live prices', 'Goals, budgets, recurring payments, PDF reports', 'Trading simulator on real quotes, support bot «Eva»', 'Subscription tiers, promo codes, admin panel, 2FA'] },
-      ru: { name: 'FinFlow', tag: 'Финтех · веб-приложение (PWA)', desc: 'Мой собственный продукт: весь капитал на одном экране — карты, счета, крипто-кошельки, акции, металлы и недвижимость — с историей, целями и уведомлениями. Ставится на телефон как обычное приложение.',
-        feats: ['Капитал по 7 классам активов с графиком динамики', 'Крипто-кошельки по адресу (BTC, ETH, TON) и живые котировки', 'Цели, бюджеты, регулярные платежи, отчёт в PDF', 'Симулятор торговли на реальных котировках, бот поддержки «Ева»', 'Тарифы, промокоды, админ-панель, двухфакторная защита'] },
+      id: 'finflow', glow: '#8b5cf6', url: null, note: 'case.privateApp', host: 'finflow · web app', shots: 'finflow',
+      en: { name: 'FinFlow', tag: 'Fintech · web app (PWA)', desc: 'My own product: one screen with your whole net worth — cards, accounts, stocks, metals and property — with history, goals and alerts. Installs on a phone like a native app.',
+        feats: ['Net-worth dashboard by asset class with a history chart', 'Accounts, cards and manual assets — property, metals, business', 'Goals, budgets, recurring payments, PDF reports', 'Support bot «Eva» and alerts on capital drawdown', 'Subscription tiers, promo codes, admin panel, 2FA'] },
+      ru: { name: 'FinFlow', tag: 'Финтех · веб-приложение (PWA)', desc: 'Мой собственный продукт: весь капитал на одном экране — карты, счета, акции, металлы и недвижимость — с историей, целями и уведомлениями. Ставится на телефон как обычное приложение.',
+        feats: ['Капитал по классам активов с графиком динамики', 'Счета, карты и ручные активы — недвижимость, металлы, бизнес', 'Цели, бюджеты, регулярные платежи, отчёт в PDF', 'Бот поддержки «Ева» и уведомления о просадке капитала', 'Тарифы, промокоды, админ-панель, двухфакторная защита'] },
       chips: ['Node.js', 'Express', 'PostgreSQL', 'PWA', 'REST API'],
     },
     {
-      id: 'crm', glow: '#6c8bff', url: null, host: 'crm · lead generation', shots: 'crm',
+      id: 'crm', glow: '#6c8bff', url: null, note: 'case.private', host: 'crm · lead generation', shots: 'crm',
       en: { name: 'Lead-gen CRM & parser', tag: 'B2B · CRM + parser', desc: 'An internal tool for cold outreach: finds companies by niche and city, collects contacts and decision makers, scores leads and runs email campaigns — all in one panel.',
         feats: ['Company search in 120 countries from open map data', 'Contacts and decision makers from company sites and official registries', 'Lead scoring 0–100 with «ready to buy» signals', 'Email campaigns with domain warm-up, auto follow-ups and inbox', 'Kanban pipeline, analytics dashboard, team access'] },
       ru: { name: 'CRM и парсер лидов', tag: 'B2B · CRM + парсер', desc: 'Внутренний инструмент для холодных продаж: находит компании по нише и городу, собирает контакты и ЛПР, оценивает лиды и запускает email-рассылки — всё в одной панели.',
@@ -314,7 +314,7 @@
           <div class="phone"><img loading="lazy" src="assets/shots/${c.shots}-mobile.jpg" alt="${esc(d.name)} — mobile"></div>`;
       const action = c.url
         ? `<a class="btn" href="${c.url}" target="_blank" rel="noopener">${esc(t('case.open'))}</a><span class="case__concept">${esc(t('case.real'))}</span>`
-        : `<a class="btn btn--ghost" href="#contact">${esc(t('case.ask'))}</a><span class="case__concept">${esc(t('case.private'))}</span>`;
+        : `<a class="btn btn--ghost" href="#contact">${esc(t('case.ask'))}</a><span class="case__concept">${esc(t(c.note))}</span>`;
       return `<article class="case reveal" style="--glow:${c.glow}">
         ${c.url ? `<a class="case__visual" href="${c.url}" target="_blank" rel="noopener" aria-label="${esc(d.name)}">${visual}</a>` : `<div class="case__visual">${visual}</div>`}
         <div class="case__text">
