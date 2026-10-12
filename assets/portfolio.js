@@ -22,9 +22,12 @@
       'apps.lead': 'A website brings people in. Automation keeps them: bots that book and remind, apps that run the business, parsers that find new clients.',
       'tg.status': 'bot', 'apps.tgTitle': 'Telegram bots', 'apps.tgText': 'Bookings, orders, payments and reminders right in the chat your clients already use — no app to install.',
       'apps.parseTitle': 'Parsers &amp; data collection', 'apps.parseText': 'Collect companies, contacts, prices and listings from open sources and official APIs — cleaned, de-duplicated and ready for your CRM.',
-      'work.kicker': 'Selected work', 'work.title': 'Three niches. <span class="accent">Three different worlds.</span>',
+      'work.kicker': 'Concept websites', 'work.title': 'Three niches. <span class="accent">Three different worlds.</span>',
       'work.lead': 'Concept projects built to show what your business can get: each one is fully interactive — open the live demo and click through it.',
       'case.demo': 'Open live demo ↗', 'case.concept': 'Concept project',
+      'prod.kicker': 'Real products', 'prod.title': 'Built, launched <span class="accent">and running</span>',
+      'prod.lead': 'Products I designed and built end to end — backend, frontend, database and deployment. Screenshots use demo data only.',
+      'case.real': 'Real product · in production', 'case.open': 'Open the app ↗', 'case.private': 'Private tool — demo on request', 'case.ask': 'Request a demo',
       'svc.kicker': 'Services', 'svc.title': 'What I can <span class="accent">build for you</span>',
       'proc.kicker': 'Process', 'proc.title': 'Clear steps, <span class="accent">no surprises</span>',
       'ct.kicker': 'Contact', 'ct.title': "Let's make your<br><span class=\"accent\">next website</span>",
@@ -43,9 +46,12 @@
       'apps.lead': 'Сайт приводит людей. Автоматизация их удерживает: боты записывают и напоминают, приложения ведут бизнес, парсеры находят новых клиентов.',
       'tg.status': 'бот', 'apps.tgTitle': 'Telegram-боты', 'apps.tgText': 'Запись, заказы, оплата и напоминания прямо в чате, которым клиенты уже пользуются, — ничего не нужно устанавливать.',
       'apps.parseTitle': 'Парсеры и сбор данных', 'apps.parseText': 'Собираю компании, контакты, цены и объявления из открытых источников и официальных API — очищенные, без дублей и готовые для вашей CRM.',
-      'work.kicker': 'Избранные работы', 'work.title': 'Три ниши. <span class="accent">Три разных мира.</span>',
+      'work.kicker': 'Концепт-сайты', 'work.title': 'Три ниши. <span class="accent">Три разных мира.</span>',
       'work.lead': 'Концепт-проекты, которые показывают, что может получить ваш бизнес: каждый полностью интерактивный — откройте демо и покликайте.',
       'case.demo': 'Открыть живое демо ↗', 'case.concept': 'Концепт-проект',
+      'prod.kicker': 'Реальные продукты', 'prod.title': 'Сделаны, запущены <span class="accent">и работают</span>',
+      'prod.lead': 'Продукты, которые я спроектировал и сделал целиком — бэкенд, фронтенд, база данных и деплой. На скриншотах только демо-данные.',
+      'case.real': 'Реальный продукт · работает в проде', 'case.open': 'Открыть приложение ↗', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.ask': 'Запросить демо',
       'svc.kicker': 'Услуги', 'svc.title': 'Что я могу <span class="accent">сделать для вас</span>',
       'proc.kicker': 'Процесс', 'proc.title': 'Понятные шаги, <span class="accent">без сюрпризов</span>',
       'ct.kicker': 'Контакты', 'ct.title': 'Сделаем ваш<br><span class="accent">новый сайт</span>',
@@ -79,6 +85,26 @@
       ru: { name: 'MONOLIT', tag: 'Строительство · проектирование', desc: 'Смелый индустриальный сайт строительной компании. Крупные цифры, реальные объекты и мгновенная смета продают и B2B-, и частным клиентам.',
         feats: ['Чертёжные линии, прорисовывающиеся поверх фото', 'Портфолио с фильтрами и карточкой объекта', 'Калькулятор стоимости и сроков с разбивкой по этапам', 'Заявка с прикреплением чертежей'] },
       chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'EN / RU'],
+    },
+  ];
+
+  // Реальные продукты: скриншоты сняты на локальных копиях с вымышленными демо-данными
+  const PRODUCTS = [
+    {
+      id: 'finflow', glow: '#8b5cf6', url: 'https://finflow-production-d31d.up.railway.app/', host: 'finflow · web app', shots: 'finflow',
+      en: { name: 'FinFlow', tag: 'Fintech · web app (PWA)', desc: 'My own product: one screen with your whole net worth — cards, accounts, crypto wallets, stocks, metals and property — with history, goals and alerts. Installs on a phone like a native app.',
+        feats: ['Net-worth dashboard across 7 asset classes with a history chart', 'Crypto wallets by address (BTC, ETH, TON) and live prices', 'Goals, budgets, recurring payments, PDF reports', 'Trading simulator on real quotes, support bot «Eva»', 'Subscription tiers, promo codes, admin panel, 2FA'] },
+      ru: { name: 'FinFlow', tag: 'Финтех · веб-приложение (PWA)', desc: 'Мой собственный продукт: весь капитал на одном экране — карты, счета, крипто-кошельки, акции, металлы и недвижимость — с историей, целями и уведомлениями. Ставится на телефон как обычное приложение.',
+        feats: ['Капитал по 7 классам активов с графиком динамики', 'Крипто-кошельки по адресу (BTC, ETH, TON) и живые котировки', 'Цели, бюджеты, регулярные платежи, отчёт в PDF', 'Симулятор торговли на реальных котировках, бот поддержки «Ева»', 'Тарифы, промокоды, админ-панель, двухфакторная защита'] },
+      chips: ['Node.js', 'Express', 'PostgreSQL', 'PWA', 'REST API'],
+    },
+    {
+      id: 'crm', glow: '#6c8bff', url: null, host: 'crm · lead generation', shots: 'crm',
+      en: { name: 'Lead-gen CRM & parser', tag: 'B2B · CRM + parser', desc: 'An internal tool for cold outreach: finds companies by niche and city, collects contacts and decision makers, scores leads and runs email campaigns — all in one panel.',
+        feats: ['Company search in 120 countries from open map data', 'Contacts and decision makers from company sites and official registries', 'Lead scoring 0–100 with «ready to buy» signals', 'Email campaigns with domain warm-up, auto follow-ups and inbox', 'Kanban pipeline, analytics dashboard, team access'] },
+      ru: { name: 'CRM и парсер лидов', tag: 'B2B · CRM + парсер', desc: 'Внутренний инструмент для холодных продаж: находит компании по нише и городу, собирает контакты и ЛПР, оценивает лиды и запускает email-рассылки — всё в одной панели.',
+        feats: ['Поиск компаний в 120 странах по открытым картам', 'Контакты и ЛПР с сайтов компаний и из гос. реестров', 'Скоринг лидов 0–100 с сигналами «готов покупать»', 'Рассылки с прогревом домена, авто-напоминаниями и инбоксом', 'Канбан-воронка, дашборд аналитики, доступ для команды'] },
+      chips: ['Node.js', 'PostgreSQL', 'Playwright', 'Email API', 'Open data'],
     },
   ];
 
@@ -282,6 +308,26 @@
   }
 
   function renderAll() {
+    $('[data-render="products"]').innerHTML = PRODUCTS.map((c, i) => {
+      const d = c[lang];
+      const visual = `<div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>${esc(c.host)}</span></div><img loading="lazy" src="assets/shots/${c.shots}-desktop.jpg" alt="${esc(d.name)} — desktop"></div>
+          <div class="phone"><img loading="lazy" src="assets/shots/${c.shots}-mobile.jpg" alt="${esc(d.name)} — mobile"></div>`;
+      const action = c.url
+        ? `<a class="btn" href="${c.url}" target="_blank" rel="noopener">${esc(t('case.open'))}</a><span class="case__concept">${esc(t('case.real'))}</span>`
+        : `<a class="btn btn--ghost" href="#contact">${esc(t('case.ask'))}</a><span class="case__concept">${esc(t('case.private'))}</span>`;
+      return `<article class="case reveal" style="--glow:${c.glow}">
+        ${c.url ? `<a class="case__visual" href="${c.url}" target="_blank" rel="noopener" aria-label="${esc(d.name)}">${visual}</a>` : `<div class="case__visual">${visual}</div>`}
+        <div class="case__text">
+          <span class="case__no">0${i + 1} / 0${PRODUCTS.length}</span><br>
+          <span class="case__tag"><i></i>${esc(d.tag)}</span>
+          <h3>${esc(d.name)}</h3>
+          <p class="case__desc">${esc(d.desc)}</p>
+          <ul class="case__feats">${d.feats.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+          <div class="case__chips">${c.chips.map((x) => `<span>${esc(x)}</span>`).join('')}</div>
+          <div class="case__actions">${action}</div>
+        </div></article>`;
+    }).join('');
+
     $('[data-render="cases"]').innerHTML = CASES.map((c, i) => {
       const d = c[lang];
       const host = `flasqwe.github.io/${c.url}`;

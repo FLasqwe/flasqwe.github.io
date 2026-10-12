@@ -2,7 +2,14 @@
 
 Live: **https://flasqwe.github.io**
 
-Personal portfolio with three interactive concept websites:
+Real products:
+
+- **FinFlow** — personal capital app (PWA): net worth across accounts, crypto wallets and assets, goals, reports, trading simulator. Node.js + PostgreSQL.
+- **Lead-gen CRM & parser** — internal B2B tool: company search, contacts and decision makers, lead scoring, email campaigns. Demo on request.
+
+Screenshots of real products use fictional demo data only.
+
+Three interactive concept websites:
 
 | Project | Niche | Live demo |
 |---|---|---|
