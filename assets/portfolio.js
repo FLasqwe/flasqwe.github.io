@@ -119,7 +119,7 @@
       caps: [
         ['Web apps & PWA', 'Personal accounts, dashboards and tools that install on a phone like a real app.', ['JavaScript', 'Node.js', 'PostgreSQL', 'PWA']],
         ['CRM & admin panels', 'Leads, pipelines, roles and analytics — built around how your team actually works.', ['Node.js', 'PostgreSQL', 'Charts', 'Roles']],
-        ['Integrations & AI', 'Payments, Google Sheets, email and SMS, amoCRM / Bitrix24, AI assistants on ChatGPT or Claude.', ['APIs', 'Webhooks', 'AI', 'Email']],
+        ['Integrations', 'Payments, Google Sheets, email and SMS, amoCRM / Bitrix24 — your services connected and working together.', ['APIs', 'Webhooks', 'Payments', 'Email']],
       ],
       chat: [
         ['me', '/start'],
@@ -149,7 +149,7 @@
       caps: [
         ['Веб-приложения и PWA', 'Личные кабинеты, дашборды и инструменты, которые ставятся на телефон как настоящее приложение.', ['JavaScript', 'Node.js', 'PostgreSQL', 'PWA']],
         ['CRM и админ-панели', 'Заявки, воронки, роли и аналитика — под то, как реально работает ваша команда.', ['Node.js', 'PostgreSQL', 'Графики', 'Роли']],
-        ['Интеграции и AI', 'Оплата, Google Таблицы, email и SMS, amoCRM / Битрикс24, AI-ассистенты на ChatGPT или Claude.', ['API', 'Вебхуки', 'AI', 'Email']],
+        ['Интеграции', 'Оплата, Google Таблицы, email и SMS, amoCRM / Битрикс24 — ваши сервисы связаны и работают вместе.', ['API', 'Вебхуки', 'Оплата', 'Email']],
       ],
       chat: [
         ['me', '/start'],
