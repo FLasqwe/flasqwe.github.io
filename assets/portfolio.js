@@ -25,9 +25,9 @@
       'work.kicker': 'Concept websites', 'work.title': 'Three niches. <span class="accent">Three different worlds.</span>',
       'work.lead': 'Concept projects built to show what your business can get: each one is fully interactive — open the live demo and click through it.',
       'case.demo': 'Open live demo ↗', 'case.concept': 'Concept project',
-      'prod.kicker': 'Real products', 'prod.title': 'Built, launched <span class="accent">and running</span>',
-      'prod.lead': 'Products I designed and built end to end — backend, frontend, database and deployment. Screenshots use demo data only.',
-      'case.real': 'Real product · in production', 'case.open': 'Open the app ↗', 'case.private': 'Private tool — demo on request', 'case.privateApp': 'Real product — demo on request', 'case.ask': 'Request a demo',
+      'prod.kicker': 'Real product', 'prod.title': 'Built, launched <span class="accent">and running</span>',
+      'prod.lead': 'A product I designed and built end to end — backend, frontend, database and deployment. Screenshots use demo data only.',
+      'case.real': 'Real product · in production', 'case.open': 'Open the app ↗', 'case.private': 'Private tool — demo on request', 'case.ask': 'Request a demo',
       'svc.kicker': 'Services', 'svc.title': 'What I can <span class="accent">build for you</span>',
       'proc.kicker': 'Process', 'proc.title': 'Clear steps, <span class="accent">no surprises</span>',
       'ct.kicker': 'Contact', 'ct.title': "Let's make your<br><span class=\"accent\">next website</span>",
@@ -49,9 +49,9 @@
       'work.kicker': 'Концепт-сайты', 'work.title': 'Три ниши. <span class="accent">Три разных мира.</span>',
       'work.lead': 'Концепт-проекты, которые показывают, что может получить ваш бизнес: каждый полностью интерактивный — откройте демо и покликайте.',
       'case.demo': 'Открыть живое демо ↗', 'case.concept': 'Концепт-проект',
-      'prod.kicker': 'Реальные продукты', 'prod.title': 'Сделаны, запущены <span class="accent">и работают</span>',
-      'prod.lead': 'Продукты, которые я спроектировал и сделал целиком — бэкенд, фронтенд, база данных и деплой. На скриншотах только демо-данные.',
-      'case.real': 'Реальный продукт · работает в проде', 'case.open': 'Открыть приложение ↗', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.privateApp': 'Реальный продукт — демо по запросу', 'case.ask': 'Запросить демо',
+      'prod.kicker': 'Реальный продукт', 'prod.title': 'Сделан, запущен <span class="accent">и работает</span>',
+      'prod.lead': 'Продукт, который я спроектировал и сделал целиком — бэкенд, фронтенд, база данных и деплой. На скриншотах только демо-данные.',
+      'case.real': 'Реальный продукт · работает в проде', 'case.open': 'Открыть приложение ↗', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.ask': 'Запросить демо',
       'svc.kicker': 'Услуги', 'svc.title': 'Что я могу <span class="accent">сделать для вас</span>',
       'proc.kicker': 'Процесс', 'proc.title': 'Понятные шаги, <span class="accent">без сюрпризов</span>',
       'ct.kicker': 'Контакты', 'ct.title': 'Сделаем ваш<br><span class="accent">новый сайт</span>',
@@ -90,14 +90,6 @@
 
   // Реальные продукты: скриншоты сняты на локальных копиях с вымышленными демо-данными
   const PRODUCTS = [
-    {
-      id: 'finflow', glow: '#8b5cf6', url: null, note: 'case.privateApp', host: 'finflow · web app', shots: 'finflow',
-      en: { name: 'FinFlow', tag: 'Fintech · web app (PWA)', desc: 'My own product: one screen with your whole net worth — cards, accounts, stocks, metals and property — with history, goals and alerts. Installs on a phone like a native app.',
-        feats: ['Net-worth dashboard by asset class with a history chart', 'Accounts, cards and manual assets — property, metals, business', 'Goals, budgets, recurring payments, PDF reports', 'Support bot «Eva» and alerts on capital drawdown', 'Subscription tiers, promo codes, admin panel, 2FA'] },
-      ru: { name: 'FinFlow', tag: 'Финтех · веб-приложение (PWA)', desc: 'Мой собственный продукт: весь капитал на одном экране — карты, счета, акции, металлы и недвижимость — с историей, целями и уведомлениями. Ставится на телефон как обычное приложение.',
-        feats: ['Капитал по классам активов с графиком динамики', 'Счета, карты и ручные активы — недвижимость, металлы, бизнес', 'Цели, бюджеты, регулярные платежи, отчёт в PDF', 'Бот поддержки «Ева» и уведомления о просадке капитала', 'Тарифы, промокоды, админ-панель, двухфакторная защита'] },
-      chips: ['Node.js', 'Express', 'PostgreSQL', 'PWA', 'REST API'],
-    },
     {
       id: 'crm', glow: '#6c8bff', url: null, note: 'case.private', host: 'crm · lead generation', shots: 'crm',
       en: { name: 'Lead-gen CRM & parser', tag: 'B2B · CRM + parser', desc: 'An internal tool for cold outreach: finds companies by niche and city, collects contacts and decision makers, scores leads and runs email campaigns — all in one panel.',
@@ -232,10 +224,12 @@
           el.innerHTML = a.map((x) => `<span>${esc(x)}</span>`).join('');
           body.appendChild(el);
           await sleep(900);
+          if (run !== animRun) return;
           el.children[pick].classList.add('is-picked');
           await sleep(500);
           continue;
         }
+        if (run !== animRun) return;
         el.className = 'msg msg--' + kind;
         el.innerHTML = esc(a) + time;
         body.appendChild(el);
@@ -262,6 +256,8 @@
           line.innerHTML = text;
           await sleep(520);
         }
+        // Пока ждали, язык могли переключить и блок перерисовать — тогда этот цикл устарел
+        if (run !== animRun || cursor.parentNode !== body) return;
         body.insertBefore(document.createTextNode('\n'), cursor);
       }
       await sleep(5000);
