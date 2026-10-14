@@ -3,162 +3,204 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Ekimov Gregory — Web design & development</title>
-  <meta name="description" content="Websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection. Live demos inside.">
-  <meta name="theme-color" content="#0d0d0f">
+  <title>Ekimov Gregory — Websites, bots &amp; web apps</title>
+  <meta name="description" content="Websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection. Click through live demos right on the page.">
+  <meta name="theme-color" content="#f4f2ec">
+  <meta name="color-scheme" content="light dark">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ekimov Gregory — Web design & development">
-  <meta property="og:description" content="Websites, Telegram bots, web apps and parsers that bring clients. See live demos.">
+  <meta property="og:title" content="Ekimov Gregory — Websites, bots &amp; web apps">
+  <meta property="og:description" content="Websites, Telegram bots, web apps and parsers that bring clients. Live demos inside.">
   <meta property="og:url" content="https://flasqwe.github.io/">
-  <meta property="og:image" content="https://flasqwe.github.io/assets/shots/ognivo-desktop-en.jpg">
+  <meta property="og:image" content="https://flasqwe.github.io/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ekimov Gregory — websites, bots and web apps: portfolio with live demos">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d4ff3a'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%230d0d0f'%3EEG%3C/text%3E%3C/svg%3E">
+  <meta name="twitter:image" content="https://flasqwe.github.io/assets/og.jpg">
+  <meta name="twitter:image:alt" content="Ekimov Gregory — websites, bots and web apps: portfolio with live demos">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23111111'/%3E%3Crect x='46' y='46' width='10' height='10' fill='%232541f5'/%3E%3Ctext x='29' y='41' font-family='Arial,Helvetica' font-weight='700' font-size='24' text-anchor='middle' fill='%23f4f2ec'%3EEG%3C/text%3E%3C/svg%3E">
+  <!-- Тема и язык — до первой отрисовки, чтобы не было «вспышки». По умолчанию светлая тема. -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        if (localStorage.getItem('eg-theme') === 'dark') d.setAttribute('data-theme', 'dark');
+        var l = localStorage.getItem('eg-lang') || ((navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en');
+        d.lang = l === 'ru' ? 'ru' : 'en';
+      } catch (e) {}
+      if (d.getAttribute('data-theme') === 'dark') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#131211');
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/portfolio.css">
+  <!-- Geist / Geist Mono / Noto Serif Display — все три с кириллицей -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Noto+Serif+Display:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="nav">
-    <a class="brand" href="#top" aria-label="Ekimov Gregory">
-      <span class="brand__mark" aria-hidden="true">EG</span>
-      <span class="brand__name">Ekimov Gregory</span>
-    </a>
-    <nav class="nav__links" aria-label="Main">
-      <a href="#products" data-i18n="nav.work">Work</a>
-      <a href="#apps" data-i18n="nav.apps">Bots & apps</a>
-      <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#process" data-i18n="nav.process">Process</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
-    </nav>
-    <div class="nav__right">
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+  <a class="skip" href="#work" data-to-work data-i18n="skip">Skip to work</a>
+
+  <!-- ── Шапка ── -->
+  <header class="hdr" data-hdr>
+    <div class="hdr__in wrap">
+      <a class="brand" href="#top" aria-label="Ekimov Gregory — home" data-i18n-label="a.home">
+        <span class="brand__mark" aria-hidden="true">EG</span>
+        <span class="brand__name">Ekimov Gregory</span>
+      </a>
+      <nav class="hdr__nav" aria-label="Main" data-i18n-label="a.main">
+        <a href="#work" data-to-work data-i18n="nav.work">Work</a>
+        <a href="#work-bots" data-i18n="nav.bots">Bots &amp; parsers</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="hdr__right">
+        <div class="lang" role="group" aria-label="Language" data-i18n-label="a.lang">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+        <button class="theme-btn hdr__theme" type="button" data-theme-toggle aria-label="Dark theme">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+        <a class="btn btn--ink btn--sm hdr__cta" href="#contact" data-i18n="nav.cta">Start a project</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" data-menu>
+          <span class="sr" data-i18n="nav.menu">Menu</span><i aria-hidden="true"></i><i aria-hidden="true"></i>
+        </button>
       </div>
-      <a class="btn btn--sm" href="#contact" data-i18n="nav.cta">Start a project</a>
     </div>
   </header>
 
+  <div class="mnav-bd" data-mnav-bd hidden></div>
+  <nav class="mnav" id="mnav" aria-label="Menu" data-i18n-label="a.mobile" hidden>
+    <a href="#work" data-to-work data-i18n="nav.work">Work</a>
+    <a href="#work-bots" data-i18n="nav.bots">Bots &amp; parsers</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#process" data-i18n="nav.process">Process</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+    <div class="mnav__foot">
+      <a class="btn btn--accent mnav__cta" href="#contact"><span data-i18n="nav.cta">Start a project</span><span class="arr" aria-hidden="true">→</span></a>
+      <button class="theme-btn theme-btn--wide" type="button" data-theme-toggle>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        <span data-theme-label>Dark theme</span>
+      </button>
+    </div>
+  </nav>
+
   <main>
-    <!-- ── Hero ── -->
-    <section class="hero" id="top">
-      <div class="hero__text">
-        <p class="status"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></p>
-        <h1 class="hero__title" data-i18n-html="hero.title">Websites, bots &amp; apps that <span class="accent">bring clients</span>.</h1>
-        <p class="hero__lead" data-i18n="hero.lead">I'm Gregory — I build websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection.</p>
-        <div class="hero__cta">
-          <a class="btn" href="#work" data-i18n="hero.cta1">See live demos</a>
-          <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">Discuss your project</a>
-        </div>
-      </div>
-      <div class="hero__stack" aria-hidden="true">
-        <img class="card card--1" data-shot="ognivo-desktop" alt="">
-        <img class="card card--2" data-shot="luma-desktop" alt="">
-        <img class="card card--3" data-shot="monolit-desktop" alt="">
-      </div>
-    </section>
-
-    <div class="marquee" aria-hidden="true"><div class="marquee__track" data-i18n="marquee">Restaurants ✦ Dental clinics ✦ Construction ✦ Beauty salons ✦ Real estate ✦ Fitness ✦ Restaurants ✦ Dental clinics ✦ Construction ✦ Beauty salons ✦ Real estate ✦ Fitness ✦</div></div>
-
-    <!-- ── Реальные продукты ── -->
-    <section class="work section" id="products">
-      <div class="head">
-        <p class="kicker" data-i18n="prod.kicker">Real product</p>
-        <h2 class="h2" data-i18n-html="prod.title">Built, launched <span class="accent">and running</span></h2>
-        <p class="head__lead" data-i18n="prod.lead">A product I designed and built end to end — backend, frontend, database and deployment. Screenshots use demo data only.</p>
-      </div>
-      <div class="cases" data-render="products"></div>
-    </section>
-
-    <!-- ── Работы ── -->
-    <section class="work section" id="work">
-      <div class="head">
-        <p class="kicker" data-i18n="work.kicker">Concept websites</p>
-        <h2 class="h2" data-i18n-html="work.title">Three niches. <span class="accent">Three different worlds.</span></h2>
-        <p class="head__lead" data-i18n="work.lead">Concept projects built to show what your business can get: each one is fully interactive — open the live demo and click through it.</p>
-      </div>
-      <div class="cases" data-render="cases"></div>
-    </section>
-
-    <!-- ── Не только сайты ── -->
-    <section class="beyond section" id="apps">
-      <div class="head">
-        <p class="kicker" data-i18n="apps.kicker">Beyond websites</p>
-        <h2 class="h2" data-i18n-html="apps.title">Bots, apps &amp; parsers that <span class="accent">do the work for you</span></h2>
-        <p class="head__lead" data-i18n="apps.lead">A website brings people in. Automation keeps them: bots that book and remind, apps that run the business, parsers that find new clients.</p>
+    <!-- ── Первый экран ── -->
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero__meta">
+        <span data-i18n="hero.role">Design &amp; development</span>
+        <span class="hero__meta-what" data-i18n="hero.what">Websites · Bots · Apps · Parsers</span>
+        <span class="hero__meta-langs" data-i18n="hero.langs">Working in English &amp; Russian</span>
+        <span class="status"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></span>
       </div>
 
-      <div class="showcase">
-        <div class="showcase__mock tg reveal" aria-hidden="true">
-          <div class="tg__head">
-            <span class="tg__ava">L</span>
-            <div><b>LUMA Booking Bot</b><small class="tg__status" data-i18n="tg.status">bot</small></div>
+      <h1 class="hero__title" id="hero-title" data-i18n-html="hero.title">Websites, bots &amp; apps that <em>bring clients</em>.</h1>
+
+      <div class="hero__grid">
+        <div class="hero__intro">
+          <p class="hero__lead" data-i18n="hero.lead">I’m Gregory — I build websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection.</p>
+          <div class="hero__cta">
+            <a class="btn btn--accent" href="#work" data-to-work><span data-i18n="hero.cta1">See the work</span><span class="arr" aria-hidden="true">↓</span></a>
+            <a class="btn btn--line" href="#contact" data-i18n="hero.cta2">Discuss your project</a>
           </div>
-          <div class="tg__body" data-render="chat"></div>
+          <div class="hero__for"><p data-i18n-html="hero.for"><b>For any business</b> — restaurants, clinics, construction, beauty, real estate, retail and&nbsp;services</p></div>
         </div>
-        <div class="showcase__text reveal">
-          <span class="showcase__icon"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 12-9"/></svg></span>
-          <h3 data-i18n="apps.tgTitle">Telegram bots</h3>
-          <p data-i18n="apps.tgText">Bookings, orders, payments and reminders right in the chat your clients already use — no app to install.</p>
-          <ul class="ticks" data-render="tgList"></ul>
-        </div>
+        <nav class="index" aria-labelledby="index-label">
+          <div class="index__head">
+            <span id="index-label" data-i18n="hero.index">Index of work</span>
+            <span class="index__hint" data-i18n="hero.indexHint">Click — opens below</span>
+          </div>
+          <ol class="index__list" data-render="index"></ol>
+        </nav>
       </div>
+    </section>
 
-      <div class="showcase showcase--rev">
-        <div class="showcase__mock term reveal" aria-hidden="true">
-          <div class="term__bar"><i></i><i></i><i></i><span>leads — parser</span></div>
-          <pre class="term__body" data-render="term"></pre>
+    <div class="ticker" aria-hidden="true"><div class="ticker__track" data-render="ticker"></div></div>
+
+    <!-- ── Работы: вкладки ── -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <header class="sh" data-rv>
+          <div class="sh__top"><span>(01)</span><span data-i18n="work.kicker">Selected work</span><span class="sh__meta" data-i18n="work.meta">3 live demos · 1 real product · bots &amp; parsers</span></div>
+          <h2 class="sh__title" id="work-title" data-i18n-html="work.title">Click a tab. <em>See it live.</em></h2>
+          <p class="sh__lead" data-i18n="work.lead">Three concept websites run right inside the frame — scroll them, open the menu, try the calculators and booking. Next to them: a real CRM I built and the bots and parsers I make.</p>
+        </header>
+
+        <!-- Якоря для ссылок вида #work-luma: прокрутка к ряду вкладок -->
+        <div class="anchors" aria-hidden="true">
+          <span id="work-ognivo"></span><span id="work-luma"></span><span id="work-monolit"></span><span id="work-crm"></span><span id="work-bots"></span>
         </div>
-        <div class="showcase__text reveal">
-          <span class="showcase__icon"><svg viewBox="0 0 24 24"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></span>
-          <h3 data-i18n="apps.parseTitle">Parsers &amp; data collection</h3>
-          <p data-i18n="apps.parseText">Collect companies, contacts, prices and listings from open sources and official APIs — cleaned, de-duplicated and ready for your CRM.</p>
-          <ul class="ticks" data-render="parseList"></ul>
+
+        <div class="tabs-wrap" data-tabs-wrap>
+          <div class="tabs" role="tablist" aria-label="Work" data-tabs></div>
+          <p class="tabs__keys" aria-hidden="true" data-i18n="work.keys">← → to switch</p>
         </div>
+        <div class="panels" data-panels></div>
       </div>
-
-      <div class="caps" data-render="caps"></div>
     </section>
 
     <!-- ── Услуги ── -->
-    <section class="services section" id="services">
-      <div class="head">
-        <p class="kicker" data-i18n="svc.kicker">Services</p>
-        <h2 class="h2" data-i18n-html="svc.title">What I can <span class="accent">build for you</span></h2>
-      </div>
-      <div class="svc-grid" data-render="services"></div>
+    <section class="services wrap" id="services" aria-labelledby="svc-title">
+      <header class="sh" data-rv>
+        <div class="sh__top"><span>(02)</span><span data-i18n="svc.kicker">Services</span><span class="sh__meta" data-i18n="svc.meta">From one page to a working tool</span></div>
+        <h2 class="sh__title" id="svc-title" data-i18n-html="svc.title">What I can <em>build for you</em></h2>
+        <p class="sh__lead" data-i18n="svc.lead">From a single landing page to a bot or an internal tool — designed, built and launched by one person, start to finish.</p>
+      </header>
+      <ol class="svc" data-render="services"></ol>
     </section>
 
     <!-- ── Процесс ── -->
-    <section class="process section" id="process">
-      <div class="head">
-        <p class="kicker" data-i18n="proc.kicker">Process</p>
-        <h2 class="h2" data-i18n-html="proc.title">Clear steps, <span class="accent">no surprises</span></h2>
-      </div>
+    <section class="process wrap" id="process" aria-labelledby="proc-title">
+      <header class="sh" data-rv>
+        <div class="sh__top"><span>(03)</span><span data-i18n="proc.kicker">Process</span><span class="sh__meta" data-i18n="proc.meta">4 steps</span></div>
+        <h2 class="sh__title" id="proc-title" data-i18n-html="proc.title">Clear steps, <em>no surprises</em></h2>
+        <p class="sh__lead" data-i18n="proc.lead">You always know what happens next — and you watch the project grow on a live&nbsp;link.</p>
+      </header>
       <ol class="steps" data-render="steps"></ol>
-      <ul class="principles" data-render="principles"></ul>
+      <div class="prin" data-rv>
+        <p class="prin__label" data-i18n="proc.principles">Principles</p>
+        <ul class="prin__list" data-render="principles"></ul>
+      </div>
     </section>
 
     <!-- ── Контакт ── -->
-    <section class="contact section" id="contact">
-      <p class="kicker" data-i18n="ct.kicker">Contact</p>
-      <h2 class="contact__title" data-i18n-html="ct.title">Let's make your<br><span class="accent">next website</span></h2>
-      <p class="contact__lead" data-i18n="ct.lead">Tell me about your business and what the site should do. I'll reply with ideas, a plan and a price.</p>
-      <div class="mail">
-        <a class="mail__link" data-mail href="#contact">ekimovgregory9<span>@</span>gmail.com</a>
-        <button class="mail__copy" type="button" data-copy><span data-i18n="ct.copy">Copy</span></button>
+    <section class="contact" id="contact" aria-labelledby="ct-title">
+      <div class="wrap">
+        <div class="sh__top sh__top--inv" data-rv><span>(04)</span><span data-i18n="ct.kicker">Contact</span><span class="status status--inv"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></span></div>
+        <div class="contact__grid">
+          <h2 class="contact__title" id="ct-title" data-rv data-i18n-html="ct.title">Have a project<br> in mind? <em>Let’s&nbsp;talk.</em></h2>
+          <div class="contact__side" data-rv>
+            <p class="contact__lead" data-i18n="ct.lead">Tell me about your business and what the site, bot or app should do.</p>
+            <ul class="facts" data-render="facts"></ul>
+          </div>
+        </div>
+        <div class="mail" data-rv>
+          <a class="mail__link" data-mail href="#contact">ekimovgregory9<span>@</span>gmail.com</a>
+          <div class="mail__actions">
+            <button class="btn btn--wline" type="button" data-copy><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><span data-i18n="ct.copy">Copy email</span></button>
+            <a class="btn btn--white" data-mail-btn href="#contact"><span data-i18n="ct.write">Write an email</span><span class="arr" aria-hidden="true">→</span></a>
+          </div>
+        </div>
       </div>
-      <a class="btn btn--big" data-mail-btn href="#contact" data-i18n="ct.write">Write an email</a>
     </section>
   </main>
 
-  <footer class="footer">
-    <span>© <span data-year>2026</span> Ekimov Gregory</span>
-    <span data-i18n="foot.note">Hand-built, hosted on GitHub Pages. Demo projects are concepts — names, people and data are fictional.</span>
-    <a href="#top" data-i18n="foot.top">Back to top ↑</a>
+  <footer class="ftr">
+    <div class="ftr__in wrap">
+      <span>© <span data-year>2026</span> Ekimov Gregory</span>
+      <span class="ftr__note" data-i18n="foot.note">Hand-built, hosted on GitHub Pages. Demo projects are concepts — names, people and data are fictional.</span>
+      <a href="#top" data-i18n="foot.top">Back to top ↑</a>
+    </div>
   </footer>
 
-  <script src="assets/portfolio.js"></script>
+  <div class="peek" aria-hidden="true" data-peek><img alt="" data-peek-img></div>
+  <p class="sr" aria-live="polite" data-live></p>
+
+  <script src="assets/site.js"></script>
 </body>
 </html>

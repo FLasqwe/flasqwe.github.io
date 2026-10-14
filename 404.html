@@ -4,21 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Ekimov Gregory</title>
+  <meta name="theme-color" content="#f4f2ec">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23111111'/%3E%3Crect x='46' y='46' width='10' height='10' fill='%232541f5'/%3E%3Ctext x='29' y='41' font-family='Arial,Helvetica' font-weight='700' font-size='24' text-anchor='middle' fill='%23f4f2ec'%3EEG%3C/text%3E%3C/svg%3E">
+  <script>try { if (localStorage.getItem('eg-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@500&family=Noto+Serif+Display:ital,wght@1,400&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #0d0d0f; color: #f2f1ec; font: 400 17px/1.6 Inter, system-ui, sans-serif; text-align: center; }
-    h1 { margin: 0 0 12px; font: 600 clamp(80px, 18vw, 200px)/1 Unbounded, sans-serif; color: #d4ff3a; letter-spacing: -.04em; }
-    p { margin: 0 0 32px; color: #8f8e88; }
-    a { display: inline-block; padding: 16px 28px; border-radius: 999px; background: #d4ff3a; color: #0d0d0f; font-weight: 600; text-decoration: none; }
+    :root { --bg: #f4f2ec; --ink: #111; --muted: #67645d; --rule: rgba(17, 17, 17, .22); --accent: #2541f5; --accent-fg: #2541f5; color-scheme: light; }
+    :root[data-theme="dark"] { --bg: #131211; --ink: #efede7; --muted: #938f86; --rule: rgba(239, 237, 231, .21); --accent: #3550ff; --accent-fg: #8d9dff; color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; padding: 0 clamp(16px, 4vw, 56px); background: var(--bg); color: var(--ink); font: 400 17px/1.55 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    header, footer { display: flex; justify-content: space-between; gap: 16px; padding: 20px 0; font: 500 11.5px/1.4 'Geist Mono', ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+    header { border-bottom: 1px solid var(--ink); }
+    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 48px 0; }
+    h1 { margin: 0; font-weight: 500; font-size: clamp(96px, 22vw, 300px); line-height: .85; letter-spacing: -.07em; }
+    h1 em { font-family: 'Noto Serif Display', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -.03em; color: var(--accent-fg); }
+    p { margin: 28px 0 32px; max-width: 32em; font-size: clamp(17px, 1.4vw, 20px); color: var(--muted); }
+    a.btn { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 500; text-decoration: none; transition: background-color .3s; }
+    a.btn:hover { background: var(--ink); color: var(--bg); }
+    a:focus-visible { outline: 2px solid var(--accent-fg); outline-offset: 3px; }
+    footer { border-top: 1px solid var(--rule); }
   </style>
 </head>
 <body>
+  <header><span>Ekimov Gregory</span><span>Error 404</span></header>
   <main>
-    <h1>404</h1>
-    <p>This page doesn't exist · Такой страницы нет</p>
-    <a href="/">← Portfolio</a>
+    <h1>4<em>0</em>4</h1>
+    <p>This page doesn’t exist. · <span lang="ru">Такой страницы нет.</span></p>
+    <a class="btn" href="/">← Portfolio · <span lang="ru">Портфолио</span></a>
   </main>
+  <footer><span>flasqwe.github.io</span><span>EN / RU</span></footer>
 </body>
 </html>
