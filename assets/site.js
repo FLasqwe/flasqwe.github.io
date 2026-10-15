@@ -107,7 +107,7 @@
   // pa — фирменный цвет проекта (метка вкладки, полоска, лёгкий оттенок подиума); sb — фон/текст статус-бара телефона
   const WORK = [
     {
-      id: 'ognivo', kind: 'site', url: 'ognivo/', host: 'flasqwe.github.io/<b>ognivo</b>/', pa: '#e3743b', sb: ['#0b0a08', '#ffffff'],
+      id: 'ognivo', kind: 'site', url: 'ognivo/', host: 'flasqwe.github.io/<b>ognivo</b>/', pa: '#e3743b', pt: '#a84a18', sb: ['#0b0a08', '#ffffff'],
       chips: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'EN / RU'],
       en: { name: 'OGNIVO', tab: 'OGNIVO', idx: 'OGNIVO', sub: 'Restaurant', short: 'Restaurant', tag: 'Restaurant · wood-fired kitchen',
         desc: 'A dark, atmospheric site for a fine-dining restaurant where everything is cooked over open fire. The mood sells the table before the menu does.',
@@ -117,7 +117,7 @@
         feats: ['Живые искры поверх фото, кинематографичное появление', 'Меню на вкладках: дегустация, основное, вино и бар', 'Бронь столика с проверкой полей и подтверждением', 'История шефа, галерея, отзывы'] },
     },
     {
-      id: 'luma', kind: 'site', url: 'luma/', host: 'flasqwe.github.io/<b>luma</b>/', pa: '#14706a', sb: ['#f6f5f1', '#111111'],
+      id: 'luma', kind: 'site', url: 'luma/', host: 'flasqwe.github.io/<b>luma</b>/', pa: '#14706a', pt: '#14706a', sb: ['#f6f5f1', '#111111'],
       chips: ['HTML', 'CSS', 'JavaScript', 'Accessibility', 'EN / RU'],
       en: { name: 'LUMA Dental', tab: 'LUMA Dental', idx: 'LUMA Dental', sub: 'Dental clinic', short: 'Dental clinic', tag: 'Dental clinic · premium',
         desc: 'A calm, trustworthy site for a dental clinic that turns nervous visitors into booked patients — prices and free time slots are visible upfront.',
@@ -127,7 +127,7 @@
         feats: ['Калькулятор стоимости лечения с рассрочкой 0%', 'Слайдер «до / после» отбеливания', 'Запись с выбором врача и свободных окон', 'Статус «открыто / закрыто» по часам работы'] },
     },
     {
-      id: 'monolit', kind: 'site', url: 'monolit/', host: 'flasqwe.github.io/<b>monolit</b>/', pa: '#f5c400', sb: ['#131419', '#ffffff'],
+      id: 'monolit', kind: 'site', url: 'monolit/', host: 'flasqwe.github.io/<b>monolit</b>/', pa: '#f5c400', pt: '#806500', sb: ['#131419', '#ffffff'],
       chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'EN / RU'],
       en: { name: 'MONOLIT', tab: 'MONOLIT', idx: 'MONOLIT', sub: 'Construction', short: 'Construction', tag: 'Construction · design & build',
         desc: 'A bold industrial site for a construction company. Big numbers, a project portfolio and an instant cost estimate do the selling for B2B and private clients.',
@@ -138,7 +138,7 @@
     },
     {
       // Скриншоты сняты на локальной копии с вымышленными демо-данными; название бренда на скриншоте заменено на «Lead CRM»
-      id: 'crm', kind: 'product', host: 'crm · lead generation', pa: '#6c8bff',
+      id: 'crm', kind: 'product', host: 'crm · lead generation', pa: '#6c8bff', pt: '#3a55e0',
       chips: ['Node.js', 'PostgreSQL', 'Playwright', 'Email API', 'Open data'],
       en: { name: 'Lead CRM & parser', tab: 'Lead CRM', idx: 'Lead CRM & parser', sub: 'B2B · private', short: 'Real product', tag: 'B2B · CRM + parser',
         desc: 'An internal tool for cold outreach: finds companies by niche and city, collects contacts and decision makers, scores leads and runs email campaigns — all in one panel.',
@@ -148,7 +148,7 @@
         feats: ['Поиск компаний в 120 странах по открытым картам', 'Контакты и ЛПР с сайтов компаний и из гос. реестров', 'Скоринг лидов 0–100 с сигналами «готов покупать»', 'Рассылки с прогревом домена, автонапоминаниями и инбоксом', 'Канбан-воронка, дашборд аналитики, доступ для команды'] },
     },
     {
-      id: 'bots', kind: 'bots', pa: '#2aabee',
+      id: 'bots', kind: 'bots', pa: '#2aabee', pt: '#086b9e',
       chips: ['Telegram Bot API', 'Node.js', 'Playwright', 'PostgreSQL', 'CSV / Sheets'],
       en: { name: 'Telegram bots &\u00a0parsers', tab: 'Bots &\u00a0parsers', idx: 'Telegram bots &\u00a0parsers', sub: 'Automation', short: 'Automation', tag: 'Automation · beyond websites',
         desc: 'A website brings people in. Automation keeps them: bots that book and remind, apps that run the business, parsers that find new clients.' },
@@ -325,12 +325,12 @@
   // ── Сборка вкладок и панелей (один раз) ────────────────
   function buildShowcase() {
     tabsEl.innerHTML = WORK.map((w, i) => `
-      <button class="tab" type="button" role="tab" id="tab-${w.id}" aria-controls="panel-${w.id}" aria-selected="false" tabindex="-1" data-tab="${w.id}" style="--pa:${w.pa}">
+      <button class="tab" type="button" role="tab" id="tab-${w.id}" aria-controls="panel-${w.id}" aria-selected="false" tabindex="-1" data-tab="${w.id}" style="--pa:${w.pa};--pt:${w.pt}">
         <span class="tab__top"><span class="tab__no">0${i + 1}</span><span class="tab__kind"></span></span><span class="tab__name"></span><span class="tab__sub"></span>
       </button>`).join('') + '<span class="tabs__bar" aria-hidden="true"></span>';
 
     panelsEl.innerHTML = WORK.map((w) => `
-      <section class="panel" role="tabpanel" id="panel-${w.id}" aria-labelledby="tab-${w.id}" tabindex="0" data-panel="${w.id}" style="--pa:${w.pa}" hidden>
+      <section class="panel" role="tabpanel" id="panel-${w.id}" aria-labelledby="tab-${w.id}" tabindex="0" data-panel="${w.id}" style="--pa:${w.pa};--pt:${w.pt}" hidden>
         <div class="info" data-info></div>
         ${stageMarkup(w)}
         ${w.kind === 'bots' ? '<div class="caps" data-caps></div>' : ''}
@@ -371,7 +371,7 @@
   stackedMq.addEventListener('change', placeInfo);
 
   function stageMarkup(w) {
-    const crops = '<i class="crop crop--tl"></i><i class="crop crop--tr"></i><i class="crop crop--bl"></i><i class="crop crop--br"></i>';
+    const crops = '<i class="crop crop--tl"></i><i class="crop crop--tr"></i><i class="crop crop--bl"></i><i class="crop crop--br"></i><i class="ring" aria-hidden="true"></i>';
     const narrow = (key) => `<span class="stage__narrow"><b data-name></b> · <span data-t="${key}"></span></span>`;
     if (w.kind === 'site') {
       return `<div class="stage stage--site" data-mode="${previewMode}" style="--sbg:${w.sb[0]};--sfg:${w.sb[1]}">
@@ -766,7 +766,7 @@
     $('[data-render="index"]').innerHTML = WORK.map((w, i) => {
       const d = w[lang];
       const thumb = w.kind === 'bots' ? BOTS_THUMB : `<img src="${thumbSrc(w)}" width="320" height="200" alt="" decoding="async">`;
-      return `<li><a href="#work-${w.id}" data-peek-id="${w.id}"><span class="index__no">0${i + 1}</span><span class="index__thumb" aria-hidden="true">${thumb}</span><span class="index__name">${esc(d.idx)}</span><span class="index__tag">${esc(d.short)}</span><span class="index__arrow" aria-hidden="true">→</span></a></li>`;
+      return `<li><a href="#work-${w.id}" data-peek-id="${w.id}" style="--pa:${w.pa};--pt:${w.pt}"><span class="index__no">0${i + 1}</span><span class="index__thumb" aria-hidden="true">${thumb}</span><span class="index__name">${esc(d.idx)}</span><span class="index__tag">${esc(d.short)}</span><span class="index__arrow" aria-hidden="true">→</span></a></li>`;
     }).join('');
   }
   const peek = $('[data-peek]');
@@ -997,12 +997,12 @@
     walk(el);
   }
 
-  // ── Тема: светлая по умолчанию, тёмная — по кнопке (запоминается) ──
+  // ── Тема: тёмная по умолчанию, светлая — по кнопке (запоминается) ──
   const themeMeta = $('meta[name="theme-color"]');
-  const isDark = () => root.getAttribute('data-theme') === 'dark';
+  const isDark = () => root.getAttribute('data-theme') !== 'light';
   function syncThemeUI() {
     const dark = isDark();
-    themeMeta.setAttribute('content', dark ? '#131211' : '#f4f2ec');
+    themeMeta.setAttribute('content', dark ? '#0a0a0f' : '#f4f2ec');
     $$('[data-theme-toggle]').forEach((b) => {
       if (!$('[data-theme-label]', b)) b.setAttribute('aria-label', t(dark ? 'theme.toLight' : 'theme.toDark'));
     });
@@ -1011,7 +1011,7 @@
   function toggleTheme() {
     const next = isDark() ? 'light' : 'dark';
     const apply = () => {
-      if (next === 'dark') root.setAttribute('data-theme', 'dark'); else root.removeAttribute('data-theme');
+      root.setAttribute('data-theme', next);
       store.set('eg-theme', next);
       syncThemeUI();
     };
@@ -1154,9 +1154,28 @@
   const reveal = () => {
     if (hero.classList.contains('is-ready')) return;
     if (!reduceMotion) {
-      splitWords($('.hero__title'));
+      const title = $('.hero__title');
+      splitWords(title);
+      // Градиентная фраза: каждому слову — свой кусок одного общего градиента (как у цельного <em>)
+      const em = $('em', title);
+      if (em) {
+        const total = [...em.getClientRects()].reduce((a, r) => a + r.width, 0);
+        let acc = 0, prevRight = null, prevTop = null;
+        $$('.wd', em).forEach((w) => {
+          const r = w.getBoundingClientRect();
+          if (prevRight !== null) acc += Math.abs(r.top - prevTop) < 2 ? r.left - prevRight : 0;
+          w.style.setProperty('--gw', `${total.toFixed(1)}px`);
+          w.style.setProperty('--gx', `${(-acc).toFixed(1)}px`);
+          acc += r.width; prevRight = r.right; prevTop = r.top;
+        });
+      }
       hero.classList.add('is-animating');
-      setTimeout(() => hero.classList.remove('is-animating'), 2600);
+      // После появления слова снова становятся обычным текстом — градиент рисует сам <em>, цельно
+      setTimeout(() => {
+        hero.classList.remove('is-animating');
+        $$('.wd', title).forEach((w) => w.replaceWith(w.textContent));
+        title.normalize();
+      }, 2600);
     }
     hero.classList.add('is-ready');
   };
@@ -1192,4 +1211,45 @@
   // Плавная прокрутка — только после первой отрисовки: ссылка вида /#contact открывается сразу на месте
   const smoothOn = () => setTimeout(() => root.classList.add('is-smooth'), 400);
   if (document.readyState === 'complete') smoothOn(); else window.addEventListener('load', smoothOn, { once: true });
+})();
+
+// ── «Neon ink»: полоса прогресса чтения и «магнитные» главные кнопки ──
+(() => {
+  const bar = document.querySelector('[data-progress]');
+  if (bar) {
+    let raf = 0;
+    const upd = () => {
+      raf = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : 0);
+    };
+    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    window.addEventListener('resize', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    upd();
+  }
+  // Только мышь и без «уменьшения движения»: кнопка слегка тянется за курсором
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const MAX = 8;
+  document.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse' || !fine.matches || still.matches) return;
+    const b = e.target.closest && e.target.closest('.btn--accent, .btn--white, .hdr__cta');
+    document.querySelectorAll('.btn.is-mag').forEach((x) => { if (x !== b) { x.classList.remove('is-mag'); x.style.translate = ''; } });
+    if (!b) return;
+    const r = b.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+    const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+    b.classList.add('is-mag');
+    b.style.translate = `${(dx * MAX).toFixed(1)}px ${(dy * MAX * 0.6).toFixed(1)}px`;
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => document.querySelectorAll('.btn.is-mag').forEach((x) => { x.classList.remove('is-mag'); x.style.translate = ''; }));
+})();
+
+// ── Анимации «Neon ink» работают только пока секция на экране (иначе — пауза, без перерисовок) ──
+(() => {
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.target.classList.toggle('is-off', !e.isIntersecting));
+  }, { rootMargin: '80px 0px' });
+  document.querySelectorAll('.hero, .floor, [data-tabs], .contact').forEach((el) => { el.classList.add('is-off'); io.observe(el); });
 })();

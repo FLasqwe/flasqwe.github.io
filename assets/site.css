@@ -1,6 +1,6 @@
 /* Портфолио Ekimov Gregory — «Swiss editorial».
    Тёплый off-white, почти чёрный шрифт, один акцент (ультрамарин), строгая сетка, тонкие линейки.
-   Тёмная тема — по кнопке (data-theme="dark" на <html>), по умолчанию светлая. */
+   Тёмная тема — по умолчанию; светлая — по кнопке (data-theme="light" на <html>, запоминается в localStorage 'eg-theme'). */
 
 :root {
   --bg: #f4f2ec;
@@ -34,6 +34,9 @@
   --tg-kb-ink: #2481cc;
   --tg-me: #2481cc;
   --ill: #111111;
+  --g-1: #2541f5; --g-2: #7c3aed; --g-3: #d12a77;
+  --gf-1: #2f4cff; --gf-2: #7c3aed; --gf-3: #d12a77;
+  --glow: .28;
 
   --sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -45,32 +48,35 @@
   --tab-gap: 12px;
   --ease: cubic-bezier(.2, .75, .1, 1);
   --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --grad: linear-gradient(90deg, var(--g-1), var(--g-2) 50%, var(--g-3));
+  --grad-f: linear-gradient(100deg, var(--gf-1), var(--gf-2) 52%, var(--gf-3));
   color-scheme: light;
 }
 
-:root[data-theme="dark"] {
-  --bg: #131211;
-  --bg-2: #1b1a18;
-  --bg-3: #24221f;
-  --paper: #1f1d1b;
-  --ink: #efede7;
-  --ink-2: #c9c5bc;
-  --muted: #938f86;
-  --rule: rgba(239, 237, 231, .11);
-  --rule-2: rgba(239, 237, 231, .21);
-  --accent: #3550ff;
-  --accent-fg: #8d9dff;
-  --accent-ink: #aab6ff;
-  --accent-soft: rgba(141, 157, 255, .08);
-  --ok: #3ecf7a;
+:root:not([data-theme="light"]) {
+  /* «Neon ink»: почти чёрный с холодным подтоном, белый текст, одна электрическая градиентная подпись */
+  --bg: #0a0a0f;
+  --bg-2: #111118;
+  --bg-3: #191922;
+  --paper: #14141c;
+  --ink: #f3f2f8;
+  --ink-2: #c3c2cf;
+  --muted: #8f8e9e;
+  --rule: rgba(243, 242, 248, .1);
+  --rule-2: rgba(243, 242, 248, .2);
+  --accent: #4b5cff;
+  --accent-fg: #a3adff;
+  --accent-ink: #c2c8ff;
+  --accent-soft: rgba(139, 120, 255, .09);
+  --ok: #3ee08a;
   --sh: 0 0 0;
-  --device: #1f1d1b;
-  --chrome: #272522;
-  --chrome-dot: #403c37;
-  --dots: rgba(239, 237, 231, .065);
-  --phone: #050505;
-  --phone-ring: rgba(239, 237, 231, .16);
-  --contact-bg: #2a42ec;
+  --device: #14141c;
+  --chrome: #1b1b25;
+  --chrome-dot: #34343f;
+  --dots: rgba(243, 242, 248, .06);
+  --phone: #050507;
+  --phone-ring: rgba(243, 242, 248, .16);
+  --contact-bg: #0b0b14;
   --tg-bg: #17212b;
   --tg-body: #0e1621;
   --tg-dots: rgba(255, 255, 255, .035);
@@ -79,7 +85,11 @@
   --tg-kb: rgba(255, 255, 255, .07);
   --tg-kb-ink: #71bdf2;
   --tg-me: #2b5f8f;
-  --ill: #efede7;
+  --ill: #f3f2f8;
+  /* Подпись: для текста — светлые точки, для заливок под белым текстом — глубокие */
+  --g-1: #6f8bff; --g-2: #a77bff; --g-3: #ff6fb1;
+  --gf-1: #3b5bff; --gf-2: #7c3aed; --gf-3: #d62a7a;
+  --glow: .55;
   color-scheme: dark;
 }
 
@@ -162,8 +172,8 @@ em { font-style: normal; }
 .theme-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule-2); color: var(--ink-2); flex: none; transition: background-color .25s, color .25s, border-color .25s; }
 .theme-btn:hover { border-color: var(--ink); color: var(--ink); }
 .theme-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.theme-btn .i-sun, :root[data-theme="dark"] .theme-btn .i-moon { display: none; }
-:root[data-theme="dark"] .theme-btn .i-sun { display: block; }
+.theme-btn .i-sun, :root:not([data-theme="light"]) .theme-btn .i-moon { display: none; }
+:root:not([data-theme="light"]) .theme-btn .i-sun { display: block; }
 .menu-btn { display: none; position: relative; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--rule-2); flex: none; }
 .menu-btn i { position: absolute; left: 12px; right: 12px; height: 1.5px; background: var(--ink); transition: transform .35s var(--ease); }
 .menu-btn i:nth-of-type(1) { top: 16px; }
@@ -360,7 +370,7 @@ em { font-style: normal; }
 .seg button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
 .seg button[aria-pressed="true"] { background: var(--paper); color: var(--ink); box-shadow: 0 1px 2px rgb(var(--sh) / .1), 0 0 0 1px rgb(var(--sh) / .05); }
 .seg button:not([aria-pressed="true"]):hover { color: var(--ink); }
-:root[data-theme="dark"] .seg button[aria-pressed="true"] { background: rgba(239, 237, 231, .1); box-shadow: 0 0 0 1px var(--rule-2); }
+:root:not([data-theme="light"]) .seg button[aria-pressed="true"] { background: rgba(239, 237, 231, .1); box-shadow: 0 0 0 1px var(--rule-2); }
 .stage__open { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--rule-2); flex: none; transition: background-color .3s, color .3s, border-color .3s; }
 .stage__open:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .stage__open svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
@@ -388,7 +398,7 @@ em { font-style: normal; }
   box-shadow: 0 0 0 1px rgb(var(--sh) / .09), 0 2px 4px rgb(var(--sh) / .04), 0 26px 50px -24px rgb(var(--sh) / .32), 0 70px 100px -60px rgb(var(--sh) / .35);
   transition: padding .6s var(--ease), border-radius .6s var(--ease), background-color .6s var(--ease);
 }
-:root[data-theme="dark"] .device { box-shadow: 0 0 0 1px rgba(239, 237, 231, .1), 0 26px 50px -24px rgba(0, 0, 0, .6), 0 70px 100px -60px rgba(0, 0, 0, .7); }
+:root:not([data-theme="light"]) .device { box-shadow: 0 0 0 1px rgba(239, 237, 231, .1), 0 26px 50px -24px rgba(0, 0, 0, .6), 0 70px 100px -60px rgba(0, 0, 0, .7); }
 .device__chrome { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; background: var(--chrome); border-bottom: 1px solid var(--rule); border-radius: 10px 10px 0 0; }
 .device__chrome i { width: 10px; height: 10px; border-radius: 50%; background: var(--chrome-dot); flex: none; }
 .device__url { flex: 1; min-width: 0; margin-right: 36px; text-align: center; font: 400 11.5px/1 var(--mono); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -443,7 +453,7 @@ em { font-style: normal; }
 .stage[data-mode="mobile"] .device__screen { border-radius: 37px; }
 /* Боковые кнопки телефона */
 .device::before, .device::after { content: ''; position: absolute; width: 3px; border-radius: 2px; background: #1c1c1c; opacity: 0; transition: opacity .4s; }
-:root[data-theme="dark"] .device::before, :root[data-theme="dark"] .device::after { background: #34312d; }
+:root:not([data-theme="light"]) .device::before, :root:not([data-theme="light"]) .device::after { background: #34312d; }
 .device::before { left: -3px; top: 22%; height: 9%; }
 .device::after { right: -3px; top: 28%; height: 13%; }
 .stage[data-mode="mobile"] .device::before, .stage[data-mode="mobile"] .device::after { opacity: 1; }
@@ -479,9 +489,9 @@ em { font-style: normal; }
 /* Боты и парсеры: чат + терминал */
 .bots { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 18px; width: 100%; align-items: stretch; }
 .tg { display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; background: var(--tg-bg); color: var(--tg-text); box-shadow: 0 0 0 1px rgb(var(--sh) / .08), 0 30px 60px -30px rgb(var(--sh) / .35); }
-:root[data-theme="dark"] .tg { box-shadow: 0 0 0 1px rgba(255, 255, 255, .07), 0 30px 60px -30px rgba(0, 0, 0, .7); }
+:root:not([data-theme="light"]) .tg { box-shadow: 0 0 0 1px rgba(255, 255, 255, .07), 0 30px 60px -30px rgba(0, 0, 0, .7); }
 .tg__head { display: flex; align-items: center; gap: 11px; padding: 12px 16px; border-bottom: 1px solid rgb(var(--sh) / .07); flex: none; }
-:root[data-theme="dark"] .tg__head { border-color: rgba(255, 255, 255, .06); }
+:root:not([data-theme="light"]) .tg__head { border-color: rgba(255, 255, 255, .06); }
 .tg__ava { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #2aabee; color: #fff; font-weight: 600; font-size: 15px; flex: none; }
 .tg__head b { display: block; font-size: 14.5px; font-weight: 600; letter-spacing: -.01em; }
 .tg__head small { display: block; font-size: 12.5px; color: #8a99a6; }
@@ -504,7 +514,7 @@ em { font-style: normal; }
 @keyframes blink { 50% { opacity: .25; } }
 .bots__right { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .term { flex: 1 1 auto; display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; background: #121212; box-shadow: 0 0 0 1px rgb(var(--sh) / .2), 0 30px 60px -30px rgb(var(--sh) / .5); }
-:root[data-theme="dark"] .term { background: #0c0c0c; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 30px 60px -30px rgba(0, 0, 0, .7); }
+:root:not([data-theme="light"]) .term { background: #0c0c0c; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 30px 60px -30px rgba(0, 0, 0, .7); }
 .term__bar { position: relative; display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; background: #1c1c1c; flex: none; }
 .term__bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a3a3a; }
 .term__bar span { position: absolute; left: 50%; transform: translateX(-50%); font: 400 11.5px/1 var(--mono); color: #8a8780; white-space: nowrap; }
@@ -770,3 +780,161 @@ em { font-style: normal; }
   .ticker__track { animation: none; }
   .device__pill i { animation: none; }
 }
+
+/* ══ «Neon ink» — фирменный градиент (синий → фиолетовый → розовый), дозированно ══════════════ */
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes spinAng { to { --ang: 360deg; } }
+@keyframes gshift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+::selection { background: #7c3aed; color: #fff; }
+
+/* Полоса прогресса чтения */
+.progress { position: fixed; left: 0; right: 0; top: 0; z-index: 60; height: 2px; pointer-events: none; }
+.progress i { display: block; height: 100%; background: var(--grad); clip-path: inset(0 calc(100% - var(--p, 0) * 100%) 0 0); }
+
+/* Мелкие повторы подписи */
+.brand__mark::after { background: var(--grad); width: 6px; height: 6px; border-radius: 1px; }
+.ticker__track span::after, .prin__list b::before { border-radius: 1px; }
+.ticker__track span:nth-child(3n+1)::after, .prin__list li:nth-child(3n+1) b::before { background: var(--g-1); }
+.ticker__track span:nth-child(3n+2)::after, .prin__list li:nth-child(3n+2) b::before { background: var(--g-2); }
+.ticker__track span:nth-child(3n)::after, .prin__list li:nth-child(3n) b::before { background: var(--g-3); }
+.step::before { background: var(--grad); }
+.badge--real { background: var(--grad-f); border-color: transparent; }
+
+/* Градиентный текст — только две главные фразы (первый экран и контакт). Без поддержки background-clip: text
+   остаётся обычный цвет; в режиме высокой контрастности — системный цвет текста. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero__title em, .hero__title em .wd, .contact__title em, .stats div:last-child b {
+    background-image: var(--grad); -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+  .hero__title em { padding-right: .08em; }
+  /* Слова первого экрана (пока идёт появление): один общий градиент на всю фразу — смещение и ширину задаёт скрипт;
+     поле снизу/справа, чтобы хвост «g/у» и курсивный вылет не обрезались и не повторяли градиент */
+  .hero__title em .wd {
+    background-repeat: no-repeat; background-size: var(--gw, 100%) 100%; background-position: var(--gx, 0px) 0;
+    padding: 0 .12em .3em 0; margin: 0 -.12em -.3em 0;
+  }
+  .stats div:last-child b { justify-self: start; width: fit-content; }
+}
+@media (forced-colors: active) {
+  .hero__title em, .hero__title em .wd, .contact__title em, .stats div:last-child b { color: CanvasText; -webkit-text-fill-color: currentColor; background: none; }
+  .progress, .hero::before, .contact::before, .contact::after, .floor .ring, .tab::after { display: none; }
+}
+
+/* Сияние за первым экраном */
+.hero { position: relative; isolation: isolate; overflow-x: clip; }
+.hero::before {
+  content: ''; position: absolute; z-index: -1; right: 0; top: -40px; width: min(62vw, 860px); aspect-ratio: 1.25; pointer-events: none;
+  background:
+    radial-gradient(closest-side at 38% 42%, rgba(75, 92, 255, .26), transparent),
+    radial-gradient(closest-side at 66% 56%, rgba(139, 92, 246, .2), transparent),
+    radial-gradient(closest-side at 58% 26%, rgba(255, 92, 168, .13), transparent);
+  opacity: var(--aurora, 1); animation: aurora 22s ease-in-out infinite alternate;
+  /* верх сияния плавно гаснет — под непрозрачной шапкой не остаётся резкой границы */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 40px, #000 220px); mask-image: linear-gradient(180deg, transparent 0, transparent 40px, #000 220px);
+}
+:root[data-theme="light"] .hero::before { --aurora: .55; }
+@keyframes aurora { to { transform: translate3d(-6%, 5%, 0) rotate(8deg) scale(1.06); } }
+
+/* Статус «Беру проекты» — светящаяся точка */
+.status i { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 16%, transparent), 0 0 14px 1px color-mix(in srgb, var(--ok) 75%, transparent); }
+
+/* Кнопки: главная — градиентная заливка с переливом; «магнитные» (смещение задаёт скрипт) */
+.btn { transition: background-color .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease), translate .6s var(--ease), background-position .7s var(--ease), box-shadow .4s var(--ease); }
+.btn.is-mag { transition-property: background-color, color, border-color, transform, background-position, box-shadow; }
+.btn--accent, .btn--accent:hover, .mnav__cta {
+  background: var(--grad-f); background-size: 180% 100%; background-position: 0% 50%; color: #fff;
+  box-shadow: 0 12px 32px -14px rgba(124, 58, 237, var(--glow));
+}
+.btn--accent:hover { background-position: 100% 50%; box-shadow: 0 16px 40px -12px rgba(214, 42, 122, var(--glow)), 0 0 0 1px rgba(255, 255, 255, .06) inset; }
+.btn--ink:hover { background: var(--grad-f); background-size: 180% 100%; color: #fff; }
+
+/* Указатель работ — подсветка строки градиентом */
+.index__list a::before { background: linear-gradient(90deg, rgba(75, 92, 255, .14), rgba(139, 92, 246, .09) 55%, rgba(255, 92, 168, .05)); }
+:root[data-theme="light"] .index__list a::before { background: linear-gradient(90deg, rgba(37, 65, 245, .08), rgba(124, 58, 237, .05) 55%, rgba(209, 42, 119, .03)); }
+
+/* Вкладки: бегущая градиентная планка над активной; свечение и подсветка — цветом проекта */
+.tabs__bar { background: var(--grad); background-size: 200% 100%; animation: gshift 5s ease-in-out infinite alternate; box-shadow: 0 0 16px 0 color-mix(in srgb, var(--bar, var(--accent)) calc(var(--glow) * 130%), transparent); }
+.tab { --tab-glow: 26%; isolation: isolate; }
+:root[data-theme="light"] .tab { --tab-glow: 15%; }
+.tab::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(85% 110% at 50% 118%, color-mix(in srgb, var(--pa) var(--tab-glow), transparent), transparent 72%);
+  opacity: 0; transition: opacity .45s var(--ease);
+}
+.tab:hover::after { opacity: .6; }
+.tab[aria-selected="true"] { background: transparent; }
+.tab[aria-selected="true"]::after { opacity: 1; }
+.tab:hover .tab__no::before { background: var(--pa); opacity: 1; }
+:root:not([data-theme="light"]) .tab[aria-selected="true"] .tab__no::before { box-shadow: 0 0 10px 1px color-mix(in srgb, var(--pa) 80%, transparent); }
+
+/* Цвет проекта в тексте: в тёмной теме — осветлённый, в светлой — затемнённый вариант (контраст ≥4.5) */
+.tab, .panel, .index__list a { --pc: color-mix(in srgb, var(--pa) 80%, #fff); }
+:root[data-theme="light"] :is(.tab, .panel, .index__list a) { --pc: var(--pt, var(--accent-fg)); }
+.info__tag, .feats li::before, .index__no, .index__list a:hover .index__no { color: var(--pc); }
+
+/* Сцена с живым превью: тонкая вращающаяся градиентная рамка + свечение цветом проекта */
+.floor { border-radius: 14px; box-shadow: 0 40px 90px -50px color-mix(in srgb, var(--pa) 45%, transparent); }
+:root:not([data-theme="light"]) .floor {
+  box-shadow: 0 44px 100px -46px color-mix(in srgb, var(--pa) 55%, transparent);
+  background-image: radial-gradient(60% 65% at 50% 60%, color-mix(in srgb, var(--pa) 18%, transparent), transparent 72%), radial-gradient(var(--dots) 1px, transparent 1.2px);
+  background-size: 100% 100%, 20px 20px; background-position: 0 0, 10px 10px;
+}
+/* Рамка = маска толщиной 1px; внутри вращается (transform, на компоновщике — без перерисовки) квадрат с conic-градиентом */
+.floor .ring {
+  position: absolute; inset: 0; z-index: 2; padding: 1px; border-radius: inherit; pointer-events: none; overflow: hidden; container-type: size;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.floor .ring::before {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 150%; width: calc(hypot(100cqw, 100cqh) + 4px); aspect-ratio: 1;
+  background: conic-gradient(var(--g-1), var(--g-2), var(--g-3), rgba(139, 92, 246, .15) 62%, rgba(139, 92, 246, .15) 82%, var(--g-1));
+  transform: translate(-50%, -50%); animation: ringSpin 9s linear infinite;
+}
+@keyframes ringSpin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* Контакт: живой mesh-градиент на почти чёрном (в обеих темах) */
+.contact { --contact-bg: #0b0b14; position: relative; overflow: hidden; isolation: isolate; background: #0b0b14; }
+.contact::before {
+  content: ''; position: absolute; inset: -25%; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(38% 46% at 18% 24%, rgba(59, 91, 255, .58), transparent 70%),
+    radial-gradient(34% 42% at 84% 30%, rgba(214, 42, 122, .44), transparent 70%),
+    radial-gradient(44% 52% at 62% 86%, rgba(124, 58, 237, .52), transparent 70%),
+    radial-gradient(28% 36% at 42% 56%, rgba(75, 92, 255, .22), transparent 70%);
+  animation: mesh 26s ease-in-out infinite alternate;
+}
+.contact::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(rgba(255, 255, 255, .055) 1px, transparent 1.2px) 0 0 / 22px 22px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 85%); mask-image: linear-gradient(180deg, #000, transparent 85%); }
+@keyframes mesh { 50% { transform: translate3d(4%, -3%, 0) rotate(6deg) scale(1.05); } to { transform: translate3d(-3%, 4%, 0) rotate(-4deg) scale(1.08); } }
+.status--inv i { background: #3ee08a; box-shadow: 0 0 0 3px rgba(62, 224, 138, .18), 0 0 14px 1px rgba(62, 224, 138, .8); }
+.status--inv i::after { border-color: #3ee08a; }
+.btn--white { color: #0b0b14; }
+.btn--white:hover { background: var(--grad-f); background-size: 180% 100%; color: #fff; box-shadow: 0 16px 40px -12px rgba(214, 42, 122, .6); }
+.btn--wline.is-done { color: #0b0b14; }
+.mail__link::after { background: linear-gradient(90deg, #6f8bff, #a77bff 50%, #ff6fb1); height: 3px; border-radius: 2px; }
+
+@media (max-width: 860px) {
+  /* Лента вкладок-чипов: активный — подсветка и рамка цветом проекта; рамка один раз «обегает» чип при выборе */
+  .tab::after { display: none; }
+  .tab[aria-selected="true"] {
+    --chip: color-mix(in srgb, var(--pa) 16%, var(--bg));
+    border-color: transparent; color: var(--ink);
+    background: linear-gradient(var(--chip), var(--chip)) padding-box, conic-gradient(from var(--ang), var(--pa), color-mix(in srgb, var(--pa) 35%, transparent) 45%, var(--pa)) border-box;
+    box-shadow: 0 6px 20px -8px color-mix(in srgb, var(--pa) 70%, transparent);
+    animation: spinAng 1.4s var(--ease) 1 both;
+  }
+  :root[data-theme="light"] .tab[aria-selected="true"] { --chip: color-mix(in srgb, var(--pa) 10%, var(--paper)); }
+  .tab[aria-selected="true"] .tab__no { color: var(--ink); }
+  .floor { border-radius: 12px; }
+  .hero::before { width: 120vw; right: -30vw; top: -60px; opacity: calc(var(--aurora, 1) * .8); }
+}
+
+/* Пауза бесконечных анимаций, пока секция вне экрана (класс ставит скрипт); will-change — только пока идёт движение */
+.is-off::before, .floor.is-off .ring::before, .tabs.is-off .tabs__bar { animation-play-state: paused; }
+.hero:not(.is-off)::before, .contact:not(.is-off)::before { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .contact::before, .floor .ring::before, .tabs__bar, .tab[aria-selected="true"] { animation: none !important; will-change: auto !important; }
+  .btn { translate: none !important; }
+}
+

@@ -2,7 +2,7 @@
 
 Live: **https://flasqwe.github.io**
 
-Websites, Telegram bots, web apps and parsers for business. A one-page portfolio in a light "Swiss editorial" style. A dark theme is optional and remembered per visitor. Everything is in English and Russian.
+Websites, Telegram bots, web apps and parsers for business. A one-page portfolio in a "Swiss editorial" style with a dark theme by default (blue-violet-pink gradient accents, each project glows in its own colour). A light theme is one click away and remembered per visitor. Everything is in English and Russian.
 
 ## What's on the page
 
@@ -26,7 +26,7 @@ Demo projects are concepts: company names, people, addresses and reviews are fic
 
 ```
 index.html          portfolio page
-assets/site.css     styles (light + optional dark theme)
+assets/site.css     styles (dark by default + optional light theme)
 assets/site.js      EN/RU dictionary, showcase tabs, live previews, bot/parser animation, email
 assets/shots/       screenshots used as posters and previews
 assets/thumbs/      small thumbnails for the index of work
