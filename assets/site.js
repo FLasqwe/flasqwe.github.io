@@ -1,8 +1,9 @@
-// Портфолио Ekimov Gregory — «Swiss editorial».
-// Язык EN/RU, тема (светлая по умолчанию / тёмная), витрина работ на вкладках (живые iframe демо),
-// чат-бот и терминал парсера, email.
+// Портфолио Ekimov Gregory — «Monochrome».
+// Язык EN/RU, заставка и словесный знак, витрина работ на вкладках (живые iframe демо),
+// чат-бот и терминал парсера, email. Тема одна: чёрные и белые секции чередуются.
 (() => {
   'use strict';
+  let holdHdr = () => {}; // шапка не прячется при переходе по якорю (задаётся ниже)
 
   const root = document.documentElement;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,20 +26,21 @@
   const T = {
     en: {
       skip: 'Skip to work',
-      'nav.work': 'Work', 'nav.bots': 'Bots & parsers', 'nav.services': 'Services', 'nav.process': 'Process', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menu': 'Menu',
+      'nav.work': 'Work', 'nav.bots': 'Bots & parsers', 'nav.services': 'Services', 'nav.process': 'Process', 'nav.contact': 'Contact', 'nav.cta': 'Start a project', 'nav.menu': 'Menu', 'nav.close': 'Close', 'nav.index': 'Index', 'nav.open': 'Open menu', 'nav.shut': 'Close menu',
       'a.home': 'Ekimov Gregory — home', 'a.main': 'Main', 'a.lang': 'Language', 'a.mobile': 'Menu',
-      'theme.dark': 'Dark theme', 'theme.light': 'Light theme', 'theme.toDark': 'Switch to dark theme', 'theme.toLight': 'Switch to light theme',
       'hero.role': 'Design & development', 'hero.what': 'Websites · Bots · Apps · Parsers', 'hero.langs': 'Working in English & Russian',
       'hero.status': 'Available for new projects',
-      'hero.title': 'Websites, bots &amp; apps that <em>bring clients</em>.',
+      'hero.title': 'Websites, bots &amp; apps<br>that bring clients.',
       'hero.lead': 'I’m Gregory — I build websites, Telegram bots, web apps and parsers for business: booking, calculators, lead forms, automation and data collection.',
-      'hero.cta1': 'See the work', 'hero.cta2': 'Discuss your project',
+      'hero.cta': 'Discuss a project',
+      'about.label': 'The approach', 'about.title': 'A website isn’t a business card.<br>It’s a tool that brings clients.',
       'hero.index': 'Index of work', 'hero.indexHint': 'Click — opens below',
       'hero.for': '<b>For any business</b> — restaurants, clinics, construction, beauty, real estate, retail and\u00a0services',
-      ticker: ['Websites', 'Multi-page sites', 'Landing pages', 'Telegram bots', 'Web apps & PWA', 'Parsers', 'CRM & admin panels', 'Online booking', 'Calculators', 'Integrations'],
+      'work.spread': 'Works', 'work.end': 'Want one like this', marquee: 'let’s talk', fab: 'Write',
       'work.kicker': 'Selected work', 'work.meta': '3 live demos · 1 real product · bots & parsers',
-      'work.title': 'Click a tab. <em>See it live.</em>',
-      'work.lead': 'Three concept websites run right inside the frame — scroll them, open the menu, try the calculators and booking. Next to them: a real CRM I built and the bots and parsers I make.',
+      'work.title': 'Click a tab. See it live.',
+      'work.lead': 'Three concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
+      'about.cap': 'Real product', 'marquee.static': 'let’s talk —',
       'work.keys': '← → to switch', 'work.tabs': 'Work',
       'kind.concept': 'Concept', 'kind.product': 'Product', 'kind.cap': 'Capabilities',
       'stage.live': 'Live demo', 'stage.conceptLive': 'Concept · live demo', 'stage.desktop': 'Desktop', 'stage.mobile': 'Mobile', 'stage.size': 'Preview size',
@@ -51,11 +53,11 @@
       'case.feats': 'What’s inside', 'case.stack': 'Built with', 'case.similar': 'I want a site like this',
       'case.ask': 'Request a demo', 'case.private': 'Private tool — demo on request', 'case.discuss': 'Discuss your bot or parser',
       'bots.tg': 'Telegram bots', 'bots.parse': 'Parsers & data collection', 'bots.status': 'bot', 'bots.name': 'LUMA Booking Bot',
-      'svc.kicker': 'Services', 'svc.meta': 'From one page to a working tool', 'svc.title': 'What I can <em>build for you</em>',
+      'svc.kicker': 'Services', 'svc.meta': 'From one page to a working tool', 'svc.title': 'What I can<br>build for you.',
       'svc.lead': 'From a single landing page to a full multi-page website, a bot or an internal tool — designed, built and launched by one person, start to finish.',
-      'proc.kicker': 'Process', 'proc.meta': '4 steps', 'proc.title': 'Clear steps, <em>no surprises</em>',
+      'proc.kicker': 'Process', 'proc.meta': '4 steps', 'proc.title': 'Clear steps,<br>no surprises.',
       'proc.lead': 'You always know what happens next — and you watch the project grow on a live\u00a0link.', 'proc.principles': 'Principles',
-      'ct.kicker': 'Contact', 'ct.title': 'Have a project<br> in mind? <em>Let’s&nbsp;talk.</em>',
+      'ct.kicker': 'Contact', 'ct.title': 'Have a&nbsp;project in&nbsp;mind?<br>Let’s talk.',
       'ct.lead': 'Tell me about your business and what the site, bot or app should do.',
       facts: ['I reply with ideas, a plan and a price', 'English / <span lang="ru">Русский</span>', 'Files and domain stay yours'],
       'ct.copy': 'Copy email', 'ct.copied': 'Copied ✓', 'ct.selected': 'Selected — copy manually', 'ct.write': 'Write an email', 'ct.subject': 'Project inquiry',
@@ -64,20 +66,21 @@
     },
     ru: {
       skip: 'Перейти к работам',
-      'nav.work': 'Работы', 'nav.bots': 'Боты и парсеры', 'nav.services': 'Услуги', 'nav.process': 'Процесс', 'nav.contact': 'Контакты', 'nav.cta': 'Обсудить проект', 'nav.menu': 'Меню',
+      'nav.work': 'Работы', 'nav.bots': 'Боты и парсеры', 'nav.services': 'Услуги', 'nav.process': 'Процесс', 'nav.contact': 'Контакты', 'nav.cta': 'Обсудить проект', 'nav.menu': 'Меню', 'nav.close': 'Закрыть', 'nav.index': 'Разделы', 'nav.open': 'Открыть меню', 'nav.shut': 'Закрыть меню',
       'a.home': 'Ekimov Gregory — на главную', 'a.main': 'Основное меню', 'a.lang': 'Язык', 'a.mobile': 'Меню',
-      'theme.dark': 'Тёмная тема', 'theme.light': 'Светлая тема', 'theme.toDark': 'Включить тёмную тему', 'theme.toLight': 'Включить светлую тему',
       'hero.role': 'Дизайн и разработка', 'hero.what': 'Сайты · Боты · Приложения · Парсеры', 'hero.langs': 'Работаю на русском и английском',
       'hero.status': 'Беру новые проекты',
-      'hero.title': 'Сайты, боты и приложения, которые <em>приводят клиентов</em>.',
+      'hero.title': 'Сайты, боты и приложения,<br>которые приводят клиентов.',
       'hero.lead': 'Я Григорий — делаю сайты, Telegram-ботов, веб-приложения и парсеры для бизнеса: онлайн-запись, калькуляторы, заявки, автоматизация и сбор данных.',
-      'hero.cta1': 'Смотреть работы', 'hero.cta2': 'Обсудить проект',
+      'hero.cta': 'Обсудить проект',
+      'about.label': 'Подход', 'about.title': 'Сайт — не визитка.<br>Это инструмент, который приводит клиентов.',
       'hero.index': 'Указатель работ', 'hero.indexHint': 'Нажмите — откроется ниже',
       'hero.for': '<b>Для любого бизнеса</b> — рестораны, клиники, стройка, салоны красоты, недвижимость, торговля и\u00a0услуги',
-      ticker: ['Сайты', 'Многостраничные сайты', 'Лендинги', 'Telegram-боты', 'Веб-приложения и PWA', 'Парсеры', 'CRM и админ-панели', 'Онлайн-запись', 'Калькуляторы', 'Интеграции'],
+      'work.spread': 'Работы', 'work.end': 'Хочу так же', marquee: 'давайте обсудим', fab: 'Написать',
       'work.kicker': 'Избранные работы', 'work.meta': '3 живых демо · 1 реальный продукт · боты и парсеры',
-      'work.title': 'Нажмите на вкладку. <em>Смотрите вживую.</em>',
-      'work.lead': 'Три концепт-сайта работают прямо внутри рамки — прокручивайте, открывайте меню, пробуйте калькуляторы и запись. Рядом — реальная CRM, которую я сделал, и боты с парсерами.',
+      'work.title': 'Нажмите на вкладку. Смотрите вживую.',
+      'work.lead': 'Три концепт-сайта работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
+      'about.cap': 'Реальный продукт', 'marquee.static': 'давайте обсудим',
       'work.keys': '← → переключение', 'work.tabs': 'Работы',
       'kind.concept': 'Концепт', 'kind.product': 'Продукт', 'kind.cap': 'Возможности',
       'stage.live': 'Живое демо', 'stage.conceptLive': 'Концепт · живое демо', 'stage.desktop': 'Компьютер', 'stage.mobile': 'Телефон', 'stage.size': 'Размер превью',
@@ -90,11 +93,11 @@
       'case.feats': 'Что внутри', 'case.stack': 'Технологии', 'case.similar': 'Хочу такой же',
       'case.ask': 'Запросить демо', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.discuss': 'Обсудить бота или парсер',
       'bots.tg': 'Telegram-боты', 'bots.parse': 'Парсеры и сбор данных', 'bots.status': 'бот', 'bots.name': 'LUMA · бот записи',
-      'svc.kicker': 'Услуги', 'svc.meta': 'От одной страницы до рабочего инструмента', 'svc.title': 'Что я могу <em>сделать для вас</em>',
+      'svc.kicker': 'Услуги', 'svc.meta': 'От одной страницы до рабочего инструмента', 'svc.title': 'Что я могу<br>сделать для вас.',
       'svc.lead': 'От одного лендинга до полного многостраничного сайта, бота или внутреннего инструмента — проектирую, делаю и запускаю сам, от начала до конца.',
-      'proc.kicker': 'Процесс', 'proc.meta': '4 шага', 'proc.title': 'Понятные шаги, <em>без сюрпризов</em>',
+      'proc.kicker': 'Процесс', 'proc.meta': '4 шага', 'proc.title': 'Понятные шаги,<br>без сюрпризов.',
       'proc.lead': 'Вы всегда знаете, что будет дальше, — и видите, как растёт проект, по живой\u00a0ссылке.', 'proc.principles': 'Принципы',
-      'ct.kicker': 'Контакты', 'ct.title': 'Есть задача?<br> <em>Давайте обсудим.</em>',
+      'ct.kicker': 'Контакты', 'ct.title': 'Есть задача?<br>Давайте обсудим.',
       'ct.lead': 'Расскажите о бизнесе и о том, что должен делать сайт, бот или приложение.',
       facts: ['Отвечу идеями, планом и ценой', '<span lang="en">English</span> / Русский', 'Файлы и домен остаются у вас'],
       'ct.copy': 'Скопировать', 'ct.copied': 'Скопировано ✓', 'ct.selected': 'Выделено — скопируйте вручную', 'ct.write': 'Написать письмо', 'ct.subject': 'Запрос по проекту',
@@ -109,30 +112,30 @@
     {
       id: 'ognivo', kind: 'site', url: 'ognivo/', host: 'flasqwe.github.io/<b>ognivo</b>/', pa: '#e3743b', pt: '#a84a18', sb: ['#0b0a08', '#ffffff'],
       chips: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'EN / RU'],
-      en: { name: 'OGNIVO', tab: 'OGNIVO', idx: 'OGNIVO', sub: 'Restaurant', short: 'Restaurant', tag: 'Restaurant · wood-fired kitchen',
+      en: { line: 'A restaurant that cooks over open fire.', name: 'OGNIVO', tab: 'OGNIVO', idx: 'OGNIVO', sub: 'Restaurant', short: 'Restaurant', tag: 'Restaurant · wood-fired kitchen',
         desc: 'A dark, atmospheric site for a fine-dining restaurant where everything is cooked over open fire. The mood sells the table before the menu does.',
         feats: ['Live sparks over the hero photo, cinematic intro', 'Tabbed menu: tasting set, à la carte, wine & bar', 'Table booking with validation and confirmation', 'Chef story, gallery, rotating reviews'] },
-      ru: { name: 'OGNIVO', tab: 'OGNIVO', idx: 'OGNIVO', sub: 'Ресторан', short: 'Ресторан', tag: 'Ресторан · кухня на живом огне',
+      ru: { line: 'Ресторан, где готовят на живом огне.', name: 'OGNIVO', tab: 'OGNIVO', idx: 'OGNIVO', sub: 'Ресторан', short: 'Ресторан', tag: 'Ресторан · кухня на живом огне',
         desc: 'Тёмный атмосферный сайт для ресторана высокой кухни, где всё готовят на открытом огне. Настроение продаёт столик раньше, чем меню.',
         feats: ['Живые искры поверх фото, кинематографичное появление', 'Меню на вкладках: дегустация, основное, вино и бар', 'Бронь столика с проверкой полей и подтверждением', 'История шефа, галерея, отзывы'] },
     },
     {
       id: 'luma', kind: 'site', url: 'luma/', host: 'flasqwe.github.io/<b>luma</b>/', pa: '#14706a', pt: '#14706a', sb: ['#f6f5f1', '#111111'],
       chips: ['HTML', 'CSS', 'JavaScript', 'Accessibility', 'EN / RU'],
-      en: { name: 'LUMA Dental', tab: 'LUMA Dental', idx: 'LUMA Dental', sub: 'Dental clinic', short: 'Dental clinic', tag: 'Dental clinic · premium',
+      en: { line: 'A calm clinic with prices upfront.', name: 'LUMA Dental', tab: 'LUMA Dental', idx: 'LUMA Dental', sub: 'Dental clinic', short: 'Dental clinic', tag: 'Dental clinic · premium',
         desc: 'A calm, trustworthy site for a dental clinic that turns nervous visitors into booked patients — prices and free time slots are visible upfront.',
         feats: ['Treatment cost calculator with 0% instalments', 'Drag-to-compare whitening before / after slider', 'Booking with doctor choice and live free slots', 'Open / closed status calculated from opening hours'] },
-      ru: { name: 'LUMA Dental', tab: 'LUMA Dental', idx: 'LUMA Dental', sub: 'Стоматология', short: 'Стоматология', tag: 'Стоматология · премиум',
+      ru: { line: 'Спокойная клиника с ценами сразу.', name: 'LUMA Dental', tab: 'LUMA Dental', idx: 'LUMA Dental', sub: 'Стоматология', short: 'Стоматология', tag: 'Стоматология · премиум',
         desc: 'Спокойный, вызывающий доверие сайт клиники, который превращает тревожных посетителей в записанных пациентов: цены и свободное время видны сразу.',
         feats: ['Калькулятор стоимости лечения с рассрочкой 0%', 'Слайдер «до / после» отбеливания', 'Запись с выбором врача и свободных окон', 'Статус «открыто / закрыто» по часам работы'] },
     },
     {
       id: 'monolit', kind: 'site', url: 'monolit/', host: 'flasqwe.github.io/<b>monolit</b>/', pa: '#f5c400', pt: '#806500', sb: ['#131419', '#ffffff'],
       chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'EN / RU'],
-      en: { name: 'MONOLIT', tab: 'MONOLIT', idx: 'MONOLIT', sub: 'Construction', short: 'Construction', tag: 'Construction · design & build',
+      en: { line: 'A builder with an instant estimate.', name: 'MONOLIT', tab: 'MONOLIT', idx: 'MONOLIT', sub: 'Construction', short: 'Construction', tag: 'Construction · design & build',
         desc: 'A bold industrial site for a construction company. Big numbers, a project portfolio and an instant cost estimate do the selling for B2B and private clients.',
         feats: ['Blueprint lines drawing over the hero photo', 'Filterable portfolio with project details', 'Cost & timeline estimator with a stage-by-stage breakdown', 'Lead form with drawings upload'] },
-      ru: { name: 'MONOLIT', tab: 'MONOLIT', idx: 'MONOLIT', sub: 'Строительство', short: 'Строительство', tag: 'Строительство · проектирование',
+      ru: { line: 'Стройка с мгновенной сметой.', name: 'MONOLIT', tab: 'MONOLIT', idx: 'MONOLIT', sub: 'Строительство', short: 'Строительство', tag: 'Строительство · проектирование',
         desc: 'Смелый индустриальный сайт строительной компании. Крупные цифры, портфолио объектов и мгновенная смета продают и B2B-, и частным клиентам.',
         feats: ['Чертёжные линии, прорисовывающиеся поверх фото', 'Портфолио с фильтрами и карточкой объекта', 'Калькулятор стоимости и сроков с разбивкой по этапам', 'Заявка с прикреплением чертежей'] },
     },
@@ -140,24 +143,23 @@
       // Скриншоты сняты на локальной копии с вымышленными демо-данными; название бренда на скриншоте заменено на «Lead CRM»
       id: 'crm', kind: 'product', host: 'crm · lead generation', pa: '#6c8bff', pt: '#3a55e0',
       chips: ['Node.js', 'PostgreSQL', 'Playwright', 'Email API', 'Open data'],
-      en: { name: 'Lead CRM & parser', tab: 'Lead CRM', idx: 'Lead CRM & parser', sub: 'B2B · private', short: 'Real product', tag: 'B2B · CRM + parser',
+      en: { line: 'A real CRM I built for outreach.', name: 'Lead CRM & parser', tab: 'Lead CRM', idx: 'Lead CRM & parser', sub: 'B2B · private', short: 'Real product', tag: 'B2B · CRM + parser',
         desc: 'An internal tool for cold outreach: finds companies by niche and city, collects contacts and decision makers, scores leads and runs email campaigns — all in one panel.',
         feats: ['Company search in 120 countries from open map data', 'Contacts and decision makers from company sites and official registries', 'Lead scoring 0–100 with “ready to buy” signals', 'Email campaigns with domain warm-up, auto follow-ups and inbox', 'Kanban pipeline, analytics dashboard, team access'] },
-      ru: { name: 'CRM и парсер лидов', tab: 'CRM лидов', idx: 'CRM и парсер лидов', sub: 'B2B · закрытая', short: 'Реальный продукт', tag: 'B2B · CRM + парсер',
+      ru: { line: 'Реальная CRM для холодных продаж.', name: 'CRM и парсер лидов', tab: 'CRM лидов', idx: 'CRM и парсер лидов', sub: 'B2B · закрытая', short: 'Реальный продукт', tag: 'B2B · CRM + парсер',
         desc: 'Внутренний инструмент для холодных продаж: находит компании по нише и городу, собирает контакты и ЛПР, оценивает лиды и запускает email-рассылки — всё в одной панели.',
         feats: ['Поиск компаний в 120 странах по открытым картам', 'Контакты и ЛПР с сайтов компаний и из гос. реестров', 'Скоринг лидов 0–100 с сигналами «готов покупать»', 'Рассылки с прогревом домена, автонапоминаниями и инбоксом', 'Канбан-воронка, дашборд аналитики, доступ для команды'] },
     },
     {
       id: 'bots', kind: 'bots', pa: '#2aabee', pt: '#086b9e',
       chips: ['Telegram Bot API', 'Node.js', 'Playwright', 'PostgreSQL', 'CSV / Sheets'],
-      en: { name: 'Telegram bots &\u00a0parsers', tab: 'Bots &\u00a0parsers', idx: 'Telegram bots &\u00a0parsers', sub: 'Automation', short: 'Automation', tag: 'Automation · beyond websites',
+      en: { line: 'Bots that book, parsers that find.', name: 'Telegram bots &\u00a0parsers', tab: 'Bots &\u00a0parsers', idx: 'Telegram bots &\u00a0parsers', sub: 'Automation', short: 'Automation', tag: 'Automation · beyond websites',
         desc: 'A website brings people in. Automation keeps them: bots that book and remind, apps that run the business, parsers that find new clients.' },
-      ru: { name: 'Telegram-боты и\u00a0парсеры', tab: 'Боты и\u00a0парсеры', idx: 'Telegram-боты и\u00a0парсеры', sub: 'Автоматизация', short: 'Автоматизация', tag: 'Автоматизация · не только сайты',
+      ru: { line: 'Боты записывают, парсеры ищут клиентов.', name: 'Telegram-боты и\u00a0парсеры', tab: 'Боты и\u00a0парсеры', idx: 'Telegram-боты и\u00a0парсеры', sub: 'Автоматизация', short: 'Автоматизация', tag: 'Автоматизация · не только сайты',
         desc: 'Сайт приводит людей. Автоматизация их удерживает: боты записывают и напоминают, приложения ведут бизнес, парсеры находят новых клиентов.' },
     },
   ];
   const byId = (id) => WORK.find((w) => w.id === id);
-  const KIND = { site: 'kind.concept', product: 'kind.product', bots: 'kind.cap' };
   const CHIP_RU = { Accessibility: 'Доступность' };
   const chipT = (x) => (lang === 'ru' && CHIP_RU[x]) || x;
 
@@ -299,7 +301,6 @@
       + '<svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 12 5.5 9.4a3.5 3.5 0 0 1 5 0z"/><path d="M8 4.6c2.2 0 4.2.9 5.6 2.3L12 8.5a5.7 5.7 0 0 0-8 0L2.4 6.9A7.9 7.9 0 0 1 8 4.6z"/><path d="M8 0c3.2 0 6.1 1.2 8 3.2l-1.6 1.6A9.9 9.9 0 0 0 8 2.3a9.9 9.9 0 0 0-6.4 2.5L0 3.2C1.9 1.2 4.8 0 8 0z"/></svg>'
       + '<svg viewBox="0 0 27 12" aria-hidden="true"><rect x=".6" y=".6" width="22.8" height="10.8" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".45"/><rect x="2.3" y="2.3" width="17.5" height="7.4" rx="1.8"/><rect x="24.6" y="4" width="1.8" height="4" rx=".9" opacity=".45"/></svg>',
   };
-  const BOTS_THUMB = '<svg viewBox="0 0 64 40" aria-hidden="true"><rect width="64" height="40" style="fill:var(--tg-body)"/><rect x="6" y="6" width="32" height="9" rx="4.5" style="fill:var(--tg-bubble)"/><rect x="26" y="18" width="32" height="8" rx="4" style="fill:var(--tg-me)"/><rect x="6" y="30" width="16" height="5" rx="2" style="fill:var(--tg-bubble)"/><rect x="24" y="30" width="16" height="5" rx="2" style="fill:var(--tg-bubble)"/><rect x="42" y="30" width="16" height="5" rx="2" style="fill:var(--tg-bubble)"/></svg>';
 
   // ── Состояние ──────────────────────────────────────────
   let lang = store.get('eg-lang') || ((navigator.language || '').toLowerCase().startsWith('ru') ? 'ru' : 'en');
@@ -317,7 +318,6 @@
   const stages = {}; // id → { el, screen, frame }
 
   const shot = (id, mode) => `assets/shots/${id}-${mode}-${lang}.jpg`;
-  const thumbSrc = (w) => (w.kind === 'site' ? `assets/thumbs/${w.id}-${lang}.jpg` : 'assets/thumbs/crm.jpg');
   const syncDemoLang = () => DEMO_KEYS.forEach((k) => store.set(k, lang));
 
   const hdr = $('[data-hdr]');
@@ -328,13 +328,13 @@
 
   // ── Сборка вкладок и панелей (один раз) ────────────────
   function buildShowcase() {
-    tabsEl.innerHTML = WORK.map((w, i) => `
-      <button class="tab" type="button" role="tab" id="tab-${w.id}" aria-controls="panel-${w.id}" aria-selected="false" tabindex="-1" data-tab="${w.id}" style="--pa:${w.pa};--pt:${w.pt}">
-        <span class="tab__top"><span class="tab__no">0${i + 1}</span><span class="tab__kind"></span></span><span class="tab__name"></span><span class="tab__sub"></span>
+    tabsEl.innerHTML = WORK.map((w) => `
+      <button class="tab" type="button" role="tab" id="tab-${w.id}" aria-controls="panel-${w.id}" aria-selected="false" tabindex="-1" data-tab="${w.id}">
+        <span class="tab__name"></span><span class="tab__sub"></span>
       </button>`).join('') + '<span class="tabs__bar" aria-hidden="true"></span>';
 
     panelsEl.innerHTML = WORK.map((w) => `
-      <section class="panel" role="tabpanel" id="panel-${w.id}" aria-labelledby="tab-${w.id}" tabindex="0" data-panel="${w.id}" style="--pa:${w.pa};--pt:${w.pt}" hidden>
+      <section class="panel" role="tabpanel" id="panel-${w.id}" aria-labelledby="tab-${w.id}" tabindex="0" data-panel="${w.id}" hidden>
         <div class="info" data-info></div>
         ${stageMarkup(w)}
         ${w.kind === 'bots' ? '<div class="caps" data-caps></div>' : ''}
@@ -456,9 +456,7 @@
       const d = w[lang];
       const tab = $(`#tab-${w.id}`);
       $('.tab__name', tab).textContent = d.tab;
-      $('.tab__sub', tab).textContent = d.sub;
-      $('.tab__kind', tab).textContent = t(KIND[w.kind]);
-      tab.title = `${d.name} — ${d.sub}`;
+      $('.tab__sub', tab).textContent = d.line;
 
       const panel = $(`#panel-${w.id}`);
       const badge = w.kind === 'site' ? ['', t('case.concept')] : w.kind === 'product' ? ['badge--real', t('case.real')] : ['badge--cap', t('case.cap')];
@@ -468,11 +466,11 @@
         const A = APPS[lang];
         body = `<p class="info__label">${esc(t('bots.tg'))}</p><ul class="feats">${A.tgList.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
           <p class="info__label">${esc(t('bots.parse'))}</p><ul class="feats">${A.parseList.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
-          <div class="info__actions"><a class="btn btn--ink" href="#contact"><span>${esc(t('case.discuss'))}</span><span class="arr" aria-hidden="true">→</span></a></div>`;
+          <div class="info__actions"><a class="pill" href="#contact"><span>${esc(t('case.discuss'))}</span><span class="arr" aria-hidden="true">→</span></a></div>`;
       } else {
         const actions = w.kind === 'site'
-          ? `<a class="btn btn--ink" href="${w.url}" target="_blank" rel="noopener">${esc(t('stage.open'))}</a><a class="btn btn--line" href="#contact">${esc(t('case.similar'))}</a>`
-          : `<a class="btn btn--ink" href="#contact"><span>${esc(t('case.ask'))}</span><span class="arr" aria-hidden="true">→</span></a>`;
+          ? `<a class="pill" href="${w.url}" target="_blank" rel="noopener">${esc(t('stage.open'))}</a><a class="pill pill--line" href="#contact">${esc(t('case.similar'))}</a>`
+          : `<a class="pill" href="#contact"><span>${esc(t('case.ask'))}</span><span class="arr" aria-hidden="true">→</span></a>`;
         body = `<p class="info__label">${esc(t('case.feats'))}</p>
           <ul class="feats">${d.feats.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
           <p class="info__label">${esc(t('case.stack'))}</p>
@@ -671,7 +669,6 @@
     const bar = $('.tabs__bar', tabsEl);
     const tab = $(`#tab-${active}`);
     if (!bar || !tab) return;
-    tabsEl.style.setProperty('--bar', byId(active).pa);
     bar.style.width = `${tab.offsetWidth}px`;
     bar.style.transform = `translateX(${tab.offsetLeft}px)`;
   }
@@ -721,6 +718,7 @@
     const hdrH = hdr.offsetHeight;
     const panelTop = $(`#panel-${id}`).getBoundingClientRect().top;
     const lost = sticky ? panelTop < hdrH + tabsWrap.offsetHeight - 2 : tabsWrap.getBoundingClientRect().top < hdrH - 2;
+    if (lost) holdHdr();
     if (lost) document.getElementById(`work-${id}`).scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
@@ -764,57 +762,6 @@
     const id = a.getAttribute('href').slice(6);
     if (byId(id) && id !== active) activate(id, { push: false });
   });
-
-  // ── Указатель работ на первом экране: превью в строках + крупное превью у курсора ──
-  function renderIndex() {
-    $('[data-render="index"]').innerHTML = WORK.map((w, i) => {
-      const d = w[lang];
-      const thumb = w.kind === 'bots' ? BOTS_THUMB : `<img src="${thumbSrc(w)}" width="320" height="200" alt="" decoding="async">`;
-      return `<li><a href="#work-${w.id}" data-peek-id="${w.id}" style="--pa:${w.pa};--pt:${w.pt}"><span class="index__no">0${i + 1}</span><span class="index__thumb" aria-hidden="true">${thumb}</span><span class="index__name">${esc(d.idx)}</span><span class="index__tag">${esc(d.short)}</span><span class="index__arrow" aria-hidden="true">→</span></a></li>`;
-    }).join('');
-  }
-  const peek = $('[data-peek]');
-  const peekImg = $('[data-peek-img]');
-  const peekSrc = (id) => (id === 'crm' ? 'assets/shots/crm-desktop.jpg' : id === 'bots' ? null : shot(id, 'desktop'));
-  if (finePointer) {
-    const pos = { x: 0, y: 0, tx: 0, ty: 0, on: false, raf: 0 };
-    const tick = () => {
-      pos.x += (pos.tx - pos.x) * (reduceMotion ? 1 : 0.18);
-      pos.y += (pos.ty - pos.y) * (reduceMotion ? 1 : 0.18);
-      peek.style.transform = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
-      pos.raf = (pos.on || Math.abs(pos.tx - pos.x) > 0.5 || Math.abs(pos.ty - pos.y) > 0.5) ? requestAnimationFrame(tick) : 0;
-    };
-    const list = $('[data-render="index"]');
-    // Карточка остаётся в колонке указателя: под строкой (или над ней, если внизу нет места) —
-    // текст и кнопки слева никогда не закрываются
-    const place = (e, row) => {
-      const L = list.getBoundingClientRect();
-      const R = row.getBoundingClientRect();
-      const w = peek.offsetWidth, h = peek.offsetHeight;
-      pos.tx = Math.min(Math.max(e.clientX - w / 2, L.left), L.right - w);
-      let y = R.bottom + 10;
-      if (y + h > window.innerHeight - 10) y = R.top - 10 - h;
-      pos.ty = Math.max(y, hdr.getBoundingClientRect().bottom + 8);
-    };
-    let row = null;
-    list.addEventListener('mouseover', (e) => {
-      const a = e.target.closest('a[data-peek-id]');
-      if (!a) return;
-      row = a;
-      const src = peekSrc(a.dataset.peekId);
-      if (!src) { peek.classList.remove('is-on'); pos.on = false; return; }
-      if (!peekImg.src.endsWith(src)) peekImg.src = src;
-      const wasOn = pos.on;
-      place(e, a);
-      if (!wasOn) { pos.x = pos.tx; pos.y = pos.ty + 14; }
-      pos.on = true;
-      peek.classList.add('is-on');
-      if (!pos.raf) pos.raf = requestAnimationFrame(tick);
-    });
-    list.addEventListener('mousemove', (e) => { if (pos.on && row) place(e, row); });
-    list.addEventListener('mouseleave', () => { pos.on = false; row = null; peek.classList.remove('is-on'); });
-    window.addEventListener('scroll', () => { if (pos.on) { pos.on = false; peek.classList.remove('is-on'); } }, { passive: true });
-  }
 
   // ── Чат-бот и терминал: крутятся по кругу, только пока видны ──
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -966,12 +913,38 @@
     updateBotsVisibility();
   }, { threshold: 0.3 });
 
+  // Неподвижная фраза подвала: размер = ширина контейнера × k (cqw); k меряем один раз на язык/ширину
+  const staticMq = window.matchMedia('(pointer: coarse), (max-width: 860px)');
+  function fitStatic() {
+    const el = $('[data-marquee-static]');
+    if (!el || !staticMq.matches) return;
+    el.style.removeProperty('--mk');
+    const cs = getComputedStyle(el);
+    const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    const avail = el.parentElement.clientWidth - pad;
+    const w = el.offsetWidth - pad; // ширина по тексту (width: max-content)
+    if (avail > 0 && w > 0) el.style.setProperty('--mk', (0.1 * (avail / w) * 0.97).toFixed(5));
+  }
+  staticMq.addEventListener('change', fitStatic);
+
   // ── Остальные секции ───────────────────────────────────
   function renderSections() {
-    const items = t('ticker');
-    $('[data-render="ticker"]').innerHTML = [...items, ...items].map((x) => `<span>${esc(x)}</span>`).join('');
+    // «W O R K S» — буквы разнесены на всю ширину
+    $('[data-render="spread"]').innerHTML = [...t('work.spread')].map((c) => `<span>${esc(c)}</span>`).join('');
+    // Бегущая фраза в подвале: две одинаковые половины — сдвиг на −50% бесшовный
+    const m = esc(t('marquee'));
+    $('[data-render="marquee"]').innerHTML = Array.from({ length: 8 }, () => `<span>${m}</span>`).join('');
+    // Телефон: бегущая строка неподвижна — вместо обрезанного куска одна фраза во всю ширину
+    $('[data-marquee-static]').textContent = t('marquee.static');
+    fitStatic();
+    const asideImg = $('[data-aside-img]');
+    if (asideImg) asideImg.alt = `${byId('crm')[lang].name} — ${lang === 'ru' ? 'дашборд (демо-данные)' : 'dashboard (demo data)'}`;
+    // Чёрная карточка с тремя концепт-сайтами (ведут к вкладкам)
+    $('[data-render="reel"]').innerHTML = WORK.filter((w) => w.kind === 'site').map((w, i) => `
+      <a class="reel__item" href="#work-${w.id}"><div class="reel__fig"><img src="${shot(w.id, 'desktop')}" width="1440" height="900" alt="${esc(w[lang].name)} — ${esc(w[lang].short)}" loading="lazy" decoding="async">
+      <span class="reel__tag" aria-hidden="true">(0${i + 1}) ${esc(w[lang].idx)}</span></div></a>`).join('');
     $('[data-render="services"]').innerHTML = SERVICES[lang].map(([h, p, list], i) => `
-      <li data-rv><span class="svc__no">0${i + 1}</span><h3 class="svc__name">${esc(h)}</h3><p class="svc__desc">${esc(p)}</p>
+      <li data-rv><span class="svc__no">${String(i + 1).padStart(2, '0')}</span><h3 class="svc__name">${esc(h)}</h3><p class="svc__desc">${esc(p)}</p>
       <ul class="svc__list">${list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
       <span class="svc__ill" aria-hidden="true"><svg viewBox="0 0 120 80">${SVC_ILL[i]}</svg></span></li>`).join('');
     $('[data-render="steps"]').innerHTML = STEPS[lang].map(([h, p], i) => `
@@ -979,52 +952,6 @@
     $('[data-render="principles"]').innerHTML = PRINCIPLES[lang].map(([b, s]) => `<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join('');
     $('[data-render="facts"]').innerHTML = t('facts').map((x) => `<li>${ICON.check}<span>${x}</span></li>`).join('');
   }
-
-  // Заголовок первого экрана: слова появляются по очереди (только при первой загрузке)
-  function splitWords(el) {
-    let i = 0;
-    const walk = (node) => {
-      [...node.childNodes].forEach((n) => {
-        if (n.nodeType === 3) {
-          const frag = document.createDocumentFragment();
-          n.textContent.split(/(\s+)/).forEach((part) => {
-            if (!part) return;
-            if (/^\s+$/.test(part)) { frag.append(part); return; }
-            const s = document.createElement('span');
-            s.className = 'wd'; s.style.setProperty('--i', i++); s.textContent = part;
-            frag.append(s);
-          });
-          n.replaceWith(frag);
-        } else if (n.nodeType === 1) walk(n);
-      });
-    };
-    walk(el);
-  }
-
-  // ── Тема: тёмная по умолчанию, светлая — по кнопке (запоминается) ──
-  const themeMeta = $('meta[name="theme-color"]');
-  const isDark = () => root.getAttribute('data-theme') !== 'light';
-  function syncThemeUI() {
-    const dark = isDark();
-    themeMeta.setAttribute('content', dark ? '#0a0a0f' : '#f4f2ec');
-    $$('[data-theme-toggle]').forEach((b) => {
-      if (!$('[data-theme-label]', b)) b.setAttribute('aria-label', t(dark ? 'theme.toLight' : 'theme.toDark'));
-    });
-    $$('[data-theme-label]').forEach((el) => { el.textContent = t(dark ? 'theme.light' : 'theme.dark'); });
-  }
-  function toggleTheme() {
-    const next = isDark() ? 'light' : 'dark';
-    const apply = () => {
-      root.setAttribute('data-theme', next);
-      store.set('eg-theme', next);
-      syncThemeUI();
-    };
-    if (reduceMotion) { apply(); return; }
-    root.classList.add('theme-anim');
-    apply();
-    setTimeout(() => root.classList.remove('theme-anim'), 520);
-  }
-  $$('[data-theme-toggle]').forEach((b) => b.addEventListener('click', toggleTheme));
 
   // ── Язык ───────────────────────────────────────────────
   function applyLang(next, first = false) {
@@ -1037,10 +964,10 @@
     document.title = t('title');
     const href = `mailto:${MAIL}?subject=${encodeURIComponent(t('ct.subject'))}`;
     $$('[data-mail], [data-mail-btn]').forEach((a) => { a.href = href; });
-    renderIndex();
     renderSections();
     fillShowcase();
-    syncThemeUI();
+    menuBtn.setAttribute('aria-label', t(mnav.hidden ? 'nav.open' : 'nav.shut'));
+    $('[data-menu-label]').textContent = t(mnav.hidden ? 'nav.menu' : 'nav.close');
     sizeBots();
     startAnimations();
     observeReveals();
@@ -1103,33 +1030,85 @@
     copyTimer = setTimeout(() => { copyBtn.classList.remove('is-done'); label.textContent = t('ct.copy'); }, ok ? 2000 : 3500);
   });
 
-  // ── Шапка, мобильное меню, активный пункт ──────────────
+  // ── Шапка и полноэкранное меню ─────────────────────
   const menuBtn = $('[data-menu]');
   const mnav = $('#mnav');
-  const mnavBd = $('[data-mnav-bd]');
-  const setMenu = (open) => { menuBtn.setAttribute('aria-expanded', String(open)); mnav.hidden = !open; mnavBd.hidden = !open; };
-  menuBtn.addEventListener('click', () => setMenu(mnav.hidden));
-  mnav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
-  // Касание мимо меню попадает в подложку: меню закрывается, а ссылка под пальцем не срабатывает
-  mnavBd.addEventListener('click', () => setMenu(false));
-  document.addEventListener('click', (e) => { if (!mnav.hidden && !mnav.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false); });
-  // Фокус ушёл из меню (Tab после последнего пункта) — закрываем, чтобы он не оказался под меню
-  mnav.addEventListener('focusout', (e) => { if (e.relatedTarget && !mnav.contains(e.relatedTarget) && e.relatedTarget !== menuBtn) setMenu(false); });
-  // Окно стало шире 960 px — кнопки меню больше нет, закрываем
-  window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mnav.hidden) { setMenu(false); menuBtn.focus(); } });
-  const navLinks = $$('.hdr__nav a');
+  const fab = $('[data-fab]');
+  const outside = () => [$('main'), $('.ftr'), fab];
+  let menuTimer = 0;
+  const setMenu = (open, { restore = true } = {}) => {
+    if (open === !mnav.hidden && !mnav.classList.contains('is-closing')) return;
+    clearTimeout(menuTimer);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', t(open ? 'nav.shut' : 'nav.open'));
+    $('[data-menu-label]').textContent = t(open ? 'nav.close' : 'nav.menu');
+    hdr.classList.toggle('is-menu', open);
+    if (open) setHidden(false);
+    root.classList.toggle('menu-open', open);
+    // Всё, что под меню, — недоступно с клавиатуры и для экранного диктора
+    outside().forEach((el) => { if (el) el.inert = open; });
+    if (open) {
+      mnav.classList.remove('is-closing');
+      mnav.hidden = false;
+      mnav.classList.add('is-open');
+      $('a', mnav).focus({ preventScroll: true });
+    } else {
+      mnav.classList.remove('is-open');
+      const done = () => { mnav.hidden = true; mnav.classList.remove('is-closing'); };
+      if (reduceMotion) done();
+      else { mnav.classList.add('is-closing'); menuTimer = setTimeout(done, 480); }
+      if (restore) menuBtn.focus({ preventScroll: true });
+    }
+  };
+  menuBtn.addEventListener('click', () => setMenu(mnav.hidden || mnav.classList.contains('is-closing')));
+  $('.brand').addEventListener('click', () => { if (!mnav.hidden) setMenu(false, { restore: false }); });
+  mnav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false, { restore: false }); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mnav.hidden) setMenu(false); });
+  // Tab из последнего элемента меню — обратно на кнопку «Закрыть» (ловушка фокуса)
+  mnav.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const items = $$('a, button', mnav);
+    if (!e.shiftKey && document.activeElement === items[items.length - 1]) { e.preventDefault(); menuBtn.focus(); }
+  });
+  menuBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && !mnav.hidden && !e.shiftKey) { e.preventDefault(); $('a', mnav).focus(); }
+  });
+  const navLinks = $$('.mnav__list a');
   const navSection = (a) => (a.hasAttribute('data-to-work') ? 'work' : a.getAttribute('href').slice(1));
   const sections = ['work', 'services', 'process', 'contact'].map((id) => document.getElementById(id));
   let ticking = false;
-  let lastCur, lastScrolled;
+  let lastCur, lastScrolled, lastY = window.scrollY, hidden = false;
+  // Шапка прячется при прокрутке вниз и возвращается при прокрутке вверх — не лежит поверх текста
+  const setHidden = (on) => { if (on === hidden) return; hidden = on; hdr.classList.toggle('is-hidden', on); root.classList.toggle('hdr-up', on); };
+  hdr.addEventListener('focusin', () => setHidden(false));
+  // Переходы по якорям и программная прокрутка не прячут шапку: секция встаёт ровно под ней,
+  // без полосы соседней секции противоположного тона над заголовком
+  let holdUntil = 0;
+  holdHdr = () => {
+    holdUntil = performance.now() + 1600;
+    setHidden(false);
+    const release = () => { holdUntil = 0; lastY = window.scrollY; };
+    if ('onscrollend' in window) window.addEventListener('scrollend', release, { once: true });
+  };
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute('href').length > 1) holdHdr();
+  });
+  window.addEventListener('hashchange', () => holdHdr());
   const onScroll = () => {
     // сначала все чтения, потом записи — без принудительного пересчёта раскладки на каждом кадре
     const y = window.scrollY, lim = window.innerHeight * 0.4;
     let cur = null;
     for (const s of sections) if (s.getBoundingClientRect().top < lim) cur = s.id;
-    const scrolled = y > 8;
+    const scrolled = y > 40;
     if (scrolled !== lastScrolled) { lastScrolled = scrolled; hdr.classList.toggle('is-scrolled', scrolled); }
+    const dy = y - lastY;
+    if (holdUntil && performance.now() < holdUntil) lastY = y;
+    else if (Math.abs(dy) > 4) {
+      holdUntil = 0;
+      setHidden(dy > 0 && y > 120 && mnav.hidden);
+      lastY = y;
+    }
     if (cur !== lastCur) { lastCur = cur; navLinks.forEach((a) => a.classList.toggle('is-active', navSection(a) === cur)); }
     ticking = false;
   };
@@ -1146,7 +1125,14 @@
     if (active === 'bots') sizeBots();
   }).observe(panelsEl);
   let rz = 0;
-  window.addEventListener('resize', () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { layoutStage(active); moveBar(); centerChip(false); }); }, { passive: true });
+  let lastStaticW = window.innerWidth;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(rz);
+    rz = requestAnimationFrame(() => {
+      layoutStage(active); moveBar(); centerChip(false);
+      if (window.innerWidth !== lastStaticW) { lastStaticW = window.innerWidth; fitStatic(); }
+    });
+  }, { passive: true });
 
   // ── Старт ──────────────────────────────────────────────
   $('[data-year]').textContent = new Date().getFullYear();
@@ -1156,43 +1142,134 @@
   $$('.tg, .term').forEach((el) => visIo.observe(el));
   $$('.stage--site').forEach((el) => { stageIo.observe(el); nearIo.observe(el); });
 
-  // Первый экран показываем, когда загружены шрифты заголовка (не дольше ~1.1 с): иначе заголовок
-  // в 146 px успевает перестроиться 2 → 3 → 2 строки и сдвигает всё под ним (CLS)
+  // ── Первый экран: словесный знак по буквам, подгонка под ширину, заставка ──
   const hero = $('.hero');
-  const reveal = () => {
-    if (hero.classList.contains('is-ready')) return;
-    if (!reduceMotion) {
-      const title = $('.hero__title');
-      splitWords(title);
-      // Градиентная фраза: каждому слову — свой кусок одного общего градиента (как у цельного <em>)
-      const em = $('em', title);
-      if (em) {
-        const total = [...em.getClientRects()].reduce((a, r) => a + r.width, 0);
-        let acc = 0, prevRight = null, prevTop = null;
-        $$('.wd', em).forEach((w) => {
-          const r = w.getBoundingClientRect();
-          if (prevRight !== null) acc += Math.abs(r.top - prevTop) < 2 ? r.left - prevRight : 0;
-          w.style.setProperty('--gw', `${total.toFixed(1)}px`);
-          w.style.setProperty('--gx', `${(-acc).toFixed(1)}px`);
-          acc += r.width; prevRight = r.right; prevTop = r.top;
-        });
-      }
-      hero.classList.add('is-animating');
-      // После появления слова снова становятся обычным текстом — градиент рисует сам <em>, цельно
-      setTimeout(() => {
-        hero.classList.remove('is-animating');
-        $$('.wd', title).forEach((w) => w.replaceWith(w.textContent));
-        title.normalize();
-      }, 2600);
+  const mark = $('[data-mark]');
+  // «O» знака — круг (тот же предмет, что в заставке): внутри при наведении сменяются работы
+  mark.innerHTML = [...mark.textContent.trim()].map((c, i) => (c === 'O'
+    ? `<span class="ml ml--o" style="--i:${i}"><i class="disc" data-disc></i></span>`
+    : `<span class="ml" style="--i:${i}">${c}</span>`)).join('');
+  const disc = $('[data-disc]');
+  // Квадратные кадры работ — читаются внутри круга
+  const oSrcs = () => ['assets/thumbs/o-ognivo.jpg', 'assets/thumbs/o-luma.jpg', `assets/thumbs/o-monolit-${lang}.jpg`, 'assets/thumbs/o-crm.jpg'];
+  // Размер знака = ширина контейнера × k (единицы cqw); k зависит только от шрифта — меряем один раз
+  // Подгонка по «чернилам», а не по коробке: левый край «E» встаёт на линию заголовка,
+  // кончик апострофа — на правое поле. Боковые отступы глифов берём из canvas.measureText.
+  const inkCtx = document.createElement('canvas').getContext('2d');
+  const fitMark = () => {
+    const box = mark.parentElement;
+    const cs = getComputedStyle(box);
+    const avail = box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    const ls = $$('.ml', mark);
+    if (!ls.length || avail <= 0) return;
+    mark.style.setProperty('--ink', '0');
+    const fs = parseFloat(getComputedStyle(mark).fontSize);
+    const first = ls[0], last = ls[ls.length - 1];
+    let lb = 0, rb = 0;
+    if (inkCtx) {
+      inkCtx.font = `400 ${fs}px "Archivo Black"`;
+      const mf = inkCtx.measureText(first.textContent), ml = inkCtx.measureText(last.textContent);
+      if (Number.isFinite(mf.actualBoundingBoxLeft)) lb = -mf.actualBoundingBoxLeft;
+      rb = Number.isFinite(ml.actualBoundingBoxRight) ? ml.actualBoundingBoxRight : ml.width;
     }
-    hero.classList.add('is-ready');
+    const boxLeft = box.getBoundingClientRect().left + parseFloat(cs.paddingLeft);
+    const fr = first.getBoundingClientRect(), lr = last.getBoundingClientRect();
+    const inkL = fr.left + lb, inkR = (rb ? lr.left + rb : lr.right);
+    const inkW = inkR - inkL;
+    if (inkW <= 0) return;
+    const k = parseFloat(getComputedStyle(mark).getPropertyValue('--k')) || 0.1855;
+    const offEm = (inkL - boxLeft) / fs; // всё в em — при смене ширины пересчёт не нужен (cqw)
+    mark.style.setProperty('--k', (k * (avail / inkW) * 0.998).toFixed(5));
+    mark.style.setProperty('--ink', offEm.toFixed(4));
   };
-  if (document.fonts && document.fonts.load) {
-    Promise.race([
-      Promise.all([document.fonts.load('500 100px Geist'), document.fonts.load('italic 400 100px "Noto Serif Display"')]),
-      sleep(1100),
-    ]).then(reveal, reveal);
-  } else reveal();
+  // Archivo Black — крошечный набор (&text=…); ждём не дольше 1,2 с
+  const fontReady = document.fonts && document.fonts.load
+    ? Promise.race([document.fonts.load('400 100px "Archivo Black"', 'EKIMOV’'), sleep(1200)]).catch(() => {})
+    : Promise.resolve();
+
+  // Заставка: «E◯’», в круге — жёсткие склейки кадров работ, счётчик 000 → 100.
+  // Дальше шторка уходит вверх, а круг перелетает в «O» большого знака (один элемент, только transform).
+  const intro = $('[data-intro]');
+  const introOn = root.classList.contains('intro-on');
+  const runIntro = () => new Promise((resolve) => {
+    if (!introOn || !intro) { resolve(); return; }
+    try { sessionStorage.setItem('eg-intro', '1'); } catch { /* приватный режим */ }
+    const o = $('[data-intro-o]');
+    o.innerHTML = oSrcs().map((src) => `<img src="${src}" alt="" decoding="async">`).join('');
+    const imgs = $$('img', o);
+    const count = $('[data-intro-count]');
+    let k = 0, raf = 0, swap = 0, done = false;
+    const SKIP = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
+    const CURTAIN = 700;
+    const finish = (e) => {
+      if (done) return;
+      done = true;
+      clearInterval(swap); cancelAnimationFrame(raf);
+      SKIP.forEach((ev) => window.removeEventListener(ev, finish));
+      count.textContent = '100';
+      intro.classList.add('is-done'); // счётчик гаснет сразу — не уезжает вместе со шторкой
+      // Кадры гаснут до перелёта: в «O» прилетает чистый белый диск
+      imgs.forEach((im) => im.classList.remove('is-on'));
+      // Перелёт круга — только если зритель не начал прокрутку/ввод (иначе цель сместится)
+      const fly = !e && window.scrollY < 2;
+      if (fly) {
+        hero.classList.add('is-flip');
+        const A = o.getBoundingClientRect();
+        // Пустышка того же размера держит место — «E» и «’» не съезжают под круг
+        const ph = document.createElement('span');
+        ph.style.cssText = `display:block;flex:none;width:${A.width}px;height:${A.height}px;margin:0 .04em 0 .05em`;
+        o.replaceWith(ph);
+        const B = disc.getBoundingClientRect(); // с .is-flip буква «O» уже стоит на месте (без подъёма)
+        o.style.cssText = `position:fixed;left:${A.left}px;top:${A.top}px;width:${A.width}px;height:${A.height}px;margin:0;z-index:201;transform:none;animation:none`;
+        document.body.appendChild(o);
+        void o.offsetWidth;
+        const sc = B.width / A.width;
+        o.classList.add('is-fly');
+        o.style.transform = `translate3d(${B.left - A.left}px, ${B.top - A.top}px, 0) scale(${sc})`;
+        const land = () => {
+          if (!o.isConnected) return;
+          hero.classList.remove('is-flip');
+          o.remove();
+        };
+        o.addEventListener('transitionend', (ev) => { if (ev.propertyName === 'transform') land(); });
+        setTimeout(land, 1200);
+      }
+      intro.classList.add('is-out');
+      // Буквы знака начинают подниматься вместе со шторкой — к её уходу знак уже на месте
+      resolve();
+      setTimeout(() => { intro.remove(); root.classList.remove('intro-on'); }, CURTAIN + 50);
+    };
+    SKIP.forEach((ev) => window.addEventListener(ev, finish, { passive: true }));
+    // Старт — когда шрифт знака готов (не дольше 0,35 с), чтобы буквы не перестраивались на глазах
+    Promise.race([fontReady, sleep(350)]).then(() => {
+      if (done) return;
+      intro.classList.add('is-go');
+      imgs[0].classList.add('is-on');
+      swap = setInterval(() => { imgs[k].classList.remove('is-on'); k = (k + 1) % imgs.length; imgs[k].classList.add('is-on'); }, 140);
+      const t0 = performance.now(), DUR = 900;
+      const tick = (now) => {
+        const p = Math.min(1, (now - t0) / DUR);
+        count.textContent = String(Math.round(p * 100)).padStart(3, '0');
+        if (p < 1) raf = requestAnimationFrame(tick); else setTimeout(() => finish(), 80);
+      };
+      raf = requestAnimationFrame(tick);
+    });
+  });
+  if (!introOn && intro) intro.remove();
+  fontReady.then(fitMark);
+  Promise.all([fontReady, runIntro()]).then(() => hero.classList.add('is-ready'));
+
+  // Мышь над знаком: в круге «O» сменяются кадры работ (отсылка к заставке)
+  if (finePointer && !reduceMotion) {
+    const zone = mark.parentElement;
+    let timer = 0, n = 0;
+    // Абсолютный адрес: относительный путь в var() браузер считает от файла стилей
+    const next = () => { const l = oSrcs(); disc.style.setProperty('--thumb', `url("${new URL(l[n++ % l.length], location.href).href}")`); };
+    zone.addEventListener('pointerenter', () => { if (!hero.classList.contains('is-ready')) return; next(); disc.classList.add('is-peek'); clearInterval(timer); timer = setInterval(next, 280); });
+    zone.addEventListener('pointerleave', () => { clearInterval(timer); disc.classList.remove('is-peek'); });
+    // Кадры для круга подгружаем в простое
+    (window.requestIdleCallback || ((cb) => setTimeout(cb, 1500)))(() => oSrcs().forEach((src) => { const im = new Image(); im.src = src; }));
+  }
 
   activate(active, { push: false, animate: false });
   // Перезагрузка и «назад/вперёд»: браузер сам вернёт место чтения — к вкладкам не прыгаем
@@ -1200,6 +1277,7 @@
   const restoring = navType === 'reload' || navType === 'back_forward';
   let autoY = -1;
   const toInitial = () => {
+    holdHdr();
     document.getElementById(`work-${initial}`).scrollIntoView({ block: 'start', behavior: 'instant' });
     autoY = window.scrollY;
   };
@@ -1210,6 +1288,8 @@
   onScroll();
   if (document.fonts) {
     document.fonts.ready.then(() => {
+      fitMark();
+      fitStatic();
       moveBar();
       layoutStage(active);
       if (active === 'bots') sizeBots();
@@ -1221,35 +1301,78 @@
   if (document.readyState === 'complete') smoothOn(); else window.addEventListener('load', smoothOn, { once: true });
 })();
 
-// ── «Neon ink»: полоса прогресса чтения и «магнитные» главные кнопки ──
+// ── Цвет шапки и круглой кнопки — по тону секции под ними (IntersectionObserver, без чтений при прокрутке) ──
 (() => {
-  const bar = document.querySelector('[data-progress]');
-  if (bar) {
-    let raf = 0;
-    // на телефонах полоса скрыта — не трогаем стили при прокрутке вовсе
-    const off = window.matchMedia('(pointer: coarse), (max-width: 860px)');
-    let max = 0, last = '';
-    const measure = () => { max = document.documentElement.scrollHeight - window.innerHeight; };
-    const upd = () => {
-      raf = 0;
-      if (off.matches) return;
-      const v = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(3) : '0';
-      if (v !== last) { last = v; bar.style.setProperty('--p', v); }
-    };
-    measure();
-    if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); upd(); }).observe(document.body);
-    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
-    window.addEventListener('resize', () => { measure(); if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
-    upd();
-  }
-  // Только мышь и без «уменьшения движения»: кнопка слегка тянется за курсором
+  const hdr = document.querySelector('[data-hdr]');
+  const fab = document.querySelector('[data-fab]');
+  const bands = [...document.querySelectorAll('.band[data-tone]')];
+  if (!('IntersectionObserver' in window) || !hdr || !fab) return;
+  let ioTop, ioBot, ioPan;
+  // Телефон: над витриной (кнопки «Хочу такой же», списки) круглая кнопка не нужна — прячем
+  const narrow = window.matchMedia('(max-width: 860px)');
+  const panels = document.querySelector('[data-panels]');
+  let bandHide = true, panHide = false;
+  const syncFab = () => fab.classList.toggle('is-hidden', bandHide || (panHide && narrow.matches));
+  narrow.addEventListener('change', syncFab);
+  const build = () => {
+    [ioTop, ioBot, ioPan].forEach((o) => o && o.disconnect());
+    const h = window.innerHeight;
+    const y1 = Math.round(hdr.offsetHeight / 2);
+    const y2 = Math.max(y1 + 2, h - 56);
+    ioTop = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) hdr.dataset.tone = e.target.dataset.tone; }),
+      { rootMargin: `-${y1}px 0px -${h - y1 - 1}px 0px` });
+    ioBot = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      fab.dataset.tone = e.target.dataset.tone;
+      bandHide = e.target.id === 'contact' || e.target.id === 'top' || e.target.classList.contains('ftr'); // на первом экране, в контактах и подвале кнопка не нужна
+      syncFab();
+    }), { rootMargin: `-${y2}px 0px -${h - y2 - 1}px 0px` });
+    // Полоса внизу экрана высотой с кнопку: пересекает витрину — прячем
+    const y3 = Math.max(0, h - 110);
+    ioPan = new IntersectionObserver((es) => { panHide = es[0].isIntersecting; syncFab(); }, { rootMargin: `-${y3}px 0px 0px 0px` });
+    bands.forEach((b) => { ioTop.observe(b); ioBot.observe(b); });
+    if (panels) ioPan.observe(panels);
+  };
+  build();
+  let rw = window.innerWidth, rh = window.innerHeight;
+  window.addEventListener('resize', () => {
+    // Полоса адреса на телефоне меняет высоту на ~60–100 px — из-за неё не пересобираем
+    if (window.innerWidth !== rw || Math.abs(window.innerHeight - rh) > 120) { rw = window.innerWidth; rh = window.innerHeight; build(); }
+  }, { passive: true });
+})();
+
+// ── Параллакс карточки с работами — только мышь, широкий экран и без «уменьшения движения» ──
+(() => {
+  const reel = document.querySelector('[data-reel]');
+  const mq = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 861px)');
+  if (!reel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const SPEED = [-70, 56, -30];
+  let top = 0, hgt = 0, vis = false, raf = 0;
+  // Положение карточки меряем только при изменении размеров — при прокрутке читаем лишь scrollY
+  const measure = () => { const r = reel.getBoundingClientRect(); top = r.top + window.scrollY; hgt = r.height; };
+  const upd = () => {
+    raf = 0;
+    if (!vis || !mq.matches) return;
+    const p = (window.scrollY + window.innerHeight - top) / (window.innerHeight + hgt) - 0.5;
+    reel.querySelectorAll('.reel__item').forEach((el, i) => el.style.setProperty('--py', `${(p * SPEED[i % 3] * 2).toFixed(1)}px`));
+  };
+  const req = () => { if (!raf) raf = requestAnimationFrame(upd); };
+  new IntersectionObserver((es) => { vis = es[0].isIntersecting; if (vis) { measure(); req(); } }).observe(reel);
+  window.addEventListener('scroll', req, { passive: true });
+  window.addEventListener('resize', () => { measure(); req(); }, { passive: true });
+  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(document.querySelector('.hero'));
+})();
+
+// ── «Магнитные» главные кнопки: слегка тянутся за курсором (только мышь) ──
+(() => {
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
   const still = window.matchMedia('(prefers-reduced-motion: reduce)');
   const MAX = 8;
+  const clear = (x) => { x.classList.remove('is-mag'); x.style.translate = ''; };
   document.addEventListener('pointermove', (e) => {
     if (e.pointerType !== 'mouse' || !fine.matches || still.matches) return;
-    const b = e.target.closest && e.target.closest('.btn--accent, .btn--white, .hdr__cta');
-    document.querySelectorAll('.btn.is-mag').forEach((x) => { if (x !== b) { x.classList.remove('is-mag'); x.style.translate = ''; } });
+    const b = e.target.closest && e.target.closest('.hero .pill, .mail__actions .pill, .fab');
+    document.querySelectorAll('.is-mag').forEach((x) => { if (x !== b) clear(x); });
     if (!b) return;
     const r = b.getBoundingClientRect();
     const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
@@ -1257,14 +1380,14 @@
     b.classList.add('is-mag');
     b.style.translate = `${(dx * MAX).toFixed(1)}px ${(dy * MAX * 0.6).toFixed(1)}px`;
   }, { passive: true });
-  document.addEventListener('pointerleave', () => document.querySelectorAll('.btn.is-mag').forEach((x) => { x.classList.remove('is-mag'); x.style.translate = ''; }));
+  document.addEventListener('pointerleave', () => document.querySelectorAll('.is-mag').forEach(clear));
 })();
 
-// ── Анимации «Neon ink» работают только пока секция на экране (иначе — пауза, без перерисовок) ──
+// ── Бесконечные анимации работают, только пока блок на экране ──
 (() => {
   if (!('IntersectionObserver' in window)) return;
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => e.target.classList.toggle('is-off', !e.isIntersecting));
   }, { rootMargin: '80px 0px' });
-  document.querySelectorAll('.hero, .floor, [data-tabs], .contact').forEach((el) => { el.classList.add('is-off'); io.observe(el); });
+  document.querySelectorAll('.floor, .marquee').forEach((el) => { el.classList.add('is-off'); io.observe(el); });
 })();
