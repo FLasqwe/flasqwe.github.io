@@ -35,7 +35,7 @@
       'hero.cta1': 'See the work', 'hero.cta2': 'Discuss your project',
       'hero.index': 'Index of work', 'hero.indexHint': 'Click — opens below',
       'hero.for': '<b>For any business</b> — restaurants, clinics, construction, beauty, real estate, retail and\u00a0services',
-      ticker: ['Websites', 'Landing pages', 'Telegram bots', 'Web apps & PWA', 'Parsers', 'CRM & admin panels', 'Online booking', 'Calculators', 'Integrations'],
+      ticker: ['Websites', 'Multi-page sites', 'Landing pages', 'Telegram bots', 'Web apps & PWA', 'Parsers', 'CRM & admin panels', 'Online booking', 'Calculators', 'Integrations'],
       'work.kicker': 'Selected work', 'work.meta': '3 live demos · 1 real product · bots & parsers',
       'work.title': 'Click a tab. <em>See it live.</em>',
       'work.lead': 'Three concept websites run right inside the frame — scroll them, open the menu, try the calculators and booking. Next to them: a real CRM I built and the bots and parsers I make.',
@@ -52,7 +52,7 @@
       'case.ask': 'Request a demo', 'case.private': 'Private tool — demo on request', 'case.discuss': 'Discuss your bot or parser',
       'bots.tg': 'Telegram bots', 'bots.parse': 'Parsers & data collection', 'bots.status': 'bot', 'bots.name': 'LUMA Booking Bot',
       'svc.kicker': 'Services', 'svc.meta': 'From one page to a working tool', 'svc.title': 'What I can <em>build for you</em>',
-      'svc.lead': 'From a single landing page to a bot or an internal tool — designed, built and launched by one person, start to finish.',
+      'svc.lead': 'From a single landing page to a full multi-page website, a bot or an internal tool — designed, built and launched by one person, start to finish.',
       'proc.kicker': 'Process', 'proc.meta': '4 steps', 'proc.title': 'Clear steps, <em>no surprises</em>',
       'proc.lead': 'You always know what happens next — and you watch the project grow on a live\u00a0link.', 'proc.principles': 'Principles',
       'ct.kicker': 'Contact', 'ct.title': 'Have a project<br> in mind? <em>Let’s&nbsp;talk.</em>',
@@ -74,7 +74,7 @@
       'hero.cta1': 'Смотреть работы', 'hero.cta2': 'Обсудить проект',
       'hero.index': 'Указатель работ', 'hero.indexHint': 'Нажмите — откроется ниже',
       'hero.for': '<b>Для любого бизнеса</b> — рестораны, клиники, стройка, салоны красоты, недвижимость, торговля и\u00a0услуги',
-      ticker: ['Сайты', 'Лендинги', 'Telegram-боты', 'Веб-приложения и PWA', 'Парсеры', 'CRM и админ-панели', 'Онлайн-запись', 'Калькуляторы', 'Интеграции'],
+      ticker: ['Сайты', 'Многостраничные сайты', 'Лендинги', 'Telegram-боты', 'Веб-приложения и PWA', 'Парсеры', 'CRM и админ-панели', 'Онлайн-запись', 'Калькуляторы', 'Интеграции'],
       'work.kicker': 'Избранные работы', 'work.meta': '3 живых демо · 1 реальный продукт · боты и парсеры',
       'work.title': 'Нажмите на вкладку. <em>Смотрите вживую.</em>',
       'work.lead': 'Три концепт-сайта работают прямо внутри рамки — прокручивайте, открывайте меню, пробуйте калькуляторы и запись. Рядом — реальная CRM, которую я сделал, и боты с парсерами.',
@@ -91,7 +91,7 @@
       'case.ask': 'Запросить демо', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.discuss': 'Обсудить бота или парсер',
       'bots.tg': 'Telegram-боты', 'bots.parse': 'Парсеры и сбор данных', 'bots.status': 'бот', 'bots.name': 'LUMA · бот записи',
       'svc.kicker': 'Услуги', 'svc.meta': 'От одной страницы до рабочего инструмента', 'svc.title': 'Что я могу <em>сделать для вас</em>',
-      'svc.lead': 'От одного лендинга до бота или внутреннего инструмента — проектирую, делаю и запускаю сам, от начала до конца.',
+      'svc.lead': 'От одного лендинга до полного многостраничного сайта, бота или внутреннего инструмента — проектирую, делаю и запускаю сам, от начала до конца.',
       'proc.kicker': 'Процесс', 'proc.meta': '4 шага', 'proc.title': 'Понятные шаги, <em>без сюрпризов</em>',
       'proc.lead': 'Вы всегда знаете, что будет дальше, — и видите, как растёт проект, по живой\u00a0ссылке.', 'proc.principles': 'Принципы',
       'ct.kicker': 'Контакты', 'ct.title': 'Есть задача?<br> <em>Давайте обсудим.</em>',
@@ -164,6 +164,7 @@
   const SERVICES = {
     en: [
       ['Landing page', 'One page that explains the offer and collects leads — for a launch, a service or an ad campaign.', ['Copy structure & design', 'Lead form', 'Analytics setup']],
+      ['Full website, end\u00a0to\u00a0end', 'A deep multi-page site built around a real structure: sitemap, navigation, a page for every service or product, catalog, blog or case studies — designed as one system.', ['Sitemap & page structure', 'Catalog / blog / case studies', 'SEO basics & easy content updates']],
       ['Business website', 'A full site for a restaurant, clinic, studio or company: services, prices, team, reviews, contacts.', ['Up to ~10 sections', 'Bilingual on request', 'Mobile-first']],
       ['Booking & calculators', 'Interactive parts that sell: online booking, price calculators, quizzes and estimates.', ['Booking flow', 'Price / cost calculator', 'Forms to email / CRM']],
       ['Redesign', 'Your current site looks dated or loses visitors on mobile — I rebuild it fast and modern.', ['Audit of the old site', 'New design', 'Same domain, no downtime']],
@@ -172,6 +173,7 @@
     ],
     ru: [
       ['Лендинг', 'Одна страница, которая объясняет предложение и собирает заявки, — для запуска, услуги или рекламы.', ['Структура текста и дизайн', 'Форма заявки', 'Подключение аналитики']],
+      ['Полный сайт под\u00a0ключ', 'Глубокий многостраничный сайт с продуманной структурой: карта сайта, навигация, отдельная страница под каждую услугу или товар, каталог, блог или кейсы — единая система.', ['Карта сайта и структура страниц', 'Каталог / блог / кейсы', 'SEO-основа и удобное обновление']],
       ['Сайт для бизнеса', 'Полноценный сайт ресторана, клиники, студии или компании: услуги, цены, команда, отзывы, контакты.', ['До ~10 разделов', 'Два языка по запросу', 'Сначала мобильная версия']],
       ['Запись и калькуляторы', 'Интерактив, который продаёт: онлайн-запись, калькуляторы цены, квизы и сметы.', ['Сценарий записи', 'Калькулятор стоимости', 'Заявки на почту / в CRM']],
       ['Редизайн', 'Текущий сайт устарел или теряет посетителей на телефоне — переделаю быстро и современно.', ['Аудит старого сайта', 'Новый дизайн', 'Тот же домен, без простоя']],
@@ -183,6 +185,8 @@
   const SVC_ILL = [
     // лендинг: заголовок, кнопка, форма заявки
     '<rect x="4" y="6" width="112" height="68" rx="4"/><path d="M4 16h112"/><circle class="soft" cx="10" cy="11" r="1.3"/><circle class="soft" cx="15" cy="11" r="1.3"/><circle class="soft" cx="20" cy="11" r="1.3"/><path d="M13 29h44M13 36h32"/><path class="soft" d="M13 45h40M13 50h30"/><rect class="af" x="13" y="57" width="24" height="8" rx="4"/><rect x="69" y="25" width="38" height="41" rx="2.5"/><path class="soft" d="M75 33h26M75 41h26M75 49h26"/><rect class="a" x="75" y="56" width="26" height="5" rx="2.5"/>',
+    // полный сайт: дерево страниц — главная, разделы, вложенные страницы
+    '<rect class="af" x="46" y="5" width="28" height="13" rx="3"/><path d="M60 18v8M20 26h80M20 26v7M60 26v7M100 26v7"/><rect x="6" y="33" width="28" height="12" rx="2.5"/><rect x="46" y="33" width="28" height="12" rx="2.5"/><rect x="86" y="33" width="28" height="12" rx="2.5"/><path class="soft" d="M14 45v24M14 55h6M14 63h6M54 45v16M54 55h6M94 45v24M94 55h6M94 63h6"/><rect x="20" y="51" width="16" height="8" rx="2"/><rect x="20" y="59" width="16" height="8" rx="2" class="soft"/><rect x="60" y="51" width="16" height="8" rx="2"/><rect class="a" x="100" y="51" width="16" height="8" rx="2"/><rect x="100" y="59" width="16" height="8" rx="2" class="soft"/>',
     // сайт: меню, большое фото, три карточки
     '<rect x="4" y="6" width="112" height="68" rx="4"/><path d="M4 16h112"/><path d="M11 11h12"/><path class="soft" d="M84 11h6M94 11h6M104 11h6"/><rect x="11" y="21" width="98" height="24" rx="2"/><path class="soft" d="M11 44l20-13 12 8 11-7 22 12"/><circle class="a" cx="94" cy="30" r="4"/><rect x="11" y="51" width="30" height="16" rx="2"/><rect x="45" y="51" width="30" height="16" rx="2"/><rect x="79" y="51" width="30" height="16" rx="2"/>',
     // запись и калькулятор: свободные окна + ползунки и итог
@@ -1118,11 +1122,15 @@
   const navSection = (a) => (a.hasAttribute('data-to-work') ? 'work' : a.getAttribute('href').slice(1));
   const sections = ['work', 'services', 'process', 'contact'].map((id) => document.getElementById(id));
   let ticking = false;
+  let lastCur, lastScrolled;
   const onScroll = () => {
-    hdr.classList.toggle('is-scrolled', window.scrollY > 8);
+    // сначала все чтения, потом записи — без принудительного пересчёта раскладки на каждом кадре
+    const y = window.scrollY, lim = window.innerHeight * 0.4;
     let cur = null;
-    for (const s of sections) if (s.getBoundingClientRect().top < window.innerHeight * 0.4) cur = s.id;
-    navLinks.forEach((a) => a.classList.toggle('is-active', navSection(a) === cur));
+    for (const s of sections) if (s.getBoundingClientRect().top < lim) cur = s.id;
+    const scrolled = y > 8;
+    if (scrolled !== lastScrolled) { lastScrolled = scrolled; hdr.classList.toggle('is-scrolled', scrolled); }
+    if (cur !== lastCur) { lastCur = cur; navLinks.forEach((a) => a.classList.toggle('is-active', navSection(a) === cur)); }
     ticking = false;
   };
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -1218,13 +1226,20 @@
   const bar = document.querySelector('[data-progress]');
   if (bar) {
     let raf = 0;
+    // на телефонах полоса скрыта — не трогаем стили при прокрутке вовсе
+    const off = window.matchMedia('(pointer: coarse), (max-width: 860px)');
+    let max = 0, last = '';
+    const measure = () => { max = document.documentElement.scrollHeight - window.innerHeight; };
     const upd = () => {
       raf = 0;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : 0);
+      if (off.matches) return;
+      const v = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(3) : '0';
+      if (v !== last) { last = v; bar.style.setProperty('--p', v); }
     };
+    measure();
+    if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); upd(); }).observe(document.body);
     window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
-    window.addEventListener('resize', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+    window.addEventListener('resize', () => { measure(); if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
     upd();
   }
   // Только мышь и без «уменьшения движения»: кнопка слегка тянется за курсором

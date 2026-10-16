@@ -789,7 +789,7 @@ em { font-style: normal; }
 
 /* Полоса прогресса чтения */
 .progress { position: fixed; left: 0; right: 0; top: 0; z-index: 60; height: 2px; pointer-events: none; }
-.progress i { display: block; height: 100%; background: var(--grad); clip-path: inset(0 calc(100% - var(--p, 0) * 100%) 0 0); }
+.progress i { display: block; height: 100%; background: var(--grad); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); will-change: transform; }
 
 /* Мелкие повторы подписи */
 .brand__mark::after { background: var(--grad); width: 6px; height: 6px; border-radius: 1px; }
@@ -854,7 +854,7 @@ em { font-style: normal; }
 :root[data-theme="light"] .index__list a::before { background: linear-gradient(90deg, rgba(37, 65, 245, .08), rgba(124, 58, 237, .05) 55%, rgba(209, 42, 119, .03)); }
 
 /* Вкладки: бегущая градиентная планка над активной; свечение и подсветка — цветом проекта */
-.tabs__bar { background: var(--grad); background-size: 200% 100%; animation: gshift 5s ease-in-out infinite alternate; box-shadow: 0 0 16px 0 color-mix(in srgb, var(--bar, var(--accent)) calc(var(--glow) * 130%), transparent); }
+.tabs__bar { background: var(--grad); box-shadow: 0 0 16px 0 color-mix(in srgb, var(--bar, var(--accent)) calc(var(--glow) * 130%), transparent); }
 .tab { --tab-glow: 26%; isolation: isolate; }
 :root[data-theme="light"] .tab { --tab-glow: 15%; }
 .tab::after {
@@ -932,6 +932,15 @@ em { font-style: normal; }
 /* Пауза бесконечных анимаций, пока секция вне экрана (класс ставит скрипт); will-change — только пока идёт движение */
 .is-off::before, .floor.is-off .ring::before, .tabs.is-off .tabs__bar { animation-play-state: paused; }
 .hero:not(.is-off)::before, .contact:not(.is-off)::before { will-change: transform; }
+
+/* Телефоны и планшеты: декор неподвижен (те же цвета), без больших анимированных слоёв — плавная прокрутка */
+@media (pointer: coarse), (max-width: 860px) {
+  .hero::before, .hero:not(.is-off)::before { animation: none; will-change: auto; transform: none; }
+  .contact::before, .contact:not(.is-off)::before { animation: none; will-change: auto; transform: none; inset: 0; }
+  .floor .ring::before { animation: none; transform: translate(-50%, -50%) rotate(40deg); }
+  .device__pill { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(17, 17, 17, .9); }
+  .progress { display: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero::before, .contact::before, .floor .ring::before, .tabs__bar, .tab[aria-selected="true"] { animation: none !important; will-change: auto !important; }
