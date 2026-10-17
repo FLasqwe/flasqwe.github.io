@@ -32,8 +32,10 @@ index.html          portfolio page
 assets/site.css     styles (dark by default + optional light theme)
 assets/site.js      EN/RU dictionary, showcase tabs, live previews ("Show details" blueprint annotations), bot/parser animation, email, brief form
 assets/orb.js       the chrome ring in the "O" of EKIMOV’ (WebGL, CSS fallback)
-assets/sig.js       one rAF loop: the ring travelling from the wordmark into the header, living letters, band wave curtains, Moscow clock
-assets/motion.js    reveal / scramble / parallax / cursor layer (mouse-only extras)
+assets/sig.js       one rAF loop: the ring travelling from the wordmark into the header, living letters, giant section words, band wave curtains, Moscow clock
+assets/motion.js    reveal / scramble / odometer counters / parallax / contextual cursor (mouse-only extras)
+assets/sound.js     optional interface sounds (WebAudio, off by default, stored in eg-sound)
+assets/video/       5-second seamless WebM (VP8) loops of each demo, desktop and mobile, EN and RU
 assets/shots/       screenshots used as posters and previews
 assets/thumbs/      small thumbnails (not referenced by the current page)
 serein/ obsid/ ognivo/ luma/ monolit/   the five concept sites

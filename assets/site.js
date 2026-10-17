@@ -36,7 +36,9 @@
       'about.label': 'The approach', 'about.title': 'A website isn’t a business card.<br>It’s a tool that brings clients.',
       'hero.index': 'Index of work', 'hero.indexHint': 'Click — opens below',
       'hero.for': '<b>For any business</b> — restaurants, clinics, construction, beauty, real estate, retail and\u00a0services',
-      'work.spread': 'Works', 'work.end': 'Want one like this', marquee: 'let’s talk', fab: 'Write',
+      'gw.work': 'WORKS', 'gw.svc': 'SERVICES', 'gw.proc': 'PROCESS', 'gw.ct': 'LET’S TALK',
+      'a.sound': 'Interface sounds', 'snd.off': 'Sound off', 'snd.on': 'Sound on', egg: 'you found it ◯', 'ct.copiedShort': 'Email copied',
+      'work.end': 'Want one like this', marquee: 'let’s talk', fab: 'Write',
       'work.kicker': 'Selected work', 'work.meta': '5 live demos · 1 real product · bots & parsers',
       'work.title': 'Click a tab. See it live.',
       'work.lead': 'Five concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
@@ -54,11 +56,11 @@
       'case.feats': 'What’s inside', 'case.stack': 'Built with', 'case.similar': 'I want a site like this',
       'case.ask': 'Request a demo', 'case.private': 'Private tool — demo on request', 'case.discuss': 'Discuss your bot or parser',
       'bots.tg': 'Telegram bots', 'bots.parse': 'Parsers & data collection', 'bots.status': 'bot', 'bots.name': 'LUMA Booking Bot',
-      'svc.kicker': 'Services', 'svc.meta': 'From one page to a working tool', 'svc.title': 'What I can<br>build for you.',
+      'svc.kicker': 'Services', 'svc.meta': '7 services', 'svc.title': 'What I can<br>build for you.',
       'svc.lead': 'From a single landing page to a full multi-page website, a bot or an internal tool — designed, built and launched by one person, start to finish.',
       'proc.kicker': 'Process', 'proc.meta': '4 steps', 'proc.title': 'Clear steps,<br>no surprises.',
       'proc.lead': 'You always know what happens next — and you watch the project grow on a live\u00a0link.', 'proc.principles': 'Principles',
-      'ct.kicker': 'Contact', 'ct.title': 'Have a&nbsp;project in&nbsp;mind?<br>Let’s talk.',
+      'ct.kicker': 'Contact', 'ct.title': 'Have a&nbsp;project in&nbsp;mind?',
       'ct.lead': 'Tell me about your business and what the site, bot or app should do.',
       'fm.kicker': 'Project brief', 'fm.hint': 'Two minutes — I reply within a day with ideas, a plan and a price.',
       'fm.name': 'Your name', 'fm.contact': 'Email or Telegram', 'fm.contactPh': 'you@mail.com or @username',
@@ -86,7 +88,9 @@
       'about.label': 'Подход', 'about.title': 'Сайт — не визитка.<br>Это инструмент, который приводит клиентов.',
       'hero.index': 'Указатель работ', 'hero.indexHint': 'Нажмите — откроется ниже',
       'hero.for': '<b>Для любого бизнеса</b> — рестораны, клиники, стройка, салоны красоты, недвижимость, торговля и\u00a0услуги',
-      'work.spread': 'Работы', 'work.end': 'Хочу так же', marquee: 'давайте обсудим', fab: 'Написать',
+      'gw.work': 'РАБОТЫ', 'gw.svc': 'УСЛУГИ', 'gw.proc': 'ПРОЦЕСС', 'gw.ct': 'НА СВЯЗИ',
+      'a.sound': 'Звуки интерфейса', 'snd.off': 'Звук выкл', 'snd.on': 'Звук вкл', egg: 'нашли пасхалку ◯', 'ct.copiedShort': 'Почта скопирована',
+      'work.end': 'Хочу так же', marquee: 'давайте обсудим', fab: 'Написать',
       'work.kicker': 'Избранные работы', 'work.meta': '5 живых демо · 1 реальный продукт · боты и парсеры',
       'work.title': 'Нажмите на вкладку. Смотрите вживую.',
       'work.lead': 'Пять концепт-сайтов работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
@@ -104,7 +108,7 @@
       'case.feats': 'Что внутри', 'case.stack': 'Технологии', 'case.similar': 'Хочу такой же',
       'case.ask': 'Запросить демо', 'case.private': 'Внутренний инструмент — демо по запросу', 'case.discuss': 'Обсудить бота или парсер',
       'bots.tg': 'Telegram-боты', 'bots.parse': 'Парсеры и сбор данных', 'bots.status': 'бот', 'bots.name': 'LUMA · бот записи',
-      'svc.kicker': 'Услуги', 'svc.meta': 'От одной страницы до рабочего инструмента', 'svc.title': 'Что я могу<br>сделать для вас.',
+      'svc.kicker': 'Услуги', 'svc.meta': '7 услуг', 'svc.title': 'Что я могу<br>сделать для вас.',
       'svc.lead': 'От одного лендинга до полного многостраничного сайта, бота или внутреннего инструмента — проектирую, делаю и запускаю сам, от начала до конца.',
       'proc.kicker': 'Процесс', 'proc.meta': '4 шага', 'proc.title': 'Понятные шаги,<br>без сюрпризов.',
       'proc.lead': 'Вы всегда знаете, что будет дальше, — и видите, как растёт проект, по живой\u00a0ссылке.', 'proc.principles': 'Принципы',
@@ -440,6 +444,16 @@
   const stages = {}; // id → { el, screen, frame }
 
   const shot = (id, mode) => `assets/shots/${id}-${mode}-${lang}.jpg`;
+  // Видео-превью (WebM VP8, 5 с, бесшовная петля): только если браузер их играет (Safari 17.4+, Chrome, Firefox),
+  // без «уменьшения движения» и без экономии трафика — иначе остаётся JPG-постер
+  const vidOk = (() => {
+    if (reduceMotion) return false;
+    const c = navigator.connection;
+    if (c && c.saveData) return false;
+    try { const v = document.createElement('video'); return !!(v.canPlayType && v.canPlayType('video/webm; codecs="vp8"')); } catch { return false; }
+  })();
+  const vidSrc = (id, mode) => `assets/video/${id}-${mode}${lang === 'ru' ? '-ru' : ''}.webm`;
+  const VID_ATTR = 'muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"';
   const syncDemoLang = () => DEMO_KEYS.forEach((k) => store.set(k, lang));
 
   const hdr = $('[data-hdr]');
@@ -515,7 +529,7 @@
             <div class="device__chrome" aria-hidden="true"><i></i><i></i><i></i><span class="device__url">${w.host}</span></div>
             <div class="device__screen">
               <div class="device__sbar" aria-hidden="true"><span>9:41</span><span>${ICON.sbar}</span></div>
-              <img class="device__poster" alt="" decoding="async">
+              <img class="device__poster" alt="" decoding="async">${vidOk ? `<video class="device__vid" ${VID_ATTR}></video>` : ''}
               <span class="device__load" aria-hidden="true"></span>
               <span class="device__pill" aria-hidden="true"><i></i><span data-t="stage.loading"></span></span>
               <button class="device__shield" type="button"><span class="device__hint">${ICON.tap}<span data-t="${coarse ? 'stage.tap' : 'stage.interact'}"></span></span></button>
@@ -693,6 +707,35 @@
       (d.head || d.documentElement).appendChild(s);
     } catch { /* другой origin — пропускаем */ }
   }
+  // Видео в рамке: показываем, только если живой сайт грузится дольше ~0,45 с (быстрая сеть — видео не качаем вовсе)
+  let vidTimer = 0;
+  function stageVid(id, on) {
+    const st = stages[id];
+    const v = st && $('.device__vid', st.el);
+    if (!v) return;
+    if (on) {
+      const mode = st.el.dataset.mode;
+      const src = vidSrc(id, mode);
+      if (v.getAttribute('src') !== src) {
+        st.el.classList.remove('has-vid');
+        v.src = src;
+        v.onplaying = () => { if (v.getAttribute('src') === src && !st.el.classList.contains('is-loaded')) st.el.classList.add('has-vid'); };
+      }
+      v.muted = true;
+      if (st.vis !== false) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+    } else {
+      st.el.classList.remove('has-vid');
+      if (v.getAttribute('src')) { v.pause(); v.removeAttribute('src'); try { v.load(); } catch { /* ignore */ } }
+    }
+  }
+  function armStageVid(id) {
+    clearTimeout(vidTimer);
+    if (!vidOk) return;
+    vidTimer = setTimeout(() => {
+      const st = stages[id];
+      if (id === active && st && !st.el.classList.contains('is-loaded')) stageVid(id, true);
+    }, 450);
+  }
   // Небольшая задержка: при быстром листании вкладок стрелками не грузим каждое демо
   function queueFrame(id) {
     clearTimeout(frameTimer);
@@ -703,6 +746,7 @@
     st.el.classList.remove('is-loaded');
     st.el.classList.add('is-loading');
     frameTimer = setTimeout(() => loadFrame(id), 140);
+    armStageVid(id);
   }
   function loadFrame(id) {
     const w = byId(id);
@@ -721,6 +765,7 @@
       keepHashInFrame(f);
       st.el.classList.add('is-loaded');
       st.el.classList.remove('is-loading');
+      setTimeout(() => { if (st.el.classList.contains('is-loaded')) stageVid(id, false); }, 700); // после растворения
       prefetchPosters();
       // «Детали»: выноски следуют за прокруткой демо; после загрузки — первая отрисовка (шрифты демо успевают встать)
       try { f.contentWindow.addEventListener('scroll', () => { if (active === id) bdQueue(id); }, { passive: true }); } catch { /* другой origin */ }
@@ -746,6 +791,7 @@
     const st = stages[id];
     if (!st) return;
     if (st.frame) { st.frame.remove(); st.frame = null; }
+    stageVid(id, false);
     const bh = st.el && $('[data-bd-host]', st.el);
     if (bh) { bh.innerHTML = ''; bh.classList.remove('is-in'); }
     st.el?.classList.remove('is-loaded', 'is-loading', 'is-interactive');
@@ -790,6 +836,7 @@
         $$('.seg button', st.el).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
         setPoster(w, w.id === active && workNear);
       });
+      if (stages[active] && $('.device__vid', stages[active].el)?.getAttribute('src')) stageVid(active, true);
       layoutStage(active);
       if (bdOn) setTimeout(() => bdRender(active, true), 720); // рамка доехала до нового размера (transition .6s), демо перестроилось
     };
@@ -976,10 +1023,67 @@
   // «Смотреть работы», «Работы» в меню и ссылка-пропуск ведут к ряду вкладок (якорь активной вкладки)
   const syncWorkLinks = () => $$('[data-to-work]').forEach((a) => a.setAttribute('href', `#work-${active}`));
 
+  // ── Открытие кейса: превью раскрывается из тонкой щели (clip-path на подиуме, CSS), имя проекта —
+  //    огромными буквами поперёк панели, затем садится в заголовок (FLIP: только transform/opacity).
+  //    Быстрое переключение — всё прерывается и возвращается в покой. Телефон: только щель.
+  const cineLite = window.matchMedia('(pointer: coarse), (max-width: 860px)');
+  let cineS = null;
+  function cineStop() {
+    if (!cineS) return;
+    cineS.timers.forEach(clearTimeout);
+    cineS.anims.forEach((a) => { try { a.cancel(); } catch { /* ignore */ } });
+    cineS.ov.remove();
+    cineS = null;
+  }
+  function cine(id) {
+    cineStop();
+    if (reduceMotion || cineLite.matches || !Element.prototype.animate) return;
+    const panel = $(`#panel-${id}`);
+    const floor = panel && $('.floor', panel);
+    const name = panel && $('.info__name', panel);
+    if (!floor || !name) return;
+    const fr = floor.getBoundingClientRect();
+    if (fr.bottom < 80 || fr.top > window.innerHeight - 80) return; // панель не на экране — без постановки
+    const pr = panel.getBoundingClientRect();
+    const ov = document.createElement('div');
+    ov.className = 'cine';
+    ov.setAttribute('aria-hidden', 'true');
+    ov.innerHTML = [...name.textContent].map((c, i) => `<span class="cine__c"><span style="--i:${i}">${c === ' ' ? '\u00a0' : esc(c)}</span></span>`).join('');
+    panel.appendChild(ov);
+    const nr = name.getBoundingClientRect();
+    const w0 = ov.offsetWidth || 1, h0 = ov.offsetHeight || 1;
+    // титр ставится по подиуму (сцене), а не по всей панели — не наезжает на колонку описания
+    const S = Math.max(1, Math.min((fr.width * 0.9) / w0, (fr.height * 0.42) / h0, 7));
+    const bx = (fr.left - pr.left) + (fr.width - w0 * S) / 2, by = fr.top - pr.top + (fr.height - h0 * S) / 2;
+    const big = `translate3d(${bx.toFixed(1)}px,${by.toFixed(1)}px,0) scale(${S.toFixed(3)})`;
+    ov.style.transform = big;
+    const wide = !stackedMq.matches;
+    const st = { ov, name, timers: [], anims: [] };
+    cineS = st;
+    void ov.offsetWidth;
+    ov.classList.add('is-in');
+    // Вся постановка — сразу одной партитурой WAAPI (с задержкой), а не таймерами: если поток занят
+    // загрузкой демо, перелёт и проявление заголовка всё равно идут вовремя (на композиторе)
+    const n = name.textContent.length;
+    const delay = 520 + n * 26, D = wide ? 720 : 480;
+    const end = wide
+      ? `translate3d(${(nr.left - pr.left).toFixed(1)}px,${(nr.top - pr.top).toFixed(1)}px,0) scale(1)`
+      : `${big} translate3d(0,-8%,0) scale(1.06,.86)`;
+    const a = ov.animate(wide
+      ? [{ transform: big, opacity: 1 }, { transform: end, opacity: 1, offset: 0.92 }, { transform: end, opacity: 0 }]
+      : [{ transform: big, opacity: 1 }, { transform: end, opacity: 0 }],
+    { duration: D, delay, easing: wide ? 'cubic-bezier(.75,0,.2,1)' : 'cubic-bezier(.6,0,.4,1)', fill: 'both' });
+    st.anims.push(a);
+    if (wide) st.anims.push(name.animate([{ opacity: 0 }, { opacity: 0, offset: (delay + D * 0.9) / (delay + D) }, { opacity: 1 }], { duration: delay + D }));
+    a.onfinish = () => { if (cineS === st) cineStop(); };
+    st.timers.push(setTimeout(() => { if (cineS === st) cineStop(); }, delay + D + 1200)); // страховка
+  }
+
   function activate(id, { focus = false, push = true, animate = true, user = false } = {}) {
     if (!byId(id)) id = WORK[0].id;
     const prev = active;
     active = id;
+    cineStop();
     $$('.tab', tabsEl).forEach((b) => {
       const on = b.dataset.tab === id;
       b.setAttribute('aria-selected', String(on));
@@ -1007,6 +1111,10 @@
     if (focus) $(`#tab-${id}`).focus({ preventScroll: true });
     if (prev !== id) live.textContent = w[lang].name;
     if (user && prev !== id) keepTabsInView(id);
+    if (prev !== id) {
+      document.dispatchEvent(new CustomEvent('eg:tab', { detail: { id } }));
+      if (animate) cine(id);
+    }
   }
   // Переключение пользователем из глубины длинной панели: новая панель короче — без этого
   // страница «уезжает» в «Услуги»/«Процесс». Возвращаем ряд вкладок и верх новой панели на экран.
@@ -1227,8 +1335,8 @@
 
   // ── Остальные секции ───────────────────────────────────
   function renderSections() {
-    // «W O R K S» — буквы разнесены на всю ширину
-    $('[data-render="spread"]').innerHTML = [...t('work.spread')].map((c) => `<span>${esc(c)}</span>`).join('');
+    // Гигантские слова-разделители (WORKS / SERVICES / …) — шрифт знака, ширина подгоняется под контейнер (fitWords)
+    $$('[data-gw]').forEach((el) => { el.textContent = t(el.dataset.gw); });
     // Бегущая фраза в подвале: две одинаковые половины — сдвиг на −50% бесшовный
     const m = esc(t('marquee'));
     $('[data-render="marquee"]').innerHTML = Array.from({ length: 8 }, () => `<span>${m}</span>`).join('');
@@ -1239,7 +1347,7 @@
     if (asideImg) asideImg.alt = `${byId('crm')[lang].name} — ${lang === 'ru' ? 'дашборд (демо-данные)' : 'dashboard (demo data)'}`;
     // Чёрная карточка: три концепт-сайта из пяти (ведут к вкладкам); номер — как у вкладки
     $('[data-render="reel"]').innerHTML = REEL.map(byId).map((w) => `
-      <a class="reel__item" href="#work-${w.id}"><div class="reel__fig"><img src="${shot(w.id, 'desktop')}" width="1440" height="900" alt="${esc(w[lang].name)} — ${esc(w[lang].short)}" loading="lazy" decoding="async">
+      <a class="reel__item" href="#work-${w.id}"><div class="reel__fig"><img src="${shot(w.id, 'desktop')}" width="1440" height="900" alt="${esc(w[lang].name)} — ${esc(w[lang].short)}" loading="lazy" decoding="async">${vidOk ? `<video class="reel__vid" ${VID_ATTR} data-vid="${w.id}"></video>` : ''}
       <span class="reel__tag" aria-hidden="true">(0${WORK.indexOf(w) + 1}) ${esc(w[lang].idx)}</span></div></a>`).join('');
     $('[data-render="services"]').innerHTML = SERVICES[lang].map(([h, p, list], i) => `
       <li data-rv><span class="svc__no">${String(i + 1).padStart(2, '0')}</span><h3 class="svc__name">${esc(h)}</h3><p class="svc__desc">${esc(p)}</p>
@@ -1255,6 +1363,70 @@
     $('[data-render="fm-types"]').innerHTML = t('fmTypes').map((x, i) => `<label class="opt"><input type="checkbox" name="type" value="${i}"${types.includes(i) ? ' checked' : ''}><span>${esc(x)}</span></label>`).join('');
     $('[data-render="fm-budgets"]').innerHTML = t('fmBudgets').map((x, i) => `<label class="opt"><input type="radio" name="budget" value="${i}"${budget.includes(i) ? ' checked' : ''}><span>${esc(x)}</span></label>`).join('');
     $$('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
+    reelVids();
+    fitWords();
+  }
+
+  // Гигантские слова: размер = ширина контейнера × k (cqw), подгонка по «чернилам» первой и последней буквы
+  let gwCtx = null;
+  function fitWords() {
+    const ws = $$('.gw__w');
+    if (!ws.length) return;
+    if (!gwCtx) gwCtx = document.createElement('canvas').getContext('2d');
+    ws.forEach((w) => {
+      const avail = w.parentElement.clientWidth;
+      const txt = w.textContent;
+      if (!avail || !txt) return;
+      w.style.setProperty('--gk', '.2'); w.style.setProperty('--gi', '0');
+      const cs = getComputedStyle(w);
+      const fs = parseFloat(cs.fontSize);
+      const ls = parseFloat(cs.letterSpacing) || 0;
+      let lb = 0, rb = 0;
+      if (gwCtx) {
+        gwCtx.font = `400 ${fs}px "Archivo Black"`;
+        const a = gwCtx.measureText(txt[0]), b = gwCtx.measureText(txt[txt.length - 1]);
+        if (Number.isFinite(a.actualBoundingBoxLeft)) lb = -a.actualBoundingBoxLeft;
+        if (Number.isFinite(b.actualBoundingBoxRight)) rb = b.width - b.actualBoundingBoxRight;
+      }
+      const inkW = w.offsetWidth - lb - (rb + ls);
+      if (inkW <= 0) return;
+      w.style.setProperty('--gk', (0.2 * (avail / inkW) * 0.997).toFixed(5));
+      w.style.setProperty('--gi', (lb / fs).toFixed(4));
+    });
+  }
+
+  // Видео в карточке работ: играют, только пока карточка на экране; телефон — одно (центральное) видео
+  const reelLite = window.matchMedia('(pointer: coarse), (max-width: 860px)');
+  let reelVis = false;
+  function reelVids() {
+    $$('.reel__vid').forEach((v, i) => {
+      const want = reelVis && !document.hidden && (!reelLite.matches || i === 1);
+      if (want) {
+        if (!v.getAttribute('src')) {
+          v.src = vidSrc(v.dataset.vid, 'desktop');
+          v.onplaying = () => v.classList.add('is-playing');
+        }
+        v.muted = true;
+        const pr = v.play(); if (pr && pr.catch) pr.catch(() => {});
+      } else if (v.getAttribute('src') && !v.paused) v.pause();
+    });
+  }
+  if (vidOk && 'IntersectionObserver' in window) {
+    const reelEl = $('[data-reel]');
+    // телефон: видео стартует, когда карточка задержалась на экране, — не посреди быстрого пролистывания
+    //  (запуск декодера на слабом телефоне даёт заметную паузу кадра)
+    //  — ждём паузу в прокрутке (~450 мс без scroll), пока карточка видна
+    let reelT = 0, reelWait = false;
+    const reelArm = () => { clearTimeout(reelT); reelT = setTimeout(() => { reelWait = false; removeEventListener('scroll', reelArm); reelVids(); }, 450); };
+    if (reelEl) new IntersectionObserver((es) => {
+      reelVis = es[0].isIntersecting;
+      const first = reelVis && reelLite.matches && !$('.reel__vid[src]');
+      if (first) { if (!reelWait) { reelWait = true; addEventListener('scroll', reelArm, { passive: true }); } reelArm(); return; }
+      if (reelWait) { reelWait = false; clearTimeout(reelT); removeEventListener('scroll', reelArm); }
+      reelVids();
+    }, { threshold: 0.15 }).observe(reelEl);
+    document.addEventListener('visibilitychange', reelVids);
+    reelLite.addEventListener('change', reelVids);
   }
 
   // ── Язык ───────────────────────────────────────────────
@@ -1312,7 +1484,15 @@
 
   // Касание: когда сцена уходит с экрана, «Нажмите, чтобы листать» возвращается — страница снова прокручивается
   const stageIo = new IntersectionObserver((entries) => {
-    for (const e of entries) if (!e.isIntersecting) setInteractive(e.target, false);
+    for (const e of entries) {
+      if (!e.isIntersecting) setInteractive(e.target, false);
+      const id = e.target.closest('.panel')?.dataset.panel;
+      const st = id && stages[id];
+      if (!st) continue;
+      st.vis = e.isIntersecting;
+      const v = $('.device__vid', st.el);
+      if (v && v.getAttribute('src')) { if (e.isIntersecting && !st.el.classList.contains('is-loaded')) v.play().catch(() => {}); else v.pause(); }
+    }
   }, { threshold: 0 });
 
   // ── Копирование email ──────────────────────────────────
@@ -1332,8 +1512,16 @@
     copyBtn.classList.toggle('is-done', ok);
     label.textContent = msg;
     live.textContent = msg;
+    if (ok) document.dispatchEvent(new CustomEvent('eg:copied'));
     clearTimeout(copyTimer);
     copyTimer = setTimeout(() => { copyBtn.classList.remove('is-done'); label.textContent = t('ct.copy'); }, ok ? 2000 : 3500);
+  });
+
+  // Мышь: клик по крупному адресу копирует его (подпись курсора «Копировать»); клавиатура и касание — письмо, как раньше
+  $('[data-mail]').addEventListener('click', (e) => {
+    if (!finePointer || e.detail === 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    copyBtn.click();
   });
 
   // ── Бриф: отправка через FormSubmit (AJAX) на почту; при ошибке — письмо с готовым текстом ──
@@ -1529,6 +1717,45 @@
     // Клик/касание по «O» — короткий «вдох» кольца с толчком вращения (и на телефоне)
     if (orb.ok && !reduceMotion) { disc.classList.add('is-poke'); disc.addEventListener('click', () => orb.poke()); }
   }
+  // ── Пасхалка: 5 быстрых нажатий на кольцо (в знаке или в шапке) — кольцо крутится и подпрыгивает,
+  //    буквы «EKIMOV’» прыгают волной, внизу — короткая моно-плашка. Облик кольца не меняется.
+  const toast = $('[data-toast]');
+  let hits = [], toastT = 0;
+  const egg = () => {
+    const moved = !reduceMotion && window.EGSig && window.EGSig.egg ? window.EGSig.egg() : false;
+    if (!reduceMotion) {
+      if (!moved) { disc.classList.remove('is-egg'); void disc.offsetWidth; disc.classList.add('is-egg'); setTimeout(() => disc.classList.remove('is-egg'), 1700); }
+      hdr.classList.remove('is-egg'); void hdr.offsetWidth; hdr.classList.add('is-egg'); setTimeout(() => hdr.classList.remove('is-egg'), 1300);
+    }
+    if (toast) {
+      toast.textContent = t('egg');
+      toast.classList.add('is-on');
+      clearTimeout(toastT);
+      toastT = setTimeout(() => toast.classList.remove('is-on'), 2000);
+    }
+    live.textContent = t('egg');
+    document.dispatchEvent(new CustomEvent('eg:egg'));
+  };
+  const ringHit = () => {
+    document.dispatchEvent(new CustomEvent('eg:poke'));
+    const now = performance.now();
+    hits = hits.filter((x) => now - x < 1800);
+    hits.push(now);
+    if (hits.length >= 5) { hits = []; egg(); }
+  };
+  disc.addEventListener('click', ringHit);
+  // Кольцо в шапке: нажатие — тот же отклик, что в знаке (а не переход наверх); «E» и «’» по-прежнему ведут домой
+  const brandO = $('[data-brand-o]');
+  if (brandO && orb && orb.ok && !reduceMotion) {
+    brandO.classList.add('is-poke');
+    brandO.addEventListener('click', (e) => {
+      if (!root.classList.contains('orb-travel') || !hdr.classList.contains('is-docked') || e.detail === 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      orb.poke();
+      ringHit();
+    });
+  }
   // Размер знака = ширина контейнера × k (единицы cqw); k зависит только от шрифта — меряем один раз
   // Подгонка по «чернилам», а не по коробке: левый край «E» встаёт на линию заголовка,
   // кончик апострофа — на правое поле. Боковые отступы глифов берём из canvas.measureText.
@@ -1635,7 +1862,7 @@
   });
   if (!introOn && intro) intro.remove();
   if (!introOn) ringHome(false);
-  fontReady.then(fitMark);
+  fontReady.then(() => { fitMark(); fitWords(); });
   Promise.all([fontReady, runIntro()]).then(() => hero.classList.add('is-ready'));
 
   activate(active, { push: false, animate: false });
@@ -1656,6 +1883,7 @@
   if (document.fonts) {
     document.fonts.ready.then(() => {
       fitMark();
+      fitWords();
       fitStatic();
       moveBar();
       layoutStage(active);

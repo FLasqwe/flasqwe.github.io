@@ -298,10 +298,12 @@ html.menu-open { overflow: hidden; }
 .sec-head > .big { grid-column: 7 / -1; }
 .sec-lead { grid-column: 7 / span 5; margin-top: 22px; max-width: 34em; color: var(--mut); font-size: 15.5px; line-height: 1.5; text-wrap: pretty; }
 
-/* Разрядка «W O R K S» во всю ширину */
-/* «W O R K S» — мелкая моно-строка с разрядкой во всю ширину */
-.spread { position: relative; display: flex; justify-content: space-between; margin-bottom: clamp(28px, 3.4vw, 52px); padding-bottom: 12px; font: 500 13px/1 var(--mono); letter-spacing: 0; text-transform: uppercase; }
-.spread::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--rule); transform-origin: 0 50%; pointer-events: none; }
+/* Гигантское слово-разделитель (WORKS / SERVICES / PROCESS / LET’S TALK): шрифт знака, во всю ширину контейнера.
+   Размер = ширина × --gk (считает fitWords по «чернилам» букв); сжатие/растяжение от прокрутки — assets/sig.js */
+.gw { position: relative; container-type: inline-size; margin: 0 0 clamp(36px, 4.4vw, 76px); padding-bottom: clamp(12px, 1.3vw, 20px); }
+.gw__w { display: inline-block; white-space: nowrap; font: 400 calc(100cqw * var(--gk, .2))/.8 var(--display); letter-spacing: -.035em; margin-left: calc(var(--gi, 0) * -1em); padding-top: .07em; transform-origin: 0 100%; }
+@supports not (font-size: 1cqw) { .gw__w { font-size: calc((min(100vw, var(--max)) - 2 * var(--gut)) * var(--gk, .2)); } }
+.gw::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--rule-2); transform-origin: 0 50%; pointer-events: none; }
 
 /* ── Работы (чёрная) ───────────────────────────────── */
 .work { padding-block: calc(var(--hdr) + 24px) clamp(64px, 7vw, 112px); }
@@ -602,7 +604,7 @@ html.menu-open { overflow: hidden; }
 .process { padding-block: calc(var(--hdr) + clamp(40px, 12vh, 130px)) clamp(84px, 9vw, 150px); }
 .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: clamp(48px, 6vw, 96px); }
 .step { padding-top: 18px; border-top: 1px solid var(--rule-2); }
-.step__no { display: block; font: 500 clamp(52px, 5.6vw, 92px)/.9 var(--sans); letter-spacing: -.04em; }
+.step__no { display: block; font: 400 clamp(48px, 5vw, 84px)/.9 var(--mono); letter-spacing: -.06em; font-variant-numeric: tabular-nums; }
 .step h3 { margin-top: clamp(28px, 3vw, 48px); font-size: clamp(20px, 1.7vw, 26px); font-weight: 500; letter-spacing: -.03em; line-height: 1.1; }
 .step p { margin-top: 10px; max-width: 24em; color: var(--mut); font-size: 15px; line-height: 1.5; }
 .prin { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; margin-top: clamp(64px, 7vw, 112px); }
@@ -858,12 +860,11 @@ html.menu-open { overflow: hidden; }
 .mo .sec-head[data-rv].is-in > :not(.big) { opacity: 1; transform: none; }
 .mo .about__title[data-rv], .mo .contact__title[data-rv] { opacity: 1; transform: none; }
 
-/* «W O R K S» — буквы по очереди, затем линия под ними прочерчивается слева направо */
-.mo .spread { overflow: hidden; }
-.mo .spread span { display: inline-block; transform: translateY(110%); transition: transform .9s var(--ease) var(--d, 0ms); }
-.mo .spread.is-in span { transform: none; }
-.mo .spread::after { transform: scaleX(0); transition: transform 1.3s var(--ease-io) .55s; }
-.mo .spread.is-in::after { transform: none; }
+/* Слово-разделитель: линия под ним прочерчивается слева направо; на телефоне само слово — одноразово (класс .gw-io от sig.js) */
+.mo .gw::after { transform: scaleX(0); transition: transform 1.4s var(--ease-io) .25s; }
+.mo .gw.is-in::after { transform: none; }
+.mo.gw-io .gw__w { transform: translate3d(0, 24%, 0) scale(.56, 1.14); transition: transform 1.3s var(--ease); }
+.mo.gw-io .gw.is-in .gw__w { transform: none; }
 
 /* Чёрная карточка с работами: белая шторка уходит вверх, превью выплывают следом */
 .mo .reel[data-rv] { opacity: 1; transform: none; }
@@ -986,4 +987,87 @@ html.menu-open { overflow: hidden; }
   .brief__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .brief__foot .pill { width: 100%; justify-content: center; }
   .opt span { height: 38px; padding: 0 14px; font-size: 13.5px; }
+}
+
+/* ══ Этап 2: счётчики-одометры, открытие кейса, видео-превью, курсор с подписью, звук, пасхалка ══ */
+
+/* Счётчики «01 / 07»: цифры прокручиваются в окне высотой в одну цифру (motion.js). Только transform */
+.fl__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.fl { display: inline-flex; align-items: baseline; font-variant-numeric: tabular-nums; }
+.fd { --fh: 1.12em; display: inline-block; height: var(--fh); overflow: hidden; vertical-align: top; }
+.fd__s { display: block; will-change: transform; }
+.fd__s i { display: block; height: var(--fh); line-height: var(--fh); font-style: normal; }
+.fc { white-space: pre; }
+.step__no .fl, .info__count .fl, .work__count .fl, .svc__no .fl { line-height: 1.12; }
+
+/* Открытие кейса: подиум раскрывается из тонкой горизонтальной щели */
+.panel.is-entering .floor { animation: slit 1.05s var(--ease-io) both; }
+@keyframes slit {
+  0% { clip-path: inset(50% 50% 50% 50%); }
+  32% { clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+.panel { position: relative; }
+/* Имя проекта огромными буквами поперёк панели, затем садится в заголовок (site.js, FLIP) */
+.cine {
+  position: absolute; left: 0; top: 0; z-index: 30; display: flex; white-space: nowrap; pointer-events: none;
+  font-size: clamp(34px, 3.3vw, 56px); font-weight: 500; line-height: .98; letter-spacing: -.05em;
+  color: #fff; mix-blend-mode: difference; transform-origin: 0 0; will-change: transform;
+}
+.cine__c { display: inline-block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
+.cine__c > span { display: inline-block; transform: translate3d(0, 105%, 0); }
+.cine.is-in .cine__c > span { transform: none; transition: transform .62s cubic-bezier(.2, .8, .1, 1) calc(var(--i) * 26ms); }
+
+/* Видео-превью в рамке (пока живой сайт грузится) и в чёрной карточке работ */
+.device__vid { position: absolute; left: 0; right: 0; bottom: 0; top: calc(var(--sb) * var(--s) * 1px); width: 100%; height: calc(var(--h) * var(--s) * 1px); object-fit: cover; object-position: top center; opacity: 0; transition: opacity .5s var(--ease); pointer-events: none; }
+.stage.has-vid .device__vid { opacity: 1; }
+.stage.is-loaded .device__vid { opacity: 0; }
+.reel__vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0; transition: opacity .7s var(--ease), transform 1.1s var(--ease); pointer-events: none; }
+.reel__vid.is-playing { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { .reel__item:hover .reel__vid { transform: scale(1.045); } }
+
+/* Курсор: над работами, демо, почтой и кольцом точка вырастает в круг с моно-подписью */
+.cur__c { position: absolute; left: -46px; top: -46px; width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: #000; opacity: 0; transform: scale(.1); transition: transform .5s var(--ease), opacity .2s var(--ease); }
+.cur[data-tone="light"] .cur__c { background: #000; color: #fff; }
+.cur__l { max-width: 70px; font: 500 9.5px/1.3 var(--mono); letter-spacing: .07em; text-transform: uppercase; text-align: center; }
+.cur.is-label { mix-blend-mode: normal; }
+.cur.is-label::before { transform: scale(0); }
+.cur.is-label .cur__c { opacity: 1; transform: none; }
+.cur.is-label.is-press .cur__c { transform: scale(.9); }
+/* «Открыть» и «Копировать» — круг справа-снизу от указателя, чтобы текст под ним читался */
+.cur[data-kind="open"] .cur__c, .cur[data-kind="copy"] .cur__c { left: 14px; top: 14px; width: 78px; height: 78px; transform-origin: 0 0; }
+.cur[data-kind="open"] .cur__l, .cur[data-kind="copy"] .cur__l { max-width: 62px; font-size: 9px; }
+/* «Играть» над кольцом — маленькая моно-плашка сбоку, кольцо остаётся видно целиком */
+.cur[data-kind="play"] .cur__c { left: 20px; top: 20px; width: auto; height: 24px; padding: 0 10px; border-radius: 12px; transform-origin: 0 0; }
+.cur[data-kind="play"] .cur__l { max-width: none; white-space: nowrap; }
+.cur[data-kind="play"].is-label::before, .cur[data-kind="open"].is-label::before, .cur[data-kind="copy"].is-label::before { transform: scale(.6); }
+.cur[data-tone="light"].is-label::before { background: #000; }
+/* подсказку «Нажмите, чтобы управлять» показывает курсор; с клавиатуры (фокус) — сама плашка */
+.mo.cur-on .device:hover .device__shield:not(:focus-visible) .device__hint { opacity: 0; }
+.brand__o.is-poke { cursor: pointer; }
+
+/* Переключатель звука в шапке: моно-подпись и четыре полоски */
+.snd { display: inline-flex; align-items: center; gap: 8px; height: 44px; margin-left: auto; margin-right: clamp(10px, 1.6vw, 26px); font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.snd[hidden] { display: none; }
+.snd__eq { display: inline-flex; align-items: center; gap: 2px; height: 11px; }
+.snd__eq b { display: block; width: 2px; height: 11px; background: currentColor; transform: scaleY(.18); transition: transform .45s var(--ease); }
+.snd.is-on .snd__eq b:nth-child(1) { transform: scaleY(.55); }
+.snd.is-on .snd__eq b:nth-child(2) { transform: scaleY(1); }
+.snd.is-on .snd__eq b:nth-child(3) { transform: scaleY(.7); }
+.snd.is-on .snd__eq b:nth-child(4) { transform: scaleY(.38); }
+.snd:not(.is-on) .snd__l { opacity: .72; }
+@media (max-width: 420px) { .snd { gap: 6px; font-size: 10px; letter-spacing: .04em; } }
+
+/* Пасхалка: плашка внизу экрана; буквы знака в шапке подпрыгивают; CSS-кольцо (без WebGL) — подскок */
+.toast { position: fixed; left: 50%; bottom: calc(max(24px, env(safe-area-inset-bottom)) + 72px); z-index: 90; padding: 10px 16px; border-radius: 999px; background: #fff; color: #000; box-shadow: 0 0 0 1px rgba(0, 0, 0, .14), 0 14px 40px rgba(0, 0, 0, .28); font: 500 12px/1 var(--mono); letter-spacing: .04em; white-space: nowrap; pointer-events: none; opacity: 0; transform: translate3d(-50%, 14px, 0); transition: opacity .35s var(--ease), transform .5s var(--ease); }
+.toast.is-on { opacity: 1; transform: translate3d(-50%, 0, 0); }
+.hdr.is-egg .brand__e { animation: hop .7s var(--ease) both; }
+.hdr.is-egg .brand__q { animation: hop .7s var(--ease) .14s both; }
+@keyframes hop { 0% { transform: none; } 35% { transform: translateY(-38%); } 62% { transform: translateY(6%); } 80% { transform: translateY(-8%); } 100% { transform: none; } }
+.disc.is-egg { animation: discEgg 1.6s var(--ease) both; }
+@keyframes discEgg { 0% { transform: none; } 20% { transform: translateY(-30%) rotate(260deg); } 40% { transform: translateY(4%) rotate(520deg) scale(1.06, .94); } 60% { transform: translateY(-12%) rotate(640deg); } 100% { transform: rotate(720deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel.is-entering .floor { animation: none; }
+  .cine { display: none; }
 }

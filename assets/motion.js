@@ -64,14 +64,56 @@
     splitWords(el); watchDone(el); headIo.observe(el);
   });
 
-  // ── 2. «W O R K S»: буквы поднимаются по очереди ──
+  // ── 2. Гигантские слова-разделители: линия под словом прочерчивается при появлении
+  //    (само слово сжимается/растягивается от прокрутки в assets/sig.js; на телефоне — одноразово по этому же классу)
   const oneShot = new IntersectionObserver((es) => es.forEach((e) => {
     if (!e.isIntersecting) return;
     e.target.classList.add('is-in'); oneShot.unobserve(e.target);
   }), { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
-  const prepSpread = () => $$('.spread').forEach((el) => {
-    $$('span', el).forEach((s, i) => s.style.setProperty('--d', `${i * 55}ms`));
-    oneShot.observe(el);
+  const prepWords = () => $$('.gw:not(.is-in)').forEach((el) => oneShot.observe(el));
+
+  // ── 2b. Счётчики «01 / 07», (01)…(07), 01…04: цифры прокручиваются, как в счётчике-одометре (IBM Plex Mono).
+  //    Читалке — настоящий текст (.fl__sr), анимация — aria-hidden. Только transform.
+  const FLIP = '.info__count, .svc__no, .step__no, .work__count';
+  const escH = (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c] || c);
+  const flipify = (el) => {
+    if (el.dataset.fl) return;
+    const txt = el.textContent;
+    if (!/\d/.test(txt)) return;
+    el.dataset.fl = '1';
+    el.innerHTML = `<span class="fl__sr">${[...txt].map(escH).join('')}</span><span class="fl" aria-hidden="true">${[...txt].map((c) => (/\d/.test(c)
+      ? `<span class="fd" data-d="${c}"><span class="fd__s"><i>0</i></span></span>` : `<span class="fc">${c === ' ' ? '\u00a0' : escH(c)}</span>`)).join('')}</span>`;
+  };
+  const roll = (el, delay = 0) => {
+    $$('.fd', el).forEach((d, i) => {
+      const s = d.firstChild;
+      const to = +d.dataset.d;
+      const from = +(s.lastChild ? s.lastChild.textContent : 0);
+      // путь: от текущей цифры вперёд, 5–8 шагов, последний — нужная цифра
+      const steps = 5 + ((i * 3 + to) % 4);
+      const seq = [];
+      for (let k = 0; k <= steps; k++) seq.push((from + k) % 10);
+      seq[steps] = to;
+      s.innerHTML = seq.map((x) => `<i>${x}</i>`).join('');
+      if (s.__a) s.__a.cancel();
+      // WAAPI: без принудительного пересчёта раскладки; 1,12em — высота окна цифры (--fh в CSS)
+      const a = s.animate([{ transform: 'translate3d(0,0,0)' }, { transform: `translate3d(0,${(-steps * 1.12).toFixed(2)}em,0)` }],
+        { duration: 750 + i * 120, delay: delay + i * 70, easing: 'cubic-bezier(.2,.95,.25,1.04)', fill: 'both' });
+      s.__a = a;
+      a.onfinish = () => { if (s.__a !== a) return; s.innerHTML = `<i>${to}</i>`; a.cancel(); s.__a = null; };
+    });
+  };
+  const flipIo = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    flipIo.unobserve(e.target);
+    roll(e.target, 120);
+  }), { rootMargin: '0px 0px -8% 0px' });
+  const prepFlips = () => $$(FLIP).forEach((el) => { if (!el.dataset.fl) { flipify(el); flipIo.observe(el); } });
+  // Смена вкладки: счётчик новой панели прокручивается заново
+  document.addEventListener('eg:tab', (e) => {
+    const el = document.querySelector(`#panel-${e.detail.id} .info__count`);
+    if (!el) return;
+    flipify(el); flipIo.unobserve(el); roll(el, 160);
   });
 
   // ── 3. Моно-метки: короткий «перебор» символов при появлении (только мышь — на телефоне без лишней раскладки) ──
@@ -104,9 +146,9 @@
   $$('.aside__fig').forEach((el) => el.classList.add('wipe'));
 
   // ── Язык: тексты переписаны — заново режем заголовки, гасим незаконченный перебор ──
-  document.addEventListener('eg:lang', () => { stopScrambles(); prepHeads(); prepSpread(); prepLabels(); });
+  document.addEventListener('eg:lang', () => { stopScrambles(); prepHeads(); prepWords(); prepFlips(); prepLabels(); });
   // Первый eg:lang прозвучал раньше (site.js идёт до этого файла) — готовим вручную
-  prepHeads(); prepSpread(); prepLabels();
+  prepHeads(); prepWords(); prepFlips(); prepLabels();
   // Первый экран: строки заголовка — после загрузки шрифтов (перенос мог измениться)
   if (document.fonts) document.fonts.ready.then(() => $$('.hero__title').forEach(stagger));
 
@@ -173,11 +215,25 @@
     parReq();
   }, { passive: true });
 
-  // ── 7. Точка-курсор: растёт над ссылками и кнопками (широкий экран, мышь) ──
+  // ── 7. Точка-курсор: растёт над ссылками; над работами, демо, почтой и кольцом — круг с моно-подписью
+  //    (только мышь и широкий экран; pointer-events: none — клики не перехватывает; клавиатура не затронута)
+  const CUR = {
+    en: { scroll: 'Scroll', interact: 'Click to interact', open: 'Open', copy: 'Copy', copied: 'Copied ✓', play: 'Play' },
+    ru: { scroll: 'Листать', interact: 'Включить демо', open: 'Открыть', copy: 'Копировать', copied: 'Готово ✓', play: 'Играть' },
+  };
+  const KIND = [
+    ['.device__shield', 'interact'],
+    ['.stage--site .device', 'scroll'],
+    ['.tab, .reel__item, .aside__img', 'open'],
+    ['[data-mail], [data-copy]', 'copy'],
+    ['.disc.is-poke, .brand__o.is-poke', 'play'],
+  ];
   const dot = document.createElement('div');
   dot.className = 'cur'; dot.setAttribute('aria-hidden', 'true');
+  dot.innerHTML = '<span class="cur__c"><span class="cur__l"></span></span>';
+  const lab = dot.querySelector('.cur__l');
   document.body.appendChild(dot);
-  let cx = -100, cy = -100, dx = -100, dy = -100, cRaf = 0, big = false, shown = false;
+  let cx = -100, cy = -100, dx = -100, dy = -100, cRaf = 0, big = false, shown = false, kind = null, tone = '', copiedT = 0, lastEl = null;
   const cLoop = () => {
     cRaf = 0;
     dx += (cx - dx) * 0.24; dy += (cy - dy) * 0.24;
@@ -185,17 +241,61 @@
     if (Math.abs(cx - dx) + Math.abs(cy - dy) > 0.3) cRaf = requestAnimationFrame(cLoop);
   };
   const HOT = 'a, button, [role="tab"], label, summary, .disc.is-poke';
-  const hide = () => { if (shown) { shown = false; dot.classList.remove('is-on'); } };
+  const words = () => CUR[root.lang === 'ru' ? 'ru' : 'en'];
+  const setKind = (k) => {
+    if (k === kind && !(k === 'copy' && copiedT)) return;
+    kind = k;
+    dot.classList.toggle('is-label', !!k);
+    if (k) { lab.textContent = words()[k === 'copy' && copiedT ? 'copied' : k]; dot.dataset.kind = k; }
+  };
+  let eggT = 0;
+  const hide = () => { if (shown) { shown = false; dot.classList.remove('is-on'); root.classList.remove('cur-on'); } };
   document.addEventListener('pointermove', (e) => {
     if (e.pointerType !== 'mouse' || !wide.matches) { hide(); return; }
     cx = e.clientX; cy = e.clientY;
-    if (!shown) { shown = true; dx = cx; dy = cy; dot.classList.add('is-on'); }
-    const hot = !!(e.target.closest && e.target.closest(HOT));
-    if (hot !== big) { big = hot; dot.classList.toggle('is-big', hot); }
+    if (!shown) { shown = true; dx = cx; dy = cy; dot.classList.add('is-on'); root.classList.add('cur-on'); }
+    const t = e.target;
+    if (t !== lastEl && t.closest) pick(t);
     if (!cRaf) cRaf = requestAnimationFrame(cLoop);
   }, { passive: true });
+  // разбор цели — только когда элемент под курсором сменился (не на каждом движении)
+  function pick(t) {
+      lastEl = t;
+      let k = null;
+      for (const [sel, name] of KIND) if (t.closest(sel)) { k = name; break; }
+      // уже открытая вкладка ничего не откроет — обычная точка; во время пасхалки над кольцом ничего не рисуем
+      if (k === 'open' && t.closest('[role="tab"][aria-selected="true"]')) k = null;
+      const eggRing = !!eggT && !!t.closest('.disc, .brand__o');
+      if (eggRing) k = null;
+      setKind(k);
+      const hot = !k && !eggRing && !!t.closest(HOT);
+      if (hot !== big) { big = hot; dot.classList.toggle('is-big', hot); }
+      const b = t.closest('[data-tone]');
+      const tn = b ? b.dataset.tone : 'dark';
+      if (tn !== tone) { tone = tn; dot.dataset.tone = tn; }
+  }
   // Курсор ушёл в живое демо (iframe) или за окно — прячем точку
-  document.addEventListener('pointerout', (e) => { if (!e.relatedTarget) hide(); }, { passive: true });
+  document.addEventListener('pointerout', (e) => { if (!e.relatedTarget) { hide(); lastEl = null; } }, { passive: true });
   document.addEventListener('pointerdown', () => dot.classList.add('is-press'), { passive: true });
   document.addEventListener('pointerup', () => dot.classList.remove('is-press'), { passive: true });
+  // Почта скопирована — подпись на круге ненадолго меняется
+  document.addEventListener('eg:copied', () => {
+    clearTimeout(copiedT);
+    copiedT = setTimeout(() => { copiedT = 0; if (kind === 'copy') lab.textContent = words().copy; }, 1500);
+    if (kind === 'copy') lab.textContent = words().copied;
+  });
+  document.addEventListener('eg:lang', () => { if (kind) lab.textContent = words()[kind]; });
+  // Пасхалка: кольцо празднует без подписи поверх — на время последовательности остаётся только точка
+  document.addEventListener('eg:egg', () => {
+    clearTimeout(eggT);
+    if (kind === 'play') setKind(null);
+    if (big) { big = false; dot.classList.remove('is-big'); }
+    eggT = setTimeout(() => { eggT = 0; lastEl = null; }, 2000);
+  });
+  // Щит демо снят кликом — элемент под курсором тот же, но подпись должна смениться
+  //  (и вкладка после клика стала выбранной — «Открыть» убираем сразу, не дожидаясь движения мыши)
+  document.addEventListener('click', () => {
+    lastEl = null;
+    if (shown) setTimeout(() => { const t = lastEl === null && document.elementFromPoint(cx, cy); if (t && t.closest && t.tagName !== 'IFRAME') pick(t); }, 0);
+  }, { passive: true });
 })();

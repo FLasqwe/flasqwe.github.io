@@ -127,6 +127,46 @@
     });
   })();
 
+  // ── Гигантские слова-разделители (WORKS / SERVICES / PROCESS / LET’S TALK): входят сжатыми по горизонтали
+  //    и чуть ниже, распрямляются во всю ширину к ~40 % высоты экрана. Чистая функция от scrollY — обратимо.
+  //    Касание / узкий экран — одноразовое появление (CSS по классу .is-in от motion.js).
+  (() => {
+    const G = $$('.gw__w').map((el) => ({ el, box: el.parentElement, top: 0, h: 0, s: '' }));
+    if (!G.length) return;
+    const setMode = () => {
+      root.classList.toggle('gw-io', lite.matches);
+      if (lite.matches) G.forEach((g) => { g.el.style.transform = ''; g.s = ''; });
+    };
+    const measure = () => G.forEach((g) => { g.top = docXY(g.box)[1]; g.h = g.box.offsetHeight; });
+    setMode(); measure();
+    lite.addEventListener('change', () => { setMode(); measure(); dirty = true; kick(); });
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(() => { measure(); dirty = true; kick(); }); ro.observe(document.body); }
+    document.addEventListener('eg:lang', () => { measure(); dirty = true; kick(); });
+    parts.push({
+      measure,
+      upd(now, moved) {
+        if (!moved || lite.matches) return false;
+        for (const g of G) {
+          const st = g.top - y; // экранная Y верха слова
+          if (st > vh + 40 && g.s === 'out') continue;
+          const e = sstep(vh * 1.02, vh * 0.4, st);
+          let str;
+          if (e > 0.998) str = '';
+          else if (st > vh + 40) str = 'out';
+          else {
+            const sx = mix(0.56, 1, e), sy = mix(1.14, 1, e), ty = mix(0.24, 0, e) * g.h;
+            str = `translate3d(0,${ty.toFixed(1)}px,0) scale(${sx.toFixed(4)},${sy.toFixed(4)})`;
+          }
+          if (str !== g.s) {
+            g.el.style.transform = str === 'out' ? 'translate3d(0,24%,0) scale(.56,1.14)' : str;
+            g.s = str;
+          }
+        }
+        return false;
+      },
+    });
+  })();
+
   // ── Знак «EKIMOV’»: живые буквы, расход в стороны при уходе с первого экрана, кольцо-путешественник ──
   const hero = $('.hero');
   const mark = $('[data-mark]');
@@ -146,7 +186,7 @@
       let inner = el.querySelector('.ml__i');
       if (!inner && i !== oi) { inner = document.createElement('span'); inner.className = 'ml__i'; inner.textContent = el.textContent; el.textContent = ''; el.appendChild(inner); }
       return { el, inner, o: i === oi, side: i < oi ? -1 : 1, dist: Math.abs(i - oi), cx: 0, cy: 0,
-        tx: 0, sx: 1, sy: 1, sk: 0, vtx: 0, vsx: 0, vsy: 0, vsk: 0, s: '' };
+        tx: 0, ty: 0, sx: 1, sy: 1, sk: 0, vtx: 0, vty: 0, vsx: 0, vsy: 0, vsk: 0, jump: 0, s: '' };
     });
   };
   const lettersMeasure = () => {
@@ -225,17 +265,20 @@
         }
         // Касание: один импульс по очереди, слева направо
         if (sett >= 0 && !l.kicked && sett >= i * 0.07) { l.vsy -= 1.1; l.vsx += 0.7; l.kicked = true; }
+        // Пасхалка: буквы подпрыгивают волной, слева направо
+        if (l.jump && now >= l.jump) { l.vty -= h * 7.2; l.vsy += 0.9; l.vsx -= 0.5; l.jump = 0; }
         // пружины
         l.vtx += (K * (gtx - l.tx) - C * l.vtx) * dt; l.tx += l.vtx * dt;
+        l.vty += (K * (0 - l.ty) - C * l.vty) * dt; l.ty += l.vty * dt;
         l.vsx += (K * (gsx - l.sx) - C * l.vsx) * dt; l.sx += l.vsx * dt;
         l.vsy += (K * (gsy - l.sy) - C * l.vsy) * dt; l.sy += l.vsy * dt;
         l.vsk += (K * (gsk - l.sk) - C * l.vsk) * dt; l.sk += l.vsk * dt;
-        if (Math.abs(gtx - l.tx) > 0.05 || Math.abs(l.vtx) > 0.05 || Math.abs(gsx - l.sx) > 0.0004 || Math.abs(l.vsx) > 0.0004
+        if (l.jump || Math.abs(l.ty) > 0.05 || Math.abs(l.vty) > 0.05 || Math.abs(gtx - l.tx) > 0.05 || Math.abs(l.vtx) > 0.05 || Math.abs(gsx - l.sx) > 0.0004 || Math.abs(l.vsx) > 0.0004
           || Math.abs(gsy - l.sy) > 0.0004 || Math.abs(l.vsy) > 0.0004 || Math.abs(gsk - l.sk) > 0.02 || Math.abs(l.vsk) > 0.02) active = true;
-        else { l.tx = gtx; l.sx = gsx; l.sy = gsy; l.sk = gsk; l.vtx = l.vsx = l.vsy = l.vsk = 0; }
+        else { l.tx = gtx; l.ty = 0; l.sx = gsx; l.sy = gsy; l.sk = gsk; l.vtx = l.vty = l.vsx = l.vsy = l.vsk = 0; }
         const X = l.side * spread * (1 + 0.1 * l.dist) + l.tx;
-        const s = (Math.abs(X) < 0.05 && Math.abs(l.sx - 1) < 0.0005 && Math.abs(l.sy - 1) < 0.0005 && Math.abs(l.sk) < 0.02)
-          ? '' : `translate3d(${X.toFixed(1)}px,0,0) skewX(${l.sk.toFixed(2)}deg) scale(${l.sx.toFixed(4)},${l.sy.toFixed(4)})`;
+        const s = (Math.abs(X) < 0.05 && Math.abs(l.ty) < 0.05 && Math.abs(l.sx - 1) < 0.0005 && Math.abs(l.sy - 1) < 0.0005 && Math.abs(l.sk) < 0.02)
+          ? '' : `translate3d(${X.toFixed(1)}px,${l.ty.toFixed(1)}px,0) skewX(${l.sk.toFixed(2)}deg) scale(${l.sx.toFixed(4)},${l.sy.toFixed(4)})`;
         if (s !== l.s) { l.s = s; l.inner.style.transform = s; }
         const op = fade > 0.995 ? '' : fade.toFixed(3);
         if (op !== l.op) { l.op = op; l.inner.style.opacity = op; }
@@ -253,7 +296,17 @@
   //    Слой .orbfly: absolute в документе (скроллится вместе со страницей — без запаздывания на телефоне),
   //    во второй половине перелёта — fixed. Буфер canvas уменьшается вместе с кольцом.
   const T = { on: false, orb: null, fly: null, inner: null, disc: null, slot: null,
-    S0: 100, pad: 120, cx: 0, cy: 0, dx: 0, dy: 0, Sd: 24, res: 0, mode: '', s: '', docked: false, hdrUp: false, menu: false };
+    S0: 100, pad: 120, cx: 0, cy: 0, dx: 0, dy: 0, Sd: 24, res: 0, mode: '', s: '', docked: false, hdrUp: false, menu: false, egg: 0 };
+  // Пасхалка: быстрый оборот (две полные — облик тот же) и упругие подскоки; только поворот, сдвиг и масштаб
+  const EGG = 1.7;
+  const eggPose = (now) => {
+    const t = (now - T.egg) / 1000;
+    if (t >= EGG) { T.egg = 0; return { by: 0, bs: 1, spin: 0 }; }
+    const hop = Math.abs(Math.sin(t * Math.PI * 2.6)) * Math.exp(-t * 2.4);
+    const squash = Math.sin(t * Math.PI * 5.2) * Math.exp(-t * 3.2);
+    const e = 1 - (1 - Math.min(1, t / 1.25)) ** 3;
+    return { by: -hop, bs: 1 + 0.1 * squash, spin: e * Math.PI * 4 };
+  };
   const dprQ = () => {
     const dpr = window.devicePixelRatio || 1;
     return matchMedia('(pointer: coarse)').matches ? 1.5 : Math.min(dpr, 1.5) * (T.orb && T.orb.soft ? 0.6 : 1);
@@ -305,19 +358,24 @@
     upd(now, moved) {
       if (!T.on) return false;
       let forced = false;
-      if (moved || !T.s) {
+      const egg = T.egg ? eggPose(now) : null;
+      if (moved || !T.s || egg) {
         P = clamp(y / heroH, 0, 1);
         const q = pose();
         const docked = P >= 1;
         const fixed = docked || q.fixed;
         const size = T.S0 * q.s;
-        const left = q.x - size / 2;
-        const top = (fixed ? q.sy : q.sy + y) - size / 2;
+        const bs = egg ? egg.bs : 1, by = egg ? egg.by * size * 0.55 : 0;
+        const left = q.x - (size * bs) / 2;
+        const top = (fixed ? q.sy : q.sy + y) - (size * bs) / 2 + by;
         const mode = fixed ? 'fixed' : 'abs';
         if (mode !== T.mode) { T.mode = mode; T.fly.classList.toggle('is-fixed', fixed); }
-        const str = `translate3d(${left.toFixed(1)}px,${top.toFixed(1)}px,0) scale(${q.s.toFixed(4)})`;
+        const str = `translate3d(${left.toFixed(1)}px,${top.toFixed(1)}px,0) scale(${(q.s * bs).toFixed(4)})`;
         if (str !== T.s) { T.s = str; T.inner.style.transform = str; }
-        if (docked !== T.docked) { T.docked = docked; T.fly.classList.toggle('is-dock', docked); syncUp(); }
+        if (docked !== T.docked) {
+          T.docked = docked; T.fly.classList.toggle('is-dock', docked); syncUp();
+          if (docked) document.dispatchEvent(new CustomEvent('eg:dock'));
+        }
         const arrived = docked || q.t2 > 0.86;
         if (hdr && arrived !== hdr.classList.contains('is-docked')) hdr.classList.toggle('is-docked', arrived);
         // Подвал первого экрана гаснет до того, как кольцо пойдёт вверх: оно не проезжает по мелкому тексту
@@ -327,7 +385,7 @@
           if (fs !== T.footS) { T.footS = fs; T.foot.style.opacity = fs; T.foot.style.visibility = fo < 0.005 ? 'hidden' : ''; }
         }
         T.orb.center(q.x, q.sy, size);
-        T.orb.setSpin(P * 2.8);
+        T.orb.setSpin(P * 2.8 + (egg ? egg.spin : 0));
         // Буфер по видимому размеру: ступенями, чтобы не пересоздавать его каждый кадр
         const css = size;
         const need = css * (css < 64 ? Math.max(dprQ(), Math.min(window.devicePixelRatio || 1, 2)) : dprQ());
@@ -335,8 +393,8 @@
         if (lv !== T.res) { T.res = lv; if (T.orb.setRes(lv)) forced = true; }
       }
       const live = T.orb.ok && !(T.menu && !T.docked) && !(T.docked && T.hdrUp);
-      if (live || forced) T.orb.render(now, forced);
-      return live;
+      if (live || forced || egg) T.orb.render(now, forced || !!egg);
+      return live || !!T.egg;
     },
   });
   const syncUp = () => { T.fly.classList.toggle('is-up', T.docked && T.hdrUp); };
@@ -375,6 +433,18 @@
       return true;
     },
     heroH: () => heroH,
+    // Пасхалка: кольцо крутится и подпрыгивает, буквы знака прыгают волной (если знак на экране)
+    egg() {
+      const now = performance.now();
+      if (T.on) T.egg = now;
+      if (y < heroH * 0.9) {
+        let k = 0;
+        L.list.forEach((l) => { if (!l.o) { l.jump = now + 60 + k * 65; k++; } });
+        L.on = true;
+      }
+      dirty = true; kick();
+      return T.on;
+    },
   };
   kick();
 })();
