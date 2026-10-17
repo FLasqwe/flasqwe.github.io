@@ -728,7 +728,8 @@
     if (id === 'bots') sizeBots();
     updateBotsVisibility();
     syncWorkLinks();
-    if (push && location.hash !== `#work-${id}`) history.replaceState(null, '', `#work-${id}`);
+    // Адрес не меняем: иначе при обновлении / повторном заходе страница открывалась бы на вкладках, а не на первом экране
+    if (push && location.hash) history.replaceState(null, '', location.pathname + location.search);
     if (focus) $(`#tab-${id}`).focus({ preventScroll: true });
     if (prev !== id) live.textContent = w[lang].name;
     if (user && prev !== id) keepTabsInView(id);

@@ -29,6 +29,15 @@
         var l = localStorage.getItem('eg-lang') || ((navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en');
         d.lang = l === 'ru' ? 'ru' : 'en';
       } catch (e) {}
+      // Всегда начинаем с первого экрана «EKIMOV’»: браузер не возвращает прежнее место прокрутки,
+      // а при обновлении / «назад» якорь из адреса убирается. Свежая ссылка-якорь (#work-luma, #contact) работает как раньше.
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        var nt = nav && nav.type;
+        if (location.hash && (nt === 'reload' || nt === 'back_forward')) history.replaceState(null, '', location.pathname + location.search);
+        if (!location.hash) window.scrollTo(0, 0);
+      } catch (e) {}
       // Заставка «E◯’» — один раз за сессию, не при переходе по ссылке-якорю и не при «уменьшении движения»
       try {
         if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('eg-intro')) d.classList.add('intro-on');
