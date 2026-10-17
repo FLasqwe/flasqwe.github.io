@@ -15,7 +15,7 @@
 
   // Адрес собираем в браузере, а не храним целиком в HTML — меньше спама от сборщиков адресов
   const MAIL = ['ekimovgregory9', 'gmail.com'].join('@');
-  const DEMO_KEYS = ['serein-lang', 'obsid-lang', 'ognivo-lang', 'luma-lang', 'monolit-lang'];
+  const DEMO_KEYS = ['tideway-lang', 'serein-lang', 'obsid-lang', 'ognivo-lang', 'luma-lang', 'monolit-lang'];
 
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -39,9 +39,9 @@
       'gw.work': 'WORKS', 'gw.svc': 'SERVICES', 'gw.proc': 'PROCESS', 'gw.ct': 'LET’S TALK',
       'a.sound': 'Interface sounds', 'snd.off': 'Sound off', 'snd.on': 'Sound on', egg: 'you found it ◯', 'ct.copiedShort': 'Email copied',
       'work.end': 'Want one like this', marquee: 'let’s talk', fab: 'Write',
-      'work.kicker': 'Selected work', 'work.meta': '5 live demos · 1 real product · bots & parsers',
+      'work.kicker': 'Selected work', 'work.meta': '6 live demos · 1 real product · bots & parsers',
       'work.title': 'Click a tab. See it live.',
-      'work.lead': 'Five concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
+      'work.lead': 'Six concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
       'about.cap': 'Real product', 'marquee.static': 'let’s talk —',
       'work.keys': '← → to switch', 'work.tabs': 'Work',
       'kind.concept': 'Concept', 'kind.product': 'Product', 'kind.cap': 'Capabilities',
@@ -91,9 +91,9 @@
       'gw.work': 'РАБОТЫ', 'gw.svc': 'УСЛУГИ', 'gw.proc': 'ПРОЦЕСС', 'gw.ct': 'НА СВЯЗИ',
       'a.sound': 'Звуки интерфейса', 'snd.off': 'Звук выкл', 'snd.on': 'Звук вкл', egg: 'нашли пасхалку ◯', 'ct.copiedShort': 'Почта скопирована',
       'work.end': 'Хочу так же', marquee: 'давайте обсудим', fab: 'Написать',
-      'work.kicker': 'Избранные работы', 'work.meta': '5 живых демо · 1 реальный продукт · боты и парсеры',
+      'work.kicker': 'Избранные работы', 'work.meta': '6 живых демо · 1 реальный продукт · боты и парсеры',
       'work.title': 'Нажмите на вкладку. Смотрите вживую.',
-      'work.lead': 'Пять концепт-сайтов работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
+      'work.lead': 'Шесть концепт-сайтов работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
       'about.cap': 'Реальный продукт', 'marquee.static': 'давайте обсудим',
       'work.keys': '← → переключение', 'work.tabs': 'Работы',
       'kind.concept': 'Концепт', 'kind.product': 'Продукт', 'kind.cap': 'Возможности',
@@ -130,9 +130,19 @@
     },
   };
 
-  // ── Работы: 5 концепт-сайтов (два новых — первыми), реальный продукт, боты и парсеры ──
+  // ── Работы: 6 концепт-сайтов (новые — первыми), реальный продукт, боты и парсеры ──
   // pa — фирменный цвет проекта (метка вкладки, полоска, лёгкий оттенок подиума); sb — фон/текст статус-бара телефона
   const WORK = [
+    {
+      id: 'tideway', kind: 'site', url: 'tideway/', host: 'flasqwe.github.io/<b>tideway</b>/', pa: '#22e0c8', pt: '#0c8f82', sb: ['#06101c', '#ffffff'],
+      chips: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'Accessibility', 'EN / RU'],
+      en: { line: 'An agency that sells timing.', name: 'TIDEWAY', tab: 'TIDEWAY', idx: 'TIDEWAY', sub: 'Creative agency', short: 'Brand & growth agency', tag: 'Brand, digital & growth agency',
+        desc: 'A concept site for a fictional strategy-led creative agency. Layered waves drawn on canvas, a live tide model in the hero, six case studies with a filter and a modal, and a project estimator that turns into a brief.',
+        feats: ['Hero: layered waves on canvas and a live tide gauge computed from the clock', 'Six case studies: filter by discipline, modal with challenge / approach / result and KPIs', 'Project estimator: services, stage and urgency give a budget range, timeline and team, then prefill the brief', 'Services accordion with a cursor-following image, scroll-highlighted manifesto, London / Lisbon clocks'] },
+      ru: { line: 'Агентство, которое продаёт тайминг.', name: 'TIDEWAY', tab: 'TIDEWAY', idx: 'TIDEWAY', sub: 'Креативное агентство', short: 'Агентство бренда и роста', tag: 'Агентство бренда, digital и роста',
+        desc: 'Концепт-сайт вымышленного креативного агентства, которое начинает со стратегии. Слоистые волны на canvas, живая модель прилива на первом экране, шесть кейсов с фильтром и модальным окном и калькулятор проекта, который превращается в бриф.',
+        feats: ['Первый экран: волны на canvas и живой график прилива, посчитанный от текущего времени', 'Шесть кейсов: фильтр по дисциплине, модальное окно с задачей / подходом / результатом и KPI', 'Калькулятор проекта: услуги, стадия и срочность дают вилку бюджета, сроки и команду, затем заполняют бриф', 'Аккордеон услуг с картинкой за курсором, манифест с подсветкой при прокрутке, часы Лондона и Лиссабона'] },
+    },
     {
       id: 'serein', kind: 'site', url: 'serein/', host: 'flasqwe.github.io/<b>serein</b>/', pa: '#b08a5a', pt: '#7a5a32', sb: ['#f3eee6', '#111111'],
       chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'EN / RU'],
@@ -210,6 +220,19 @@
   // d[0] < 0 — подпись слева от точки излома, иначе справа. Подписи — только то, что в демо есть на самом деле.
   const A = (sel, at, d, en, ru) => ({ sel, at, d, en, ru });
   const ANN = {
+    tideway: {
+      desktop: [
+        A('#tide', [0, 0.5], [-0.06, 0.1], 'Tide gauge — computed from the clock, not a feed', 'График прилива — считается от времени, не из API'),
+        A('.nav__links a[href="#estimate"]', [0.5, 1], [0.03, 0.12], 'Estimator: budget, timeline, team → brief', 'Калькулятор: бюджет, сроки, команда → бриф'),
+        A('.hero__cta .btn--ghost', [1, 0.5], [0.05, 0.1], 'Six cases: filter + modal', 'Шесть кейсов: фильтр + модалка'),
+        A('.lang', [0.5, 1], [-0.1, 0.08], 'EN / RU', 'EN / RU'),
+      ],
+      mobile: [
+        A('.lang', [0.5, 1], [-0.14, 0.07], 'EN / RU', 'EN / RU'),
+        A('.hero__cta .btn--ghost', [1, 0.5], [0.06, -0.08], 'Six cases: filter + modal', 'Шесть кейсов: фильтр + модалка'),
+        A('.hero__stats', [0.5, 0], [0.08, 0.14], 'Counters animate on scroll', 'Счётчики оживают при прокрутке'),
+      ],
+    },
     serein: {
       desktop: [
         A('.hero__card', [0.08, 1], [-0.02, 0.17], 'Free flats — counted from the plan data', 'Свободные — из данных шахматки'),
