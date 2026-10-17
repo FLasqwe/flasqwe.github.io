@@ -849,3 +849,47 @@ html.menu-open { overflow: hidden; }
 }
 .cur { display: none; }
 @media (hover: hover) and (pointer: fine) and (min-width: 861px) { .mo .cur { display: block; } }
+
+/* ── Бриф проекта (контакт) ── */
+.mail__actions .pill svg { width: 17px; height: 17px; }
+.brief { margin-top: clamp(64px, 8vw, 128px); padding-top: clamp(28px, 3vw, 40px); border-top: 1px solid var(--fg); }
+.brief__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 24px; }
+.brief__hint { max-width: 46ch; color: var(--mut); font-size: 15px; line-height: 1.45; }
+.brief__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 24px; margin-top: clamp(28px, 3vw, 44px); }
+.fld { position: relative; display: grid; gap: 10px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.fld--wide { grid-column: 1 / -1; }
+.fld label, .fld legend { padding: 0; font: 500 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.fld legend { margin-bottom: 12px; }
+.fld__opt { color: var(--mut); text-transform: none; letter-spacing: .02em; }
+.fld input[type="text"], .fld textarea {
+  width: 100%; padding: 6px 0 12px; border: 0; border-bottom: 1px solid var(--rule-2); border-radius: 0; background: transparent; color: var(--fg);
+  font: 500 clamp(18px, 1.6vw, 24px)/1.35 var(--sans, inherit); letter-spacing: -.02em; transition: border-color .3s var(--ease);
+}
+.fld textarea { resize: vertical; min-height: 120px; }
+.fld input::placeholder, .fld textarea::placeholder { color: var(--mut); opacity: .75; }
+.fld input:focus, .fld textarea:focus { outline: none; border-bottom-color: var(--fg); box-shadow: 0 1px 0 0 var(--fg); }
+.fld input:focus-visible, .fld textarea:focus-visible { outline: none; }
+.fld [aria-invalid="true"] { border-bottom-color: #c4321f; box-shadow: 0 1px 0 0 #c4321f; }
+.fld__err { min-height: 1em; margin-top: -2px; color: #b02a17; font: 500 12px/1.3 var(--mono); letter-spacing: .02em; }
+.fld__err:empty { display: none; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { position: relative; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.opt span { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border: 1px solid var(--rule-2); border-radius: 999px; font-size: 14px; letter-spacing: -.01em; transition: background-color .25s, color .25s, border-color .25s; user-select: none; }
+.opt input:checked + span { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.opt input:focus-visible + span { outline: 2px solid var(--fg); outline-offset: 2px; }
+@media (hover: hover) { .opt:hover span { border-color: var(--fg); } }
+.brief__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.brief__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-top: 36px; }
+.brief__foot .pill[disabled] { opacity: .6; pointer-events: none; }
+.brief__note { color: var(--mut); font-size: 14px; }
+.brief__note a { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+.brief__status { margin-top: 18px; font-size: 16px; line-height: 1.45; }
+.brief__status:empty { display: none; }
+.brief.is-sent .brief__status { padding: 14px 18px; background: var(--fg); color: var(--bg); border-radius: 2px; }
+.brief.is-error .brief__status { color: #b02a17; }
+@media (max-width: 700px) {
+  .brief__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .brief__foot .pill { width: 100%; justify-content: center; }
+  .opt span { height: 38px; padding: 0 14px; font-size: 13.5px; }
+}

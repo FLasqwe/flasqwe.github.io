@@ -59,6 +59,15 @@
       'proc.lead': 'You always know what happens next — and you watch the project grow on a live\u00a0link.', 'proc.principles': 'Principles',
       'ct.kicker': 'Contact', 'ct.title': 'Have a&nbsp;project in&nbsp;mind?<br>Let’s talk.',
       'ct.lead': 'Tell me about your business and what the site, bot or app should do.',
+      'fm.kicker': 'Project brief', 'fm.hint': 'Two minutes — I reply within a day with ideas, a plan and a price.',
+      'fm.name': 'Your name', 'fm.contact': 'Email or Telegram', 'fm.contactPh': 'you@mail.com or @username',
+      'fm.type': 'What do you need?', 'fm.budget': 'Budget <span class="fld__opt">(optional)</span>',
+      'fm.msg': 'About the project', 'fm.msgPh': 'Business, goal, deadline, links to sites you like',
+      'fm.send': 'Send brief', 'fm.sending': 'Sending…', 'fm.note': 'Or message me on <a href="https://t.me/Makeways" target="_blank" rel="noopener">Telegram</a>.',
+      'fm.ok': 'Thank you! The brief is sent — I’ll reply within a day.', 'fm.fail': 'Couldn’t send. Please write to Telegram @Makeways or by email — the text is copied into the letter.',
+      'fm.eName': 'Please enter your name', 'fm.eContact': 'Enter an email or @telegram', 'fm.eMsg': 'A few words about the project', 'fm.subject': 'New brief from the portfolio',
+      fmTypes: ['Landing page', 'Full website', 'Telegram bot', 'Web app / CRM', 'Parser', 'Redesign', 'Other'],
+      fmBudgets: ['up to 50k ₽', '50–150k ₽', '150–300k ₽', '300k ₽+', 'Not sure yet'],
       facts: ['I reply with ideas, a plan and a price', 'English / <span lang="ru">Русский</span>', 'Files and domain stay yours'],
       'ct.copy': 'Copy email', 'ct.copied': 'Copied ✓', 'ct.selected': 'Selected — copy manually', 'ct.write': 'Write an email', 'ct.subject': 'Project inquiry',
       'foot.note': 'Hand-built, hosted on GitHub Pages. Demo projects are concepts — names, people and data are fictional.', 'foot.top': 'Back to top ↑',
@@ -99,6 +108,15 @@
       'proc.lead': 'Вы всегда знаете, что будет дальше, — и видите, как растёт проект, по живой\u00a0ссылке.', 'proc.principles': 'Принципы',
       'ct.kicker': 'Контакты', 'ct.title': 'Есть задача?<br>Давайте обсудим.',
       'ct.lead': 'Расскажите о бизнесе и о том, что должен делать сайт, бот или приложение.',
+      'fm.kicker': 'Бриф проекта', 'fm.hint': 'Пара минут — отвечу в течение дня идеями, планом и ценой.',
+      'fm.name': 'Ваше имя', 'fm.contact': 'Почта или Telegram', 'fm.contactPh': 'you@mail.ru или @username',
+      'fm.type': 'Что нужно?', 'fm.budget': 'Бюджет <span class="fld__opt">(необязательно)</span>',
+      'fm.msg': 'О проекте', 'fm.msgPh': 'Бизнес, задача, сроки, ссылки на сайты, которые нравятся',
+      'fm.send': 'Отправить бриф', 'fm.sending': 'Отправляю…', 'fm.note': 'Или напишите в <a href="https://t.me/Makeways" target="_blank" rel="noopener">Telegram</a>.',
+      'fm.ok': 'Спасибо! Бриф отправлен — отвечу в течение дня.', 'fm.fail': 'Не получилось отправить. Напишите в Telegram @Makeways или на почту — текст уже подставлен в письмо.',
+      'fm.eName': 'Укажите имя', 'fm.eContact': 'Укажите почту или @telegram', 'fm.eMsg': 'Пара слов о проекте', 'fm.subject': 'Новый бриф с портфолио',
+      fmTypes: ['Лендинг', 'Сайт под ключ', 'Telegram-бот', 'Веб-приложение / CRM', 'Парсер', 'Редизайн', 'Другое'],
+      fmBudgets: ['до 50 тыс. ₽', '50–150 тыс. ₽', '150–300 тыс. ₽', 'от 300 тыс. ₽', 'Пока не знаю'],
       facts: ['Отвечу идеями, планом и ценой', '<span lang="en">English</span> / Русский', 'Файлы и домен остаются у вас'],
       'ct.copy': 'Скопировать', 'ct.copied': 'Скопировано ✓', 'ct.selected': 'Выделено — скопируйте вручную', 'ct.write': 'Написать письмо', 'ct.subject': 'Запрос по проекту',
       'foot.note': 'Сделано вручную, размещено на GitHub Pages. Демо-проекты — концепты: названия, люди и данные вымышлены.', 'foot.top': 'Наверх ↑',
@@ -974,6 +992,12 @@
       <li class="step" data-rv><span class="step__no">0${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></li>`).join('');
     $('[data-render="principles"]').innerHTML = PRINCIPLES[lang].map(([b, s]) => `<li><b>${esc(b)}</b><span>${esc(s)}</span></li>`).join('');
     $('[data-render="facts"]').innerHTML = t('facts').map((x) => `<li>${ICON.check}<span>${x}</span></li>`).join('');
+    // Бриф: варианты «что нужно» (несколько) и «бюджет» (один); выбор сохраняется при смене языка
+    const keep = (sel) => $$(`${sel} input:checked`).map((i) => +i.value);
+    const types = keep('[data-render="fm-types"]'), budget = keep('[data-render="fm-budgets"]');
+    $('[data-render="fm-types"]').innerHTML = t('fmTypes').map((x, i) => `<label class="opt"><input type="checkbox" name="type" value="${i}"${types.includes(i) ? ' checked' : ''}><span>${esc(x)}</span></label>`).join('');
+    $('[data-render="fm-budgets"]').innerHTML = t('fmBudgets').map((x, i) => `<label class="opt"><input type="radio" name="budget" value="${i}"${budget.includes(i) ? ' checked' : ''}><span>${esc(x)}</span></label>`).join('');
+    $$('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
   }
 
   // ── Язык ───────────────────────────────────────────────
@@ -1053,6 +1077,60 @@
     clearTimeout(copyTimer);
     copyTimer = setTimeout(() => { copyBtn.classList.remove('is-done'); label.textContent = t('ct.copy'); }, ok ? 2000 : 3500);
   });
+
+  // ── Бриф: отправка через FormSubmit (AJAX) на почту; при ошибке — письмо с готовым текстом ──
+  const brief = $('[data-brief]');
+  if (brief) {
+    const status = $('[data-brief-status]', brief);
+    const sendBtn = $('[data-brief-send]', brief);
+    const err = (k, msg) => {
+      const box = $(`[data-err="${k}"]`, brief); const inp = brief.elements[k];
+      box.textContent = msg || ''; inp.setAttribute('aria-invalid', String(!!msg));
+      if (msg) inp.setAttribute('aria-describedby', box.id || (box.id = `e-${k}`)); else inp.removeAttribute('aria-describedby');
+      return !msg;
+    };
+    const contactOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || /^@?[a-zA-Z][\w]{4,31}$/.test(v) || /^\+?[\d\s()-]{7,20}$/.test(v);
+    const validate = () => {
+      const f = brief.elements;
+      const a = err('name', f.name.value.trim().length >= 2 ? '' : t('fm.eName'));
+      const b = err('contact', contactOk(f.contact.value.trim()) ? '' : t('fm.eContact'));
+      const c = err('message', f.message.value.trim().length >= 5 ? '' : t('fm.eMsg'));
+      return a && b && c;
+    };
+    ['name', 'contact', 'message'].forEach((k) => brief.elements[k].addEventListener('input', () => {
+      if (brief.elements[k].getAttribute('aria-invalid') === 'true') validate();
+    }));
+    const summary = () => {
+      const f = brief.elements;
+      const types = $$('[name="type"]:checked', brief).map((i) => T.ru.fmTypes[+i.value]).join(', ') || '—';
+      const b = $('[name="budget"]:checked', brief);
+      return { name: f.name.value.trim(), contact: f.contact.value.trim(), type: types,
+        budget: b ? T.ru.fmBudgets[+b.value] : '—', message: f.message.value.trim(), lang };
+    };
+    brief.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (brief.elements._honey.value) return; // бот заполнил скрытое поле
+      if (!validate()) { $('[aria-invalid="true"]', brief)?.focus(); return; }
+      const data = summary();
+      const label = $('[data-i18n]', sendBtn);
+      sendBtn.disabled = true; label.textContent = t('fm.sending'); status.textContent = ''; brief.classList.remove('is-error');
+      try {
+        const r = await fetch(`https://formsubmit.co/ajax/${MAIL}`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ ...data, _subject: `${t('fm.subject')}: ${data.name}`, _template: 'table', _captcha: 'false' }),
+        });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+        brief.classList.add('is-sent'); status.textContent = t('fm.ok'); brief.reset();
+      } catch {
+        brief.classList.add('is-error'); status.textContent = t('fm.fail');
+        const body = `${data.name}\n${data.contact}\n${data.type}\n${data.budget}\n\n${data.message}`;
+        location.href = `mailto:${MAIL}?subject=${encodeURIComponent(t('fm.subject'))}&body=${encodeURIComponent(body)}`;
+      } finally {
+        sendBtn.disabled = false; label.textContent = t('fm.send');
+      }
+    });
+  }
 
   // ── Шапка и полноэкранное меню ─────────────────────
   const menuBtn = $('[data-menu]');
