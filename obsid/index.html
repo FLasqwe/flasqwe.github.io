@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>OBSID — paint protection lab</title>
+  <meta name="description" content="OBSID Paint Protection Lab — PPF, ceramic coatings, paint correction, interior and tint. Configure your car, see the price and book a bay online.">
+  <meta name="theme-color" content="#0a0b0d">
+  <meta property="og:title" content="OBSID — paint protection lab">
+  <meta property="og:description" content="Invisible armour. Visible gloss. Configure your protection package in 30 seconds.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1200&h=630&q=80">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b0d'/%3E%3Cpath d='M32 10 52 22v20L32 54 12 42V22z' fill='none' stroke='%23d4ff3a' stroke-width='5'/%3E%3Cpath d='M24 40 40 24' stroke='%23d4ff3a' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="nav__in">
+      <a class="logo" href="#top" aria-label="OBSID — paint protection lab">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 54 19v26L32 58 10 45V19z"/><path d="M23 41 41 23"/></svg>
+        <span class="logo__word">OBSID</span><span class="logo__sub" data-i18n="logoSub">paint protection lab</span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#config" data-i18n="nav.config">Configurator</a>
+        <a href="#results" data-i18n="nav.results">Results</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#materials" data-i18n="nav.materials">Materials</a>
+        <a href="#studio" data-i18n="nav.studio">Studio</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+      <div class="nav__right">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+        <a class="btn btn--sm" href="#book" data-i18n="nav.book">Book a bay</a>
+        <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="drawer" id="drawer" hidden>
+      <a href="#config" data-i18n="nav.config">Configurator</a>
+      <a href="#results" data-i18n="nav.results">Results</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#materials" data-i18n="nav.materials">Materials</a>
+      <a href="#studio" data-i18n="nav.studio">Studio</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contacts" data-i18n="nav.contacts">Contacts</a>
+      <a class="btn" href="#book" data-i18n="nav.book">Book a bay</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ── Hero ── -->
+    <section class="hero" id="top">
+      <div class="hero__media" aria-hidden="true">
+        <div class="hero__frame" id="heroFrame">
+          <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1600&h=1000&q=80"
+               srcset="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=960&h=600&q=72 960w, https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1600&h=1000&q=78 1600w, https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=2400&h=1500&q=78 2400w"
+               sizes="(min-width: 900px) 80vw, 230vw" alt="" fetchpriority="high" width="1600" height="1000">
+          <div class="scan" id="scan">
+            <div class="scan__win">
+              <div class="scan__in">
+                <i class="scan__lit"></i>
+                <svg class="wire" viewBox="0 0 1400 875" preserveAspectRatio="none" focusable="false">
+                  <defs>
+                    <pattern id="wHatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-40)"><path d="M0 0V10" stroke="#d4ff3a" stroke-opacity=".55" stroke-width="1.6"/></pattern>
+                    <clipPath id="wFront"><rect x="892" y="300" width="400" height="400"/></clipPath>
+                  </defs>
+                  <path class="wire__zone" clip-path="url(#wFront)" d="M148 598 C140 580 134 550 136 530 C142 505 152 488 160 480 L178 452 C230 438 300 430 390 426 C420 410 460 390 500 378 C560 366 640 366 700 374 C735 380 760 395 790 412 C830 435 870 455 900 462 C980 478 1060 494 1120 508 C1170 520 1205 530 1218 545 C1234 560 1240 580 1232 605 L1150 610 A78 78 0 0 0 998 608 L448 616 A78 78 0 0 0 292 612 L160 608 Z"/>
+                  <g class="wire__body">
+                    <path d="M148 598 C140 580 134 550 136 530 C142 505 152 488 160 480 L178 452 C230 438 300 430 390 426 C420 410 460 390 500 378 C560 366 640 366 700 374 C735 380 760 395 790 412 C830 435 870 455 900 462 C980 478 1060 494 1120 508 C1170 520 1205 530 1218 545 C1234 560 1240 580 1232 605 L1150 610 A78 78 0 0 0 998 608 L448 616 A78 78 0 0 0 292 612 L160 608 Z"/>
+                    <path d="M392 432 C440 412 480 396 520 390 C580 380 650 380 700 386 C740 395 780 420 812 440 Z"/>
+                    <path d="M180 458 C400 448 800 470 1130 512"/>
+                    <path class="wire__thin" d="M200 522 C450 516 750 525 1000 540 M614 386 L620 440 L624 612 M892 462 C900 510 902 560 896 606 M396 432 C400 480 404 530 420 580 M1135 512 L1205 533 L1214 548 L1152 541 Z"/>
+                    <circle cx="372" cy="600" r="72"/><circle class="wire__thin" cx="372" cy="600" r="48"/>
+                    <circle cx="1075" cy="600" r="72"/><circle class="wire__thin" cx="1075" cy="600" r="48"/>
+                    <path class="wire__thin" d="M372 516 V684 M288 600 H456 M1075 516 V684 M991 600 H1159"/>
+                  </g>
+                  <path class="wire__dash" d="M892 462 C900 510 902 560 896 606"/>
+                  <g class="wire__dim">
+                    <path d="M136 712 H1240 M136 700 V724 M1240 700 V724"/>
+                    <text x="688" y="742" text-anchor="middle">L 4 910 MM</text>
+                  </g>
+                  <g class="wire__pt"><circle cx="1010" cy="486" r="6"/><path d="M1010 486 L980 404 H800"/><text x="974" y="394" text-anchor="end" data-i18n="wire.front">PPF · FRONT</text><text class="wire__sub" x="974" y="430" text-anchor="end" data-i18n="wire.um">200 µm film</text></g>
+                  <g class="wire__pt"><circle cx="560" cy="371" r="6"/><path d="M560 371 L590 300 H740"/><text x="596" y="292" data-i18n="wire.cer">CERAMIC 9H</text></g>
+                  <g class="wire__pt"><circle cx="300" cy="470" r="6"/><path d="M300 470 L268 400 H160"/><text x="160" y="392" class="wire__sub" data-i18n="wire.depth">paint 118 µm</text></g>
+                </svg>
+              </div>
+            </div>
+            <i class="scan__bar"></i>
+          </div>
+        </div>
+      </div>
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__in">
+        <p class="tag rise"><span class="tag__dot"></span><span data-i18n="hero.tag">Paint protection lab · Bay 01–04</span></p>
+        <h1 class="hero__title rise">
+          <span class="sweep" data-i18n="hero.t1">Invisible</span>
+          <span class="sweep sweep--accent" data-i18n="hero.t2">armour.</span>
+        </h1>
+        <p class="hero__lead rise"><span data-i18n="hero.lead">Paint protection film, ceramic coatings and paint correction for cars that deserve a lab, not a car wash.</span> <span class="hero__more" data-i18n="hero.lead2">Climate-controlled bays, inspection under 5000&nbsp;K light, written warranty up to 10 years.</span></p>
+        <ul class="hero__mini rise" aria-label="Key figures" data-i18n-aria="spec.aria">
+          <li><b class="mono">200&nbsp;<small data-i18n="spec.um">µm</small></b><span data-i18n="spec.1s">TPU film</span></li>
+          <li><b class="mono">10&nbsp;<small data-i18n="spec.yrs">yrs</small></b><span data-i18n="spec.3s">warranty</span></li>
+        </ul>
+        <div class="hero__cta rise">
+          <a class="btn" href="#config"><span data-i18n="hero.cta1">Configure your car</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost" href="#results" data-i18n="hero.cta2">See the gloss</a>
+        </div>
+      </div>
+
+      <aside class="hud rise" aria-label="Studio status">
+        <div class="hud__row"><span class="hud__live"><i></i><span data-i18n="hud.live">LIVE</span></span><span class="mono" data-i18n="hud.bay">Bay 02</span></div>
+        <p class="hud__job" data-i18n="hud.job">Sport coupe · full-body PPF</p>
+        <div class="hud__bar"><span id="hudBar"></span></div>
+        <div class="hud__row mono"><span data-i18n="hud.stage">Stage 4/6 · edge wrapping</span><b id="hudPct">0%</b></div>
+      </aside>
+
+      <ul class="hero__specs" aria-label="Key figures" data-i18n-aria="spec.aria">
+        <li><b class="mono">200&nbsp;<small data-i18n="spec.um">µm</small></b><span data-i18n="spec.1">self-healing TPU film</span></li>
+        <li><b class="mono">9H</b><span data-i18n="spec.2">ceramic hardness</span></li>
+        <li><b class="mono">10&nbsp;<small data-i18n="spec.yrs">yrs</small></b><span data-i18n="spec.3">written warranty</span></li>
+        <li><b class="mono">4</b><span data-i18n="spec.4">dust-free bays</span></li>
+      </ul>
+    </section>
+
+    <!-- ── Бегущая строка ── -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" id="ticker"></div>
+    </div>
+
+    <!-- ── Конфигуратор ── -->
+    <section class="section config" id="config" aria-labelledby="configTitle">
+      <div class="head">
+        <p class="kicker reveal"><span class="mono">01</span><span data-i18n="cfg.kicker">Configurator</span></p>
+        <h2 class="h2 reveal" id="configTitle" data-i18n-html="cfg.title">Build your protection. <em>See the price live.</em></h2>
+        <p class="lead reveal" data-i18n="cfg.lead">Pick the body type and packages — the zones light up on the car, the price and time in the bay update instantly. Fixed price, agreed before we start.</p>
+      </div>
+
+      <div class="cfg-pin" id="cfgPin" aria-hidden="true"></div>
+      <div class="cfg">
+        <div class="cfg__stage reveal" id="cfgStage">
+          <div class="stage__top mono">
+            <span class="stage__k" id="stageClass">SEDAN</span>
+            <span class="stage__scan"><i></i><span data-i18n="cfg.scan">zone map</span></span>
+          </div>
+          <div class="stage__car" id="carStage" aria-hidden="true"></div>
+          <ul class="stage__legend" id="legend" aria-hidden="true"></ul>
+          <dl class="readout" id="readout"></dl>
+        </div>
+
+        <div class="cfg__panel reveal">
+          <fieldset class="step">
+            <legend class="step__h"><span class="mono">A</span><span data-i18n="cfg.class">Body type</span></legend>
+            <div class="seg" role="radiogroup" id="classSeg"></div>
+          </fieldset>
+          <fieldset class="step">
+            <legend class="step__h"><span class="mono">B</span><span data-i18n="cfg.packs">Packages</span></legend>
+            <div class="packs" id="packs"></div>
+          </fieldset>
+          <div class="sum" aria-live="polite">
+            <div class="sum__row"><span data-i18n="cfg.total">Total</span><span class="sum__prices"><s class="sum__old mono" id="sumOld" hidden></s><b class="sum__price" id="sumPrice">0 ₽</b></span></div>
+            <div class="sum__meta mono">
+              <span id="sumTime">—</span>
+              <span id="sumDisc"></span>
+            </div>
+            <a class="btn btn--block" href="#book" id="toBook"><span data-i18n="cfg.book">Book a slot with this setup</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── До / после ── -->
+    <section class="section results" id="results" aria-labelledby="resTitle">
+      <div class="results__text">
+        <p class="kicker reveal"><span class="mono">02</span><span data-i18n="res.kicker">Paint correction</span></p>
+        <h2 class="h2 h2--stroke reveal" id="resTitle" data-i18n-html="res.title">Swirls out. <em>Depth in.</em></h2>
+        <p class="lead reveal" data-i18n="res.lead">Two-stage machine correction removes up to 95% of swirl marks and light scratches, then the surface is locked under ceramic. Drag the divider to compare.</p>
+        <dl class="metrics reveal">
+          <div><dt data-i18n="res.m1">gloss, before → after</dt><dd class="mono">62 → 91 <small>GU</small></dd></div>
+          <div><dt data-i18n="res.m2">clear coat removed</dt><dd class="mono">≤ 3 <small>µm</small></dd></div>
+          <div><dt data-i18n="res.m3">paint depth checked</dt><dd class="mono">40+ <small data-i18n="res.pts">pts</small></dd></div>
+        </dl>
+        <p class="note reveal" data-i18n="res.note">Illustrative figures and simulated “before” for demonstration.</p>
+      </div>
+      <div class="ba reveal" id="ba" style="--pos:50%">
+        <img class="ba__img ba__img--after" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1658244546876-d82cbf1a1c9e?auto=format&fit=crop&rect=1200,0,4800,3600&w=1200&h=900&q=78" alt="Black bonnet after machine polishing: clean, crisp strip-light reflections" data-i18n-alt="res.altAfter" width="1200" height="900">
+        <div class="ba__before" aria-hidden="true">
+          <div class="ba__beforeIn">
+            <img class="ba__img" loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1658244546876-d82cbf1a1c9e?auto=format&fit=crop&rect=1200,0,4800,3600&w=1200&h=900&q=78" alt="" width="1200" height="900">
+            <svg class="ba__swirls" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><g id="swirls"></g></svg>
+          </div>
+        </div>
+        <span class="ba__label ba__label--l mono" data-i18n="res.before">Before</span>
+        <span class="ba__label ba__label--r mono" data-i18n="res.after">After</span>
+        <div class="ba__handle" aria-hidden="true"><i></i><span><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Before / after divider" data-i18n-aria="res.range">
+      </div>
+    </section>
+
+    <!-- ── Процесс ── -->
+    <section class="section process" id="process" aria-labelledby="procTitle">
+      <div class="head head--row">
+        <div>
+          <p class="kicker reveal"><span class="mono">03</span><span data-i18n="proc.kicker">Process</span></p>
+          <h2 class="h2 reveal" id="procTitle" data-i18n-html="proc.title">Six stages. <em>Zero shortcuts.</em></h2>
+        </div>
+        <div class="proc__side reveal">
+          <p class="lead" data-i18n="proc.lead">Every car follows the same protocol, logged in a job card you receive with photos at each stage.</p>
+          <div class="railnav">
+            <span class="railnav__count mono" id="stepCount" aria-hidden="true">01 / 06</span>
+            <button type="button" class="arrow" id="stepPrev" aria-label="Previous stage" data-i18n-aria="proc.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button type="button" class="arrow" id="stepNext" aria-label="Next stage" data-i18n-aria="proc.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="rail reveal" id="rail" tabindex="0" role="region" aria-label="Process stages" data-i18n-aria="proc.rail">
+        <ol class="steps" id="steps"></ol>
+      </div>
+    </section>
+
+    <!-- ── Материалы ── -->
+    <section class="materials" id="materials" aria-labelledby="matTitle">
+      <div class="materials__in">
+      <div class="head">
+        <p class="kicker reveal"><span class="mono">04</span><span data-i18n="mat.kicker">Materials &amp; warranty</span></p>
+        <h2 class="h2 reveal" id="matTitle" data-i18n-html="mat.title">What sits <em>between your paint and the road.</em></h2>
+      </div>
+      <div class="mat">
+        <div class="layers reveal" id="layers">
+          <svg viewBox="30 24 556 470" role="img" aria-labelledby="layersTitle">
+            <title id="layersTitle" data-i18n="mat.svgTitle">Cross-section of the protection layers</title>
+            <defs>
+              <linearGradient id="lgTop" x1="0" x2="1"><stop offset="0" stop-color="#d4ff3a" stop-opacity=".95"/><stop offset="1" stop-color="#d4ff3a" stop-opacity=".55"/></linearGradient>
+            </defs>
+            <g class="layer" data-l="0" style="--d:0"><g class="layer__in"><path class="plate" d="M40 80 L300 40 L480 80 L220 120 Z" fill="url(#lgTop)"/></g><g class="layer__lead"><path d="M486 80 H536"/><circle cx="486" cy="80" r="3"/><text x="544" y="85">L1</text></g></g>
+            <g class="layer" data-l="1" style="--d:1"><g class="layer__in"><path class="plate" d="M40 130 L300 90 L480 130 L220 170 Z" fill="#2a2e33" stroke="#565c64"/><path d="M40 130 L220 170 L220 186 L40 146 Z M220 170 L480 130 L480 146 L220 186 Z" fill="#1c1f23"/></g><g class="layer__lead"><path d="M486 130 H536"/><circle cx="486" cy="130" r="3"/><text x="544" y="135">L2</text></g></g>
+            <g class="layer" data-l="2" style="--d:2"><g class="layer__in"><path class="plate" d="M40 180 L300 140 L480 180 L220 220 Z" fill="#1b1e22" stroke="#3a3f45"/></g><g class="layer__lead"><path d="M486 180 H536"/><circle cx="486" cy="180" r="3"/><text x="544" y="185">L3</text></g></g>
+            <g class="layer" data-l="3" style="--d:3"><g class="layer__in"><path class="plate" d="M40 225 L300 185 L480 225 L220 265 Z" fill="#33373d" stroke="#5a6068"/></g><g class="layer__lead"><path d="M486 225 H536"/><circle cx="486" cy="225" r="3"/><text x="544" y="230">L4</text></g></g>
+            <g class="layer" data-l="4" style="--d:4"><g class="layer__in"><path class="plate" d="M40 270 L300 230 L480 270 L220 310 Z" fill="#141619" stroke="#2c3035"/><path d="M40 270 L220 310 L220 330 L40 290 Z M220 310 L480 270 L480 290 L220 330 Z" fill="#0d0e10"/></g><g class="layer__lead"><path d="M486 270 H536"/><circle cx="486" cy="270" r="3"/><text x="544" y="275">L5</text></g></g>
+          </svg>
+          <ol class="layers__list" id="layerList"></ol>
+        </div>
+        <div class="warranty reveal">
+          <h3 class="h3" data-i18n="mat.wTitle">Written warranty</h3>
+          <table class="wtable">
+            <tbody id="wtable"></tbody>
+          </table>
+          <p class="note" data-i18n="mat.wNote">Warranty is registered to the car’s VIN and transfers with the sale. Annual inspection is free.</p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ── Студия ── -->
+    <section class="section studio" id="studio" aria-labelledby="stTitle">
+      <div class="head head--row">
+        <div>
+          <p class="kicker reveal"><span class="mono">05</span><span data-i18n="st.kicker">The studio</span></p>
+          <h2 class="h2 h2--stroke reveal" id="stTitle" data-i18n-html="st.title">Built like a lab. <em>Lit like an operating room.</em></h2>
+        </div>
+        <p class="lead reveal" data-i18n="st.lead">Four sealed bays with positive-pressure air filtration, 22&nbsp;°C year-round and 5000&nbsp;K inspection lighting that hides nothing.</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <div class="galnav" aria-hidden="true"><span class="mono" id="galCount">01 / 06</span><span class="galnav__bar"><i id="galBar"></i></span></div>
+    </section>
+
+    <!-- ── Запись ── -->
+    <section class="section book" id="book" aria-labelledby="bookTitle">
+      <div class="book__in">
+        <div class="book__side">
+          <p class="kicker reveal"><span class="mono">06</span><span data-i18n="book.kicker">Booking</span></p>
+          <h2 class="h2 reveal" id="bookTitle" data-i18n-html="book.title">Reserve <em>a bay.</em></h2>
+          <p class="lead reveal" data-i18n="book.lead">Choose a drop-off day and time. A studio manager confirms within 30 minutes and sends the job card.</p>
+          <div class="ticket reveal" id="ticket" aria-live="polite"></div>
+        </div>
+
+        <div class="book__card reveal">
+          <form class="form" id="bookForm" novalidate>
+            <div class="field">
+              <div class="field__top">
+                <span class="field__l" id="dayLabel" data-i18n="book.day">Drop-off day</span>
+                <span class="daynav">
+                  <button type="button" class="arrow arrow--sm" id="dayPrev" aria-label="Earlier days" data-i18n-aria="book.prevDays"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+                  <button type="button" class="arrow arrow--sm" id="dayNext" aria-label="Later days" data-i18n-aria="book.nextDays"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+                </span>
+              </div>
+              <div class="days-wrap" id="daysWrap"><div class="days" id="days" role="radiogroup" aria-labelledby="dayLabel"></div></div>
+            </div>
+            <div class="field">
+              <span class="field__l" id="timeLabel" data-i18n="book.time">Time</span>
+              <div class="times" id="times" role="radiogroup" aria-labelledby="timeLabel" aria-describedby="errSlot"></div>
+              <p class="err" id="errSlot" hidden></p>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label class="field__l" for="fName" data-i18n="book.name">Your name</label>
+                <input type="text" id="fName" name="name" autocomplete="name" required maxlength="60" aria-describedby="err-name">
+                <p class="err" id="err-name" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__l" for="fPhone" data-i18n="book.phone">Phone</label>
+                <input type="tel" id="fPhone" name="phone" autocomplete="tel" inputmode="tel" required placeholder="+7 (900) 000-00-00" maxlength="22" aria-describedby="err-phone">
+                <p class="err" id="err-phone" hidden></p>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__l" for="fCar" data-i18n="book.car">Car make &amp; model</label>
+              <input type="text" id="fCar" name="car" required maxlength="60" data-i18n-ph="book.carPh" placeholder="e.g. 2023 coupe, black" aria-describedby="err-car">
+              <p class="err" id="err-car" hidden></p>
+            </div>
+            <label class="check">
+              <input type="checkbox" name="consent" required aria-describedby="errConsent">
+              <span class="check__box" aria-hidden="true"></span>
+              <span data-i18n="book.consent">I agree to the processing of my personal data</span>
+            </label>
+            <p class="err" id="errConsent" hidden></p>
+            <button class="btn btn--block" type="submit"><span data-i18n="book.submit">Reserve the slot</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <p class="note" data-i18n="book.demo">Concept demo — the form doesn’t send data anywhere.</p>
+          </form>
+
+          <div class="done" id="done" hidden tabindex="-1">
+            <div class="done__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4 42 14v20L24 44 6 34V14z"/><path d="m16 24 6 6 11-12"/></svg></div>
+            <p class="mono done__code" id="doneCode"></p>
+            <h3 class="h3" data-i18n="book.okTitle">Bay reserved</h3>
+            <p class="done__text" id="doneText"></p>
+            <button type="button" class="btn btn--ghost" id="again" data-i18n="book.again">Configure another car</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section faq" id="faq" aria-labelledby="faqTitle">
+      <div class="head">
+        <p class="kicker reveal"><span class="mono">07</span><span data-i18n="faq.kicker">FAQ</span></p>
+        <h2 class="h2 reveal" id="faqTitle" data-i18n-html="faq.title">Straight answers.</h2>
+      </div>
+      <div class="qas" id="faqList"></div>
+    </section>
+
+    <!-- ── Контакты ── -->
+    <section class="section contacts" id="contacts" aria-labelledby="ctTitle">
+      <div class="contacts__in">
+        <div>
+          <p class="kicker reveal"><span class="mono">08</span><span data-i18n="ct.kicker">Contacts</span></p>
+          <h2 class="h2 reveal" id="ctTitle" data-i18n-html="ct.title">Drop by <em>the lab.</em></h2>
+          <dl class="ct reveal">
+            <div><dt class="mono" data-i18n="ct.addrL">Address</dt><dd data-i18n="ct.addr">7 Graphite Lane, unit 4 · Moscow (fictional)</dd></div>
+            <div><dt class="mono" data-i18n="ct.hoursL">Hours</dt><dd data-i18n="ct.hours">Daily 09:00–21:00 · car pick-up until 23:00</dd></div>
+            <div><dt class="mono" data-i18n="ct.phoneL">Phone</dt><dd><a href="tel:+79000000000">+7 (900) 000-00-00</a></dd></div>
+            <div><dt class="mono">Email</dt><dd><a href="mailto:lab@example.com">lab@example.com</a></dd></div>
+          </dl>
+        </div>
+        <div class="map reveal" aria-hidden="true">
+          <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice">
+            <defs><pattern id="mapgrid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#ffffff" stroke-opacity=".05"/></pattern></defs>
+            <rect width="600" height="420" fill="url(#mapgrid)"/>
+            <g fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="14" stroke-linecap="round">
+              <path d="M-20 300 C 140 280, 260 330, 620 250"/><path d="M180 -20 C 200 140, 250 260, 230 440"/><path d="M420 -20 L 380 440"/>
+            </g>
+            <g fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="5">
+              <path d="M-20 120 L 620 160"/><path d="M60 -20 L 120 440"/><path d="M520 -20 C 500 160, 560 300, 520 440"/><path d="M-20 380 L 620 360"/>
+            </g>
+            <path class="map__route" pathLength="1" d="M-10 298 C 90 286 170 296 236 306 C 270 311 300 304 306 290 C 314 270 318 250 318 226"/>
+            <circle class="map__start" cx="-4" cy="297" r="6"/>
+            <g transform="translate(318 214)">
+              <circle class="pin__ring" r="22"/>
+              <g class="pin"><circle r="46" fill="#d4ff3a" fill-opacity=".08"/><circle r="22" fill="#d4ff3a" fill-opacity=".16"/><circle r="8" fill="#d4ff3a"/></g>
+            </g>
+            <text x="342" y="196" fill="#d4ff3a" font-family="JetBrains Mono, monospace" font-size="13">OBSID / 55.7° N</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Финальный CTA ── -->
+    <section class="final" id="final" aria-labelledby="finalTitle">
+      <div class="final__in">
+        <p class="kicker reveal"><span class="mono">09</span><span data-i18n="fin.kicker">Your setup, ready</span></p>
+        <h2 class="final__title reveal" id="finalTitle"><span id="finalLine">Armoured by Friday.</span></h2>
+        <div class="final__row reveal">
+          <dl class="final__data">
+            <div><dt class="mono" data-i18n="fin.setup">Setup</dt><dd id="finSetup">Sport</dd></div>
+            <div><dt class="mono" data-i18n="fin.total">Total</dt><dd class="final__price" id="finTotal">0 ₽</dd></div>
+            <div><dt class="mono" data-i18n="fin.ready">Ready by</dt><dd id="finReady">—</dd></div>
+          </dl>
+          <a class="btn btn--dark" href="#book"><span data-i18n="fin.cta">Book the bay</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="final__note mono" data-i18n="fin.note">Live from the configurator · drop-off on your chosen day, bays open 09:00–21:00</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__in">
+      <div class="footer__brand">
+        <a class="logo" href="#top" aria-label="OBSID">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 54 19v26L32 58 10 45V19z"/><path d="M23 41 41 23"/></svg>
+          <span class="logo__word">OBSID</span>
+        </a>
+        <p class="footer__tag" data-i18n="foot.tag">Invisible armour. Visible gloss.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer" data-i18n-aria="foot.navAria">
+        <a href="#config" data-i18n="nav.config">Configurator</a>
+        <a href="#results" data-i18n="nav.results">Results</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#materials" data-i18n="nav.materials">Materials</a>
+        <a href="#studio" data-i18n="nav.studio">Studio</a>
+        <a href="#book" data-i18n="nav.book">Book a bay</a>
+      </nav>
+      <div class="footer__info">
+        <p class="mono" data-i18n="foot.hours">Daily 09:00–21:00</p>
+        <p><a href="tel:+79000000000">+7 (900) 000-00-00</a> · <a href="mailto:lab@example.com">lab@example.com</a></p>
+      </div>
+      <a class="footer__top mono" href="#top"><span data-i18n="foot.top">Back to top</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+      <p class="footer__note mono" data-i18n="foot.concept">Concept website · portfolio project. Brand, prices, address and data are fictional. Photos: Unsplash.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SEREIN Residences — quiet living by the river</title>
+  <meta name="description" content="SEREIN Residences — 75 residences and penthouses on a quiet river embankment. Choose an apartment, calculate a mortgage and book a private viewing.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f3eee6">
+  <meta property="og:title" content="SEREIN Residences">
+  <meta property="og:description" content="Quiet living by the river. 75 residences, keys in Q4 2027.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&w=1200&h=630&q=80">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1c20'/%3E%3Cpath d='M18 50V30a14 14 0 0 1 28 0v20' fill='none' stroke='%23d8c3a0' stroke-width='4'/%3E%3Cpath d='M26 50V32a6 6 0 0 1 12 0v18' fill='none' stroke='%23d8c3a0' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="nav is-over">
+    <a class="logo" href="#top" aria-label="SEREIN Residences">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 54V28a18 18 0 0 1 36 0v26"/><path d="M24 54V30a8 8 0 0 1 16 0v24"/><path d="M8 54h48"/></svg>
+      <span class="logo__word"><b>SEREIN</b><small data-i18n="logo.sub">Residences</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#concept" data-i18n="nav.concept">Concept</a>
+      <a href="#location" data-i18n="nav.location">Location</a>
+      <a href="#architecture" data-i18n="nav.arch">Architecture</a>
+      <a href="#residences" data-i18n="nav.res">Residences</a>
+      <a href="#mortgage" data-i18n="nav.mortgage">Mortgage</a>
+      <a href="#progress" data-i18n="nav.progress">Progress</a>
+    </nav>
+    <div class="nav__right">
+      <button type="button" class="saved-chip" data-saved-chip hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span data-saved-label>Saved (0)</span></button>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <a class="btn btn--sm nav__cta" href="#viewing" data-i18n="nav.book">Book a viewing</a>
+      <button class="burger" type="button" aria-label="Menu" data-aria="nav.menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span></button>
+    </div>
+    <div class="drawer" id="drawer" hidden>
+      <a href="#concept" data-i18n="nav.concept">Concept</a>
+      <a href="#location" data-i18n="nav.location">Location</a>
+      <a href="#architecture" data-i18n="nav.arch">Architecture</a>
+      <a href="#residences" data-i18n="nav.res">Residences</a>
+      <a href="#mortgage" data-i18n="nav.mortgage">Mortgage</a>
+      <a href="#progress" data-i18n="nav.progress">Progress</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a class="btn" href="#viewing" data-i18n="nav.book">Book a viewing</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ── Hero ── -->
+    <section class="hero" id="top" data-dark="hero">
+      <figure class="hero__frame">
+        <picture>
+          <source media="(max-width: 760px)" srcset="https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&crop=focalpoint&fp-x=.56&fp-y=.42&w=640&h=1240&q=72 640w, https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&crop=focalpoint&fp-x=.56&fp-y=.42&w=960&h=1860&q=70 960w" sizes="100vw">
+          <img class="hero__img" src="https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&crop=focalpoint&fp-y=.45&w=1600&h=1000&q=76" srcset="https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&crop=focalpoint&fp-y=.45&w=1100&h=690&q=76 1100w, https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&crop=focalpoint&fp-y=.45&w=1600&h=1000&q=76 1600w, https://images.unsplash.com/photo-1597217337208-b8fe2e92361a?auto=format&fit=crop&crop=focalpoint&fp-y=.45&w=2200&h=1375&q=72 2200w" sizes="100vw" alt="Pale stone building with a rounded corner on a river embankment in warm late-afternoon light, reflected in the water" data-i18n-alt="hero.alt" fetchpriority="high">
+        </picture>
+      </figure>
+      <div class="hero__shade" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <p class="hero__kicker rise"><span class="hero__line"></span><span data-i18n="hero.kicker">Tikhaya Embankment · Keys Q4 2027</span></p>
+
+        <div class="hero__card rise" aria-live="polite">
+          <span class="hero__card-k" data-i18n="hero.avail">Available now</span>
+          <b class="hero__card-v"><span data-stat="available">0</span><small> / 75</small></b>
+          <span class="hero__card-s" data-stat="from">from 16.9M ₽</span>
+        </div>
+
+        <div class="hero__bottom">
+          <h1 class="hero__title" aria-label="A quieter way to live by the river" data-aria="hero.aria">
+            <span class="mask"><span class="rise-line" data-i18n="hero.l1">A quieter way</span></span>
+            <span class="mask"><span class="rise-line" data-i18n-html="hero.l2">to live <em>by the river</em></span></span>
+          </h1>
+          <div class="hero__row rise">
+            <div class="hero__side">
+              <p class="hero__lead" data-i18n="hero.lead">Seventy-five residences in limestone and bronze, a private courtyard garden and a rooftop pool above the water. Fifteen floors, no rush.</p>
+              <div class="hero__cta">
+                <a class="btn btn--ivory" href="#residences"><span data-i18n="hero.cta1">Choose a residence</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="link link--ivory" href="#viewing" data-i18n="hero.cta2">Book a private viewing</a>
+              </div>
+            </div>
+            <ul class="hero__facts">
+              <li><b>15</b><span data-i18n="hero.f1">floors</span></li>
+              <li><b data-i18n="hero.f2v">3.2 m</b><span data-i18n="hero.f2">ceilings</span></li>
+              <li><b data-i18n="hero.f3v">1.2 ha</b><span data-i18n="hero.f3">car-free courtyard</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="hero__credit" data-i18n="hero.credit">Reference imagery · illustrative</p>
+    </section>
+
+    <!-- ── Concept ── -->
+    <section class="concept" id="concept">
+      <p class="kicker reveal"><span>01</span><span data-i18n="concept.kicker">Concept</span></p>
+      <p class="concept__statement" data-words data-i18n="concept.statement">We designed SEREIN around one idea: the city should feel far away the moment you step inside. Thick limestone walls, acoustic glazing, a garden in place of a car park, and windows that frame the river instead of the neighbours.</p>
+      <div class="concept__grid">
+        <div class="stat reveal"><b data-count="75">75</b><span data-i18n="concept.s1">residences, from 41 to 312 m²</span></div>
+        <div class="stat reveal"><b data-count="6">6</b><span data-i18n="concept.s2">homes on a standard floor, two lifts — no long corridors</span></div>
+        <div class="stat reveal"><b data-count="62">62</b><span data-i18n="concept.s3">% of the site given to the garden</span></div>
+        <div class="stat reveal"><b data-count="2027">2027</b><span data-i18n="concept.s4">keys handed over in Q4</span></div>
+      </div>
+    </section>
+
+    <!-- ── Signature: day to dusk ── -->
+    <section class="dusk" aria-labelledby="dusk-title" data-dark="dusk">
+      <div class="dusk__pin">
+        <div class="dusk__media" aria-hidden="true">
+          <img class="dusk__img dusk__img--night" src="https://images.unsplash.com/photo-1623013707289-4064eb459259?auto=format&fit=crop&w=1600&h=1000&q=72" srcset="https://images.unsplash.com/photo-1623013707289-4064eb459259?auto=format&fit=crop&w=900&h=1300&q=70 900w, https://images.unsplash.com/photo-1623013707289-4064eb459259?auto=format&fit=crop&w=1600&h=1000&q=72 1600w" sizes="100vw" alt="" loading="lazy" decoding="async">
+          <div class="dusk__day"><img class="dusk__img dusk__img--day" src="https://images.unsplash.com/photo-1623013707289-4064eb459259?auto=format&fit=crop&w=1600&h=1000&q=72" srcset="https://images.unsplash.com/photo-1623013707289-4064eb459259?auto=format&fit=crop&w=900&h=1300&q=70 900w, https://images.unsplash.com/photo-1623013707289-4064eb459259?auto=format&fit=crop&w=1600&h=1000&q=72 1600w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
+          <div class="dusk__veil"></div>
+        </div>
+        <div class="dusk__text">
+          <p class="kicker kicker--light"><span>✦</span><span data-i18n="dusk.kicker">A day at SEREIN</span></p>
+          <h2 class="dusk__title" id="dusk-title" data-i18n-html="dusk.title">From morning light <em>to the quiet hour</em></h2>
+          <ol class="dusk__steps">
+            <li class="is-on"><b>07:40</b><span data-i18n="dusk.s1">Limestone warms in the first sun. Coffee on the terrace, the river still asleep.</span></li>
+            <li><b>18:30</b><span data-i18n="dusk.s2">The garden fills with neighbours. The city stays on the other bank.</span></li>
+            <li><b>21:10</b><span data-i18n="dusk.s3">Windows glow over the water. Forty-two decibels of quiet.</span></li>
+          </ol>
+          <div class="dusk__clock" aria-hidden="true"><span class="dusk__track"><i></i></span></div>
+        </div>
+        <p class="dusk__credit" data-i18n="dusk.credit">Reference imagery · illustrative</p>
+      </div>
+    </section>
+
+    <!-- ── Location ── -->
+    <section class="location" id="location">
+      <div class="head reveal">
+        <p class="kicker"><span>02</span><span data-i18n="loc.kicker">Location</span></p>
+        <h2 class="h2" data-i18n-html="loc.title">On the water, <em>ten minutes</em> from everything</h2>
+        <p class="head__lead" data-i18n="loc.lead">A quiet stretch of embankment between a 14-hectare linden park and the old town. Walk to school, cycle to the theatre, drive to the centre in fifteen minutes.</p>
+      </div>
+      <div class="location__body">
+        <div class="map reveal" aria-label="Stylised map of the neighbourhood" data-aria="loc.mapAria" role="img">
+          <svg class="map__svg" viewBox="0 0 640 540" aria-hidden="true">
+            <defs>
+              <pattern id="mapgrid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="currentColor" stroke-opacity=".05"/></pattern>
+              <linearGradient id="rivergrad" x1="0" x2="1"><stop offset="0" stop-color="#c4d0cf"/><stop offset="1" stop-color="#d4dcd9"/></linearGradient>
+            </defs>
+            <rect width="640" height="540" fill="url(#mapgrid)"/>
+            <!-- blocks -->
+            <g class="map__blocks">
+              <rect x="24" y="24" width="120" height="110" rx="6"/><rect x="164" y="24" width="112" height="70" rx="6"/><rect x="164" y="112" width="112" height="70" rx="6"/>
+              <rect x="24" y="152" width="120" height="96" rx="6"/><rect x="296" y="24" width="64" height="158" rx="6"/>
+              <rect x="420" y="440" width="196" height="76" rx="6"/><rect x="300" y="440" width="100" height="76" rx="6"/><rect x="190" y="440" width="92" height="76" rx="6"/>
+              <rect x="470" y="372" width="146" height="50" rx="6"/>
+            </g>
+            <!-- parks -->
+            <path class="map__park" d="M396 34c66-16 160 4 204 44 30 28 22 88-12 116-40 32-118 34-170 18-48-14-70-56-66-98 4-42 14-70 44-80z"/>
+            <path class="map__park" d="M36 410c40-22 104-16 130 10 24 26 10 68-26 80-42 14-96 6-116-22-14-22-12-56 12-68z"/>
+            <!-- river -->
+            <path class="map__river" d="M-20 318C70 290 150 336 240 318s130-86 230-76 126 58 190 40"/>
+            <!-- streets (routed around the park; bridges over the river) -->
+            <g class="map__streets">
+              <path d="M0 142H286M286 142V0M286 142V196M150 0V260M0 262H190"/>
+              <path d="M286 196C330 196 350 218 372 226M372 226C430 232 460 220 510 222S600 236 640 232"/>
+              <path d="M380 0C384 14 388 22 392 32M616 0V60M640 210C620 208 604 206 596 198"/>
+              <path d="M0 390H640M180 390V540M410 390V540M460 390V430M300 390V540"/>
+              <path class="map__avenue" d="M60 540C100 470 150 410 196 360S256 290 286 196"/>
+            </g>
+            <g class="map__bridges"><path d="M268 248l-6 70M310 248l-6 70"/><path d="M466 230l4 64M506 230l4 64"/></g>
+            <!-- metro -->
+            <path class="map__metro" d="M30 210C150 200 230 168 330 172s140 30 300 6"/>
+            <text class="map__label" x="64" y="316" transform="rotate(-8 64 316)" data-i18n="loc.river">River</text>
+            <text class="map__label map__label--park" x="430" y="98" data-i18n="loc.park">Linden Park</text>
+            <text class="map__label map__label--park" x="44" y="452" data-i18n="loc.garden">Botanic Garden</text>
+            <text class="map__label map__label--town" x="520" y="484" data-i18n="loc.town">Old Town</text>
+            <g class="map__routes"></g>
+            <!-- site -->
+            <g class="map__site" transform="translate(316 340)">
+              <circle class="map__pulse" r="22"/>
+              <circle r="14"/>
+              <path d="M-5 5v-6a5 5 0 0 1 10 0v6"/>
+            </g>
+            <text class="map__site-label" x="316" y="376" text-anchor="middle">SEREIN</text>
+            <g class="map__pois"></g>
+          </svg>
+          <p class="map__note" data-i18n="loc.note">Stylised map · fictional neighbourhood</p>
+        </div>
+        <div class="poi reveal">
+          <div class="chips" role="group" aria-label="Filter places" data-aria="loc.filterAria" data-render="poiFilters"></div>
+          <ol class="poi__list" data-render="poiList"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Architecture ── -->
+    <section class="arch" id="architecture">
+      <div class="arch__grid">
+        <div class="arch__media reveal">
+          <figure class="arch__stage" data-render="matStage">
+            <img src="https://images.unsplash.com/photo-1761115715567-4af4db5dae2a?auto=format&fit=crop&w=1100&h=1375&q=78" alt="" loading="lazy">
+          </figure>
+          <p class="arch__credit" data-i18n="arch.credit">Reference imagery · illustrative</p>
+        </div>
+        <div class="arch__text">
+          <div class="reveal">
+            <p class="kicker"><span>03</span><span data-i18n="arch.kicker">Architecture &amp; materials</span></p>
+            <h2 class="h2" data-i18n-html="arch.title">Built to age <em>beautifully</em></h2>
+            <p class="head__lead" data-i18n="arch.lead">A calm volume of stacked limestone boxes, each one shifted to give every residence a deep terrace and a corner view. Materials were chosen for how they will look in thirty years, not in the brochure.</p>
+          </div>
+          <div class="mats reveal">
+            <div class="mats__swatches" role="tablist" aria-label="Materials" data-aria="arch.matsAria" data-render="matTabs"></div>
+            <div class="mats__panel" role="tabpanel" aria-live="polite" data-render="matPanel"></div>
+          </div>
+          <dl class="arch__specs reveal">
+            <div><dt data-i18n="arch.d1">Facade</dt><dd data-i18n="arch.v1">Jura limestone, ventilated</dd></div>
+            <div><dt data-i18n="arch.d2">Windows</dt><dd data-i18n="arch.v2">Floor-to-ceiling, triple glazing</dd></div>
+            <div><dt data-i18n="arch.d3">Ceilings</dt><dd data-i18n="arch.v3">3.2 m, penthouses 4.1 m</dd></div>
+            <div><dt data-i18n="arch.d4">Structure</dt><dd data-i18n="arch.v4">Monolithic concrete frame</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Amenities ── -->
+    <section class="amen" id="amenities">
+      <div class="head head--row reveal">
+        <div>
+          <p class="kicker"><span>04</span><span data-i18n="amen.kicker">Amenities</span></p>
+          <h2 class="h2" data-i18n-html="amen.title">A private club, <em>downstairs</em></h2>
+        </div>
+        <p class="head__lead" data-i18n="amen.lead">Every service is for residents only, run by an in-house team and included in the maintenance fee.</p>
+      </div>
+      <div class="amen__rail" data-render="amenCards"></div>
+      <ul class="amen__list reveal" data-render="amenList"></ul>
+    </section>
+
+    <!-- ── Residences picker ── -->
+    <section class="picker" id="residences">
+      <div class="head head--row reveal">
+        <div>
+          <p class="kicker"><span>05</span><span data-i18n="pick.kicker">Residences</span></p>
+          <h2 class="h2" data-i18n-html="pick.title">Find <em>your</em> residence</h2>
+        </div>
+        <p class="head__lead" data-i18n="pick.lead">Choose a floor on the facade, then a home on the plan. Live availability, fixed prices — no “price on request”.</p>
+      </div>
+
+      <form class="filters reveal" aria-label="Filters" data-aria="pick.filtersAria" onsubmit="return false">
+        <fieldset class="filters__rooms">
+          <legend data-i18n="pick.rooms">Rooms</legend>
+          <div class="chips" data-render="roomChips"></div>
+        </fieldset>
+        <div class="range" data-range="area">
+          <div class="range__head"><span data-i18n="pick.area">Area, m²</span><output></output></div>
+          <div class="range__track"><span class="range__fill"></span>
+            <input type="range" data-thumb="min" aria-label="Minimum area" data-aria="pick.areaMin">
+            <input type="range" data-thumb="max" aria-label="Maximum area" data-aria="pick.areaMax">
+          </div>
+        </div>
+        <div class="range" data-range="price">
+          <div class="range__head"><span data-i18n="pick.price">Price</span><output></output></div>
+          <div class="range__track"><span class="range__fill"></span>
+            <input type="range" data-thumb="min" aria-label="Minimum price" data-aria="pick.priceMin">
+            <input type="range" data-thumb="max" aria-label="Maximum price" data-aria="pick.priceMax">
+          </div>
+        </div>
+        <div class="range" data-range="floor">
+          <div class="range__head"><span data-i18n="pick.floor">Floor</span><output></output></div>
+          <div class="range__track"><span class="range__fill"></span>
+            <input type="range" data-thumb="min" aria-label="Lowest floor" data-aria="pick.floorMin">
+            <input type="range" data-thumb="max" aria-label="Highest floor" data-aria="pick.floorMax">
+          </div>
+        </div>
+        <div class="filters__foot">
+          <label class="switch"><input type="checkbox" name="onlyFree" checked><span class="switch__ui" aria-hidden="true"></span><span data-i18n="pick.only">Available only</span></label>
+          <p class="filters__count" aria-live="polite"></p>
+          <button class="link link--sm" type="reset" data-i18n="pick.reset">Reset</button>
+        </div>
+      </form>
+
+      <div class="tray" id="tray" hidden>
+        <div class="tray__head">
+          <h3 class="tray__title" data-i18n="tray.title">Saved residences</h3>
+          <p class="tray__hint" data-tray-hint></p>
+          <button type="button" class="tray__close" data-tray-close aria-label="Close saved residences" data-aria="tray.close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="tray__body" data-tray-body></div>
+      </div>
+
+      <div class="stage">
+        <div class="stage__facade reveal">
+          <div class="stage__label"><span data-i18n="pick.facade">Facade · south</span><span class="legend"><span><i class="lg lg--match"></i><span data-i18n="pick.lgMatch">has matches</span></span></span></div>
+          <div class="facade">
+            <svg class="facade__svg" viewBox="0 0 420 640" role="group" aria-label="Building facade, choose a floor" data-aria="pick.facadeAria"></svg>
+            <div class="tip" role="status" hidden></div>
+          </div>
+          <p class="facade__hint" data-i18n="pick.facadeHint">Tap a floor · lit windows show matching homes</p>
+        </div>
+
+        <div class="stage__main">
+          <div class="stage__plan reveal">
+            <div class="floorstrip" role="group" aria-label="Choose a floor" data-aria="pick.stripAria"></div>
+            <div class="stage__label">
+              <div class="floorstep">
+                <button type="button" class="floorstep__btn" data-step="-1" aria-label="Floor below" data-aria="pick.down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                <span class="floorstep__val"><small data-i18n="pick.floorWord">Floor</small><b class="floorstep__n">9</b></span>
+                <button type="button" class="floorstep__btn" data-step="1" aria-label="Floor above" data-aria="pick.up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+              </div>
+              <span class="legend">
+                <span><i class="lg lg--free"></i><span data-i18n="st.available">Available</span></span>
+                <span><i class="lg lg--res"></i><span data-i18n="st.reserved">Reserved</span></span>
+                <span><i class="lg lg--sold"></i><span data-i18n="st.sold">Sold</span></span>
+              </span>
+            </div>
+            <div class="plan">
+              <svg class="plan__svg" viewBox="0 0 640 450" role="group" aria-label="Floor plan" data-aria="pick.planAria"></svg>
+            </div>
+            <div class="ulist" role="group" aria-label="Residences on this floor" data-aria="pick.listAria"></div>
+          </div>
+
+          <article class="unit reveal" id="unit-card" aria-live="polite"></article>
+        </div>
+      </div>
+
+      <div class="minibar" data-minibar>
+        <div class="minibar__info" data-minibar-info></div>
+        <div class="minibar__act">
+          <button type="button" class="minibar__icon" data-mini="save" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="sr" data-i18n="u.save">Save</span></button>
+          <button type="button" class="btn btn--sm btn--light minibar__book" data-mini="book"><span data-i18n="mini.book">Book</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <p class="minibar__toast" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+
+    <!-- ── Mortgage ── -->
+    <section class="mort" id="mortgage" data-dark="mort">
+      <div class="mort__inner">
+        <div class="mort__text reveal">
+          <p class="kicker kicker--light"><span>06</span><span data-i18n="mort.kicker">Mortgage</span></p>
+          <h2 class="h2" data-i18n-html="mort.title">Your monthly payment, <em>honestly</em></h2>
+          <p class="head__lead" data-i18n="mort.lead">Pick a programme, move the sliders — numbers update instantly. The residence you selected above is already filled in.</p>
+          <ul class="mort__perks">
+            <li><span data-i18n="mort.p1">Down payment</span><b data-i18n="mort.p1v">from 20%</b></li>
+            <li><span data-i18n="mort.p2">Term</span><b data-i18n="mort.p2v">up to 30 years</b></li>
+            <li><span data-i18n="mort.p3">Developer instalments</span><b data-i18n="mort.p3v">0% until keys</b></li>
+          </ul>
+          <div class="amort">
+            <div class="amort__head"><span data-i18n="mort.chart">What you repay, year by year</span><span class="amort__lg"><i class="amort__p"></i><span data-i18n="mort.principalK">Principal</span><i class="amort__i"></i><span data-i18n="mort.interestK">Interest</span></span></div>
+            <svg class="amort__svg" viewBox="0 0 480 170" preserveAspectRatio="none" role="img" aria-label="Principal and interest by year" data-aria="mort.chartAria"></svg>
+            <div class="amort__axis" data-amort-axis></div>
+          </div>
+          <div class="progs" data-render="progCompare"></div>
+        </div>
+        <div class="mort__calc reveal">
+          <div class="mort__unit" data-mort-unit hidden></div>
+          <div class="mort__progs chips chips--dark" role="radiogroup" aria-label="Programme" data-aria="mort.progAria" data-render="progChips"></div>
+          <div class="mrange">
+            <div class="mrange__head"><label for="m-price" data-i18n="mort.price">Residence price</label><output for="m-price" data-out="price"></output></div>
+            <input id="m-price" type="range" min="15000000" max="230000000" step="10000" value="17870000">
+          </div>
+          <div class="mrange">
+            <div class="mrange__head"><label for="m-down" data-i18n="mort.down">Down payment</label><output for="m-down" data-out="down"></output></div>
+            <input id="m-down" type="range" min="20" max="90" step="1" value="30">
+          </div>
+          <div class="mrange">
+            <div class="mrange__head"><label for="m-term" data-i18n="mort.term">Term</label><output for="m-term" data-out="term"></output></div>
+            <input id="m-term" type="range" min="3" max="30" step="1" value="20">
+          </div>
+          <div class="mrange">
+            <div class="mrange__head"><label for="m-rate" data-i18n="mort.rate">Interest rate</label><output for="m-rate" data-out="rate"></output></div>
+            <input id="m-rate" type="range" min="3" max="25" step="0.1" value="6">
+          </div>
+          <div class="mort__result">
+            <div class="mort__main">
+              <span data-i18n="mort.monthly">Monthly payment</span>
+              <b class="roll" data-out="monthly" aria-live="polite">0</b>
+              <dl>
+                <div><dt data-i18n="mort.loan">Loan amount</dt><dd data-out="loan"></dd></div>
+                <div><dt data-i18n="mort.interest">Total interest</dt><dd data-out="interest"></dd></div>
+                <div><dt data-i18n="mort.income">Suggested income</dt><dd data-out="income"></dd></div>
+              </dl>
+            </div>
+            <svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Share of principal and interest" data-aria="mort.donutAria">
+              <circle cx="60" cy="60" r="48" class="donut__bg"/>
+              <circle cx="60" cy="60" r="48" class="donut__fg" pathLength="100"/>
+              <text x="60" y="58" text-anchor="middle" class="donut__v" data-out="share">70%</text>
+              <text x="60" y="74" text-anchor="middle" class="donut__k" data-i18n="mort.principal">principal</text>
+            </svg>
+          </div>
+          <a class="btn btn--light btn--full" href="#viewing" data-mort-book data-i18n="mort.cta">Discuss terms at a viewing</a>
+          <p class="mort__note" data-i18n="mort.note">Illustrative calculation, not a credit offer. Programmes and rates are fictional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Progress ── -->
+    <section class="prog" id="progress">
+      <div class="head head--row reveal">
+        <div>
+          <p class="kicker"><span>07</span><span data-i18n="prog.kicker">Construction progress</span></p>
+          <h2 class="h2" data-i18n-html="prog.title">On schedule, <em>floor by floor</em></h2>
+        </div>
+        <div class="prog__totals">
+          <div class="prog__total"><span class="prog__k" data-i18n="prog.overallK">Overall</span><span class="prog__pct"><b data-count="68">68</b>%</span></div>
+          <div class="prog__total prog__total--sub"><span class="prog__k" data-i18n="prog.frameK">Frame</span><span class="prog__pct"><b data-count="72">72</b>%</span></div>
+          <p class="prog__note" data-i18n="prog.total">Frame up to floor 11 of 15 · updated October 2026</p>
+        </div>
+      </div>
+      <div class="prog__line reveal">
+        <div class="prog__bar" aria-hidden="true"><span></span></div>
+        <ol class="timeline" data-render="timeline"></ol>
+      </div>
+      <div class="prog__photos">
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1733665921380-27c7d02f3b0b?auto=format&fit=crop&w=1100&h=690&q=78" alt="Silhouette of a concrete frame and tower crane against an amber evening sky" data-i18n-alt="prog.alt1" loading="lazy"><figcaption data-i18n="prog.cap1">Frame, floors 9–11 · October 2026</figcaption></figure>
+        <figure class="reveal"><img src="https://images.unsplash.com/photo-1615461476249-718ef8bc369c?auto=format&fit=crop&w=800&h=900&q=78" alt="Bare concrete columns and slabs of a building frame under a pale sky" data-i18n-alt="prog.alt2" loading="lazy"><figcaption data-i18n="prog.cap2">Frame, floors 2–5 · March 2026</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ── Gallery ── -->
+    <section class="gal" id="gallery">
+      <div class="head head--row reveal">
+        <div>
+          <p class="kicker"><span>08</span><span data-i18n="gal.kicker">Gallery</span></p>
+          <h2 class="h2" data-i18n-html="gal.title">Inside the <em>show residences</em></h2>
+        </div>
+        <p class="head__lead" data-i18n="gal.lead">Interior references for the turnkey finish. Tap any image to open it full screen.</p>
+      </div>
+      <div class="gal__grid" data-render="gallery"></div>
+    </section>
+
+    <!-- ── Viewing / contacts ── -->
+    <section class="view" id="viewing">
+      <div class="view__info reveal">
+        <p class="kicker"><span>09</span><span data-i18n="view.kicker">Private viewing</span></p>
+        <h2 class="h2" data-i18n-html="view.title">Come and <em>feel the quiet</em></h2>
+        <p class="head__lead" data-i18n="view.lead">Visit the sales gallery with a full-size show residence, or join a video tour from home. A personal manager will confirm within one hour.</p>
+        <ul class="contacts" id="contacts">
+          <li><span data-i18n="view.addrK">Sales gallery</span><b data-i18n="view.addr">7 Tikhaya Embankment, Moscow (fictional)</b></li>
+          <li><span data-i18n="view.hoursK">Hours</span><b data-i18n="view.hours">Daily 10:00–21:00, by appointment</b></li>
+          <li><span data-i18n="view.phoneK">Phone</span><b><a href="tel:+79000000000">+7 (900) 000-00-00</a></b></li>
+          <li><span data-i18n="view.mailK">Email</span><b><a href="mailto:sales@example.com">sales@example.com</a></b></li>
+        </ul>
+      </div>
+      <div class="view__card reveal">
+        <form class="vform" novalidate>
+          <div class="vform__seg" role="radiogroup" aria-label="Viewing format" data-aria="view.fmtAria">
+            <label><input type="radio" name="format" value="gallery" checked><span data-i18n="view.f1">At the sales gallery</span></label>
+            <label><input type="radio" name="format" value="video"><span data-i18n="view.f2">Video tour</span></label>
+          </div>
+          <div class="vform__unit" data-unit-chip hidden></div>
+          <div class="vform__block">
+            <div class="vform__row"><span class="vform__label" id="lbl-day" data-i18n="view.day">Day</span><span class="vform__month" data-month></span>
+              <span class="daynav"><button type="button" class="daynav__btn" data-week="-1" aria-label="Previous week" data-aria="view.prevWeek"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button type="button" class="daynav__btn" data-week="1" aria-label="Next week" data-aria="view.nextWeek"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></span>
+            </div>
+            <div class="days" role="radiogroup" aria-labelledby="lbl-day"></div>
+          </div>
+          <div class="vform__block">
+            <span class="vform__label" id="lbl-time" data-i18n="view.time">Time</span>
+            <div class="slots" role="radiogroup" aria-labelledby="lbl-time"></div>
+          </div>
+          <div class="vform__grid">
+            <label class="field"><span data-i18n="view.name">Your name</span><input name="name" autocomplete="name" required minlength="2" placeholder="e.g. Anna Petrova" data-i18n-ph="view.namePh"><em class="field__err" data-err="name"></em></label>
+            <label class="field"><span data-i18n="view.phone">Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" required><em class="field__err" data-err="phone"></em></label>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" required><span data-i18n="view.consent">I agree to the processing of my personal data</span></label>
+          <p class="field__err field__err--block" data-err="slot" role="alert"></p>
+          <button class="btn btn--full" type="submit"><span data-i18n="view.submit">Request a viewing</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <div class="vdone" hidden tabindex="-1">
+          <svg class="vdone__mark" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-16"/></svg>
+          <h3 data-i18n="view.okTitle">Your viewing is requested</h3>
+          <p class="vdone__text"></p>
+          <button class="link" type="button" data-again data-i18n="view.again">Request another time</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-dark="footer">
+    <div class="finale">
+      <img class="finale__img" src="https://images.unsplash.com/photo-1776589173762-92e8f9eeb9bc?auto=format&fit=crop&w=1800&h=900&q=72" srcset="https://images.unsplash.com/photo-1776589173762-92e8f9eeb9bc?auto=format&fit=crop&w=800&h=900&q=70 800w, https://images.unsplash.com/photo-1776589173762-92e8f9eeb9bc?auto=format&fit=crop&w=1800&h=900&q=72 1800w" sizes="100vw" alt="Still water and a curved stone promenade glowing amber at dusk" data-i18n-alt="foot.alt" loading="lazy" decoding="async">
+      <div class="finale__body reveal">
+        <p class="kicker kicker--light"><span>10</span><span data-i18n="foot.kicker">Private viewings</span></p>
+        <h2 class="finale__title" data-i18n-html="foot.title">Daily, <em>10:00–21:00</em></h2>
+        <p class="finale__lead" data-i18n="foot.lead">Come at golden hour — the river does most of the talking.</p>
+        <a class="btn btn--ivory" href="#viewing"><span data-i18n="nav.book">Book a viewing</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__wrap">
+      <div class="footer__big" aria-hidden="true"><span>S</span><span>E</span><span>R</span><span>E</span><span>I</span><span>N</span></div>
+      <div class="footer__row">
+        <p data-i18n="foot.tag">Quiet living by the river.</p>
+        <nav class="footer__links" aria-label="Footer" data-aria="foot.navAria">
+          <a href="#residences" data-i18n="nav.res">Residences</a>
+          <a href="#location" data-i18n="nav.location">Location</a>
+          <a href="#viewing" data-i18n="nav.book">Book a viewing</a>
+          <a href="#top" class="totop"><span data-i18n="foot.top">Back to top</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+        </nav>
+        <div class="lang lang--dark" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <a href="../" data-i18n="foot.concept">Concept website · portfolio project. SEREIN is a fictional residential complex; all prices, plans and data are illustrative.</a>
+        <span data-i18n="foot.photos">Photos: Unsplash</span>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Gallery" data-aria="gal.dialogAria">
+    <figure>
+      <img alt="">
+      <figcaption></figcaption>
+    </figure>
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Close" data-aria="gal.close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Previous" data-aria="gal.prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Next" data-aria="gal.next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

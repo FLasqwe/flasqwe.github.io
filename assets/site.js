@@ -15,7 +15,7 @@
 
   // Адрес собираем в браузере, а не храним целиком в HTML — меньше спама от сборщиков адресов
   const MAIL = ['ekimovgregory9', 'gmail.com'].join('@');
-  const DEMO_KEYS = ['ognivo-lang', 'luma-lang', 'monolit-lang'];
+  const DEMO_KEYS = ['serein-lang', 'obsid-lang', 'ognivo-lang', 'luma-lang', 'monolit-lang'];
 
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -37,9 +37,9 @@
       'hero.index': 'Index of work', 'hero.indexHint': 'Click — opens below',
       'hero.for': '<b>For any business</b> — restaurants, clinics, construction, beauty, real estate, retail and\u00a0services',
       'work.spread': 'Works', 'work.end': 'Want one like this', marquee: 'let’s talk', fab: 'Write',
-      'work.kicker': 'Selected work', 'work.meta': '3 live demos · 1 real product · bots & parsers',
+      'work.kicker': 'Selected work', 'work.meta': '5 live demos · 1 real product · bots & parsers',
       'work.title': 'Click a tab. See it live.',
-      'work.lead': 'Three concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
+      'work.lead': 'Five concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
       'about.cap': 'Real product', 'marquee.static': 'let’s talk —',
       'work.keys': '← → to switch', 'work.tabs': 'Work',
       'kind.concept': 'Concept', 'kind.product': 'Product', 'kind.cap': 'Capabilities',
@@ -77,9 +77,9 @@
       'hero.index': 'Указатель работ', 'hero.indexHint': 'Нажмите — откроется ниже',
       'hero.for': '<b>Для любого бизнеса</b> — рестораны, клиники, стройка, салоны красоты, недвижимость, торговля и\u00a0услуги',
       'work.spread': 'Работы', 'work.end': 'Хочу так же', marquee: 'давайте обсудим', fab: 'Написать',
-      'work.kicker': 'Избранные работы', 'work.meta': '3 живых демо · 1 реальный продукт · боты и парсеры',
+      'work.kicker': 'Избранные работы', 'work.meta': '5 живых демо · 1 реальный продукт · боты и парсеры',
       'work.title': 'Нажмите на вкладку. Смотрите вживую.',
-      'work.lead': 'Три концепт-сайта работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
+      'work.lead': 'Пять концепт-сайтов работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
       'about.cap': 'Реальный продукт', 'marquee.static': 'давайте обсудим',
       'work.keys': '← → переключение', 'work.tabs': 'Работы',
       'kind.concept': 'Концепт', 'kind.product': 'Продукт', 'kind.cap': 'Возможности',
@@ -106,9 +106,29 @@
     },
   };
 
-  // ── Работы: 3 концепт-сайта, реальный продукт, боты и парсеры ──
+  // ── Работы: 5 концепт-сайтов (два новых — первыми), реальный продукт, боты и парсеры ──
   // pa — фирменный цвет проекта (метка вкладки, полоска, лёгкий оттенок подиума); sb — фон/текст статус-бара телефона
   const WORK = [
+    {
+      id: 'serein', kind: 'site', url: 'serein/', host: 'flasqwe.github.io/<b>serein</b>/', pa: '#b08a5a', pt: '#7a5a32', sb: ['#f3eee6', '#111111'],
+      chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'EN / RU'],
+      en: { line: 'Pick a flat by its window.', name: 'SEREIN Residences', tab: 'SEREIN', idx: 'SEREIN', sub: 'Real estate', short: 'Riverside residences', tag: 'Premium residential real estate · riverside',
+        desc: 'A concept sales site for a fictional riverside residential complex in limestone and bronze: interactive apartment picker (facade, floor plan, flat plan), live mortgage calculator and a scroll-driven day-to-dusk sequence.',
+        feats: ['Apartment picker: SVG facade with lit windows for matching flats, floor plan to scale, flat plan that draws itself in', 'Save and compare up to 3 flats side by side', 'Mortgage calculator with principal-vs-interest chart and three programmes', 'Viewing booking: 7-day grid, time slots, phone mask, inline validation'] },
+      ru: { line: 'Квартира — по окнам фасада.', name: 'SEREIN Residences', tab: 'SEREIN', idx: 'SEREIN', sub: 'Недвижимость', short: 'Резиденции у реки', tag: 'Премиальная жилая недвижимость · у реки',
+        desc: 'Концепт продающего сайта вымышленного жилого комплекса из известняка и бронзы на набережной: интерактивный выбор квартиры (фасад, план этажа, план квартиры), живой ипотечный калькулятор и сцена «от утра до сумерек» при прокрутке.',
+        feats: ['Выбор квартиры: SVG-фасад с подсветкой окон под фильтры, план этажа в масштабе, план квартиры с анимацией прорисовки', 'Избранное и сравнение до 3 квартир', 'Ипотечный калькулятор с графиком «тело и проценты» и тремя программами', 'Запись на показ: сетка на 7 дней, слоты, маска телефона, проверка полей'] },
+    },
+    {
+      id: 'obsid', kind: 'site', url: 'obsid/', host: 'flasqwe.github.io/<b>obsid</b>/', pa: '#d4ff3a', pt: '#5f7a00', sb: ['#0a0b0d', '#ffffff'],
+      chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'Accessibility', 'EN / RU'],
+      en: { line: 'A detailing lab with a live price.', name: 'OBSID', tab: 'OBSID', idx: 'OBSID', sub: 'Paint protection', short: 'Paint protection & detailing', tag: 'Paint protection film & detailing studio',
+        desc: 'A dark, technical concept site for a paint-protection lab. A light bar scans the hero car to reveal a wireframe zone map, and a live configurator shows price, time and protected zones.',
+        feats: ['Hero scan: a light bar sweeps the car to reveal a wireframe PPF zone map', 'Live configurator: body type and packs light up zones and update price, bay hours and bundle discount', 'Booking flow: 14-day picker, time slots, a ticket with your setup, accessible validation', 'Before/after correction slider, exploded film-layer diagram, process timeline'] },
+      ru: { line: 'Защита кузова с живой ценой.', name: 'OBSID', tab: 'OBSID', idx: 'OBSID', sub: 'Защита кузова', short: 'Защита кузова и детейлинг', tag: 'Студия защиты кузова и детейлинга',
+        desc: 'Тёмный технологичный концепт-сайт студии защиты кузова. Световая полоса сканирует машину и открывает каркасную схему зон, а живой конфигуратор сразу показывает цену, срок и защищённые зоны.',
+        feats: ['Скан на первом экране: световая полоса проходит по машине и открывает карту зон плёнки', 'Живой конфигуратор: кузов и пакеты подсвечивают зоны, пересчитывают цену, часы в боксе и скидку', 'Запись: 14 дней, слоты времени, «билет» с набором, доступная валидация', 'Слайдер до/после, разнесённая схема слоёв плёнки, лента этапов'] },
+    },
     {
       id: 'ognivo', kind: 'site', url: 'ognivo/', host: 'flasqwe.github.io/<b>ognivo</b>/', pa: '#e3743b', pt: '#a84a18', sb: ['#0b0a08', '#ffffff'],
       chips: ['HTML', 'CSS', 'JavaScript', 'Canvas', 'EN / RU'],
@@ -160,6 +180,8 @@
     },
   ];
   const byId = (id) => WORK.find((w) => w.id === id);
+  // Карточка «Подхода»: светлый, тёмный и яркий кадр — разные по тону, читаются на чёрном
+  const REEL = ['serein', 'obsid', 'monolit'];
   const CHIP_RU = { Accessibility: 'Доступность' };
   const chipT = (x) => (lang === 'ru' && CHIP_RU[x]) || x;
 
@@ -311,7 +333,7 @@
     return m && byId(m[1]) ? m[1] : null;
   };
   const initial = fromHash();
-  let active = initial || 'ognivo';
+  let active = initial || WORK[0].id;
   let previewMode = window.innerWidth < 700 ? 'mobile' : 'desktop';
   let workNear = false; // витрина близко к экрану — можно грузить iframe
   let frameTimer = 0;
@@ -670,7 +692,7 @@
     const tab = $(`#tab-${active}`);
     if (!bar || !tab) return;
     bar.style.width = `${tab.offsetWidth}px`;
-    bar.style.transform = `translateX(${tab.offsetLeft}px)`;
+    bar.style.transform = `translate(${tab.offsetLeft}px, ${tab.offsetTop}px)`; // вкладки бывают в две строки
   }
   function centerChip(smooth) {
     const tab = $(`#tab-${active}`);
@@ -682,7 +704,7 @@
   const syncWorkLinks = () => $$('[data-to-work]').forEach((a) => a.setAttribute('href', `#work-${active}`));
 
   function activate(id, { focus = false, push = true, animate = true, user = false } = {}) {
-    if (!byId(id)) id = 'ognivo';
+    if (!byId(id)) id = WORK[0].id;
     const prev = active;
     active = id;
     $$('.tab', tabsEl).forEach((b) => {
@@ -939,10 +961,10 @@
     fitStatic();
     const asideImg = $('[data-aside-img]');
     if (asideImg) asideImg.alt = `${byId('crm')[lang].name} — ${lang === 'ru' ? 'дашборд (демо-данные)' : 'dashboard (demo data)'}`;
-    // Чёрная карточка с тремя концепт-сайтами (ведут к вкладкам)
-    $('[data-render="reel"]').innerHTML = WORK.filter((w) => w.kind === 'site').map((w, i) => `
+    // Чёрная карточка: три концепт-сайта из пяти (ведут к вкладкам); номер — как у вкладки
+    $('[data-render="reel"]').innerHTML = REEL.map(byId).map((w) => `
       <a class="reel__item" href="#work-${w.id}"><div class="reel__fig"><img src="${shot(w.id, 'desktop')}" width="1440" height="900" alt="${esc(w[lang].name)} — ${esc(w[lang].short)}" loading="lazy" decoding="async">
-      <span class="reel__tag" aria-hidden="true">(0${i + 1}) ${esc(w[lang].idx)}</span></div></a>`).join('');
+      <span class="reel__tag" aria-hidden="true">(0${WORK.indexOf(w) + 1}) ${esc(w[lang].idx)}</span></div></a>`).join('');
     $('[data-render="services"]').innerHTML = SERVICES[lang].map(([h, p, list], i) => `
       <li data-rv><span class="svc__no">${String(i + 1).padStart(2, '0')}</span><h3 class="svc__name">${esc(h)}</h3><p class="svc__desc">${esc(p)}</p>
       <ul class="svc__list">${list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
@@ -973,6 +995,7 @@
     observeReveals();
     store.set('eg-lang', lang);
     syncDemoLang();
+    document.dispatchEvent(new CustomEvent('eg:lang', { detail: { first } }));
     if (!first) {
       // Демо в рамке перезагружаем на новом языке
       if (stages[active]?.frame) { unloadFrame(active); queueFrame(active); }
@@ -1145,13 +1168,18 @@
   // ── Первый экран: словесный знак по буквам, подгонка под ширину, заставка ──
   const hero = $('.hero');
   const mark = $('[data-mark]');
-  // «O» знака — круг (тот же предмет, что в заставке): внутри при наведении сменяются работы
+  // «O» знака — надувное кольцо из фольги (assets/orb.js): тот же предмет, что в заставке
   mark.innerHTML = [...mark.textContent.trim()].map((c, i) => (c === 'O'
     ? `<span class="ml ml--o" style="--i:${i}"><i class="disc" data-disc></i></span>`
     : `<span class="ml" style="--i:${i}">${c}</span>`)).join('');
   const disc = $('[data-disc]');
-  // Квадратные кадры работ — читаются внутри круга
-  const oSrcs = () => ['assets/thumbs/o-ognivo.jpg', 'assets/thumbs/o-luma.jpg', `assets/thumbs/o-monolit-${lang}.jpg`, 'assets/thumbs/o-crm.jpg'];
+  // Один canvas на страницу: в заставке он в «E◯’», после перелёта — в «O» знака
+  const orb = window.EGOrb ? window.EGOrb() : null;
+  if (orb) {
+    disc.classList.add('has-orb');
+    // Клик/касание по «O» — короткий «вдох» кольца с толчком вращения (и на телефоне)
+    if (orb.ok && !reduceMotion) { disc.classList.add('is-poke'); disc.addEventListener('click', () => orb.poke()); }
+  }
   // Размер знака = ширина контейнера × k (единицы cqw); k зависит только от шрифта — меряем один раз
   // Подгонка по «чернилам», а не по коробке: левый край «E» встаёт на линию заголовка,
   // кончик апострофа — на правое поле. Боковые отступы глифов берём из canvas.measureText.
@@ -1187,7 +1215,7 @@
     ? Promise.race([document.fonts.load('400 100px "Archivo Black"', 'EKIMOV’'), sleep(1200)]).catch(() => {})
     : Promise.resolve();
 
-  // Заставка: «E◯’», в круге — жёсткие склейки кадров работ, счётчик 000 → 100.
+  // Заставка: «E◯’», в круге — кольцо из фольги, счётчик 000 → 100.
   // Дальше шторка уходит вверх, а круг перелетает в «O» большого знака (один элемент, только transform).
   const intro = $('[data-intro]');
   const introOn = root.classList.contains('intro-on');
@@ -1195,25 +1223,23 @@
     if (!introOn || !intro) { resolve(); return; }
     try { sessionStorage.setItem('eg-intro', '1'); } catch { /* приватный режим */ }
     const o = $('[data-intro-o]');
-    o.innerHTML = oSrcs().map((src) => `<img src="${src}" alt="" decoding="async">`).join('');
-    const imgs = $$('img', o);
+    if (orb) { o.classList.add('has-orb'); orb.attach(o); }
     const count = $('[data-intro-count]');
-    let k = 0, raf = 0, swap = 0, done = false;
+    let raf = 0, done = false;
     const SKIP = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
     const CURTAIN = 700;
     const finish = (e) => {
       if (done) return;
       done = true;
-      clearInterval(swap); cancelAnimationFrame(raf);
+      cancelAnimationFrame(raf);
       SKIP.forEach((ev) => window.removeEventListener(ev, finish));
       count.textContent = '100';
       intro.classList.add('is-done'); // счётчик гаснет сразу — не уезжает вместе со шторкой
-      // Кадры гаснут до перелёта: в «O» прилетает чистый белый диск
-      imgs.forEach((im) => im.classList.remove('is-on'));
       // Перелёт круга — только если зритель не начал прокрутку/ввод (иначе цель сместится)
       const fly = !e && window.scrollY < 2;
       if (fly) {
-        hero.classList.add('is-flip');
+        // is-flown: буквы знака поднимаются чуть позже — кольцо успевает сесть в «O», не проходя поверх «M» и «V»
+        hero.classList.add('is-flip', 'is-flown');
         const A = o.getBoundingClientRect();
         // Пустышка того же размера держит место — «E» и «’» не съезжают под круг
         const ph = document.createElement('span');
@@ -1229,6 +1255,7 @@
         const land = () => {
           if (!o.isConnected) return;
           hero.classList.remove('is-flip');
+          if (orb) orb.attach(disc); // тот же canvas переезжает в «O» знака
           o.remove();
         };
         o.addEventListener('transitionend', (ev) => { if (ev.propertyName === 'transform') land(); });
@@ -1237,15 +1264,17 @@
       intro.classList.add('is-out');
       // Буквы знака начинают подниматься вместе со шторкой — к её уходу знак уже на месте
       resolve();
-      setTimeout(() => { intro.remove(); root.classList.remove('intro-on'); }, CURTAIN + 50);
+      setTimeout(() => {
+        // Без перелёта кольцо остаётся в заставке до ухода шторки, затем переезжает в знак
+        if (orb && !fly) orb.attach(disc);
+        intro.remove(); root.classList.remove('intro-on');
+      }, CURTAIN + 50);
     };
     SKIP.forEach((ev) => window.addEventListener(ev, finish, { passive: true }));
     // Старт — когда шрифт знака готов (не дольше 0,35 с), чтобы буквы не перестраивались на глазах
     Promise.race([fontReady, sleep(350)]).then(() => {
       if (done) return;
       intro.classList.add('is-go');
-      imgs[0].classList.add('is-on');
-      swap = setInterval(() => { imgs[k].classList.remove('is-on'); k = (k + 1) % imgs.length; imgs[k].classList.add('is-on'); }, 140);
       const t0 = performance.now(), DUR = 900;
       const tick = (now) => {
         const p = Math.min(1, (now - t0) / DUR);
@@ -1256,20 +1285,9 @@
     });
   });
   if (!introOn && intro) intro.remove();
+  if (orb && !introOn) orb.attach(disc);
   fontReady.then(fitMark);
   Promise.all([fontReady, runIntro()]).then(() => hero.classList.add('is-ready'));
-
-  // Мышь над знаком: в круге «O» сменяются кадры работ (отсылка к заставке)
-  if (finePointer && !reduceMotion) {
-    const zone = mark.parentElement;
-    let timer = 0, n = 0;
-    // Абсолютный адрес: относительный путь в var() браузер считает от файла стилей
-    const next = () => { const l = oSrcs(); disc.style.setProperty('--thumb', `url("${new URL(l[n++ % l.length], location.href).href}")`); };
-    zone.addEventListener('pointerenter', () => { if (!hero.classList.contains('is-ready')) return; next(); disc.classList.add('is-peek'); clearInterval(timer); timer = setInterval(next, 280); });
-    zone.addEventListener('pointerleave', () => { clearInterval(timer); disc.classList.remove('is-peek'); });
-    // Кадры для круга подгружаем в простое
-    (window.requestIdleCallback || ((cb) => setTimeout(cb, 1500)))(() => oSrcs().forEach((src) => { const im = new Image(); im.src = src; }));
-  }
 
   activate(active, { push: false, animate: false });
   // Перезагрузка и «назад/вперёд»: браузер сам вернёт место чтения — к вкладкам не прыгаем
