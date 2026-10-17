@@ -10,7 +10,8 @@ Websites, Telegram bots, web apps and parsers for business. A one-page portfolio
 - **Tabbed showcase.** The five concept websites run live inside a browser or phone frame (iframe 1440×900 or 390×844 with a status bar). There is a Desktop / Mobile toggle, and each tab has its own deep link (`#work-serein`, `#work-obsid`, `#work-ognivo`, `#work-luma`, `#work-monolit`, `#work-crm`, `#work-bots`). Arrow, Home and End keys switch tabs. Only the active tab ever holds an iframe.
 - **Real product:** a lead-gen CRM and parser, an internal B2B tool. It is private, so a demo is available on request. Screenshots use fictional demo data only.
 - **Bots & parsers:** an animated Telegram booking bot and a lead-parser terminal, plus web apps, CRM and integrations.
-- Services, process and a contact block (email with a copy button and a pre-filled `mailto`).
+- **Show details** toggle on the live demos: blueprint-style callouts point at real elements inside each demo (measured in the same-origin iframe), so they stay correct in EN/RU, desktop/mobile modes and while the demo scrolls.
+- Services, process and a contact block (email with a copy button and a pre-filled `mailto`, brief form via FormSubmit, Telegram). The hero shows Moscow time and whether a reply is likely now.
 
 ## Concept websites
 
@@ -29,7 +30,10 @@ Demo projects are concepts: company names, people, addresses and reviews are fic
 ```
 index.html          portfolio page
 assets/site.css     styles (dark by default + optional light theme)
-assets/site.js      EN/RU dictionary, showcase tabs, live previews, bot/parser animation, email
+assets/site.js      EN/RU dictionary, showcase tabs, live previews ("Show details" blueprint annotations), bot/parser animation, email, brief form
+assets/orb.js       the chrome ring in the "O" of EKIMOV’ (WebGL, CSS fallback)
+assets/sig.js       one rAF loop: the ring travelling from the wordmark into the header, living letters, band wave curtains, Moscow clock
+assets/motion.js    reveal / scramble / parallax / cursor layer (mouse-only extras)
 assets/shots/       screenshots used as posters and previews
 assets/thumbs/      small thumbnails (not referenced by the current page)
 serein/ obsid/ ognivo/ luma/ monolit/   the five concept sites

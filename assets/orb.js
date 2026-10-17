@@ -110,7 +110,7 @@ void main(){
     const cv = document.createElement('canvas');
     cv.className = 'orb';
     cv.setAttribute('aria-hidden', 'true');
-    const api = { el: cv, ok: false, attach, poke() {}, stats: { frames: 0, ms: 0 } };
+    const api = { el: cv, ok: false, attach, poke() {}, mount() {}, setRes() { return false; }, render() { return false; }, center() {}, setSpin() {}, stats: { frames: 0, ms: 0 } };
     let gl = null, glUp = false; // glUp: шейдер однажды собрался — наблюдатели существуют
     try { gl = cv.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, powerPreference: 'low-power', preserveDrawingBuffer: prof }); } catch { gl = null; }
     const fallback = () => {
@@ -156,6 +156,8 @@ void main(){
     let parent = null, onScreen = false, pageOn = !document.hidden, menuOn = root.classList.contains('menu-open');
     let raf = 0, last = 0, size = 0, scrollQuiet = 0;
     let tx = 0, ty = 0, px = 0, py = 0, mx = null, my = null;
+    // Внешнее управление (assets/sig.js): кольцо путешествует по странице, цикл и размер задаёт сцена
+    let ext = false, ctr = null, spinX = 0;
     // Реакция на клик/касание: короткий «вдох» + толчок вращения (один раз, ~0,9 с)
     const PK = 900, SPIN = 2.2;
     let pk0 = -1e9, spin = 0;
@@ -177,7 +179,7 @@ void main(){
       const t = reduce ? 6.0 : (now - t0) / 1000;
       // Курсор наклоняет кольцо (мышь); на касании — только собственное медленное покачивание
       if (fine && mx !== null && !reduce) {
-        const r = cv.getBoundingClientRect();
+        const r = ctr || cv.getBoundingClientRect();
         if (r.width) {
           tx = Math.max(-1, Math.min(1, (mx - (r.left + r.width / 2)) / (window.innerWidth * 0.5)));
           ty = Math.max(-1, Math.min(1, (my - (r.top + r.height / 2)) / (window.innerHeight * 0.5)));
@@ -190,7 +192,7 @@ void main(){
       const inflate = e < 1 ? Math.sin(Math.PI * Math.min(1, e * 1.6)) * (1 - e) : 0;
       const ax = 0.32 * Math.sin(t * 0.37) + py * 0.42 + inflate * 0.35;
       const ay = 0.36 * Math.sin(t * 0.29 + 1.3) + px * 0.5;
-      const az = t * 0.22 + spin + kickA;
+      const az = t * 0.22 + spin + kickA + spinX;
       // Морфинг: гладкий надувной (швы) ↔ мягко смятая фольга, цикл ~16 с; без движения — гладкая фаза
       const cr = reduce ? 0.1 : 0.15 + 0.85 * (0.5 + 0.5 * Math.sin(t * 0.39 - 1.2)) ** 1.6;
       gl.uniform1f(U.uT, t);
@@ -204,7 +206,7 @@ void main(){
       if (prof) { gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px1); api.stats.ms += performance.now() - a; }
       api.stats.frames++;
     };
-    const live = () => api.ok && onScreen && pageOn && !menuOn && !reduce && size > 0;
+    const live = () => !ext && api.ok && onScreen && pageOn && !menuOn && !reduce && size > 0;
     const loop = (now) => {
       raf = 0;
       if (!live()) return;
@@ -235,7 +237,8 @@ void main(){
       const css = api.el;
       if (css !== cv && css.parentNode) css.replaceWith(cv);
       api.el = cv; api.ok = true;
-      size = 0; resize(); kick();
+      const s0 = size; size = 0;
+      if (ext) { api.setRes(s0 || 64); if (api.onrestore) api.onrestore(); } else { resize(); kick(); }
     });
 
     // Клик/касание по «O»: одноразовая реакция (единственное взаимодействие с кольцом на телефоне)
@@ -246,7 +249,43 @@ void main(){
       if (pk0 > 0) spin += ease(Math.min(1, (now - pk0) / PK)) * SPIN; // незаконченный толчок — фиксируем его поворот
       pk0 = now; scrollQuiet = 0;
       kick();
+      if (ext && api.onpoke) api.onpoke();
     };
+
+    // ── Внешнее управление: один цикл rAF на странице (sig.js) ──
+    // mount: canvas переезжает в слой-путешественник; свои наблюдатели и цикл отключаются
+    api.mount = (el) => {
+      ext = true;
+      cancelAnimationFrame(raf); raf = 0;
+      if (io) io.disconnect();
+      if (ro) ro.disconnect();
+      parent = null;
+      if (api.el.parentNode !== el) el.appendChild(api.el);
+    };
+    // setRes: размер буфера в пикселях (маленький, когда кольцо в шапке); true — буфер очищен, нужен кадр
+    api.setRes = (s) => {
+      if (!api.ok) return false;
+      s = Math.max(16, Math.min(coarse ? 200 : 340, Math.round(s)));
+      if (s === size) return false;
+      size = s; cv.width = cv.height = s; gl.viewport(0, 0, s, s);
+      return true;
+    };
+    // render: кадр, если пора (касание и программный WebGL — ~30 кадров/с, пока палец листает — пауза)
+    api.render = (now, force) => {
+      if (!api.ok || !size) return false;
+      if (!force) {
+        if (reduce) return false;
+        if (coarse && now < scrollQuiet) return false;
+        if (slow && now - last < 30) return false;
+      }
+      last = now;
+      frame(now);
+      return true;
+    };
+    // center: центр кольца на экране (для наклона за курсором) — без чтения раскладки в кадре
+    api.center = (x, y, w) => { ctr = { left: x - w / 2, top: y - w / 2, width: w, height: w }; };
+    // setSpin: поворот в плоскости экрана (кольцо «катится», пока падает) — облик не меняется
+    api.setSpin = (a) => { spinX = a; };
 
     function attach(el) {
       if (api.el.parentNode !== el) el.appendChild(api.el);

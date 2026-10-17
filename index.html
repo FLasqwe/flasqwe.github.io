@@ -64,7 +64,7 @@
 
   <!-- ── Шапка: знак слева, «Меню ::» справа. Цвет — по тону секции под ней ── -->
   <header class="hdr" data-hdr data-tone="dark">
-    <a class="brand" href="#top" aria-label="Ekimov Gregory — home" data-i18n-label="a.home"><span aria-hidden="true">EG’</span></a>
+    <a class="brand" href="#top" aria-label="Ekimov Gregory — home" data-i18n-label="a.home"><span class="brand__eg" aria-hidden="true">EG’</span><span class="brand__mk" aria-hidden="true"><span class="brand__e">E</span><span class="brand__o" data-brand-o></span><span class="brand__q">’</span></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" data-menu>
       <span data-menu-label>Menu</span><i aria-hidden="true"></i>
     </button>
@@ -87,6 +87,7 @@
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="ru" aria-pressed="false">RU</button>
         </div>
+        <p class="clock mnav__clock" data-clock><span data-clock-city>Moscow</span> <time data-clock-time>--:--</time> · <span data-clock-st></span></p>
       </div>
     </div>
   </nav>
@@ -103,7 +104,10 @@
       </div>
       <div class="hero__foot wrap">
         <p class="hero__role"><span>Ekimov Gregory</span><span data-i18n="hero.role">Design &amp; development</span></p>
-        <p class="hero__status"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></p>
+        <div class="hero__now">
+          <p class="hero__status"><i aria-hidden="true"></i><span data-i18n="hero.status">Available for new projects</span></p>
+          <p class="clock" data-clock><span data-clock-city>Moscow</span> <time data-clock-time>--:--</time> · <span data-clock-st></span></p>
+        </div>
         <div class="hero__links">
           <a href="#work" data-to-work data-i18n="nav.work">Work</a><span aria-hidden="true">/</span><a href="#contact" data-i18n="nav.contact">Contact</a>
           <div class="lang" role="group" aria-label="Language" data-i18n-label="a.lang">
@@ -267,6 +271,7 @@
   <p class="sr" aria-live="polite" data-live></p>
 
   <script src="assets/orb.js"></script>
+  <script src="assets/sig.js"></script>
   <script src="assets/site.js"></script>
   <script src="assets/motion.js"></script>
 </body>

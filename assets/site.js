@@ -47,6 +47,7 @@
       'stage.open': 'Open full site ↗', 'stage.openLabel': 'Open the full site in a new tab',
       'stage.hint': 'Interactive — click the frame, then scroll and tap around', 'stage.hintTouch': 'Interactive — tap the frame, then scroll it', 'stage.real': 'This is the real site, not a video',
       'stage.interact': 'Click to interact', 'stage.tap': 'Tap to interact', 'stage.loading': 'Loading live demo…',
+      'bd.show': 'Show details', 'bd.short': 'Details', 'bd.tag': 'Adaptive 360–1920 px · EN / RU', 'bd.tagShort': '360–1920 · EN/RU', 'bd.tagCrm': 'Real product · demo data',
       'stage.shots': 'Private tool · screenshots with demo data', 'stage.shotsNarrow': 'Real product · screenshots', 'stage.shotsNote': 'Interface in Russian · names and numbers are demo data',
       'stage.bots': 'Animated example · booking bot & lead parser', 'stage.botsNarrow': 'Animated example', 'stage.botsNote': 'Scripted demo of a typical scenario · company names are fictional',
       'case.concept': 'Concept project', 'case.real': 'Real product', 'case.cap': 'Capabilities',
@@ -96,6 +97,7 @@
       'stage.open': 'Открыть сайт ↗', 'stage.openLabel': 'Открыть сайт целиком в новой вкладке',
       'stage.hint': 'Интерактивно — нажмите на рамку, затем листайте и нажимайте', 'stage.hintTouch': 'Интерактивно — коснитесь рамки и листайте сайт', 'stage.real': 'Это настоящий сайт, а не видео',
       'stage.interact': 'Нажмите, чтобы управлять', 'stage.tap': 'Нажмите, чтобы листать', 'stage.loading': 'Загружаем живое демо…',
+      'bd.show': 'Показать детали', 'bd.short': 'Детали', 'bd.tag': 'Адаптив 360–1920 px · EN / RU', 'bd.tagShort': '360–1920 · EN/RU', 'bd.tagCrm': 'Реальный продукт · демо-данные',
       'stage.shots': 'Внутренний инструмент · скриншоты с демо-данными', 'stage.shotsNarrow': 'Реальный продукт · скриншоты', 'stage.shotsNote': 'Названия и цифры — демо-данные',
       'stage.bots': 'Анимированный пример · бот записи и парсер лидов', 'stage.botsNarrow': 'Анимированный пример', 'stage.botsNote': 'Демо по сценарию: диалог с ботом и запуск парсера · компании вымышлены',
       'case.concept': 'Концепт-проект', 'case.real': 'Реальный продукт', 'case.cap': 'Возможности',
@@ -198,6 +200,86 @@
     },
   ];
   const byId = (id) => WORK.find((w) => w.id === id);
+
+  // ── «Детали»: чертёжные выноски поверх живого демо ──
+  // sel — элемент внутри демо (или картинки CRM), at — точка на нём (доли), d — смещение подписи (доли рамки):
+  // d[0] < 0 — подпись слева от точки излома, иначе справа. Подписи — только то, что в демо есть на самом деле.
+  const A = (sel, at, d, en, ru) => ({ sel, at, d, en, ru });
+  const ANN = {
+    serein: {
+      desktop: [
+        A('.hero__card', [0.08, 1], [-0.02, 0.17], 'Free flats — counted from the plan data', 'Свободные — из данных шахматки'),
+        A('.hero a.btn[href="#residences"]', [1, 0.15], [0.04, -0.09], 'Flat picker: facade → floor → plan', 'Выбор квартиры: фасад → этаж → план'),
+        A('a[href="#mortgage"]', [0.5, 0.82], [-0.04, 0.26], 'Mortgage calculator · live chart', 'Ипотека · живой график платежей'),
+        A('.lang', [0.5, 1], [-0.1, 0.07], 'EN / RU', 'EN / RU'),
+      ],
+      mobile: [
+        A('.lang', [0.5, 1], [-0.14, 0.07], 'EN / RU', 'EN / RU'),
+        A('.hero a.btn[href="#residences"]', [0.12, 0], [0.04, -0.09], 'Flat picker: facade → plan', 'Выбор: фасад → план'),
+        A('.hero a[href="#viewing"]:not(.btn)', [1, 0.5], [0.07, 0.05], 'Viewing booking', 'Запись на показ'),
+      ],
+    },
+    obsid: {
+      desktop: [
+        A('#scan', [0.56, 0.62], [-0.08, 0.13], 'Light-bar scan reveals the zone map', 'Скан открывает карту зон плёнки'),
+        A('a[href="#config"]', [0.5, 0.85], [-0.04, 0.24], 'Configurator — price recalculates live', 'Конфигуратор — цена пересчитывается сразу'),
+        A('a.btn[href="#book"]', [0.5, 1], [-0.04, 0.42], 'Booking · 14 days, slots, ticket', 'Запись · 14 дней, слоты, «билет»'),
+        A('.lang', [0.5, 1], [-0.1, 0.08], 'EN / RU', 'EN / RU'),
+      ],
+      mobile: [
+        A('.lang', [0.5, 1], [-0.12, 0.07], 'EN / RU', 'EN / RU'),
+        A('#scan', [0.56, 0.62], [0.05, 0.08], 'Light-bar scan', 'Скан кузова'),
+        A('.hero a.btn[href="#config"]', [0.85, 0], [-0.06, -0.08], 'Live configurator', 'Живой конфигуратор'),
+      ],
+    },
+    ognivo: {
+      desktop: [
+        A('canvas.hero__sparks', [0.66, 0.3], [0.06, 0.06], 'Live sparks — canvas, not a video', 'Живые искры — canvas, не видео'),
+        A('a[href="#menu"]', [0.5, 1], [-0.04, 0.16], 'Menu tabs: tasting · à la carte · wine', 'Меню на вкладках: сет · основное · вино'),
+        A('.hero a.btn[href="#reserve"]', [1, 0.5], [0.05, 0.08], 'Table booking with validation', 'Бронь столика с проверкой полей'),
+        A('.lang', [0.5, 1], [-0.1, 0.08], 'EN / RU', 'EN / RU'),
+      ],
+      mobile: [
+        A('.lang', [0.5, 1], [-0.12, 0.07], 'EN / RU', 'EN / RU'),
+        A('canvas.hero__sparks', [0.7, 0.24], [-0.06, 0.06], 'Live sparks · canvas', 'Живые искры · canvas'),
+        A('.hero a.btn[href="#reserve"]', [1, 0.5], [0.06, 0.07], 'Table booking', 'Бронь столика'),
+      ],
+    },
+    luma: {
+      desktop: [
+        A('.hero .pill', [1, 0.5], [0.05, 0], 'Open / closed — from opening hours', '«Открыто» — по часам работы'),
+        A('.slot-time', [1, 0.5], [0.05, -0.03], 'Next free slot — from the booking grid', 'Ближайшее окно — из сетки записи'),
+        A('.hero a[href="#calculator"]', [1, 0.5], [0.05, 0.08], 'Cost calculator · 0% instalments', 'Калькулятор · рассрочка 0%'),
+        A('a[href="#results"]', [0.5, 0.9], [0.04, 0.07], 'Before / after slider', 'Слайдер «до / после»'),
+      ],
+      mobile: [
+        A('.hero .pill', [1, 0.5], [0.06, 0], 'From opening hours', 'По часам работы'),
+        A('.hero a.btn[href="#book"]', [1, 0.5], [0.05, -0.06], 'Doctor + free slots', 'Врач и свободные окна'),
+        A('.hero a[href="#calculator"]', [1, 0.5], [0.06, 0.05], 'Cost calculator', 'Калькулятор'),
+      ],
+    },
+    monolit: {
+      desktop: [
+        A('svg.hero__blueprint', [0.764, 0.555], [-0.08, 0.2], 'Blueprint lines draw themselves', 'Чертёж прорисовывается сам'),
+        A('a[href="#estimate"]', [0.5, 1], [-0.04, 0.16], 'Estimate: cost & timeline by stage', 'Смета: цена и сроки по этапам'),
+        A('a[href="#projects"]', [0.5, 1], [-0.04, 0.34], 'Portfolio with filters', 'Портфолио с фильтрами'),
+        A('.lang', [0.5, 1], [-0.08, 0.08], 'EN / RU', 'EN / RU'),
+      ],
+      mobile: [
+        A('.lang', [0.5, 1], [-0.12, 0.07], 'EN / RU', 'EN / RU'),
+        A('.hero a.btn[href="#estimate"]', [1, 0.5], [0.05, -0.06], 'Cost & timeline estimate', 'Смета: цена и сроки'),
+        A('.hero a[href="#projects"]', [1, 0.5], [0.06, 0.06], 'Portfolio · filters', 'Портфолио · фильтры'),
+      ],
+    },
+    crm: {
+      desktop: [
+        A('.device img', [0.205, 0.11], [0.04, -0.05], 'Domain warm-up · daily send limit', 'Прогрев домена · лимит писем в день'),
+        A('.device img', [0.085, 0.26], [0.1, 0.14], 'Inbox with replies', 'Инбокс с ответами'),
+        A('.device img', [0.27, 0.52], [0.12, 0.2], 'Pipeline: new → written → replied → won', 'Воронка: новые → написали → ответили → выиграно'),
+        A('.comp__phone img', [0.3, 0.06], [-0.05, -0.1], 'Same CRM on a phone', 'Та же CRM на телефоне'),
+      ],
+    },
+  };
   // Карточка «Подхода»: светлый, тёмный и яркий кадр — разные по тону, читаются на чёрном
   const REEL = ['serein', 'obsid', 'monolit'];
   const CHIP_RU = { Accessibility: 'Доступность' };
@@ -421,6 +503,7 @@
       return `<div class="stage stage--site" data-mode="${previewMode}" style="--sbg:${w.sb[0]};--sfg:${w.sb[1]}">
         <div class="stage__bar">
           <span class="stage__live"><i aria-hidden="true"></i><span class="stage__wide" data-t="stage.live"></span>${narrow('stage.conceptLive')}</span>
+          <button class="bd-btn" type="button" aria-pressed="false" data-bd><i aria-hidden="true"></i><span class="bd-btn__l" data-t="bd.show"></span><span class="bd-btn__s" aria-hidden="true" data-t="bd.short"></span></button>
           <div class="seg" role="group" data-t-label="stage.size">
             <button type="button" data-mode="desktop" aria-pressed="${previewMode === 'desktop'}">${ICON.desktop}<span data-t="stage.desktop"></span></button>
             <button type="button" data-mode="mobile" aria-pressed="${previewMode === 'mobile'}">${ICON.mobile}<span data-t="stage.mobile"></span></button>
@@ -437,6 +520,7 @@
               <span class="device__pill" aria-hidden="true"><i></i><span data-t="stage.loading"></span></span>
               <button class="device__shield" type="button"><span class="device__hint">${ICON.tap}<span data-t="${coarse ? 'stage.tap' : 'stage.interact'}"></span></span></button>
               <span class="device__veil" aria-hidden="true"></span>
+              <div class="bd" aria-hidden="true" data-bd-host></div>
             </div>
           </div>
         </div>
@@ -445,7 +529,8 @@
     }
     if (w.kind === 'product') {
       return `<div class="stage stage--shots">
-        <div class="stage__bar"><span class="stage__live">${ICON.lock}<span class="stage__wide" data-t="stage.shots"></span>${narrow('stage.shotsNarrow')}</span></div>
+        <div class="stage__bar"><span class="stage__live">${ICON.lock}<span class="stage__wide" data-t="stage.shots"></span>${narrow('stage.shotsNarrow')}</span>
+          <button class="bd-btn" type="button" aria-pressed="false" data-bd><i aria-hidden="true"></i><span class="bd-btn__l" data-t="bd.show"></span><span class="bd-btn__s" aria-hidden="true" data-t="bd.short"></span></button></div>
         <div class="floor">${crops}
           <div class="comp">
             <figure class="device">
@@ -453,6 +538,7 @@
               <img src="assets/shots/crm-desktop.jpg" width="1280" height="800" loading="lazy" decoding="async" data-alt="desktop">
             </figure>
             <figure class="comp__phone"><img src="assets/shots/crm-mobile.jpg" width="780" height="1688" loading="lazy" decoding="async" data-alt="mobile"></figure>
+            <div class="bd" aria-hidden="true" data-bd-host></div>
           </div>
         </div>
         <p class="stage__hint"><span data-t="stage.shotsNote"></span></p>
@@ -527,7 +613,7 @@
         </div>
         <div class="info__body" style="--i:2">${body}</div>`;
 
-      $$('[data-t]', panel).forEach((el) => { el.textContent = t(el.dataset.t); });
+            $$('[data-t]', panel).forEach((el) => { el.textContent = t(el.dataset.t); });
       $$('[data-t-label]', panel).forEach((el) => { el.setAttribute('aria-label', t(el.dataset.tLabel)); });
       $$('[data-name]', panel).forEach((el) => { el.textContent = d.tab; });
       $$('[data-alt]', panel).forEach((img) => { img.alt = `${d.name} — ${img.dataset.alt === 'desktop' ? (lang === 'ru' ? 'дашборд на компьютере' : 'dashboard, desktop') : (lang === 'ru' ? 'канбан на телефоне' : 'kanban, mobile')} (${lang === 'ru' ? 'демо-данные' : 'demo data'})`; });
@@ -636,6 +722,16 @@
       st.el.classList.add('is-loaded');
       st.el.classList.remove('is-loading');
       prefetchPosters();
+      // «Детали»: выноски следуют за прокруткой демо; после загрузки — первая отрисовка (шрифты демо успевают встать)
+      try { f.contentWindow.addEventListener('scroll', () => { if (active === id) bdQueue(id); }, { passive: true }); } catch { /* другой origin */ }
+      if (bdOn && active === id) { bdRender(id, true); bdSettle(id); }
+      // переходы и анимации внутри демо (появление, раскрытие) — тоже повод переложить выноски; не чаще раза в 250 мс
+      try {
+        let tt = 0;
+        const re = () => { if (!bdOn || active !== id) return; clearTimeout(tt); tt = setTimeout(() => bdQueue(id), 250); };
+        f.contentDocument.addEventListener('transitionend', re, { passive: true });
+        f.contentDocument.addEventListener('animationend', re, { passive: true });
+      } catch { /* другой origin */ }
     };
     f.addEventListener('load', done);
     // Если внешние картинки демо грузятся долго и load не приходит — всё равно показываем живой сайт
@@ -650,6 +746,8 @@
     const st = stages[id];
     if (!st) return;
     if (st.frame) { st.frame.remove(); st.frame = null; }
+    const bh = st.el && $('[data-bd-host]', st.el);
+    if (bh) { bh.innerHTML = ''; bh.classList.remove('is-in'); }
     st.el?.classList.remove('is-loaded', 'is-loading', 'is-interactive');
   }
   // Ссылки «#раздел» внутри демо: прокручиваем только сам iframe — без прокрутки портфолио и без записей в истории
@@ -693,6 +791,7 @@
         setPoster(w, w.id === active && workNear);
       });
       layoutStage(active);
+      if (bdOn) setTimeout(() => bdRender(active, true), 720); // рамка доехала до нового размера (transition .6s), демо перестроилось
     };
     const cur = stages[active];
     if (reduceMotion || !cur || byId(active).kind !== 'site') { apply(); return; }
@@ -702,6 +801,162 @@
       apply();
       setTimeout(() => cur.el.classList.remove('is-switching'), 420);
     }, 200);
+  }
+
+  // ── «Детали»: выноски над демо (точка → линия с изломом → подпись на плашке) ──
+  // Точки ищем в самом демо (тот же origin): выноска всегда указывает на настоящий элемент — на любом языке,
+  // в обоих режимах и после прокрутки демо. Слой не перехватывает мышь (pointer-events: none).
+  let bdOn = false;
+  let bdRafId = 0;
+  const bdPick = (doc, sel, vw, vh) => {
+    for (const el of doc.querySelectorAll(sel)) {
+      const r = el.getBoundingClientRect();
+      if (r.width < 1 || r.height < 1 || r.bottom < 0 || r.top > vh || r.right < 0 || r.left > vw) continue;
+      if (el.ownerDocument.defaultView.getComputedStyle(el).visibility === 'hidden') continue; // opacity не смотрим: у появляющихся блоков демо она ещё анимируется
+      return r;
+    }
+    return null;
+  };
+  const bdNarrow = window.matchMedia('(max-width: 520px)');
+  const hitR = (a, b, m) => a.x1 < b.x2 + m && a.x2 > b.x1 - m && a.y1 < b.y2 + m && a.y2 > b.y1 - m;
+  function bdRender(id, animate) {
+    const w = byId(id), st = stages[id];
+    const host = st && $('[data-bd-host]', st.el);
+    if (!host) return;
+    const floor = $('.floor', st.el);
+    if (!bdOn || !ANN[id]) { host.classList.remove('is-on', 'is-in'); host.innerHTML = ''; st.el.classList.remove('is-bd'); return; }
+    st.el.classList.add('is-bd');
+    const mode = w.kind === 'site' ? st.el.dataset.mode : 'desktop';
+    // «Телефон» на широкой сцене: подписи выносим на поля сцены по бокам (классический чертёж),
+    // на экране телефона остаются только точки и линии. Узкая сцена — подписи внутри экрана.
+    const screen = w.kind === 'site' ? $('.device__screen', st.el) : null;
+    let offX = 0, offY = 0, Ws = 0, Hs = 0, gut = false;
+    if (screen) {
+      Ws = screen.clientWidth; Hs = screen.clientHeight;
+      if (mode === 'mobile') {
+        const dev = screen.parentElement;
+        offX = dev.offsetLeft + screen.offsetLeft; offY = dev.offsetTop + screen.offsetTop;
+        gut = Math.min(offX, floor.clientWidth - offX - Ws) >= 200;
+        if (!gut) offX = offY = 0; // подписи внутри экрана — координаты экрана
+      }
+    }
+    const want = gut ? floor : (screen || host.parentElement);
+    if (host.parentElement !== want) want.appendChild(host);
+    host.classList.toggle('is-gut', gut);
+    const box = host.parentElement; // .device__screen, .floor (поля) или .comp
+    const W = box.clientWidth, H = box.clientHeight;
+    if (!W || !H) return;
+    const Wd = screen ? Ws : W, Hd = screen ? Hs : H; // масштаб смещений подписи — по экрану демо
+    let list = ANN[id][mode] || ANN[id].desktop;
+    if (w.kind === 'product' && W < 560) list = list.filter((_, i) => i !== 1);
+    // маленькая рамка (телефон, режим «Компьютер»): не больше трёх выносок, мельче шрифт
+    const small = !gut && W < 520;
+    if (small && list.length > 3) list = list.slice(0, 3);
+    host.classList.toggle('is-small', small);
+    const pts = [];
+    if (w.kind === 'site') {
+      const f = st.frame;
+      let doc = null, win = null;
+      try { doc = f && st.el.classList.contains('is-loaded') ? f.contentDocument : null; win = f && f.contentWindow; } catch { doc = null; }
+      if (doc && win) {
+        const dev = $('.device', st.el);
+        const sc = parseFloat(dev.style.getPropertyValue('--s')) || 0.5, sb = parseFloat(dev.style.getPropertyValue('--sb')) || 0;
+        list.forEach((a, i) => {
+          const r = bdPick(doc, a.sel, win.innerWidth, win.innerHeight);
+          if (r) pts.push({ a, i, x: offX + (r.left + r.width * a.at[0]) * sc, y: offY + (sb + r.top + r.height * a.at[1]) * sc });
+        });
+      }
+    } else {
+      const hr = box.getBoundingClientRect();
+      list.forEach((a, i) => {
+        const el = $(a.sel, box);
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        pts.push({ a, i, x: r.left - hr.left + r.width * a.at[0], y: r.top - hr.top + r.height * a.at[1] });
+      });
+    }
+    // Штамп «адаптив · EN/RU»: на телефоне — под рамкой, в строке подсказки (на рамке он закрывал адрес)
+    let tg = $('.bd-tag', st.el);
+    if (!tg) { tg = document.createElement('span'); tg.className = 'bd-tag'; tg.setAttribute('aria-hidden', 'true'); }
+    const tgHome = bdNarrow.matches ? $('.stage__hint', st.el) : floor;
+    if (tg.parentElement !== tgHome) tgHome.appendChild(tg);
+    tg.classList.toggle('bd-tag--hint', bdNarrow.matches);
+    tg.textContent = t(w.kind === 'site' ? (bdNarrow.matches ? 'bd.tagShort' : 'bd.tag') : 'bd.tagCrm');
+    host.classList.add('is-on'); // до замеров: скрытый слой (display: none) дал бы нулевые размеры плашек
+    const gw = gut ? Math.min(300, Math.min(offX, W - offX - Ws) - 30) : 0;
+    host.style.setProperty('--gw', gut ? `${gw}px` : '');
+    const veil = gut ? ` style="left:${offX}px;top:${offY}px;width:${Ws}px;height:${Hs}px;right:auto;bottom:auto;border-radius:37px"` : '';
+    host.innerHTML = `<i class="bd__veil"${veil}></i>${pts.map((p, k) => `<div class="bd__it" style="--k:${k}"><i class="bd__v"></i><i class="bd__h"></i><b class="bd__dot"></b><span class="bd__chip"><em>${String(p.i + 1).padStart(2, '0')}</em>${esc(p.a[lang])}</span></div>`).join('')}`;
+    const its = $$('.bd__it', host);
+    // размер плашки — по блоку раскладки (offset*): transform предка (въезд, смена режима) не сужает замер
+    const sizes = its.map((it) => { const c = $('.bd__chip', it); return [c.offsetWidth + 1, c.offsetHeight]; });
+    // Раскладка: подпись не ложится ни на другую подпись, ни на чужую (и свою) точку, ни на уже проведённые линии.
+    // Порядок попыток: как задумано → зеркально по горизонтали → зеркально по вертикали → обе → сдвиг вниз.
+    const dots = pts.map((p) => ({ x1: p.x - 7, x2: p.x + 7, y1: p.y - 7, y2: p.y + 7 }));
+    const chips = [], lines = [];
+    const gL = offX - 16, gR = offX + Ws + 16;
+    const order = pts.map((p, k) => k).sort((a, b) => (pts[a].y + pts[a].a.d[1] * Hd) - (pts[b].y + pts[b].a.d[1] * Hd));
+    const css = (el, o) => Object.assign(el.style, o);
+    let shown = 0;
+    order.forEach((k) => {
+      const p = pts[k], it = its[k], [cw, ch] = sizes[k];
+      const try1 = (sx, sy, push, strict) => {
+        const left = sx < 0;
+        let lx = gut ? (left ? gL : gR) : p.x + sx * Wd;
+        let cx = left ? lx - cw : lx;
+        cx = Math.max(6, Math.min(W - cw - 6, cx));
+        let ly = p.y + sy * Hd + push;
+        if (ly - ch / 2 < 6) { if (strict) return null; ly = ch / 2 + 6; } // зеркальный вариант не прижимаем к краю
+        if (ly + ch / 2 > H - 4 || cw > W - 12) return null;
+        lx = left ? cx + cw : cx;
+        if (left ? lx > p.x : lx < p.x) lx = p.x; // плашку прижало к краю — линия не уходит за точку
+        const c = { x1: cx, x2: cx + cw, y1: ly - ch / 2, y2: ly + ch / 2 };
+        const v = { x1: p.x - 1, x2: p.x + 1, y1: Math.min(p.y, ly), y2: Math.max(p.y, ly) };
+        const h = { x1: Math.min(p.x, lx), x2: Math.max(p.x, lx), y1: ly - 1, y2: ly + 1 };
+        if (chips.some((r) => hitR(c, r, 5))) return null;
+        if (dots.some((r) => hitR(c, r, 2))) return null; // включая свою точку
+        if (lines.some((r) => hitR(c, r, 2))) return null;
+        if (chips.some((r) => hitR(v, r, 2) || hitR(h, r, 2))) return null;
+        if (dots.some((r, j) => j !== k && (hitR(v, r, 0) || hitR(h, r, 0)))) return null;
+        return { c, v, h, lx, ly, cx };
+      };
+      const [d0, d1] = p.a.d;
+      // длина выноски: как задумано, короче, длиннее (линия не должна пересекать уже стоящую подпись)
+      let q = null;
+      for (const m of [1, 0.55, 1.5, 0.3, 2]) { q = try1(d0, d1 * m, 0) || try1(-d0, d1 * m, 0); if (q || !d1) break; }
+      if (!q && d1) q = try1(d0, -d1, 0, true) || try1(-d0, -d1, 0, true);
+      for (let n = 1; !q && n <= 8; n++) q = try1(d0, d1, n * (ch + 6));
+      if (!q) { it.hidden = true; return; } // места нет — выноску не показываем, но и не накладываем
+      chips.push(q.c); lines.push(q.v, q.h); shown++;
+      const { lx, ly, cx } = q;
+      css($('.bd__dot', it), { left: `${p.x}px`, top: `${p.y}px` });
+      css($('.bd__v', it), { left: `${p.x}px`, top: `${Math.min(p.y, ly)}px`, height: `${Math.abs(ly - p.y)}px`, transformOrigin: ly >= p.y ? '50% 0' : '50% 100%' });
+      css($('.bd__h', it), { top: `${ly}px`, left: `${Math.min(p.x, lx)}px`, width: `${Math.abs(lx - p.x)}px`, transformOrigin: lx >= p.x ? '0 50%' : '100% 50%' });
+      css($('.bd__chip', it), { left: `${cx}px`, top: `${ly - ch / 2}px`, width: `${cw}px` }); // ширина фиксирована: у края плашка не переносится заново
+    });
+    host.classList.add('is-on');
+    host.classList.toggle('no-anim', !animate || reduceMotion);
+    if (animate && !reduceMotion) { host.classList.remove('is-in'); void host.offsetWidth; }
+    host.classList.add('is-in');
+    // Для чтения с экрана: что показано (слой выносок — aria-hidden, текст тот же)
+    st.bdText = order.filter((k) => !its[k].hidden).map((k) => `${String(pts[k].i + 1).padStart(2, '0')} ${pts[k].a[lang]}`).join('; ');
+  }
+  const bdQueue = (id = active) => {
+    if (!bdOn) return;
+    cancelAnimationFrame(bdRafId);
+    bdRafId = requestAnimationFrame(() => bdRender(id, false));
+  };
+  // Демо ещё доигрывает своё появление (заголовки и кнопки въезжают) — перекладываем выноски, когда оно встанет
+  let bdSettleT = [];
+  const bdSettle = (id) => { bdSettleT.forEach(clearTimeout); bdSettleT = [700, 1800].map((ms) => setTimeout(() => bdQueue(id), ms)); };
+  function bdSet(on) {
+    bdOn = on;
+    $$('[data-bd]').forEach((b) => b.setAttribute('aria-pressed', String(on)));
+    WORK.forEach((w) => { if (w.id !== active) bdRender(w.id, false); });
+    bdRender(active, true);
+    if (on) bdSettle(active);
+    const st = stages[active];
+    live.textContent = on ? (st && st.bdText ? `${t('bd.short')}: ${st.bdText}` : t('bd.short')) : '';
   }
 
   // ── Вкладки ────────────────────────────────────────────
@@ -736,7 +991,7 @@
       p.classList.remove('is-entering');
       if (on && animate && !reduceMotion) { void p.offsetWidth; p.classList.add('is-entering'); }
     });
-    if (prev !== id) unloadFrame(prev);
+    if (prev !== id) { unloadFrame(prev); if (stages[prev]) bdRender(prev, false); }
     const w = byId(id);
     if (w.kind === 'site') setPoster(w, workNear);
     layoutStage(id);
@@ -745,6 +1000,7 @@
     centerChip(animate);
     if (id === 'bots') sizeBots();
     updateBotsVisibility();
+    if (bdOn) bdRender(id, true);
     syncWorkLinks();
     // Адрес не меняем: иначе при обновлении / повторном заходе страница открывалась бы на вкладках, а не на первом экране
     if (push && location.hash) history.replaceState(null, '', location.pathname + location.search);
@@ -786,6 +1042,7 @@
   panelsEl.addEventListener('click', (e) => {
     const m = e.target.closest('.seg button');
     if (m) { setMode(m.dataset.mode); return; }
+    if (e.target.closest('[data-bd]')) { bdSet(!bdOn); return; }
     const shield = e.target.closest('.device__shield');
     if (shield) {
       const stEl = shield.closest('.stage');
@@ -1013,6 +1270,7 @@
     $$('[data-mail], [data-mail-btn]').forEach((a) => { a.href = href; });
     renderSections();
     fillShowcase();
+    if (!first) bdQueue();
     menuBtn.setAttribute('aria-label', t(mnav.hidden ? 'nav.open' : 'nav.shut'));
     $('[data-menu-label]').textContent = t(mnav.hidden ? 'nav.menu' : 'nav.close');
     sizeBots();
@@ -1180,6 +1438,8 @@
   const sections = ['work', 'services', 'process', 'contact'].map((id) => document.getElementById(id));
   let ticking = false;
   let lastCur, lastScrolled, lastY = window.scrollY, hidden = false;
+  // Пока виден первый экран, шапка не прячется: кольцо из «O» садится в неё знаком «E◯’»
+  let heroBottom = $('.hero').offsetHeight;
   // Шапка прячется при прокрутке вниз и возвращается при прокрутке вверх — не лежит поверх текста
   const setHidden = (on) => { if (on === hidden) return; hidden = on; hdr.classList.toggle('is-hidden', on); root.classList.toggle('hdr-up', on); };
   hdr.addEventListener('focusin', () => setHidden(false));
@@ -1208,7 +1468,7 @@
     if (holdUntil && performance.now() < holdUntil) lastY = y;
     else if (Math.abs(dy) > 4) {
       holdUntil = 0;
-      setHidden(dy > 0 && y > 120 && mnav.hidden);
+      setHidden(dy > 0 && y > Math.max(120, heroBottom) && mnav.hidden);
       lastY = y;
     }
     if (cur !== lastCur) { lastCur = cur; navLinks.forEach((a) => a.classList.toggle('is-active', navSection(a) === cur)); }
@@ -1225,6 +1485,7 @@
     layoutStage(active);
     moveBar();
     if (active === 'bots') sizeBots();
+    bdQueue();
   }).observe(panelsEl);
   let rz = 0;
   let lastStaticW = window.innerWidth;
@@ -1232,6 +1493,7 @@
     cancelAnimationFrame(rz);
     rz = requestAnimationFrame(() => {
       layoutStage(active); moveBar(); centerChip(false);
+      heroBottom = $('.hero').offsetHeight;
       if (window.innerWidth !== lastStaticW) { lastStaticW = window.innerWidth; fitStatic(); }
     });
   }, { passive: true });
@@ -1250,10 +1512,18 @@
   // «O» знака — надувное кольцо из фольги (assets/orb.js): тот же предмет, что в заставке
   mark.innerHTML = [...mark.textContent.trim()].map((c, i) => (c === 'O'
     ? `<span class="ml ml--o" style="--i:${i}"><i class="disc" data-disc></i></span>`
-    : `<span class="ml" style="--i:${i}">${c}</span>`)).join('');
+    : `<span class="ml" style="--i:${i}"><span class="ml__i">${c}</span></span>`)).join('');
   const disc = $('[data-disc]');
   // Один canvas на страницу: в заставке он в «E◯’», после перелёта — в «O» знака
   const orb = window.EGOrb ? window.EGOrb() : null;
+  // Дом кольца после заставки: путешествие по странице (assets/sig.js) или, если оно выключено
+  // («уменьшение движения», нет WebGL), — неподвижно в «O» знака, в шапке «EG’»
+  let ringHomed = false;
+  const ringHome = (intro) => {
+    if (!orb || ringHomed) return;
+    ringHomed = true;
+    if (!(window.EGSig && window.EGSig.travel(orb, { disc, intro }))) orb.attach(disc);
+  };
   if (orb) {
     disc.classList.add('has-orb');
     // Клик/касание по «O» — короткий «вдох» кольца с толчком вращения (и на телефоне)
@@ -1334,7 +1604,7 @@
         const land = () => {
           if (!o.isConnected) return;
           hero.classList.remove('is-flip');
-          if (orb) orb.attach(disc); // тот же canvas переезжает в «O» знака
+          ringHome(true); // тот же canvas переезжает в «O» знака (и дальше путешествует по странице)
           o.remove();
         };
         o.addEventListener('transitionend', (ev) => { if (ev.propertyName === 'transform') land(); });
@@ -1345,7 +1615,7 @@
       resolve();
       setTimeout(() => {
         // Без перелёта кольцо остаётся в заставке до ухода шторки, затем переезжает в знак
-        if (orb && !fly) orb.attach(disc);
+        if (!fly) ringHome(false);
         intro.remove(); root.classList.remove('intro-on');
       }, CURTAIN + 50);
     };
@@ -1364,7 +1634,7 @@
     });
   });
   if (!introOn && intro) intro.remove();
-  if (orb && !introOn) orb.attach(disc);
+  if (!introOn) ringHome(false);
   fontReady.then(fitMark);
   Promise.all([fontReady, runIntro()]).then(() => hero.classList.add('is-ready'));
 

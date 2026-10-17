@@ -112,17 +112,11 @@
 
   if (!fine) return; // всё ниже — только мышь
 
-  // ── 5. Параллакс: кадр «Подхода» и знак первого экрана (широкий экран) ──
+  // ── 5. Параллакс кадра «Подхода» (широкий экран). Знак первого экрана двигает assets/sig.js ──
   const par = [
     { el: document.querySelector('.aside__fig img'), box: document.querySelector('.aside__fig'), k: -0.05 },
-    { el: document.querySelector('.hero__mark'), box: document.querySelector('.hero'), k: 0.1, hero: true },
-  ].filter((p) => p.el && p.box).map((p) => ({ ...p, top: 0, h: 0, vis: false, off: 0, cap: Infinity }));
-  const heroMark = document.querySelector('.hero .mark'), heroFoot = document.querySelector('.hero__foot');
-  // Знак первого экрана сползает не дальше строки под ним: потолок = зазор до .hero__foot (меряем только при видимости/resize)
-  const measure = () => par.forEach((p) => {
-    const r = p.box.getBoundingClientRect(); p.top = r.top + scrollY; p.h = r.height;
-    if (p.hero && heroMark && heroFoot) p.cap = Math.max(0, heroFoot.getBoundingClientRect().top - (heroMark.getBoundingClientRect().bottom - p.off) - 8);
-  });
+  ].filter((p) => p.el && p.box).map((p) => ({ ...p, top: 0, h: 0, vis: false, off: 0 }));
+  const measure = () => par.forEach((p) => { const r = p.box.getBoundingClientRect(); p.top = r.top + scrollY; p.h = r.height; });
   let praf = 0;
   const parUpd = () => {
     praf = 0;
@@ -130,7 +124,7 @@
     par.forEach((p) => {
       if (!p.vis) return;
       if (!on) { p.el.style.translate = ''; p.off = 0; return; }
-      const off = p.hero ? Math.min(y * p.k, p.cap) : ((y + vh - p.top) / (vh + p.h) - 0.5) * p.h * p.k * 2;
+      const off = ((y + vh - p.top) / (vh + p.h) - 0.5) * p.h * p.k * 2;
       p.off = off;
       p.el.style.translate = `0 ${off.toFixed(1)}px`;
     });
