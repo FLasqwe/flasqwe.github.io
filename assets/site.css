@@ -314,7 +314,7 @@ html.menu-open { overflow: hidden; }
 .anchors { position: relative; height: 1px; margin-top: -1px; }
 .anchors span { position: absolute; top: 0; scroll-margin-top: var(--tab-gap); }
 .tabs-wrap { position: relative; }
-.tabs { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid var(--rule-2); }
+.tabs { position: relative; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); border-top: 1px solid var(--rule-2); }
 .tab {
   position: relative; display: grid; align-content: start; gap: 8px; min-width: 0; text-align: left;
   padding: 16px 18px 20px 0; color: var(--mut); transition: color .35s var(--ease);
@@ -677,7 +677,7 @@ html.menu-open { overflow: hidden; }
   .tab + .tab { padding-left: 12px; }
   .tab__sub { font-size: 14px; }
 }
-/* 7 вкладок: на средних экранах — указатель в две строки (4 + 3), у каждой строки своя линейка */
+/* 8 вкладок: на средних экранах — указатель в две строки (4 + 4), у каждой строки своя линейка */
 @media (min-width: 861px) and (max-width: 1180px) {
   .tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 0; }
   .tab { border-top: 1px solid var(--rule-2); padding-right: 16px; }

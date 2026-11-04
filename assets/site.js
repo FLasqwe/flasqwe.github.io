@@ -15,7 +15,7 @@
 
   // Адрес собираем в браузере, а не храним целиком в HTML — меньше спама от сборщиков адресов
   const MAIL = ['ekimovgregory9', 'gmail.com'].join('@');
-  const DEMO_KEYS = ['serein-lang', 'obsid-lang', 'ognivo-lang', 'luma-lang', 'monolit-lang'];
+  const DEMO_KEYS = ['veresk-lang', 'serein-lang', 'obsid-lang', 'ognivo-lang', 'luma-lang', 'monolit-lang'];
 
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -39,9 +39,9 @@
       'gw.work': 'WORKS', 'gw.svc': 'SERVICES', 'gw.proc': 'PROCESS', 'gw.ct': 'LET’S TALK',
       'a.sound': 'Interface sounds', 'snd.off': 'Sound off', 'snd.on': 'Sound on', egg: 'you found it ◯', 'ct.copiedShort': 'Email copied',
       'work.end': 'Want one like this', marquee: 'let’s talk', fab: 'Write',
-      'work.kicker': 'Selected work', 'work.meta': '5 live demos · 1 real product · bots & parsers',
+      'work.kicker': 'Selected work', 'work.meta': '6 live demos · 1 real product · bots & parsers',
       'work.title': 'Click a tab. See it live.',
-      'work.lead': 'Five concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
+      'work.lead': 'Six concept sites run live in the frame — next to them, a real CRM and\u00a0bots.',
       'about.cap': 'Real product', 'marquee.static': 'let’s talk —',
       'work.keys': '← → to switch', 'work.tabs': 'Work',
       'kind.concept': 'Concept', 'kind.product': 'Product', 'kind.cap': 'Capabilities',
@@ -91,9 +91,9 @@
       'gw.work': 'РАБОТЫ', 'gw.svc': 'УСЛУГИ', 'gw.proc': 'ПРОЦЕСС', 'gw.ct': 'НА СВЯЗИ',
       'a.sound': 'Звуки интерфейса', 'snd.off': 'Звук выкл', 'snd.on': 'Звук вкл', egg: 'нашли пасхалку ◯', 'ct.copiedShort': 'Почта скопирована',
       'work.end': 'Хочу так же', marquee: 'давайте обсудим', fab: 'Написать',
-      'work.kicker': 'Избранные работы', 'work.meta': '5 живых демо · 1 реальный продукт · боты и парсеры',
+      'work.kicker': 'Избранные работы', 'work.meta': '6 живых демо · 1 реальный продукт · боты и парсеры',
       'work.title': 'Нажмите на вкладку. Смотрите вживую.',
-      'work.lead': 'Пять концепт-сайтов работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
+      'work.lead': 'Шесть концепт-сайтов работают вживую в рамке, рядом — реальная CRM и\u00a0боты.',
       'about.cap': 'Реальный продукт', 'marquee.static': 'давайте обсудим',
       'work.keys': '← → переключение', 'work.tabs': 'Работы',
       'kind.concept': 'Концепт', 'kind.product': 'Продукт', 'kind.cap': 'Возможности',
@@ -130,9 +130,19 @@
     },
   };
 
-  // ── Работы: 5 концепт-сайтов (два новых — первыми), реальный продукт, боты и парсеры ──
+  // ── Работы: 6 концепт-сайтов (новые — первыми), реальный продукт, боты и парсеры ──
   // pa — фирменный цвет проекта (метка вкладки, полоска, лёгкий оттенок подиума); sb — фон/текст статус-бара телефона
   const WORK = [
+    {
+      id: 'veresk', kind: 'site', url: 'veresk/', host: 'flasqwe.github.io/<b>veresk</b>/', pa: '#cdaec3', pt: '#7e4f73', sb: ['#1b211c', '#ffffff'],
+      chips: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'RU / EN'],
+      en: { line: 'A home you build yourself, with a live estimate.', name: 'VERESK', tab: 'VERESK', idx: 'VERESK', sub: 'Turnkey homes', short: 'Turnkey home builder', tag: 'Private home construction · turnkey',
+        desc: 'A concept site for a fictional turnkey home builder. A parametric 3D house changes as you pick size, walls and roof while the estimate recalculates, and the same model builds itself as you scroll, from foundation to lights in the windows.',
+        feats: ['3D configurator: floor area, storeys, walls, roof and extras rebuild the model live', 'Live estimate: price, timeline, mortgage and a section-by-section breakdown from one formula', 'Scroll-driven build: foundation, frame, rafters, roof, windows, utilities, finish', 'Six homes open straight in the configurator, plus a window that expands to full screen on scroll'] },
+      ru: { line: 'Дом, который собираешь сам, с живой сметой.', name: 'VERESK', tab: 'VERESK', idx: 'VERESK', sub: 'Дома под ключ', short: 'Строительство домов под ключ', tag: 'Частные дома под ключ',
+        desc: 'Концепт-сайт вымышленной компании, которая строит дома под ключ. Параметрический 3D-дом меняется, пока вы выбираете площадь, стены и кровлю, а смета пересчитывается сразу. Та же модель строится при прокрутке: от фундамента до света в окнах.',
+        feats: ['3D-конструктор: площадь, этажи, стены, кровля и опции перестраивают модель на лету', 'Живая смета: цена, срок, ипотека и разбивка по разделам из одной формулы', 'Стройка при прокрутке: фундамент, каркас, стропила, кровля, окна, инженерия, отделка', 'Шесть проектов открываются прямо в конструкторе, окно раскрывается на весь экран при прокрутке'] },
+    },
     {
       id: 'serein', kind: 'site', url: 'serein/', host: 'flasqwe.github.io/<b>serein</b>/', pa: '#b08a5a', pt: '#7a5a32', sb: ['#f3eee6', '#111111'],
       chips: ['HTML', 'CSS', 'JavaScript', 'SVG', 'EN / RU'],
@@ -210,6 +220,18 @@
   // d[0] < 0 — подпись слева от точки излома, иначе справа. Подписи — только то, что в демо есть на самом деле.
   const A = (sel, at, d, en, ru) => ({ sel, at, d, en, ru });
   const ANN = {
+    veresk: {
+      desktop: [
+        A('.hero__title', [0.2, 1], [0.03, 0.1], 'Hero: photo, type, one promise', 'Первый экран: фото, шрифт, одно обещание'),
+        A('.hero__cta a[href="#config"]', [0.5, 0], [-0.05, -0.1], '3D configurator with a live estimate', '3D-конструктор с живой сметой'),
+        A('.hero__facts', [0.1, 0], [0.04, -0.09], 'Price and timeline come from the estimate formula', 'Цена и срок — из формулы сметы'),
+        A('.lang', [0.5, 1], [-0.1, 0.08], 'RU / EN', 'RU / EN'),
+      ],
+      mobile: [
+        A('.hero__title', [0.3, 1], [0.05, 0.06], 'Readable over the photo', 'Читается поверх фото'),
+        A('.hero__cta a[href="#config"]', [0.5, 0], [-0.04, -0.07], '3D configurator', '3D-конструктор'),
+      ],
+    },
     serein: {
       desktop: [
         A('.hero__card', [0.08, 1], [-0.02, 0.17], 'Free flats — counted from the plan data', 'Свободные — из данных шахматки'),

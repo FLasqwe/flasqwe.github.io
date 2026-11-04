@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>VERESK — дома под ключ с честной сметой</title>
+  <meta name="description" content="VERESK строит частные дома под ключ. Соберите дом в конструкторе и сразу увидите цену, срок и смету по разделам. Концепт-сайт.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#efe8dc">
+  <meta property="og:title" content="VERESK — дома под ключ">
+  <meta property="og:description" content="Тихий дом. Честная смета. Конструктор дома с живой ценой и 3D-моделью.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1782226796423-8d72656a332c?auto=format&fit=crop&w=1200&h=630&q=80">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2326332b'/%3E%3Cpath d='M12 42 32 20l20 22' fill='none' stroke='%23efe8dc' stroke-width='4'/%3E%3Ccircle cx='32' cy='44' r='4' fill='%23c9a6bd'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.min.js">
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.min.js"}}</script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">К содержанию</a>
+
+  <header class="nav is-over" id="nav">
+    <a class="logo" href="#top" aria-label="VERESK">
+      <svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 21 20 3l18 18"/><circle cx="20" cy="19" r="2.6"/></svg>
+      <b>VERESK</b>
+    </a>
+    <nav class="nav__links" aria-label="Основное" data-i18n-aria="nav.aria">
+      <a href="#projects" data-i18n="nav.projects">Проекты</a>
+      <a href="#config" data-i18n="nav.config">Конструктор</a>
+      <a href="#process" data-i18n="nav.process">Как строим</a>
+      <a href="#escrow" data-i18n="nav.escrow">Эскроу</a>
+      <a href="#faq" data-i18n="nav.faq">Вопросы</a>
+    </nav>
+    <div class="nav__end">
+      <div class="lang" role="group" aria-label="Язык" data-i18n-aria="lang.aria">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--sm" href="#config" data-i18n="nav.cta">Собрать дом</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Меню" data-i18n-aria="nav.menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <a href="#projects" data-i18n="nav.projects">Проекты</a>
+    <a href="#config" data-i18n="nav.config">Конструктор</a>
+    <a href="#process" data-i18n="nav.process">Как строим</a>
+    <a href="#escrow" data-i18n="nav.escrow">Эскроу</a>
+    <a href="#faq" data-i18n="nav.faq">Вопросы</a>
+    <a href="#request" data-i18n="nav.request">Получить смету</a>
+  </div>
+
+  <main id="main">
+    <!-- Первый экран -->
+    <section class="hero" id="top">
+      <picture class="hero__media">
+        <source media="(max-width: 760px)" srcset="https://images.unsplash.com/photo-1782226796423-8d72656a332c?auto=format&fit=crop&crop=focalpoint&fp-x=.42&fp-y=.5&w=800&h=1500&q=74">
+        <img class="hero__img" src="https://images.unsplash.com/photo-1782226796423-8d72656a332c?auto=format&fit=crop&w=1800&h=1125&q=76" srcset="https://images.unsplash.com/photo-1782226796423-8d72656a332c?auto=format&fit=crop&w=1200&h=750&q=76 1200w, https://images.unsplash.com/photo-1782226796423-8d72656a332c?auto=format&fit=crop&w=1800&h=1125&q=76 1800w, https://images.unsplash.com/photo-1782226796423-8d72656a332c?auto=format&fit=crop&w=2400&h=1500&q=72 2400w" sizes="100vw" alt="Деревянный дом с панорамными окнами светится в сумерках среди сосен" data-i18n-alt="hero.alt" fetchpriority="high">
+      </picture>
+      <div class="hero__top">
+        <p class="mono hero__kicker" data-i18n="hero.kicker">Дома под ключ · Подмосковье и Центральная Россия</p>
+        <h1 class="hero__title" data-i18n="hero.title">Тихий дом.<br><em>Честная смета.</em></h1>
+      </div>
+      <div class="hero__body">
+        <div class="hero__row">
+          <p class="hero__lead" data-i18n="hero.lead">Соберите дом в конструкторе и сразу увидите цену, срок и смету по разделам. Деньги лежат на эскроу, пока дом не сдан.</p>
+          <div class="hero__cta">
+            <a class="btn btn--paper" href="#config"><span data-i18n="hero.cta">Собрать свой дом</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--line" href="#projects" data-i18n="hero.cta2">Смотреть проекты</a>
+          </div>
+        </div>
+      </div>
+      <dl class="hero__facts">
+        <div><dt data-i18n="fact.from">Дом под ключ</dt><dd id="factPrice">—</dd></div>
+        <div><dt data-i18n="fact.term">Срок стройки</dt><dd id="factTerm">—</dd></div>
+        <div><dt data-i18n="fact.pay">Оплата</dt><dd data-i18n="fact.payV">после сдачи, через эскроу</dd></div>
+        <div><dt data-i18n="fact.warr">Гарантия</dt><dd data-i18n="fact.warrV">10 лет на конструктив</dd></div>
+      </dl>
+    </section>
+
+    <!-- Манифест: слова проявляются при прокрутке -->
+    <section class="manifesto">
+      <p class="mono kicker"><span>01</span><span data-i18n="man.kicker">Как мы думаем</span></p>
+      <p class="manifesto__text" data-words data-i18n="man.text">Мы не продаём квадратные метры. Мы считаем дом до последнего самореза, показываем смету до договора и не меняем её после. От вас нужно одно: решить, где будет стоять кресло у окна.</p>
+    </section>
+
+    <!-- Окно, которое раскрывается на весь экран -->
+    <section class="win" id="window" aria-label="Что важно в доме" data-i18n-aria="win.aria">
+      <div class="win__stick">
+        <div class="win__frame" id="winFrame">
+          <img src="https://images.unsplash.com/photo-1775359924001-9cf0e5d3adf5?auto=format&fit=crop&w=2000&q=74" alt="Гостиная с панорамными окнами и видом на зимний лес" data-i18n-alt="win.alt1" loading="lazy" decoding="async">
+          <img src="https://images.unsplash.com/photo-1761319914911-71b059a655d8?auto=format&fit=crop&w=2000&q=74" alt="Светлая гостиная с камином и большими окнами" data-i18n-alt="win.alt2" loading="lazy" decoding="async">
+          <img src="https://images.unsplash.com/photo-1728895128643-7a100974aa0e?auto=format&fit=crop&w=2000&q=74" alt="Вид на лес через большое окно из тёмной комнаты" data-i18n-alt="win.alt3" loading="lazy" decoding="async">
+        </div>
+        <ol class="win__caps">
+          <li><h2 data-i18n="win.t1">Свет</h2><p data-i18n="win.d1">Окна считаем по солнцу. Гостиная смотрит на юг, спальни просыпаются с рассветом.</p></li>
+          <li><h2 data-i18n="win.t2">Тепло</h2><p data-i18n="win.d2">Стены, пол и кровля работают как один контур: в минус тридцать дома плюс двадцать два, и счёт за отопление не пугает.</p></li>
+          <li><h2 data-i18n="win.t3">Тишина</h2><p data-i18n="win.d3">Ставим дом на участке так, чтобы из окна был лес, а не окна соседей.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Проекты -->
+    <section class="projects" id="projects">
+      <div class="head">
+        <p class="mono kicker"><span>02</span><span data-i18n="pr.kicker">Проекты</span></p>
+        <h2 class="title" data-i18n="pr.title">Шесть домов,<br>с которых можно начать</h2>
+        <p class="lead" data-i18n="pr.lead">Любой проект открывается в конструкторе: меняйте площадь, материал и кровлю, цена пересчитается сразу.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Материал" data-i18n-aria="pr.filter" id="prFilter"></div>
+      <div class="rail" id="prRail" tabindex="0" aria-label="Проекты домов" data-i18n-aria="pr.aria"></div>
+    </section>
+
+    <!-- Конструктор -->
+    <section class="config" id="config">
+      <div class="head head--wide">
+        <p class="mono kicker"><span>03</span><span data-i18n="cf.kicker">Конструктор</span></p>
+        <h2 class="title" data-i18n="cf.title">Соберите дом,<br>смета считается сама</h2>
+      </div>
+      <div class="config__grid">
+        <div class="stage">
+          <div class="stage__view" id="cfgView">
+            <p class="stage__hint mono" data-i18n="cf.hint">Потяните, чтобы повернуть</p>
+            <p class="stage__load mono" data-i18n="cf.load">Загружаем 3D-модель…</p>
+          </div>
+          <div class="stage__spec mono" id="cfgSpec"></div>
+        </div>
+        <form class="opts" id="cfgForm" onsubmit="return false">
+          <fieldset>
+            <legend><span class="mono">1</span><span data-i18n="cf.area">Площадь</span><output id="areaOut" class="mono"></output></legend>
+            <input type="range" id="area" min="60" max="260" step="2" value="128" aria-label="Площадь дома" data-i18n-aria="cf.area">
+            <div class="scale mono"><span>60</span><span>160</span><span>260 м²</span></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="mono">2</span><span data-i18n="cf.floors">Этажность</span></legend>
+            <div class="seg" id="floors" role="radiogroup"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="mono">3</span><span data-i18n="cf.material">Стены</span></legend>
+            <div class="swatches" id="material" role="radiogroup"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="mono">4</span><span data-i18n="cf.roof">Кровля</span></legend>
+            <div class="seg" id="roof" role="radiogroup"></div>
+            <p class="note" id="roofNote" hidden data-i18n="cf.roofNote">С плоской кровлей мансарды не бывает: выбрали два этажа.</p>
+          </fieldset>
+          <fieldset>
+            <legend><span class="mono">5</span><span data-i18n="cf.extra">Дополнительно</span></legend>
+            <div class="toggles" id="extras"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="mono">6</span><span data-i18n="cf.finish">Комплектация</span></legend>
+            <div class="seg seg--stack" id="finish" role="radiogroup"></div>
+          </fieldset>
+        </form>
+        <aside class="sum" id="sum" aria-live="polite">
+          <p class="mono sum__label" data-i18n="cf.total">Стоимость по смете</p>
+          <p class="sum__price" id="sumPrice">—</p>
+          <dl class="sum__meta">
+            <div><dt data-i18n="cf.term">Срок</dt><dd id="sumTerm">—</dd></div>
+            <div><dt data-i18n="cf.m2">За м²</dt><dd id="sumM2">—</dd></div>
+            <div><dt data-i18n="cf.month">В ипотеку</dt><dd id="sumMonth">—</dd></div>
+          </dl>
+          <ul class="bars" id="sumBars"></ul>
+          <a class="btn btn--wide" href="#request"><span data-i18n="cf.cta">Получить подробную смету</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="note" data-i18n="cf.note">Ипотека для примера: 20% взнос, 20 лет, 6% годовых. Цены условные, это концепт.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Как строим: дом растёт при прокрутке -->
+    <section class="proc" id="process">
+      <div class="proc__stick">
+        <div class="proc__text">
+          <p class="mono kicker"><span>04</span><span data-i18n="st.kicker">Как строим</span></p>
+          <ol class="steps" id="steps"></ol>
+          <div class="pay mono">
+            <span data-i18n="st.payL">Банк выплатил нам</span>
+            <b id="payOut">0 ₽</b>
+          </div>
+        </div>
+        <div class="proc__view" id="procView"><p class="stage__load mono" data-i18n="cf.load">Загружаем 3D-модель…</p></div>
+        <div class="proc__rail" aria-hidden="true"><i id="procBar"></i></div>
+      </div>
+    </section>
+
+    <!-- Эскроу -->
+    <section class="escrow" id="escrow">
+      <div class="head">
+        <p class="mono kicker kicker--light"><span>05</span><span data-i18n="es.kicker">Эскроу</span></p>
+        <h2 class="title" data-i18n="es.title">Деньги ждут в банке,<br>пока мы строим</h2>
+      </div>
+      <ol class="flow">
+        <li><span class="mono">01</span><h3 data-i18n="es.t1">Вы кладёте деньги на счёт</h3><p data-i18n="es.d1">Сумму из договора вносите на эскроу-счёт в банке. Нам она недоступна.</p></li>
+        <li><span class="mono">02</span><h3 data-i18n="es.t2">Мы строим на свои</h3><p data-i18n="es.d2">Материалы и бригады оплачиваем сами. Вы получаете фото с объекта каждую неделю.</p></li>
+        <li><span class="mono">03</span><h3 data-i18n="es.t3">Дом принят, банк платит</h3><p data-i18n="es.d3">Вы подписываете акт, дом регистрируется, и только тогда банк переводит деньги нам.</p></li>
+      </ol>
+      <dl class="stats">
+        <div><dd data-count="0">0</dd><dt data-i18n="es.s1">₽ получаем до сдачи дома</dt></div>
+        <div><dd data-count="100">100</dd><dt data-i18n="es.s2">% цены зафиксировано в договоре</dt></div>
+        <div><dd data-count="10">10</dd><dt data-i18n="es.s3">лет гарантии на фундамент и стены</dt></div>
+      </dl>
+    </section>
+
+    <!-- Вопросы -->
+    <section class="faq" id="faq">
+      <div class="head">
+        <p class="mono kicker"><span>06</span><span data-i18n="fq.kicker">Вопросы</span></p>
+        <h2 class="title" data-i18n="fq.title">Что спрашивают<br>чаще всего</h2>
+      </div>
+      <div class="faq__list">
+        <details><summary data-i18n="fq.q1">Что входит в «под ключ»?</summary><p data-i18n="fq.a1">Фундамент, коробка, кровля, окна, инженерия и чистовая отделка: можно въезжать с мебелью. Точный состав работ написан в смете, раздел за разделом.</p></details>
+        <details><summary data-i18n="fq.q2">Может ли цена вырасти во время стройки?</summary><p data-i18n="fq.a2">Нет. Смета фиксируется в договоре. Цена меняется, только если вы сами меняете проект, и каждое изменение мы согласуем письменно.</p></details>
+        <details><summary data-i18n="fq.q3">Участка ещё нет. С чего начать?</summary><p data-i18n="fq.a3">Поможем выбрать: проверим подъезд, коммуникации и грунт до покупки, чтобы фундамент не оказался сюрпризом.</p></details>
+        <details><summary data-i18n="fq.q4">Строите зимой?</summary><p data-i18n="fq.a4">Да. Каркас и брус собираем круглый год. Для газобетона и кирпича планируем работы так, чтобы мокрые процессы не пришлись на сильный мороз.</p></details>
+        <details><summary data-i18n="fq.q5">Можно ли взять ипотеку?</summary><p data-i18n="fq.a5">Да. Договор подряда с эскроу подходит для ипотеки на строительство. Подскажем банки и поможем собрать документы.</p></details>
+      </div>
+    </section>
+
+    <!-- Заявка -->
+    <section class="req" id="request">
+      <img class="req__bg" src="https://images.unsplash.com/photo-1771680968896-cfd9b8f7244e?auto=format&fit=crop&w=2000&q=72" alt="Дом с деревянной террасой на заснеженном участке среди деревьев" data-i18n-alt="rq.alt" loading="lazy" decoding="async">
+      <div class="req__box">
+        <div>
+          <p class="mono kicker"><span>07</span><span data-i18n="rq.kicker">Смета</span></p>
+          <h2 class="title title--sm" data-i18n="rq.title">Пришлём смету<br>на ваш дом</h2>
+          <div class="req__sum mono" id="reqSum"></div>
+        </div>
+        <form id="reqForm" novalidate>
+          <label><span data-i18n="rq.name">Как вас зовут</span><input name="name" autocomplete="name" required></label>
+          <label><span data-i18n="rq.phone">Телефон</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required></label>
+          <label><span data-i18n="rq.plot">Участок</span>
+            <select name="plot">
+              <option data-i18n="rq.p1">Уже есть</option>
+              <option data-i18n="rq.p2">Выбираю</option>
+              <option data-i18n="rq.p3">Нужна помощь с выбором</option>
+            </select>
+          </label>
+          <button class="btn btn--wide" type="submit"><span data-i18n="rq.cta">Получить смету</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="note" data-i18n="rq.note">Это демо-форма: заявка никуда не отправляется.</p>
+          <p class="req__ok" id="reqOk" hidden role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__big" aria-hidden="true">VERESK</div>
+    <div class="foot__row">
+      <p data-i18n="ft.tag">Тихий дом. Честная смета.</p>
+      <nav aria-label="Подвал" data-i18n-aria="ft.aria">
+        <a href="#projects" data-i18n="nav.projects">Проекты</a>
+        <a href="#config" data-i18n="nav.config">Конструктор</a>
+        <a href="#process" data-i18n="nav.process">Как строим</a>
+        <a href="#top" data-i18n="ft.top">Наверх</a>
+      </nav>
+    </div>
+    <div class="foot__legal">
+      <a href="../" data-i18n="ft.concept">Концепт-сайт, проект портфолио. VERESK — вымышленная компания: цены, проекты, сроки и гарантии условны.</a>
+      <span data-i18n="ft.photos">Фото: Unsplash</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
